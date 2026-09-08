@@ -1,0 +1,6 @@
+{
+  "name": "KROME Sports Performance",
+  "description": "KROME Sports Performance - Elite training, conditioning, strength programs, and athletic performance development.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
