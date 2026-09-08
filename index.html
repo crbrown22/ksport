@@ -1,92 +1,1740 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Sports Performance - Elite Training & Programs</title>
+    <meta name="description" content="Explore elite online training, sports performance, weight loss transformations, nutrition protocols, and private personal training at KROME Sports Performance.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/index.html">
+    
+    <!-- Open Graph Social Tags -->
+    <meta property="og:title" content="KROME Sports Performance - Elite Training & Programs">
+    <meta property="og:description" content="Explore elite online training, sports performance, weight loss transformations, nutrition protocols, and private personal training.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/index.html">
+    <meta property="og:image" content="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/media/strength (2).jpg">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- Funawesome CDN -->
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExerciseGym",
+      "name": "KROME Sports Performance",
+      "image": "https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/media/strength (2).jpg",
+      "description": "Elite athletic training, powerlifting mechanics, sports nutrition, and customized transformation programs.",
+      "telephone": "+1-405-461-0727",
+      "email": "kromefitness@gmail.com",
+      "url": "https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/index.html"
+    }
+    </script>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
     <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
 
     <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(0, 255, 209, 0.22);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
         body {
-            background-color: #ffffff;
-            /* Ensures the background is white */
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Style for smaller video player */
-        .video-container {
-            max-width: 100%;
-            height: auto;
+        /* ----------------------------------
+           NAVBAR
+        ---------------------------------- */
+        .navbar {
+            background-color: #121212 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
-        iframe {
-            width: 100%;
-            /* Make the iframe responsive */
-            height: 315px;
-            /* Maintain a smaller height */
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
         }
 
-        @media (min-width: 768px) {
-            iframe {
-                height: 450px;
-                /* Larger height for medium and larger screens */
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.05rem;
+                letter-spacing: 0.6px;
             }
         }
 
-        .btn-custom {
-            margin-top: 30px;
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .dropdown-menu {
+            background-color: #181818;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-item {
+            color: #e2e8f0;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           HERO CAROUSEL SECTION
+        ---------------------------------- */
+        .hero-carousel-wrapper {
+            position: relative;
+            background-color: #080808;
+            border-bottom: 2px solid var(--krome-cyan);
+            overflow: hidden;
+        }
+
+        .hero-carousel-slide {
+            min-height: 580px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 85px 0 95px;
+        }
+
+        .hero-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(8, 10, 12, 0.93) 0%, rgba(10, 18, 22, 0.88) 55%, rgba(18, 12, 5, 0.86) 100%);
+            z-index: 1;
+        }
+
+        .hero-slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 209, 0.12);
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-badge.badge-gold {
+            background: rgba(255, 212, 71, 0.12);
+            border: 1px solid var(--krome-gold);
+            color: var(--krome-gold);
+        }
+
+        .hero-badge.badge-hot {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+        }
+
+        .hero-carousel-slide h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+
+        .hero-carousel-slide h1 span {
+            color: var(--krome-gold);
+            text-shadow: 0 0 25px rgba(255, 212, 71, 0.35);
+        }
+
+        .hero-carousel-slide h1 .text-cyan {
+            color: var(--krome-cyan);
+            text-shadow: 0 0 25px rgba(0, 255, 209, 0.35);
+        }
+
+        .hero-carousel-slide p {
+            color: #d1d5db;
+            font-size: 1.18rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.6;
+        }
+
+        .hero-feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-feature-tag {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #f1f5f9;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-feature-tag i {
+            color: var(--krome-cyan);
+            margin-right: 6px;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            padding: 14px 34px;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        .btn-hero-outline {
+            border: 2px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 700;
+            padding: 12px 30px;
+            font-size: 1.05rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-hero-outline:hover {
+            background-color: var(--krome-cyan);
+            color: #0b0b0b;
+            box-shadow: 0 0 25px rgba(0, 255, 209, 0.5);
+        }
+
+        .carousel-indicators {
+            bottom: 22px;
+            margin-bottom: 0;
+            z-index: 5;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.35);
+            border: 2px solid transparent;
+            margin: 0 6px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators .active {
+            background-color: var(--krome-cyan);
+            border-color: #0b0b0b;
+            transform: scale(1.35);
+            box-shadow: 0 0 10px var(--krome-cyan);
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 52px;
+            height: 52px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(18, 18, 18, 0.75);
+            border: 1px solid rgba(0, 255, 209, 0.35);
+            border-radius: 50%;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            z-index: 5;
+            margin: 0 16px;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+            background: rgba(0, 255, 209, 0.25);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
+        }
+
+        /* Hero Quick Notice Ribbon */
+        .hero-callout-banner {
+            background: linear-gradient(90deg, #111518 0%, #172025 50%, #111518 100%);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.35);
+            padding: 14px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ----------------------------------
+           METRICS / TRUST BAR
+        ---------------------------------- */
+        .trust-bar {
+            background-color: #111417;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+            padding: 24px 0;
+        }
+
+        .trust-bar-item {
+            padding: 8px 16px;
+        }
+
+        .trust-bar-item h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .trust-bar-item p {
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        /* ----------------------------------
+           CATEGORY SECTIONS & CARDS
+        ---------------------------------- */
+        .programs-container {
+            padding: 60px 0 80px;
+        }
+
+        .category-block {
+            margin-bottom: 75px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .category-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 2.75rem;
+        }
+
+        .category-pill {
+            display: inline-block;
+            background: rgba(255, 212, 71, 0.1);
+            border: 1px solid var(--krome-gold);
+            color: var(--krome-gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-title span {
+            color: var(--krome-gold);
+        }
+
+        .category-desc {
+            color: var(--krome-text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* Card Design */
+        .program-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .program-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 12px 32px rgba(0, 255, 209, 0.25);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 210px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .card-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .card-category-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .program-card .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .program-card .card-title {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.25rem;
+            line-height: 1.35;
+            margin-bottom: 0.75rem;
+            min-height: 3.4rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .program-card .card-text {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .card-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin-bottom: 1.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-meta-row i {
+            color: var(--krome-gold);
+        }
+
+        .btn-learn-more {
+            background-color: transparent;
+            border: 2px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        .btn-learn-more:hover {
+            background-color: var(--krome-cyan);
+            color: #0b0b0b;
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
+        }
+
+        /* ----------------------------------
+           SCROLL-TRIGGERED REVEAL ANIMATIONS
+        ---------------------------------- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+            will-change: opacity, transform;
+        }
+
+        .category-header.reveal-on-scroll {
+            transform: translateY(22px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .program-card.reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(38px) scale(0.97);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Seamless hover state when card has revealed */
+        .program-card.reveal-on-scroll.is-visible:hover {
+            transform: translateY(-6px) scale(1);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 12px 32px rgba(0, 255, 209, 0.25);
+        }
+
+        /* Staggered entry within 3-column category grids */
+        .row > div:nth-child(1) .program-card.reveal-on-scroll {
+            transition-delay: 0.04s;
+        }
+        .row > div:nth-child(2) .program-card.reveal-on-scroll {
+            transition-delay: 0.16s;
+        }
+        .row > div:nth-child(3) .program-card.reveal-on-scroll {
+            transition-delay: 0.28s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ----------------------------------
+           VIDEO & WORKOUT LIBRARY
+        ---------------------------------- */
+        .video-library-section {
+            background: linear-gradient(180deg, #101518 0%, #0b0b0b 100%);
+            border-top: 1px solid rgba(0, 255, 209, 0.2);
+            border-bottom: 2px solid var(--krome-cyan);
+            padding: 70px 0;
+        }
+
+        .video-wrapper {
+            border: 2px solid var(--krome-cyan);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 255, 209, 0.25);
+        }
+
+        .btn-youtube {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            padding: 14px 36px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-youtube:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.6);
+            color: #000;
+        }
+
+        /* ----------------------------------
+           CONTACT & CONSULTATION SECTION
+        ---------------------------------- */
+        .contact-consult-section {
+            background: linear-gradient(180deg, #0b0b0b 0%, #11171a 50%, #0d1214 100%);
+            border-top: 2px solid rgba(0, 255, 209, 0.3);
+            border-bottom: 2px solid rgba(255, 212, 71, 0.3);
+            padding: 85px 0 90px;
+            position: relative;
+        }
+
+        .contact-channel-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-channel-card:hover {
+            border-color: var(--krome-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(0, 255, 209, 0.2);
+        }
+
+        .contact-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 255, 209, 0.1);
+            border: 1px solid rgba(0, 255, 209, 0.3);
+            color: var(--krome-cyan);
+        }
+
+        .contact-icon-box.gold {
+            background: rgba(255, 212, 71, 0.1);
+            border-color: rgba(255, 212, 71, 0.3);
+            color: var(--krome-gold);
+        }
+
+        .contact-form-container {
+            background: linear-gradient(160deg, #171717 0%, #111a1d 100%);
+            border: 2px solid var(--krome-card-border);
+            border-radius: 16px;
+            padding: 2.25rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #e2e8f0;
+            margin-bottom: 0.45rem;
+        }
+
+        .form-control, .form-select {
+            background-color: #0b0f12;
+            border: 1px solid rgba(0, 255, 209, 0.25);
+            color: #f8f9fa;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #0f1519;
+            border-color: var(--krome-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 255, 209, 0.18);
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .btn-submit-consult {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            padding: 14px 28px;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.35);
+        }
+
+        .btn-submit-consult:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.6);
+            color: #000;
+        }
+
+        .quick-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .quick-action-btn.call {
+            background: rgba(255, 212, 71, 0.15);
+            border: 1px solid var(--krome-gold);
+            color: var(--krome-gold);
+        }
+
+        .quick-action-btn.call:hover {
+            background: var(--krome-gold);
+            color: #0b0b0b;
+        }
+
+        .quick-action-btn.sms {
+            background: rgba(0, 255, 209, 0.15);
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+        }
+
+        .quick-action-btn.sms:hover {
+            background: var(--krome-cyan);
+            color: #0b0b0b;
+        }
+
+        /* ----------------------------------
+           FOOTER
+        ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--krome-cyan);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
     </style>
-
-    <title>KROME Sports Performance</title>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <!-- Main Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <div class="navbar-brand">KROME Sports Performance</div>
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#programs" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-dumbbell me-1"></i> Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><a class="dropdown-item" href="#online-training"><i class="fas fa-mobile-alt me-2 text-warning"></i> Online Training</a></li>
+                            <li><a class="dropdown-item" href="#sports-performance"><i class="fas fa-running me-2 text-info"></i> Sports Performance</a></li>
+                            <li><a class="dropdown-item" href="#weight-loss"><i class="fas fa-fire me-2 text-warning"></i> Weight Loss & Shred</a></li>
+                            <li><a class="dropdown-item" href="#nutrition"><i class="fas fa-apple-alt me-2 text-info"></i> Nutrition Plans</a></li>
+                            <li><a class="dropdown-item" href="#personal-training"><i class="fas fa-user-friends me-2 text-warning"></i> In-Person Personal Training</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coaches_bio.html"><i class="fas fa-user-tie me-1"></i> Coach Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag me-1"></i> Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-comments me-1"></i> Contact & Consult</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-bold" href="tel:4054610727">
+                            <i class="fas fa-phone-alt me-1"></i> (405) 461-0727
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Video Section -->
-    <div class="container my-5 text-center">
-        <div class="video-container">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fU599S2F3k4" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+    <!-- Hero Carousel Header Section -->
+    <header class="hero-carousel-wrapper">
+        <div id="kromeHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5500" data-bs-pause="hover">
+            
+            <!-- Indicators / Slide Dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: Team Clinics"></button>
+                <button type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2: Group Rates"></button>
+                <button type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3: Events & Combines"></button>
+                <button type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide-to="3" aria-label="Slide 4: Elite Programs"></button>
+            </div>
+
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+
+                <!-- Slide 1: Team Clinics & Sport Camps -->
+                <div class="carousel-item active">
+                    <div class="hero-carousel-slide" style="background-image: url('media/Choctaw.jpg');">
+                        <div class="hero-slide-overlay"></div>
+                        <div class="container hero-slide-content">
+                            <span class="hero-badge">
+                                <i class="fas fa-users-cog me-2"></i> Team Clinics & On-Site Camps
+                            </span>
+                            <h1>Team Clinics & <span>Custom Camps</span></h1>
+                            <p>
+                                Equip your entire athletic team, high school, or club roster with game-changing speed mechanics, explosive power, and injury prevention fundamentals. Call us directly to book customized on-site clinics and coaching staff workshops.
+                            </p>
+                            <div class="hero-feature-tags">
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> High School & Club Teams</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Sport-Specific Biomechanics</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> On-Site or Team Hosted</span>
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="tel:4054610727" class="btn-hero-primary">
+                                    <i class="fas fa-phone-alt me-2"></i> Call (405) 461-0727 for Clinics
+                                </a>
+                                <a href="#sports-performance" class="btn-hero-outline">
+                                    <i class="fas fa-running me-2"></i> Performance Programs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Group Rates & Squad Packages -->
+                <div class="carousel-item">
+                    <div class="hero-carousel-slide" style="background-image: url('media/letswork.jpg');">
+                        <div class="hero-slide-overlay"></div>
+                        <div class="container hero-slide-content">
+                            <span class="hero-badge badge-gold">
+                                <i class="fas fa-tags me-2"></i> Exclusive Group Rates & Packages
+                            </span>
+                            <h1>Group Rates & <span>Squad Packages</span></h1>
+                            <p>
+                                Train together, build accountability, and maximize savings. We provide discounted tiered group rates for multi-athlete training blocks, training partners, corporate wellness teams, and collegiate off-season cohorts.
+                            </p>
+                            <div class="hero-feature-tags">
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Tiered Multi-Athlete Discounts</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Small & Large Group Cohorts</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Periodized Group Strength</span>
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="tel:4054610727" class="btn-hero-primary">
+                                    <i class="fas fa-phone-alt me-2"></i> Call About Group Rates
+                                </a>
+                                <a href="#online-training" class="btn-hero-outline">
+                                    <i class="fas fa-layer-group me-2"></i> View Training Tiers
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Athletic Events, Combines & Seminars -->
+                <div class="carousel-item">
+                    <div class="hero-carousel-slide" style="background-image: url('media/Sprint.jpg');">
+                        <div class="hero-slide-overlay"></div>
+                        <div class="container hero-slide-content">
+                            <span class="hero-badge">
+                                <i class="fas fa-flag-checkered me-2"></i> Athletic Events & Combines
+                            </span>
+                            <h1>Athletic Combines & <span>Special Events</span></h1>
+                            <p>
+                                Planning an athletic showcase, speed combine, powerlifting meet, or sports nutrition seminar? Contact KROME to host or manage verified electronic laser-timed testing, professional combine assessments, and guest speaker events.
+                            </p>
+                            <div class="hero-feature-tags">
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Verified Laser-Timed Testing</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Combine Showcases</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Coach & Parent Seminars</span>
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="tel:4054610727" class="btn-hero-primary">
+                                    <i class="fas fa-phone-alt me-2"></i> Call (405) 461-0727 for Events
+                                </a>
+                                <a href="coaches_bio.html" class="btn-hero-outline">
+                                    <i class="fas fa-user-tie me-2"></i> Meet Head Coach
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Elite Athletic Training & Performance -->
+                <div class="carousel-item">
+                    <div class="hero-carousel-slide" style="background-image: url('media/strength (2).jpg');">
+                        <div class="hero-slide-overlay"></div>
+                        <div class="container hero-slide-content">
+                            <span class="hero-badge badge-gold">
+                                <i class="fas fa-trophy me-2"></i> Elite Athletic Coaching & Protocols
+                            </span>
+                            <h1>Elite Training, <span>Nutrition & Performance</span></h1>
+                            <p>
+                                Scientifically engineered athletic training, bespoke online coaching, sustainable fat loss protocols, and explosive strength development designed to maximize your full athletic potential.
+                            </p>
+                            <div class="hero-feature-tags">
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> 100% Customized Protocols</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> 52-Week Periodized Systems</span>
+                                <span class="hero-feature-tag"><i class="fas fa-check-circle"></i> Nutrition & Supplementation</span>
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="#programs" class="btn-hero-primary">
+                                    <i class="fas fa-layer-group me-2"></i> Explore All Programs
+                                </a>
+                                <a href="tel:4054610727" class="btn-hero-outline">
+                                    <i class="fas fa-phone-alt me-2"></i> Call (405) 461-0727
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controls (Prev / Next) -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide="prev" aria-label="Previous Slide">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#kromeHeroCarousel" data-bs-slide="next" aria-label="Next Slide">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+        </div>
+
+        <!-- Quick Inquiry Banner Below Carousel -->
+        <div class="hero-callout-banner">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 text-light">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center" style="background: rgba(255, 212, 71, 0.15); width: 44px; height: 44px; min-width: 44px; border: 1px solid var(--krome-gold);">
+                            <i class="fas fa-bullhorn text-warning fs-5"></i>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-warning text-uppercase small" style="letter-spacing: 1px;">Group & Team Inquiries</span>
+                            <span class="small text-light d-block">Call about <strong>Team Clinics</strong>, <strong>Group Rates</strong>, and <strong>Custom Combines & Events</strong>.</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="tel:4054610727" class="btn btn-warning btn-sm rounded-pill px-3 py-2 fw-bold text-dark text-nowrap">
+                            <i class="fas fa-phone-alt me-1"></i> Call (405) 461-0727
+                        </a>
+                        <a href="mailto:kromefitness@gmail.com" class="btn btn-outline-info btn-sm rounded-pill px-3 py-2 fw-bold text-nowrap" style="color: var(--krome-cyan); border-color: var(--krome-cyan);">
+                            <i class="fas fa-envelope me-1"></i> Email Inquiries
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Performance Highlights Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="row text-center g-3">
+                <div class="col-lg-3 col-6">
+                    <div class="trust-bar-item border-end border-secondary border-opacity-25">
+                        <h3 class="text-warning"><i class="fas fa-dumbbell me-2" style="color: var(--krome-cyan);"></i>100%</h3>
+                        <p>Customized Protocols</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-bar-item border-end-lg border-secondary border-opacity-25">
+                        <h3 style="color: var(--krome-cyan);"><i class="fas fa-bolt me-2 text-warning"></i>Peak</h3>
+                        <p>Power & Acceleration</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-bar-item border-end border-secondary border-opacity-25">
+                        <h3 class="text-warning"><i class="fas fa-apple-alt me-2" style="color: var(--krome-cyan);"></i>Science</h3>
+                        <p>Metabolic Nutrition</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-bar-item">
+                        <h3 style="color: var(--krome-cyan);"><i class="fas fa-shield-alt me-2 text-warning"></i>1-on-1</h3>
+                        <p>Direct Coach Support</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Button Section -->
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-12 my-4">
-                <a href="ksp_home.html" class="btn btn-md btn-outline-warning btn-custom"><b>KROME Sports
-                        Performance</b></a>
+    <!-- Main Programs Showcase Section -->
+    <main class="programs-container" id="programs">
+        <div class="container">
+
+            <!-- 1. Online Training Programs -->
+            <section class="category-block" id="online-training">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-globe me-1"></i> Anywhere Access</span>
+                    <h2 class="category-title">Online Training <span>Programs</span></h2>
+                    <p class="category-desc">
+                        Full-spectrum periodized coaching delivered through our interactive fitness app. Includes customized workout splits, biomechanical video analysis, macronutrient prescriptions, and ongoing coach communication.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- 52 Week -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Flexmo.jpg" alt="52 Week Online Training Program">
+                                <span class="card-category-tag">1 Year Program</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">52 Week Online Training Program</h3>
+                                <p class="card-text">A comprehensive full-year periodized coaching curriculum complete with annual macro adjustments, weekly technique checks, and progressive workout cycles.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 52 Weeks</span>
+                                    <span><i class="fas fa-mobile-alt me-1"></i> App + Coaching</span>
+                                </div>
+                                <a href="program_detail.html?id=online-52" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 16 Week Flagship -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/conditioning.jpg" alt="16-Week Flagship Online Training Program">
+                                <span class="card-category-tag">Flagship &bull; $149/mo</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">16-Week Flagship Online Program</h3>
+                                <p class="card-text">Our signature 4-month flagship athletic reconstruction for $149/month. Balances custom hypertrophy routines, clean nutrition blueprints, and direct coach chat support.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 16 Weeks</span>
+                                    <span><i class="fas fa-tag me-1"></i> $149 / Month</span>
+                                </div>
+                                <a href="program_detail.html?id=online-16" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 Week -->
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/strength (2).jpg" alt="8 Week Online Training Program">
+                                <span class="card-category-tag">2 Month Program</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">8 Week Online Training Program</h3>
+                                <p class="card-text">High-intensity 2-month protocol engineered for rapid strength gains, accelerated fat shredding, and building sustainable athletic discipline.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 8 Weeks</span>
+                                    <span><i class="fas fa-mobile-alt me-1"></i> App Access</span>
+                                </div>
+                                <a href="program_detail.html?id=online-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Sports Performance Programs -->
+            <section class="category-block" id="sports-performance">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-running me-1"></i> Athletic Performance</span>
+                    <h2 class="category-title">Sports Performance <span>Protocols</span></h2>
+                    <p class="category-desc">
+                        Engineered for competitive athletes looking to develop explosive ground force, lightning-fast change of direction, and injury-resilient joint mechanics.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- Flexibility & Mobility -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Flex.jpg" alt="Flexibility and Mobility">
+                                <span class="card-category-tag">Joint Longevity</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Flexibility & Mobility</h3>
+                                <p class="card-text">Dynamic movement prep, end-range joint stabilization, postural alignment, and decompression routines for fluid, injury-free athleticism.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 8-12 Weeks</span>
+                                    <span><i class="fas fa-shield-alt me-1"></i> Injury Prevention</span>
+                                </div>
+                                <a href="program_detail.html?id=sports-flexmob" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Strength & Power -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/strength (2).jpg" alt="Strength & Power">
+                                <span class="card-category-tag">Explosive Force</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Strength & Power</h3>
+                                <p class="card-text">Heavy barbell compound mechanics, progressive overload protocols, and kinetic chain power development to maximize rate of force output.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 12 Weeks</span>
+                                    <span><i class="fas fa-bolt me-1"></i> Max Strength PRs</span>
+                                </div>
+                                <a href="program_detail.html?id=sports-strength" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Speed, Agility & Conditioning -->
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Conditioning (1).jpg" alt="Speed Agility and Conditioning">
+                                <span class="card-category-tag">Speed & Field Agility</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Speed, Agility & Conditioning</h3>
+                                <p class="card-text">Sprint mechanics, rapid deceleration ladders, change-of-direction drills, and high-intensity anaerobic conditioning circuits.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 12 Weeks</span>
+                                    <span><i class="fas fa-tachometer-alt me-1"></i> Sprint Velocity</span>
+                                </div>
+                                <a href="program_detail.html?id=sports-conditioning" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Weight Loss & Body Transformation -->
+            <section class="category-block" id="weight-loss">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-fire me-1"></i> Fat Loss & Sculpting</span>
+                    <h2 class="category-title">Weight Loss & <span>Transformation</span></h2>
+                    <p class="category-desc">
+                        Accelerate metabolic fat oxidation and reshape your physique with specialized transformation systems designed to burn fat while preserving dense, lean muscle.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- Complete Transformation -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/transformation.PNG" alt="Complete Body Transformation">
+                                <span class="card-category-tag">Premier Suite</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Complete Body Transformation & Weight Loss</h3>
+                                <p class="card-text">Our premier all-in-one transformation experience combining dedicated resistance splits, cardio pacing, and metabolic meal planning.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 16-24 Weeks</span>
+                                    <span><i class="fas fa-check-double me-1"></i> Full Lifestyle Suite</span>
+                                </div>
+                                <a href="program_detail.html?id=weightloss-complete" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 16-Week Fat Loss -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Salad.jpg" alt="Fat Loss & Clean Eating Blueprint">
+                                <span class="card-category-tag">4 Month Blueprint</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">16-Week Fat Loss & Clean Eating Blueprint</h3>
+                                <p class="card-text">Comprehensive fat reduction system synchronizing caloric deficits with high-satiety clean recipes to strip stubborn body fat sustainably.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 16 Weeks</span>
+                                    <span><i class="fas fa-utensils me-1"></i> High Satiety Meals</span>
+                                </div>
+                                <a href="program_detail.html?id=weightloss-16" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8-Week Shred -->
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Salmon.jpg" alt="8-Week Shred Guide">
+                                <span class="card-category-tag">Express Shred</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">8-Week Shred & Lean Nutrition Guide</h3>
+                                <p class="card-text">Rapid physical shred blueprint crafted for peak conditioning, healthy gut support, energy maintenance, and defined muscle vascularity.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 8 Weeks</span>
+                                    <span><i class="fas fa-burn me-1"></i> Rapid Definition</span>
+                                </div>
+                                <a href="program_detail.html?id=weightloss-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Nutrition Programs -->
+            <section class="category-block" id="nutrition">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-apple-alt me-1"></i> Fuel Your Body</span>
+                    <h2 class="category-title">Custom Nutrition <span>Programs</span></h2>
+                    <p class="category-desc">
+                        Achieve your goals faster with science-backed nutrition plans from KROME Fitness. Macro balancing, nutrient timing, and sustainable habits for permanent results.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- 52 Week Nutrition -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Flexmo.jpg" alt="52 Week Nutrition Plan">
+                                <span class="card-category-tag">Annual Periodization</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">52 Week Nutrition Plan</h3>
+                                <p class="card-text">Full-year dietary periodization matching seasonal training phases, nutrient timing, grocery guides, and ongoing monthly macro calibrations.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 52 Weeks</span>
+                                    <span><i class="fas fa-chart-line me-1"></i> Continuous Coaching</span>
+                                </div>
+                                <a href="program_detail.html?id=nutrition-52" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 16 Week Nutrition -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/strength (2).jpg" alt="16 Week Nutrition Plan">
+                                <span class="card-category-tag">4 Month Diet</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">16 Week Nutrition Plan</h3>
+                                <p class="card-text">Structured 4-month dietary protocol specifically designed for sustained lean mass retention, accelerated fat burn, and metabolic health.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 16 Weeks</span>
+                                    <span><i class="fas fa-leaf me-1"></i> Lean Mass Focus</span>
+                                </div>
+                                <a href="program_detail.html?id=nutrition-16" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 Week Nutrition -->
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/conditioning.jpg" alt="8 Week Nutrition Plan">
+                                <span class="card-category-tag">Diet Reset</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">8 Week Nutrition Plan</h3>
+                                <p class="card-text">Targeted 8-week nutrition reset focusing on clean macronutrient ratios, portion control, hydration, and breaking poor eating habits.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 8 Weeks</span>
+                                    <span><i class="fas fa-sync-alt me-1"></i> Habit Reset</span>
+                                </div>
+                                <a href="program_detail.html?id=nutrition-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Personal Training Sessions -->
+            <section class="category-block" id="personal-training">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-user-friends me-1"></i> In-Person Training</span>
+                    <h2 class="category-title">Private Personal <span>Training</span></h2>
+                    <p class="category-desc">
+                        Direct 1-on-1 private coaching sessions focusing on biomechanical cues, heavy compound lifts, sprint drills, and maximal accountability.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- 12 Sessions -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Flexmo.jpg" alt="12 Sessions Personal Training">
+                                <span class="card-category-tag">12 Sessions</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">12 Sessions (In Person)</h3>
+                                <p class="card-text">Comprehensive private coaching package for total athlete transformation, deep movement screening, lifting mechanics, and maximal accountability.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-clock me-1"></i> 60 Min / Session</span>
+                                    <span><i class="fas fa-user-check me-1"></i> 1-on-1 Private</span>
+                                </div>
+                                <a href="program_detail.html?id=pt-12" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 Sessions -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/conditioning.jpg" alt="8 Sessions Personal Training">
+                                <span class="card-category-tag">8 Sessions</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">8 Sessions (In Person)</h3>
+                                <p class="card-text">Focused in-person training block targeting specific lifting PRs, sprint velocity, agility footwork, and conditioning work capacity.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-clock me-1"></i> 60 Min / Session</span>
+                                    <span><i class="fas fa-bullseye me-1"></i> Skill & PR Surge</span>
+                                </div>
+                                <a href="program_detail.html?id=pt-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 Sessions Intro Special -->
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="program-card featured">
+                            <span class="featured-badge" style="background: linear-gradient(135deg, var(--krome-cyan), #00cca6); color: #0b0b0b; font-weight: 800;"><i class="fas fa-tag me-1"></i> Intro Special • $250</span>
+                            <div class="card-img-wrapper">
+                                <img src="media/strength (2).jpg" alt="4 Sessions Personal Training Intro Special">
+                                <span class="card-category-tag">4 Sessions • $250</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">4 Sessions (In Person)</h3>
+                                <p class="card-text">Special introductory 1-on-1 coaching package: four 60-minute private sessions to audit lifting mechanics, screen mobility, and build your customized strength roadmap.</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-clock me-1"></i> 60 Min / Session</span>
+                                    <span><i class="fas fa-tag me-1 text-warning"></i> $250 Total ($62.50/ea)</span>
+                                </div>
+                                <a href="program_detail.html?id=pt-4" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Consultation & Athlete Inquiries Section -->
+    <section class="contact-consult-section" id="contact">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <span class="category-pill"><i class="fas fa-comments me-1"></i> Direct Athlete Consultations</span>
+                <h2 class="category-title mt-2">Have a Question or Need a <span>Custom Consultation?</span></h2>
+                <p class="category-desc">
+                    Whether you are interested in the 4-session introductory private coaching special ($250), full-year 52-week periodization, team clinics, group combine testing, or custom nutrition, Coach Brown is available to help map out your athletic path.
+                </p>
+            </div>
+
+            <div class="row g-5 align-items-stretch">
+                
+                <!-- Left Column: Direct Coach Contact Cards -->
+                <div class="col-lg-5 d-flex flex-column justify-content-between">
+                    <div>
+                        <!-- Phone & Text Card -->
+                        <div class="contact-channel-card">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="contact-icon-box gold mb-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fw-bold text-light mb-1">Direct Phone & SMS</h5>
+                                    <p class="small text-secondary mb-2">Direct line to Coach Brown</p>
+                                    <div class="fs-5 fw-bold text-warning mb-2">(405) 461-0727</div>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <a href="tel:4054610727" class="quick-action-btn call">
+                                            <i class="fas fa-phone-alt"></i> Call Direct
+                                        </a>
+                                        <a href="sms:14054610727" class="quick-action-btn sms">
+                                            <i class="fas fa-sms"></i> Text Message
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email Inquiry Card -->
+                        <div class="contact-channel-card mb-0">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="contact-icon-box mb-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="fw-bold text-light mb-1">Email Inquiries</h5>
+                                    <p class="small text-secondary mb-2">Program details, clinic proposals & questions</p>
+                                    <div class="small fw-bold mb-2" style="color: var(--krome-cyan);">kromefitness@gmail.com</div>
+                                    <a href="mailto:kromefitness@gmail.com?subject=KROME%20Athlete%20Consultation%20Inquiry" class="quick-action-btn sms">
+                                        <i class="fas fa-paper-plane"></i> Send Email
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rapid Response Pill -->
+                    <div class="mt-4 p-3 rounded-3" style="background: rgba(0, 255, 209, 0.08); border: 1px solid rgba(0, 255, 209, 0.25);">
+                        <div class="d-flex align-items-center gap-2 text-light small">
+                            <i class="fas fa-bolt text-warning fs-5"></i>
+                            <div>
+                                <strong>24-Hour Coach Guarantee:</strong> All consultation submissions and questions receive a personalized response from Coach Brown within 24 hours.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Consultation & Question Form -->
+                <div class="col-lg-7">
+                    <div class="contact-form-container h-100 d-flex flex-column justify-content-center">
+                        
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div>
+                                <h3 class="fw-bold text-light mb-1">Request a Consultation / <span class="text-warning">Ask a Question</span></h3>
+                                <p class="small text-secondary mb-0">Select your focus and Coach Brown will connect directly.</p>
+                            </div>
+                            <i class="fas fa-edit fs-2 text-warning opacity-75"></i>
+                        </div>
+
+                        <form id="homeConsultationForm" onsubmit="handleHomeConsultationSubmit(event)">
+                            <div class="row g-3">
+                                
+                                <div class="col-md-6">
+                                    <label for="homeAthleteName" class="form-label">Athlete / Full Name <span class="text-warning">*</span></label>
+                                    <input type="text" class="form-control" id="homeAthleteName" placeholder="e.g., Jordan Vance" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="homeAthletePhone" class="form-label">Phone Number <span class="text-warning">*</span></label>
+                                    <input type="tel" class="form-control" id="homeAthletePhone" placeholder="(405) 000-0000" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="homeAthleteEmail" class="form-label">Email Address <span class="text-warning">*</span></label>
+                                    <input type="email" class="form-control" id="homeAthleteEmail" placeholder="name@example.com" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="homeProgramInterest" class="form-label">Program / Topic Focus</label>
+                                    <select class="form-select" id="homeProgramInterest">
+                                        <option value="16-Week Flagship Program ($149/mo)">16-Week Flagship Program ($149/mo)</option>
+                                        <option value="52-Week Complete Transformation ($299/mo)">52-Week Complete Transformation ($299/mo)</option>
+                                        <option value="In-Person Coaching ($250 Intro / 4 Sessions)">In-Person Coaching ($250 Intro / 4 Sessions)</option>
+                                        <option value="Online Training Program (8/16/52 Weeks)">Online Training Program (8/16/52 Weeks)</option>
+                                        <option value="Sports Performance, Speed & Agility">Sports Performance, Speed & Agility</option>
+                                        <option value="Weight Loss & Body Shred Transformation">Weight Loss & Body Shred Transformation</option>
+                                        <option value="Custom Nutrition & Meal Periodization">Custom Nutrition & Meal Periodization</option>
+                                        <option value="Team Clinics / Group Rates / Combine Event">Team Clinics / Group Rates / Combine Event</option>
+                                        <option value="General Question / Other Inquiry">General Question / Other Inquiry</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="homePreferredContact" class="form-label">Preferred Contact Mode</label>
+                                    <select class="form-select" id="homePreferredContact">
+                                        <option value="Phone Call">Phone Call</option>
+                                        <option value="SMS Text Message">SMS Text Message</option>
+                                        <option value="Email">Email</option>
+                                        <option value="In-Person Consultation">In-Person Consultation</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="homeAthleteLevel" class="form-label">Athlete Level</label>
+                                    <select class="form-select" id="homeAthleteLevel">
+                                        <option value="Beginner Lifter">Beginner Lifter</option>
+                                        <option value="Intermediate Lifter">Intermediate Lifter</option>
+                                        <option value="Competitive Athlete (High School / Club)">Competitive Athlete (High School / Club)</option>
+                                        <option value="Collegiate / Semi-Pro Athlete">Collegiate / Semi-Pro Athlete</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="homeAthleteMessage" class="form-label">Your Goals or Questions <span class="text-warning">*</span></label>
+                                    <textarea class="form-control" id="homeAthleteMessage" rows="3" placeholder="Tell us about your sport, upcoming combine, schedule, or questions..." required></textarea>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-submit-consult">
+                                        <i class="fas fa-paper-plane me-2"></i> Submit Consultation Request
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <!-- Success Box -->
+                        <div id="homeConsultationSuccess" class="d-none text-center py-4">
+                            <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px; background: rgba(0, 255, 209, 0.15); border: 2px solid var(--krome-cyan);">
+                                <i class="fas fa-check-circle fs-2" style="color: var(--krome-cyan);"></i>
+                            </div>
+                            <h4 class="fw-bold text-light mb-2">Inquiry Received!</h4>
+                            <p class="text-light mb-4" id="homeSuccessSummary">
+                                Thank you! Coach Brown will review your training background and reach out within 24 hours.
+                            </p>
+                            <div class="d-flex flex-wrap justify-content-center gap-2">
+                                <a href="tel:4054610727" class="btn btn-warning btn-sm rounded-pill fw-bold text-dark">
+                                    <i class="fas fa-phone-alt me-1"></i> Call (405) 461-0727
+                                </a>
+                                <a href="sms:14054610727" class="btn btn-outline-info btn-sm rounded-pill fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan);">
+                                    <i class="fas fa-sms me-1"></i> Text Coach
+                                </a>
+                                <button onclick="resetHomeConsultationForm()" class="btn btn-outline-secondary btn-sm rounded-pill">
+                                    Send Another
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Video & Exercise Library Section -->
+    <section class="video-library-section text-center">
+        <div class="container">
+            <div class="mb-4">
+                <span class="category-pill"><i class="fab fa-youtube me-1"></i> Free Exercise Library</span>
+                <h2 class="category-title mt-2">Unlock 100+ Exercise <span>Tutorials & Form Guides</span></h2>
+                <p class="category-desc">
+                    Access our comprehensive video library demonstrating proper lifting mechanics, mobility drills, and sprint acceleration cues you can apply anywhere.
+                </p>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-9 col-md-11">
+                    <div class="ratio ratio-16by9 video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/fU599S2F3k4"
+                            title="KROME Fitness Exercise Library Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a href="https://www.youtube.com/@kromefitnessexerciselibrar9313/playlists"
+                    target="_blank"
+                    class="btn-youtube">
+                    <i class="fab fa-youtube me-2"></i> Explore YouTube Exercise Library
+                </a>
             </div>
         </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2024 KROME Fitness. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Elite Athletic Conditioning, Olympic Strength Mechanics, Sports Nutrition Periodization & Private Personal Coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <a href="tel:4054610727" style="color: var(--krome-cyan); font-weight: 700;">(405) 461-0727</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <a href="mailto:kromefitness@gmail.com" style="color: var(--krome-cyan); font-weight: 700;">kromefitness@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0, 255, 209, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="index.html#programs" class="text-secondary me-3">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3">About</a>
+                    <a href="shop.html" class="text-secondary me-3">Shop</a>
+                    <a href="contact.html" class="text-secondary">Contact & Consult</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
+    <!-- Consultation Form Submission Handler -->
+    <script>
+        function handleHomeConsultationSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('homeAthleteName').value.trim();
+            const phone = document.getElementById('homeAthletePhone').value.trim();
+            const email = document.getElementById('homeAthleteEmail').value.trim();
+            const program = document.getElementById('homeProgramInterest').value;
+            const contactMethod = document.getElementById('homePreferredContact').value;
+            const level = document.getElementById('homeAthleteLevel').value;
+            const message = document.getElementById('homeAthleteMessage').value.trim();
+
+            if (!name || !phone || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            document.getElementById('homeConsultationForm').classList.add('d-none');
+            const successBox = document.getElementById('homeConsultationSuccess');
+            successBox.classList.remove('d-none');
+            
+            document.getElementById('homeSuccessSummary').innerHTML = `
+                Thank you, <strong>${name}</strong>! Your inquiry regarding <strong>${program}</strong> has been logged. Coach Brown will contact you via <strong>${contactMethod}</strong> within 24 hours.
+            `;
+
+            console.log('Home Consultation Request Submitted:', { name, phone, email, program, contactMethod, level, message });
+        }
+
+        function resetHomeConsultationForm() {
+            document.getElementById('homeConsultationForm').reset();
+            document.getElementById('homeConsultationForm').classList.remove('d-none');
+            document.getElementById('homeConsultationSuccess').classList.add('d-none');
+        }
+    </script>
+
+    <!-- Scroll-Triggered Fade-In Animation Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedCards = document.querySelectorAll('#programs .program-card');
+            const animatedHeaders = document.querySelectorAll('#programs .category-header');
+            const allAnimated = [...animatedHeaders, ...animatedCards];
+
+            // Apply animation baseline class
+            allAnimated.forEach(el => el.classList.add('reveal-on-scroll'));
+
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -40px 0px',
+                    threshold: 0.12
+                };
+
+                const cardObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                allAnimated.forEach(el => cardObserver.observe(el));
+            } else {
+                // Graceful fallback for non-supporting browsers
+                allAnimated.forEach(el => el.classList.add('is-visible'));
+            }
+
+            // Immediately reveal when hash navigation anchor is clicked
+            window.addEventListener('hashchange', function() {
+                const targetHash = window.location.hash;
+                if (targetHash) {
+                    const targetSection = document.querySelector(targetHash);
+                    if (targetSection) {
+                        targetSection.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                            el.classList.add('is-visible');
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

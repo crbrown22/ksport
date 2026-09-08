@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <head>
-    <title>KROME Sports Performance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | KROME Sports Performance</title>
+    <meta name="description" content="Discover the philosophy, mission, and standards of excellence that drive KROME Sports Performance.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/about.html">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,166 +15,411 @@
     <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
 
     <style>
-        /* Custom styles */
-        .body {
-            background-color: black;
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(0, 255, 209, 0.22);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
         }
 
-        .navbar-brand img {
-            height: 50px;
-            width: 80px;
-        }
-
-        .hero-section {
-            background-color: black;
-            height: 100vh;
-            color: #c59c21;
-
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
-        .hero-section h1 {
-            font-size: 4rem;
-            font-weight: bold;
+        /* ----------------------------------
+           NAVBAR
+        ---------------------------------- */
+        .navbar {
+            background-color: #121212 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
             text-transform: uppercase;
-        }
-
-        .section-title {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            color: #c59c21;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            background-color: #343a40;
-        }
-
-        .card h5 {
-            color: #c59c21;
-        }
-
-        .card p {
-            color: #ffffff;
-
-        }
-
-        .challenge-banner {
-            background-color: black;
-            color: white;
-            padding-bottom: 3rem;
-            text-align: center;
-        }
-
-        .custom-btn button {
-            display: flex;
-            justify-content: center;
+            font-size: 1.25rem;
+            display: inline-flex;
             align-items: center;
-            height: 200px;
-            border: 3px solid #c59c21
         }
 
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.05rem;
+                letter-spacing: 0.6px;
+            }
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .dropdown-menu {
+            background-color: #181818;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-item {
+            color: #e2e8f0;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           HERO SECTION
+        ---------------------------------- */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.9), rgba(15, 32, 39, 0.88)), url('media/ksp.jpg') center/cover no-repeat;
+            padding: 5rem 1rem;
+            border-bottom: 2px solid var(--krome-cyan);
             text-align: center;
-            padding: 1rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 209, 0.12);
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--krome-gold);
+        }
+
+        /* ----------------------------------
+           CONTENT CARDS & STATS
+        ---------------------------------- */
+        .info-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            padding: 2.2rem;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--krome-cyan);
+        }
+
+        .stat-box {
+            background: #15181b;
+            border: 2px solid var(--krome-gold);
+            border-radius: 14px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.15);
+            height: 100%;
+        }
+
+        .stat-box h2 {
+            color: var(--krome-gold);
+            font-weight: 900;
+            font-size: 2.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .btn-primary-krome {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            padding: 14px 38px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-krome:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        /* ----------------------------------
+           FOOTER
+        ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+            margin-top: auto;
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         footer a {
-            color: #c59c21;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--krome-cyan);
         }
     </style>
 </head>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="ksp_home.html">KROME Sports
-            Performance</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="program_online.html">Programs</a></li>
-                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="krome_home.html">KROME Fitness</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <body>
-    <div class="container">
-        <div class="text-center my-4">
-            <img src="media/Coachbsb.jpg" class="rounded" alt="..." height="400" width="300">
-            <div class="col-md  mr-2 my-2 p-2">
-            </div>
-        </div>
-        </section>
 
-        <!-- About Coach Section -->
-        <section class="about-coach bg-dark py-5">
-            <div class="container text-center text-white">
-                <h1>Christopher Brown</h1>
-                <h4>NSCA-CSCS, USAW-L1, EXOS-XPS, EXOS-XFS</h4>
-                <h3>FOUNDER/ COACH</h3>
-                <p>
-            </div>
-        </section>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <div class="col-md text-center">
-                <h4><i>With over a decade of experience,</i></h4>
-                <h4><i>I have trained clients, ranging</i></h4>
-                <h4><i>from elite professionals to, high-profile</i></h4>
-                <h4><i> individuals and everyday people.</i></h4>
+            <a class="navbar-brand" href="ksp_home.html">
+                <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <br>
-
-                <h4><i>Over 1,000 clients have achieved,</i></h4>
-                <h4><i>transformative results under my guidance.</i></h4>
-                <h4><i>My expertise spans strength training,</i></h4>
-                <h4><i>performance enhancement, and holistic</i></h4>
-                <h4><i>wellness, tailored to fit each client’s needs.</i></h4>
-
-                <br>
-
-                <h4><i>Certified by leading organizations,</i></h4>
-                <h4><i>like NSCA, USA Weightlifting, and EXOS,</i></h4>
-                <h4><i>I deliver customized programs,</i></h4>
-                <h4><i>for everyone from beginners to pros.</i></h4>
-
-                <br>
-
-                <h4><i>My mission is to empower,</i></h4>
-                <h4><i>clients to succeed in every aspect,</i></h4>
-                <h4><i>of their fitness and wellness journeys.</i></h4>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ksp_home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="ksp_home.html#programs" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-dumbbell me-1"></i> Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><a class="dropdown-item" href="ksp_home.html#online-training"><i class="fas fa-mobile-alt me-2 text-warning"></i> Online Training</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#sports-performance"><i class="fas fa-running me-2 text-info"></i> Sports Performance</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#weight-loss"><i class="fas fa-fire me-2 text-warning"></i> Weight Loss & Shred</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#nutrition"><i class="fas fa-apple-alt me-2 text-info"></i> Nutrition Plans</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#personal-training"><i class="fas fa-user-friends me-2 text-warning"></i> In-Person Personal Training</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coaches_bio.html"><i class="fas fa-user-tie me-1"></i> Coach Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag me-1"></i> Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-comments me-1"></i> Contact & Consult</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-bold" href="tel:4054610727">
+                            <i class="fas fa-phone-alt me-1"></i> (405) 461-0727
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-</body>
-<!-- Footer -->
-<footer class="bg-dark text-light text-center">
-    <p>&copy; 2024 KROME Sports Performance | <a href="#">Privacy Policy</a></p>
-</footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9vr5RxT2j3tJ8KLdPsmGh9uu5uq9KI65qnmZ4" crossorigin="anonymous">
-    </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    </nav>
 
+    <!-- Hero Header -->
+    <header class="hero-banner">
+        <div class="container">
+            <span class="hero-badge"><i class="fas fa-fire me-2"></i> Relentless Standards & Science</span>
+            <h1 class="hero-title">About <span>KROME Sports Performance</span></h1>
+            <p class="lead text-light mx-auto" style="max-width: 760px; line-height: 1.6;">
+                Founded on the belief that peak physical performance is engineered through disciplined mechanics, progressive periodization, and uncompromising dedication.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5 flex-grow-1">
+        
+        <!-- Mission & Vision Row -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <h3 class="fw-bold text-warning mb-3"><i class="fas fa-bullseye me-2" style="color: var(--krome-cyan);"></i> Our Mission</h3>
+                    <p class="text-light fs-5 lh-lg mb-0">
+                        To elevate every athlete and individual to their highest physical potential by delivering elite-level strength science, precision metabolic nutrition, and unwavering personal accountability.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <h3 class="fw-bold text-warning mb-3"><i class="fas fa-eye me-2" style="color: var(--krome-cyan);"></i> The KROME Standard</h3>
+                    <p class="text-light fs-5 lh-lg mb-0">
+                        We reject one-size-fits-all workout templates. Every protocol we build is periodized, measured, and calibrated to your biomechanics, schedule, and athletic goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <h2>10+</h2>
+                    <p class="text-uppercase small fw-bold text-light mb-0">Years of Elite Coaching</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box" style="border-color: var(--krome-cyan);">
+                    <h2 style="color: var(--krome-cyan);">1,000+</h2>
+                    <p class="text-uppercase small fw-bold text-light mb-0">Transformations Completed</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-box">
+                    <h2>100%</h2>
+                    <p class="text-uppercase small fw-bold text-light mb-0">Customized Protocols</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillars of Performance Grid -->
+        <div class="my-5">
+            <div class="text-center mb-4">
+                <span class="badge" style="background: rgba(0,255,209,0.15); color: var(--krome-cyan); font-size: 0.85rem; padding: 6px 16px;">Core Methodology</span>
+                <h2 class="fw-bold text-light mt-2">The Five Pillars of Athletic Dominance</h2>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 g-lg-4 text-center justify-content-center">
+                <div class="col">
+                    <div class="info-card p-3 p-lg-4 h-100 d-flex flex-column">
+                        <i class="fas fa-dumbbell fa-2x text-warning mb-3"></i>
+                        <h5 class="fw-bold text-light fs-6">1. Progressive Overload</h5>
+                        <p class="small text-secondary mb-0 mt-auto">Systematic wave loading to continuously build strength without overtraining.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card p-3 p-lg-4 h-100 d-flex flex-column">
+                        <i class="fas fa-bolt fa-2x text-info mb-3" style="color: var(--krome-cyan) !important;"></i>
+                        <h5 class="fw-bold text-light fs-6">2. Kinetic Velocity</h5>
+                        <p class="small text-secondary mb-0 mt-auto">Rate of force development (RFD) drills that translate directly into explosive speed.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card p-3 p-lg-4 h-100 d-flex flex-column">
+                        <i class="fas fa-apple-alt fa-2x text-warning mb-3"></i>
+                        <h5 class="fw-bold text-light fs-6">3. Precision Fueling</h5>
+                        <p class="small text-secondary mb-0 mt-auto">Nutrient timing, hydration protocols, and caloric management tailored to volume.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card p-3 p-lg-4 h-100 d-flex flex-column">
+                        <i class="fas fa-shield-alt fa-2x text-info mb-3" style="color: var(--krome-cyan) !important;"></i>
+                        <h5 class="fw-bold text-light fs-6">4. Joint Longevity</h5>
+                        <p class="small text-secondary mb-0 mt-auto">Pre-hab mobility protocols to bulletproof tendons and ligaments for sustained career health.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card p-3 p-lg-4 h-100 d-flex flex-column">
+                        <i class="fas fa-spa fa-2x text-warning mb-3"></i>
+                        <h5 class="fw-bold text-light fs-6">5. Balance & Recovery</h5>
+                        <p class="small text-secondary mb-0 mt-auto">Targeted CNS restoration, sleep architecture, and restorative recovery routines that accelerate adaptation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="ksp_home.html#programs" class="btn-primary-krome">
+                <i class="fas fa-layer-group me-2"></i> Explore Training Programs
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Elite Athletic Conditioning, Olympic Strength Mechanics, Sports Nutrition Periodization & Private Personal Coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <a href="tel:4054610727" style="color: var(--krome-cyan); font-weight: 700;">(405) 461-0727</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <a href="mailto:kromefitness@gmail.com" style="color: var(--krome-cyan); font-weight: 700;">kromefitness@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0, 255, 209, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="ksp_home.html#programs" class="text-secondary me-3">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3">About</a>
+                    <a href="shop.html" class="text-secondary me-3">Shop</a>
+                    <a href="contact.html" class="text-secondary">Contact & Consult</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
+</body>
 
 </html>

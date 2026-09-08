@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Details | KROME Sports Performance</title>
+    <meta name="description" content="Explore detailed curriculum, phased blueprints, and instant enrollment for KROME Sports Performance training programs.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(0, 255, 209, 0.22);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR
+        ---------------------------------- */
+        .navbar {
+            background-color: #121212 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.05rem;
+                letter-spacing: 0.6px;
+            }
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .dropdown-menu {
+            background-color: #181818;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-item {
+            color: #e2e8f0;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           HERO HEADER
+        ---------------------------------- */
+        .program-hero {
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.92), rgba(8, 24, 28, 0.94)), url('media/strength (2).jpg') center/cover no-repeat;
+            border-bottom: 2px solid var(--krome-cyan);
+            padding: 3.5rem 0 3rem;
+            position: relative;
+        }
+
+        .btn-back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d1d5db;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-back-nav:hover {
+            color: var(--krome-cyan);
+            border-color: var(--krome-cyan);
+            background: rgba(0, 255, 209, 0.08);
+        }
+
+        .program-badge {
+            background: rgba(0, 255, 209, 0.12);
+            color: var(--krome-cyan);
+            border: 1px solid var(--krome-cyan);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .program-title {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-title span {
+            color: var(--krome-gold);
+        }
+
+        .program-subtitle {
+            color: var(--krome-text-muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 720px;
+        }
+
+        .hero-img-box {
+            border: 2px solid var(--krome-cyan);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 255, 209, 0.25);
+            max-height: 360px;
+        }
+
+        .hero-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ----------------------------------
+           BUTTONS
+        ---------------------------------- */
+        .btn-buy-hero {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.15rem;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 38px;
+            box-shadow: 0 0 25px rgba(255, 212, 71, 0.45);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .btn-buy-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        .btn-call-hero {
+            border: 2px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 40px;
+            padding: 12px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-call-hero:hover {
+            background-color: var(--krome-cyan);
+            color: #0b0b0b;
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.4);
+        }
+
+        /* ----------------------------------
+           DETAIL CARDS
+        ---------------------------------- */
+        .content-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-heading {
+            color: var(--krome-cyan);
+            font-weight: 800;
+            font-size: 1.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-badge-box {
+            background: rgba(0, 255, 209, 0.06);
+            border: 1px solid rgba(0, 255, 209, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .stat-badge-box small {
+            color: #9ca3af;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-badge-box .stat-value {
+            color: var(--krome-gold);
+            font-size: 1.35rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .inclusion-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .inclusion-row:hover {
+            border-color: rgba(0, 255, 209, 0.3);
+            background: rgba(0, 255, 209, 0.04);
+        }
+
+        .inclusion-row i {
+            color: var(--krome-cyan);
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .inclusion-row span {
+            color: #e2e8f0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .phase-block {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--krome-cyan);
+            border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-block h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-block p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        /* ----------------------------------
+           STICKY SIDEBAR CHECKOUT
+        ---------------------------------- */
+        .sticky-checkout-card {
+            background: linear-gradient(170deg, #181818 0%, #0e1719 100%);
+            border: 2px solid var(--krome-gold);
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 30px rgba(255, 212, 71, 0.15);
+        }
+
+        .sidebar-btn-buy {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        .explore-other-section {
+            background: linear-gradient(180deg, #101010 0%, #0a0a0a 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .explore-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .explore-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 12px 30px rgba(0, 255, 209, 0.2);
+            color: inherit;
+        }
+
+        .explore-card-img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* ----------------------------------
+           FOOTER
+        ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+            margin-top: auto;
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--krome-cyan);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="ksp_home.html">
+                <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ksp_home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="ksp_home.html#programs" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-dumbbell me-1"></i> Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><a class="dropdown-item" href="ksp_home.html#online-training"><i class="fas fa-mobile-alt me-2 text-warning"></i> Online Training</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#sports-performance"><i class="fas fa-running me-2 text-info"></i> Sports Performance</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#weight-loss"><i class="fas fa-fire me-2 text-warning"></i> Weight Loss & Shred</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#nutrition"><i class="fas fa-apple-alt me-2 text-info"></i> Nutrition Plans</a></li>
+                            <li><a class="dropdown-item" href="ksp_home.html#personal-training"><i class="fas fa-user-friends me-2 text-warning"></i> In-Person Personal Training</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coaches_bio.html"><i class="fas fa-user-tie me-1"></i> Coach Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag me-1"></i> Shop</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-bold" href="tel:4054610727">
+                            <i class="fas fa-phone-alt me-1"></i> (405) 461-0727
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Program Hero Section -->
+    <header class="program-hero">
+        <div class="container">
+            <a href="ksp_home.html#programs" class="btn-back-nav">
+                <i class="fas fa-arrow-left"></i> Back to All Programs
+            </a>
+
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <span class="program-badge mb-2" id="hero-category">Online Training</span>
+                    <h1 class="program-title" id="hero-title">52 Week Online Training Program</h1>
+                    <p class="program-subtitle mb-4" id="hero-subtitle">
+                        Comprehensive full-year progressive athletic coaching engineered for sustainable PR gains, body transformation, and peak conditioning.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                        <a href="#" id="hero-buy-btn" class="btn-buy-hero" target="_blank">
+                            <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                        </a>
+                        <a href="tel:4054610727" class="btn-call-hero">
+                            <i class="fas fa-phone-alt me-2"></i> Questions? Call (405) 461-0727
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-img-box">
+                        <img src="media/Flexmo.jpg" id="hero-img" alt="Program Visual">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container py-5 flex-grow-1">
+        <div class="row g-4">
+            
+            <!-- Left 8 Columns: In-Depth Program Breakdown -->
+            <div class="col-lg-8">
+                
+                <!-- Overview & Key Stats -->
+                <div class="content-card">
+                    <h2 class="card-heading">
+                        <i class="fas fa-clipboard-list text-warning"></i> Program Overview
+                    </h2>
+                    <p class="text-light fs-5 lh-lg mb-4" id="detail-desc">
+                        This program is designed for athletes and fitness enthusiasts seeking an elite, structured pathway. With weekly progressive overloading, metabolic conditioning, and tailored nutrition coaching, you will achieve measurable physical adaptation and lifelong discipline.
+                    </p>
+
+                    <div class="row g-3">
+                        <div class="col-sm-4">
+                            <div class="stat-badge-box">
+                                <small>Program Duration</small>
+                                <div class="stat-value" id="stat-duration">52 Weeks</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="stat-badge-box">
+                                <small>Format & Access</small>
+                                <div class="stat-value" style="color: var(--krome-cyan);" id="stat-format">App & 1-on-1</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="stat-badge-box">
+                                <small>Target Focus</small>
+                                <div class="stat-value" id="stat-focus">Peak Athletics</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What Is Included -->
+                <div class="content-card">
+                    <h2 class="card-heading">
+                        <i class="fas fa-check-circle text-warning"></i> What's Included & Deliverables
+                    </h2>
+                    <div id="inclusions-container">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Phased Progression Curriculum -->
+                <div class="content-card">
+                    <h2 class="card-heading">
+                        <i class="fas fa-layer-group text-warning"></i> Phased Progression Curriculum
+                    </h2>
+                    <p class="text-secondary small mb-3">
+                        Our structured periodization ensures continuous progress while preventing plateaus and overtraining.
+                    </p>
+                    <div id="phases-container">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Who This Program Is For -->
+                <div class="content-card">
+                    <h2 class="card-heading">
+                        <i class="fas fa-bullseye text-warning"></i> Who This Program Is Engineered For
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 h-100">
+                                <h6 class="text-warning fw-bold"><i class="fas fa-medal me-2"></i> Dedicated Athletes</h6>
+                                <p class="small text-light mb-0">Competitors looking to elevate top-end speed, vertical force, and physical resilience on the court, field, or platform.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 h-100">
+                                <h6 class="text-info fw-bold" style="color: var(--krome-cyan) !important;"><i class="fas fa-fire me-2"></i> Body Transformers</h6>
+                                <p class="small text-light mb-0">Individuals seeking sustainable fat shredding, clean muscle hypertrophy, and disciplined lifelong nutrition habits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App Setup & Guarantee -->
+                <div class="content-card mb-0">
+                    <h2 class="card-heading">
+                        <i class="fas fa-mobile-alt text-warning"></i> Instant Delivery & Mobile App Access
+                    </h2>
+                    <p class="text-light small mb-3">
+                        Upon checkout completion via our secure Square link, you will receive an immediate confirmation email with step-by-step instructions to download our interactive fitness tracking app, complete your intake questionnaire, and sync your training schedule.
+                    </p>
+                    <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 d-flex align-items-center gap-3">
+                        <i class="fas fa-headset text-warning fs-3"></i>
+                        <div>
+                            <span class="fw-bold text-light small d-block">Questions or Custom Accommodations?</span>
+                            <span class="text-secondary small">Contact us anytime at <a href="mailto:kromefitness@gmail.com" class="text-warning">kromefitness@gmail.com</a> or call <a href="tel:4054610727" class="text-warning">(405) 461-0727</a>.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right 4 Columns: Sticky Checkout Panel -->
+            <div class="col-lg-4">
+                
+                <!-- Sticky Checkout Panel -->
+                <div class="sticky-checkout-card sticky-top" style="top: 90px; z-index: 10;">
+                    <div class="text-center pb-3 border-bottom border-secondary border-opacity-50 mb-3">
+                        <span class="text-uppercase small fw-bold text-secondary">Instant Enrollment</span>
+                        <h4 class="fw-bold text-warning mt-1 mb-1" id="sidebar-title">52 Week Online Training</h4>
+                        <span class="badge" style="background: rgba(0,255,209,0.15); color: var(--krome-cyan);" id="sidebar-cat-badge">Online Coaching</span>
+                    </div>
+
+                    <div class="my-4">
+                        <a href="#" id="sidebar-buy-btn" class="sidebar-btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                        </a>
+                        <small class="text-secondary d-block text-center mt-2" style="font-size: 0.78rem;">
+                            <i class="fas fa-lock me-1"></i> 256-Bit Encrypted Secure Square Checkout
+                        </small>
+                    </div>
+
+                    <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 mb-3">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="fas fa-shield-alt text-warning fs-4"></i>
+                            <div>
+                                <div class="fw-bold text-light small">100% Tailored Protocol</div>
+                                <div class="text-secondary" style="font-size: 0.76rem;">Customized to your schedule and goals</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fas fa-mobile-screen text-info fs-4" style="color: var(--krome-cyan) !important;"></i>
+                            <div>
+                                <div class="fw-bold text-light small">Interactive Workout App</div>
+                                <div class="text-secondary" style="font-size: 0.76rem;">HD exercise videos & progress logging</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center small text-secondary">
+                        Prefer to register via phone? <br>
+                        Call directly: <a href="tel:4054610727" class="text-warning fw-bold">(405) 461-0727</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Explore Other Programs Section (Full-Width Bottom Section) -->
+    <section class="explore-other-section py-5 border-top border-secondary border-opacity-25">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+                <div>
+                    <span class="program-badge mb-2">Recommended Programs</span>
+                    <h3 class="text-warning fw-bold mb-0">
+                        <i class="fas fa-th-large me-2"></i> Explore Other Programs
+                    </h3>
+                </div>
+                <a href="ksp_home.html#programs" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-2 mt-3 mt-sm-0 fw-semibold">
+                    <i class="fas fa-list me-1"></i> View All Programs <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="related-container">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Elite Athletic Conditioning, Olympic Strength Mechanics, Sports Nutrition Periodization & Private Personal Coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <a href="tel:4054610727" style="color: var(--krome-cyan); font-weight: 700;">(405) 461-0727</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <a href="mailto:kromefitness@gmail.com" style="color: var(--krome-cyan); font-weight: 700;">kromefitness@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0, 255, 209, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="ksp_home.html#programs" class="text-secondary me-3">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3">About</a>
+                    <a href="shop.html" class="text-secondary">Shop</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
+    <!-- Program Data Script -->
+    <script>
+        const PROGRAMS = {
+            "online-52": {
+                title: "52 Week Online Training Program",
+                category: "Online Training",
+                subtitle: "A full year of periodized, progressive online coaching. Complete with annual macro plans, weekly video assessments, and adaptive workout cycles.",
+                image: "media/Flexmo.jpg",
+                squareLink: "https://square.link/u/PPjNnSDi",
+                duration: "52 Weeks (1 Full Year)",
+                format: "Interactive App + 1-on-1 Coaching",
+                focus: "Total Athletic Rebuild & Peak Output",
+                description: "Our premier full-year transformation curriculum is built for athletes and fitness enthusiasts who demand long-term structural progression. Spanning 4 progressive 13-week micro-cycles, this program integrates hypertrophy, kinetic chain power development, sprint mechanics, and periodized sports nutrition to maximize PRs and build relentless conditioning.",
+                inclusions: [
+                    "Full 52-week structured workouts mapped in our dedicated mobile fitness application",
+                    "Custom macro targets adjusted every 4 weeks to match seasonal training volume",
+                    "Weekly video biomechanics review & technique coaching direct from our staff",
+                    "Monthly 1-on-1 milestone strategy call to optimize workload and recovery",
+                    "Complete mobility routines & injury-prevention protocols for joint longevity"
+                ],
+                phases: [
+                    { title: "Phase 1: Foundation & Anatomical Adaptation (Weeks 1-13)", desc: "Establish pristine lifting mechanics, core kinetic stability, and baseline aerobic VO2 capacity." },
+                    { title: "Phase 2: Hypertrophy & Work Capacity (Weeks 14-26)", desc: "Increase functional lean muscle mass, muscular endurance, and metabolic conditioning volume." },
+                    { title: "Phase 3: Maximal Strength & Rate of Force (Weeks 27-39)", desc: "Transition into high-load compound lifts, barbell velocity, and explosive neurological recruitment." },
+                    { title: "Phase 4: Athletic Peaking & Speed Consolidation (Weeks 40-52)", desc: "Taper for peak speed, power, agility, and aesthetic definition." }
+                ]
+            },
+            "online-16": {
+                title: "16-Week Flagship Online Training Program",
+                category: "Online Training",
+                subtitle: "Our signature 4-month flagship athletic protocol ($149/mo). Combines custom hypertrophy programming, clean nutrition blueprints, and direct coach chat support.",
+                image: "media/conditioning.jpg",
+                squareLink: "https://square.link/u/swbYbkuY",
+                duration: "16 Weeks (4 Months)",
+                format: "Interactive App + Direct Support",
+                focus: "Hypertrophy, Strength & Conditioning ($149/mo)",
+                description: "The 16-Week Online Training Program is our premier flagship protocol at $149 per month. Designed to break through training plateaus, this 4-month cycle balances high-frequency compound resistance training with athletic agility circuits and strict nutrition guidelines.",
+                inclusions: [
+                    "Flagship 16-week structured periodization at $149/month",
+                    "16 weeks of detailed progressive training blocks with set/rep/tempo prescriptions",
+                    "Interactive logging and exercise video library in the KROME training app",
+                    "Customized macronutrient plan with healthy recipe blueprints and grocery lists",
+                    "Bi-weekly check-ins to calibrate weights and adapt caloric requirements",
+                    "Direct in-app messaging access with your performance coach"
+                ],
+                phases: [
+                    { title: "Phase 1: Strength Baseline & Movement Prep (Weeks 1-4)", desc: "Calibrate form, develop kinetic chain coordination, and prime high-output muscle fibers." },
+                    { title: "Phase 2: Intensive Hypertrophy Block (Weeks 5-8)", desc: "High-volume eccentric loading to stimulate muscle growth and mitochondrial density." },
+                    { title: "Phase 3: Power & Conditioning Surge (Weeks 9-12)", desc: "Incorporate Olympic variations, explosive jumps, and high-intensity interval conditioning." },
+                    { title: "Phase 4: Physical Shred & PR Testing (Weeks 13-16)", desc: "Peak performance testing and body composition optimization." }
+                ]
+            },
+            "online-8": {
+                title: "8 Week Online Training Program",
+                category: "Online Training",
+                subtitle: "High-intensity 2-month protocol engineered for rapid strength gains, fat shredding, and building sustainable athletic daily habits.",
+                image: "media/strength (2).jpg",
+                squareLink: "https://square.link/u/KZonj3NA",
+                duration: "8 Weeks (2 Months)",
+                format: "Mobile App Access",
+                focus: "Rapid Shred & Strength",
+                description: "An intensive 8-week bootcamp-level protocol designed for rapid physical results and athletic momentum. Ideal for athletes preparing for an upcoming season or individuals looking to jumpstart their body transformation with professional programming.",
+                inclusions: [
+                    "Daily training modules featuring dynamic warmups, compound lifting, and sprint finishers",
+                    "Nutritional guidelines with daily calorie & protein targets for rapid body composition change",
+                    "Full mobile app tracking for weights, reps, cardio pacing, and workout compliance",
+                    "Mid-point progress assessment and plan adjustment",
+                    "Warm-down and mobility recovery guidelines"
+                ],
+                phases: [
+                    { title: "Weeks 1-4: Metabolic Acceleration", desc: "Density training and compound supersets to trigger fat oxidation and muscular resilience." },
+                    { title: "Weeks 5-8: Explosive Output & Definition", desc: "Heavy lifting paired with anaerobic intervals for maximal muscle tone and athletic conditioning." }
+                ]
+            },
+            "sports-flexmob": {
+                title: "Flexibility & Mobility Program",
+                category: "Sports Performance",
+                subtitle: "Dynamic movement prep, end-range joint stabilization, injury prevention, and postural optimization for fluid athletic movement.",
+                image: "media/Flex.jpg",
+                squareLink: "https://square.link/u/ap5iTEUX",
+                duration: "8-12 Weeks",
+                format: "Guided Protocols + Video Demos",
+                focus: "Joint Health, ROM & Injury Prevention",
+                description: "Flexibility and joint mobility are the foundational pillars of elite longevity and explosive power. This specialized program expands your active range of motion, alleviates chronic tight hips and shoulders, corrects pelvic tilt, and restores fluid movement mechanics.",
+                inclusions: [
+                    "Daily 15-20 minute joint articulation and myofascial release protocols",
+                    "Pre-workout dynamic activation routines tailored to sprinting and heavy lifting",
+                    "Post-session decompressive stretching sequences to accelerate neuromuscular recovery",
+                    "Targeted hip mobility, thoracic spine rotation, and ankle dorsiflexion drills",
+                    "Video demonstrations breaking down breathing and positioning techniques"
+                ],
+                phases: [
+                    { title: "Phase 1: Spinal & Hip Decompression", desc: "Restore pelvic balance and relieve tightness in hip flexors, hamstrings, and lower back." },
+                    { title: "Phase 2: End-Range Strength & Articular Rotations", desc: "Strengthen tendons and ligaments at maximum joint angles to prevent athletic tears and sprains." }
+                ]
+            },
+            "sports-strength": {
+                title: "Strength & Power Program",
+                category: "Sports Performance",
+                subtitle: "Heavy barbell compound mechanics, progressive overload protocols, and explosive kinetic chaining to maximize force output.",
+                image: "media/strength (2).jpg",
+                squareLink: "https://square.link/u/KZonj3NA",
+                duration: "12 Weeks",
+                format: "Mobile Protocol + Wave Loading",
+                focus: "Maximal Force & Explosive Power",
+                description: "Built for powerlifters, field athletes, and strength trainees seeking absolute force dominance. Master the kinetic chain through squats, deadlifts, bench presses, cleans, and plyometric drills engineered to increase rate of force development (RFD).",
+                inclusions: [
+                    "Periodized percentage-based strength progressions based on your 1-Rep Max",
+                    "Kinetic chain power exercises: med ball throws, trap bar jumps, and plyometrics",
+                    "Posterior chain reinforcement routines for bulletproof hamstrings and glutes",
+                    "CNS recovery management and deload protocols to avoid burnout",
+                    "Mobile tracking app with built-in RPE and percentage calculators"
+                ],
+                phases: [
+                    { title: "Phase 1: Submaximal Accumulation (Weeks 1-4)", desc: "Build tendon tolerance and perfect bar path under 70-80% loads." },
+                    { title: "Phase 2: Heavy Wave Intensification (Weeks 5-8)", desc: "Drive neurological recruitment with 85-92% wave loading." },
+                    { title: "Phase 3: Rate of Force Development & Peak (Weeks 9-12)", desc: "Test new PRs across all primary power disciplines." }
+                ]
+            },
+            "sports-conditioning": {
+                title: "Speed, Agility & Conditioning Program",
+                category: "Sports Performance",
+                subtitle: "High-intensity interval circuits, sprint acceleration mechanics, change-of-direction ladders, and deep anaerobic work capacity.",
+                image: "media/Conditioning (1).jpg",
+                squareLink: "https://square.link/u/swbYbkuY",
+                duration: "12 Weeks",
+                format: "Field & Gym Hybrid Protocol",
+                focus: "Top-End Speed, Acceleration & VO2 Max",
+                description: "Turn speed into your greatest weapon. This program targets acceleration mechanics, foot strike positioning, lateral change-of-direction deceleration, and anaerobic threshold conditioning so you dominate in the 4th quarter.",
+                inclusions: [
+                    "Field sprint progression: 10-yard burst mechanics, flying 30s, and deceleration drills",
+                    "Cone and agility ladder matrix for reactive footwork and center-of-mass control",
+                    "Energy system conditioning protocols (lactic threshold circuits and sled pushes)",
+                    "Plyometric reactive jump training for tendon elasticity",
+                    "Complete running gait and warm-up checklist"
+                ],
+                phases: [
+                    { title: "Phase 1: Acceleration & Deceleration Control", desc: "Master the forward shin angle, drive phase, and safe braking mechanics." },
+                    { title: "Phase 2: Multi-Directional COD & Game Pacing", desc: "Cutting angles, crossover steps, and sport-specific conditioning intervals." }
+                ]
+            },
+            "weightloss-complete": {
+                title: "Complete Body Transformation & Weight Loss Program",
+                category: "Weight Loss & Transformation",
+                subtitle: "Our premier all-in-one transformation experience combining dedicated lifting routines, cardio pacing, and personalized metabolic meal plans.",
+                image: "media/transformation.PNG",
+                squareLink: "https://square.link/u/PPjNnSDi",
+                duration: "16-24 Weeks",
+                format: "Complete Fitness + Nutrition Suite",
+                focus: "Fat Loss, Muscle Definition & Habit Mastery",
+                description: "Transform your body with a comprehensive system built on metabolic resistance training, calculated caloric deficits, and behavioral habit stacking. We strip away the guesswork to give you a clear daily roadmap to your best shape.",
+                inclusions: [
+                    "Complete resistance training split engineered to preserve lean mass during fat loss",
+                    "Personalized metabolic nutrition plan with exact calorie and macro targets",
+                    "Cardiovascular protocols balancing Low-Intensity Steady State (LISS) with HIIT",
+                    "Weekly body composition progress tracking (measurements, photos, weight trends)",
+                    "Habit tracker for hydration, sleep, steps, and daily consistency"
+                ],
+                phases: [
+                    { title: "Phase 1: Metabolic Ignition (Weeks 1-6)", desc: "Kickstart fat oxidation and establish sustainable daily nutrition routines." },
+                    { title: "Phase 2: Lean Sculpting (Weeks 7-14)", desc: "Refine body composition, tighten midsection, and increase muscle tone." },
+                    { title: "Phase 3: Metabolic Maintenance & Longevity (Weeks 15+)", desc: "Reverse diet into a healthy caloric maintenance to keep the weight off permanently." }
+                ]
+            },
+            "weightloss-16": {
+                title: "16-Week Fat Loss & Clean Eating Blueprint",
+                category: "Weight Loss & Transformation",
+                subtitle: "Comprehensive fat reduction system that synchronizes caloric deficits with high-satiety clean recipes to strip fat without sacrificing muscle.",
+                image: "media/Salad.jpg",
+                squareLink: "https://square.link/u/swbYbkuY",
+                duration: "16 Weeks",
+                format: "Guided Nutrition & Cardio Protocol",
+                focus: "Sustainable Fat Shred & Gut Health",
+                description: "A 4-month structured nutrition and conditioning guide that focuses on nutrient-dense, high-satiety meals that keep hunger at bay while steadily dropping body fat percentages week after week.",
+                inclusions: [
+                    "16-week tiered caloric deficit blueprint with scheduled refeed meals",
+                    "Over 40 high-protein, clean whole-food recipes that are quick to prepare",
+                    "Step count targets and low-impact fat-burning walking protocols",
+                    "Dining out and travel survival guides to stay on track anywhere",
+                    "Weekly accountability checklists"
+                ],
+                phases: [
+                    { title: "Weeks 1-8: Steady Deficit & Cleanse", desc: "Eliminate ultra-processed foods, reduce bloat, and ignite consistent weekly fat loss." },
+                    { title: "Weeks 9-16: Tightening & Definition", desc: "Fine-tune carbohydrate timing around workouts for maximum muscle fullness and fat loss." }
+                ]
+            },
+            "weightloss-8": {
+                title: "8-Week Shred & Lean Nutrition Guide",
+                category: "Weight Loss & Transformation",
+                subtitle: "Rapid physical shred blueprint crafted for peak conditioning, healthy gut support, energy maintenance, and defined muscle definition.",
+                image: "media/Salmon.jpg",
+                squareLink: "https://square.link/u/KZonj3NA",
+                duration: "8 Weeks",
+                format: "Express Nutrition & Conditioning Guide",
+                focus: "Rapid Fat Burn & Muscle Definition",
+                description: "Need fast, visible results for an upcoming event or photo shoot? The 8-Week Shred delivers an aggressive yet safe blueprint to shed subcutaneous water weight, burn visceral fat, and reveal sculpted muscle tone.",
+                inclusions: [
+                    "8-week carb-cycling guide to accelerate fat loss while sustaining training energy",
+                    "Supplement optimization guide for metabolism, recovery, and hydration",
+                    "Daily meal timing schedule built around your working hours",
+                    "Electrolyte and hydration balance protocol",
+                    "Full grocery checklist with budget-friendly options"
+                ],
+                phases: [
+                    { title: "Weeks 1-4: Fast-Track Depletion", desc: "Establish tight macro adherence and eliminate empty liquid calories." },
+                    { title: "Weeks 5-8: Peak Shred & Vascularity", desc: "Introduce refeed spikes to keep metabolic rate elevated through final goal completion." }
+                ]
+            },
+            "nutrition-52": {
+                title: "52 Week Nutrition Plan",
+                category: "Nutrition Programs",
+                subtitle: "Full-year dietary periodization matching seasonal training phases, nutrient timing, grocery guides, and ongoing macro adjustments.",
+                image: "media/Flexmo.jpg",
+                squareLink: "https://square.link/u/RUb5Oc8J",
+                duration: "52 Weeks (Annual)",
+                format: "Custom Macro Coaching + Continuous App Support",
+                focus: "Long-Term Metabolic Health & Periodized Fueling",
+                description: "Eating for high performance requires periodization just like lifting. This full-year nutrition coaching service syncs your diet with your training cycles (bulking, cutting, maintenance, peak competition) ensuring you never plateau.",
+                inclusions: [
+                    "Personalized monthly macronutrient adjustments based on real-world metabolic feedback",
+                    "Comprehensive grocery shopping lists categorized by protein, complex carbs, and healthy fats",
+                    "Pre, intra, and post-workout nutrient timing strategies for maximum glycogen recovery",
+                    "Direct message support with your coach for restaurant menu guidance and substitutions",
+                    "Access to our seasonal recipe database with macro-calculated meals"
+                ],
+                phases: [
+                    { title: "Quarter 1: Metabolic Baseline & Habit Building", desc: "Eliminate nutrient deficiencies and establish consistent caloric balance." },
+                    { title: "Quarter 2: Hypertrophy / Fueling Phase", desc: "Strategic caloric surplus to support muscular development." },
+                    { title: "Quarter 3: Lean Cut & Fat Reduction", desc: "Controlled deficit to shed excess body fat while maintaining muscle mass." },
+                    { title: "Quarter 4: Sustainable Maintenance", desc: "Lock in your new body composition for lifelong ease and vitality." }
+                ]
+            },
+            "nutrition-16": {
+                title: "16 Week Nutrition Plan",
+                category: "Nutrition Programs",
+                subtitle: "Structured 4-month dietary protocol specifically designed for sustained lean mass retention, accelerated fat burn, and metabolic health.",
+                image: "media/strength (2).jpg",
+                squareLink: "https://square.link/u/v2YpZoxI",
+                duration: "16 Weeks",
+                format: "Custom Diet Blueprint",
+                focus: "Fat Loss & Muscle Retention",
+                description: "A comprehensive 4-month nutritional roadmap. Perfect for athletes cutting weight classes or anyone looking to radically transform their body composition with delicious, sustainable meals.",
+                inclusions: [
+                    "Customized daily calorie and macro splits tailored to your specific metabolic rate",
+                    "Bi-weekly macro fine-tuning based on scale weight and progress photos",
+                    "Portion control guide using simple visual hand measurements or food scales",
+                    "Micronutrient, hydration, and fiber recommendations for optimal gut health",
+                    "Healthy dessert and craving-killer recipe index"
+                ],
+                phases: [
+                    { title: "Weeks 1-8: Primary Deficit & Fat Burn", desc: "Steady weight drop while maintaining high energy in the gym." },
+                    { title: "Weeks 9-16: Metabolic Reset & Definition", desc: "Strategic carb adjustments to maximize muscular definition and abdominal visibility." }
+                ]
+            },
+            "nutrition-8": {
+                title: "8 Week Nutrition Plan",
+                category: "Nutrition Programs",
+                subtitle: "Targeted 8-week nutrition reset focusing on clean macronutrient ratios, portion control, hydration, and healthy lifestyle habits.",
+                image: "media/conditioning.jpg",
+                squareLink: "https://square.link/u/UlDybyx4",
+                duration: "8 Weeks",
+                format: "Nutritional Reset Guide",
+                focus: "Clean Eating & Energy Boost",
+                description: "The ideal 2-month nutrition reset to break bad eating habits, eliminate brain fog, restore energy levels, and start feeling lean, athletic, and energized every single day.",
+                inclusions: [
+                    "Simple, easy-to-follow meal templates that fit any busy work schedule",
+                    "Targeted daily protein, carbohydrate, and fat targets",
+                    "Complete guide to high-energy snacking and pre-workout fueling",
+                    "Hydration calculator based on activity level and climate",
+                    "Weekly habit challenge scorecard"
+                ],
+                phases: [
+                    { title: "Weeks 1-4: Cleanse & Calibration", desc: "Cut refined sugars and establish whole-food foundational meals." },
+                    { title: "Weeks 5-8: Precision Energy Fueling", desc: "Dial in workout timing to power through intense training sessions." }
+                ]
+            },
+            "pt-12": {
+                title: "12 Sessions (In Person) Personal Training",
+                category: "Personal Training",
+                subtitle: "Comprehensive private coaching package for total athlete transformation, deep movement screening, lifting mechanics, and maximal accountability.",
+                image: "media/Flexmo.jpg",
+                squareLink: "https://square.link/u/4OMaXX3S",
+                duration: "12 Sessions (1-on-1)",
+                format: "Private In-Person Sessions",
+                focus: "Direct Form Coaching & Maximal Output",
+                description: "Work directly with a certified KROME performance coach in person. Over 12 intensive 1-on-1 sessions, receive real-time biomechanical cues, custom exercise variations, forced reps, and hands-on accountability to hit all-time PRs safely.",
+                inclusions: [
+                    "12 full 60-minute private 1-on-1 coaching sessions with your coach",
+                    "Full biomechanical movement screen assessing joint mobility and kinetic asymmetries",
+                    "Custom workout programming provided between in-person sessions",
+                    "Nutritional guidance and accountability check-ins",
+                    "Direct phone and text access to your coach for scheduling and questions"
+                ],
+                phases: [
+                    { title: "Sessions 1-4: Movement Screening & Technical Calibration", desc: "Refine barbell mechanics, correct compensation patterns, and set strength baselines." },
+                    { title: "Sessions 5-8: Heavy Progressive Overload", desc: "Push intensity with spotter safety, specialized bars, and explosive power drills." },
+                    { title: "Sessions 9-12: Peak Intensity & Testing", desc: "Hit personal records across major lifts and athletic speed/agility benchmarks." }
+                ]
+            },
+            "pt-8": {
+                title: "8 Sessions (In Person) Personal Training",
+                category: "Personal Training",
+                subtitle: "Focused in-person training block targeting specific lifting PRs, sprint velocity, agility footwork, and conditioning capacity.",
+                image: "media/conditioning.jpg",
+                squareLink: "https://square.link/u/1eb1BDMj",
+                duration: "8 Sessions (1-on-1)",
+                format: "Private In-Person Sessions",
+                focus: "Focused Skill & Strength Block",
+                description: "A concentrated 8-session package designed to tackle specific weaknesses—whether it's fixing your squat depth, perfecting sprint acceleration, or breaking through bench press plateaus with hands-on coaching.",
+                inclusions: [
+                    "8 private 60-minute training sessions with personalized cueing",
+                    "Video analysis of your primary lifts to identify and fix bar path errors",
+                    "Homework routines to maintain flexibility and conditioning between sessions",
+                    "Post-workout recovery guidance",
+                    "Flexible scheduling options"
+                ],
+                phases: [
+                    { title: "Sessions 1-4: Technical Correction & Volume", desc: "Lock in clean movement patterns and build muscular stamina." },
+                    { title: "Sessions 5-8: Power Execution & Maximum Effort", desc: "Translate perfected form into heavy loads and rapid speed." }
+                ]
+            },
+            "pt-4": {
+                title: "4 Sessions (In Person) Introductory Coaching Special",
+                category: "Personal Training",
+                subtitle: "Special introductory 1-on-1 coaching package ($250): four 60-minute private sessions with Coach Brown to audit form, break plateaus, and optimize strength mechanics.",
+                image: "media/strength (2).jpg",
+                squareLink: "https://square.link/u/PaNAHKD6",
+                duration: "4 Sessions (60 Min Each)",
+                format: "Private In-Person Sessions",
+                focus: "Intro Special & Form Calibration ($250)",
+                description: "An intensive introductory 4-session audit and form calibration package for only $250 ($62.50/session). Four full 60-minute private sessions with Coach Brown. Perfect for athletes wanting hands-on biomechanics feedback before beginning independent training or to smash through current lifting plateaus.",
+                inclusions: [
+                    "4 private 60-minute 1-on-1 sessions at special introductory rate of $250 ($62.50/session)",
+                    "Comprehensive lift technique breakdown and mobility drill prescriptions",
+                    "Real-time velocity tracking and biomechanical barbell adjustments",
+                    "Customized independent training template to execute on your own",
+                    "Q&A on nutrition, recovery, and program structure",
+                    "Complete individualized coaching during scheduled session hours"
+                ],
+                phases: [
+                    { title: "Session 1: Biomechanical Screening & Movement Audit (60 Min)", desc: "Deep movement analysis, power assessment, joint mobility screen, and personalized roadmap." },
+                    { title: "Session 2: Squat, Hinge & Lower Body Mechanics (60 Min)", desc: "Fix knee tracking, hip drive, spinal bracing, and explosive ground force production." },
+                    { title: "Session 3: Upper Body Press, Pull & Kinetic Speed (60 Min)", desc: "Optimize shoulder mechanics, lat engagement, pressing velocity, and kinetic chaining." },
+                    { title: "Session 4: Speed Mechanics, Conditioning & Take-Home Plan (60 Min)", desc: "Deceleration, sprint posture, and your ongoing independent progression plan." }
+                ]
+            }
+        };
+
+        function getParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function loadProgramDetails() {
+            let progId = getParam('id') || getParam('program') || 'online-52';
+            if (progId === '16week') progId = 'online-16';
+            if (progId === '52week') progId = 'online-52';
+            let prog = PROGRAMS[progId];
+
+            if (!prog) {
+                progId = 'online-52';
+                prog = PROGRAMS[progId];
+            }
+
+            // Document Title
+            document.title = `${prog.title} | KROME Sports Performance`;
+
+            // Hero section
+            document.getElementById('hero-category').textContent = prog.category;
+            document.getElementById('hero-title').textContent = prog.title;
+            document.getElementById('hero-subtitle').textContent = prog.subtitle;
+            document.getElementById('hero-img').src = prog.image;
+            document.getElementById('hero-img').alt = prog.title;
+            document.getElementById('hero-buy-btn').href = prog.squareLink;
+
+            // Sidebar
+            document.getElementById('sidebar-title').textContent = prog.title;
+            document.getElementById('sidebar-cat-badge').textContent = prog.category;
+            document.getElementById('sidebar-buy-btn').href = prog.squareLink;
+
+            // Overview & Stats
+            document.getElementById('detail-desc').textContent = prog.description;
+            document.getElementById('stat-duration').textContent = prog.duration;
+            document.getElementById('stat-format').textContent = prog.format;
+            document.getElementById('stat-focus').textContent = prog.focus;
+
+            // Inclusions List
+            const inclusionsContainer = document.getElementById('inclusions-container');
+            inclusionsContainer.innerHTML = prog.inclusions.map(item => `
+                <div class="inclusion-row">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${item}</span>
+                </div>
+            `).join('');
+
+            // Phases Curriculum
+            const phasesContainer = document.getElementById('phases-container');
+            phasesContainer.innerHTML = prog.phases.map(phase => `
+                <div class="phase-block">
+                    <h5>${phase.title}</h5>
+                    <p>${phase.desc}</p>
+                </div>
+            `).join('');
+
+            // Related Programs
+            const relatedContainer = document.getElementById('related-container');
+            const otherKeys = Object.keys(PROGRAMS).filter(k => k !== progId).slice(0, 4);
+            
+            relatedContainer.innerHTML = otherKeys.map(k => {
+                const item = PROGRAMS[k];
+                return `
+                    <div class="col">
+                        <a href="program_detail.html?id=${k}" class="explore-card">
+                            <div class="position-relative" style="height: 140px; overflow: hidden;">
+                                <img src="${item.image}" alt="${item.title}" class="explore-card-img">
+                                <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem; letter-spacing: 0.5px;">
+                                    ${item.category}
+                                </span>
+                            </div>
+                            <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                                <div>
+                                    <h5 class="fw-bold text-light fs-6 mb-2">${item.title}</h5>
+                                    <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                        ${item.subtitle}
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
+                                    <span class="small text-warning fw-semibold">${item.duration}</span>
+                                    <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">
+                                        Learn More &rarr;
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.addEventListener('DOMContentLoaded', loadProgramDetails);
+    </script>
+</body>
+
+</html>

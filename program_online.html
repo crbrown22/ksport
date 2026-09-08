@@ -1,9 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KROME Sports Performance</title>
+    <title>All Programs & Training Protocols | KROME Sports Performance</title>
+    <meta name="description" content="Explore all training programs from KROME Sports Performance: Online Training, Sports Performance, Weight Loss, Nutrition Plans, and In-Person Personal Coaching.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/program_online.html">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,288 +15,787 @@
     <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
 
     <style>
-        /* Custom styles */
-        .body {
-            background-color: black;
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(0, 255, 209, 0.22);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
         }
 
-        .navbar-brand img {
-            height: 50px;
-            width: 80px;
-        }
-
-        .hero-section {
-            background-color: black;
-            height: 100vh;
-            color: #c59c21;
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR
+        ---------------------------------- */
+        .navbar {
+            background-color: #121212 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.05rem;
+                letter-spacing: 0.6px;
+            }
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .dropdown-menu {
+            background-color: #181818;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-item {
+            color: #e2e8f0;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           HERO SECTION
+        ---------------------------------- */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.9), rgba(15, 32, 39, 0.88)), url('media/ksp.jpg') center/cover no-repeat;
+            padding: 5rem 1rem;
+            border-bottom: 2px solid var(--krome-cyan);
             text-align: center;
         }
 
-        .hero-section h1 {
-            font-size: 4rem;
-            font-weight: bold;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 209, 0.12);
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--krome-gold);
+        }
+
+        /* ----------------------------------
+           SECTION HEADINGS & QUICK NAV
+        ---------------------------------- */
+        .program-section {
+            padding: 4.5rem 0 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .program-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-tag {
+            color: var(--krome-cyan);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         .section-title {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .card {
-            border: none;
-            border-radius: 10px;
-            background-color: #343a40;
-        }
-
-        .card h5 {
-            color: #c59c21;
-        }
-
-        .card p {
+            font-size: 2.2rem;
+            font-weight: 900;
             color: #ffffff;
+            letter-spacing: 0.5px;
         }
 
-        .challenge-banner {
-            background-color: black;
-            color: white;
-            padding-bottom: 3rem;
-            text-align: center;
+        .section-title span {
+            color: var(--krome-gold);
         }
 
-        .custom-btn button {
+        /* ----------------------------------
+           PROGRAM CARDS
+        ---------------------------------- */
+        .program-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 16px;
+            padding: 2rem;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            border: 3px solid #c59c21;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
 
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
+        .program-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 12px 30px rgba(0, 255, 209, 0.25);
+        }
+
+        .program-card.featured {
+            border-color: var(--krome-gold);
+            box-shadow: 0 8px 30px rgba(255, 212, 71, 0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .program-price {
+            font-size: 1.85rem;
+            font-weight: 900;
+            color: var(--krome-gold);
+            margin-bottom: 1rem;
+        }
+
+        .program-price small {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            font-size: 0.92rem;
+            color: #d1d5db;
+            margin-bottom: 0.65rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-list li i {
+            color: var(--krome-cyan);
+            margin-right: 0.6rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* ----------------------------------
+           BUTTONS
+        ---------------------------------- */
+        .btn-learn-more {
+            background-color: transparent;
+            border: 2px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 30px;
+            padding: 10px 20px;
             text-align: center;
-            padding: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .btn-learn-more:hover {
+            background-color: var(--krome-cyan);
+            color: #0b0b0b;
+            box-shadow: 0 0 15px rgba(0, 255, 209, 0.4);
+        }
+
+        .btn-buy-direct {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 30px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .btn-buy-direct:hover {
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.5);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        /* ----------------------------------
+           CATEGORY JUMP BAR
+        ---------------------------------- */
+        .category-nav {
+            background: #121212;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 60px;
+            z-index: 1020;
+        }
+
+        .category-pill {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #181818;
+            transition: all 0.2s ease;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .category-pill:hover {
+            color: #0b0b0b;
+            background-color: var(--krome-cyan);
+            border-color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           FOOTER
+        ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+            margin-top: auto;
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         footer a {
-            color: #c59c21;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        /* Make it mobile responsive */
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .card img {
-                height: auto;
-                max-width: 100%;
-            }
+        footer a:hover {
+            color: var(--krome-cyan);
         }
     </style>
 </head>
 
 <body>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="ksp_home.html">KROME Sports Performance</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="ksp_home.html">
+                <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="program_online.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">KROME Fitness</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ksp_home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="program_online.html" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-dumbbell me-1"></i> Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><a class="dropdown-item" href="#online-training"><i class="fas fa-mobile-alt me-2 text-warning"></i> Online Training</a></li>
+                            <li><a class="dropdown-item" href="#sports-performance"><i class="fas fa-running me-2 text-info"></i> Sports Performance</a></li>
+                            <li><a class="dropdown-item" href="#weight-loss"><i class="fas fa-fire me-2 text-warning"></i> Weight Loss & Shred</a></li>
+                            <li><a class="dropdown-item" href="#nutrition"><i class="fas fa-apple-alt me-2 text-info"></i> Nutrition Plans</a></li>
+                            <li><a class="dropdown-item" href="#personal-training"><i class="fas fa-user-friends me-2 text-warning"></i> In-Person Personal Training</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coaches_bio.html"><i class="fas fa-user-tie me-1"></i> Coach Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag me-1"></i> Shop</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-bold" href="tel:4054610727">
+                            <i class="fas fa-phone-alt me-1"></i> (405) 461-0727
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Shop Section -->
-    <section id="challenge" class="challenge-banner">
-        <div class="container my-2">
-            <h1 class="section-title text-center text-warning"><b><i><u>Online Training Programs</u></i></b></h1>
-            <p class="text-center">
-                KROME Fitness training programs are designed to transform your life! This custom program provides all
-                the
-                resources and tools you need for success, including a personalized exercise plan via a cutting-edge
-                fitness app, expert nutrition guidance, and real-time support through online chat.
-            </p>
-            <div class="row text-center">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="media/Flexmo.jpg" class="card-img-top" alt="Flexibility & Mobility">
-                        <div class="card-body">
-                            <h5 class="card-title">52 Week Online Training Program</h5>
-                            <a href="https://square.link/u/PPjNnSDi" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/conditioning.jpg" class="card-img-top" alt="Conditioning, Speed & Agility">
-                        <div class="card-body">
-                            <h5 class="card-title">16 Week Online Training Program</h5>
-                            <a href="https://square.link/u/swbYbkuY" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/strength (2).jpg" class="rounded card-img-top" alt="Strength & Power">
-                        <div class="card-body">
-                            <h5 class="card-title">8 Week Online Training Program</h5>
-                            <a href="https://square.link/u/KZonj3NA" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Category Jump Bar -->
+    <div class="category-nav d-none d-md-block">
+        <div class="container d-flex justify-content-center gap-2 flex-wrap">
+            <a href="#online-training" class="category-pill"><i class="fas fa-mobile-alt me-1"></i> 1. Online Training</a>
+            <a href="#sports-performance" class="category-pill"><i class="fas fa-running me-1"></i> 2. Sports Performance</a>
+            <a href="#weight-loss" class="category-pill"><i class="fas fa-fire me-1"></i> 3. Weight Loss & Transformation</a>
+            <a href="#nutrition" class="category-pill"><i class="fas fa-apple-alt me-1"></i> 4. Nutrition Programs</a>
+            <a href="#personal-training" class="category-pill"><i class="fas fa-user-friends me-1"></i> 5. Personal Training</a>
         </div>
+    </div>
 
-        <!-- Personal Training Sessions -->
-        <div class="container my-2">
-            <h1 class="section-title text-center text-warning"><b><i><u>Personal Training Sessions</u></i></b></h1>
-            <div class="row text-center">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="media/Flexmo.jpg" class="card-img-top" alt="Flexibility & Mobility">
-                        <div class="card-body">
-                            <h5 class="card-title">12 Sessions (In Person)</h5>
-                            <a href="https://square.link/u/4OMaXX3S" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/conditioning.jpg" class="card-img-top" alt="Conditioning, Speed & Agility">
-                        <div class="card-body">
-                            <h5 class="card-title">8 Sessions (In Person)</h5>
-                            <a href="https://square.link/u/1eb1BDMj" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/strength (2).jpg" class="rounded card-img-top" alt="Strength & Power">
-                        <div class="card-body">
-                            <h5 class="card-title">4 Sessions (In Person)</h5>
-                            <a href="https://square.link/u/PaNAHKD6" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flexibility & Mobility Programs -->
-        <div class="container my-2">
-            <h1 class="section-title text-center text-warning"><b><i><u>Flexibility & Mobility Programs</u></i></b></h1>
-            <p class="text-center">
-                Feel better and move better with our Flexibility & Mobility Coaching Programs! Receive personalized,
-                dynamic stretching plans tailored to your needs and expert guidance for long-term health benefits.
+    <!-- Hero Header -->
+    <header class="hero-banner">
+        <div class="container">
+            <span class="hero-badge"><i class="fas fa-trophy me-2"></i> Comprehensive Performance Catalog</span>
+            <h1 class="hero-title">Performance <span>Programs</span></h1>
+            <p class="lead text-light mx-auto" style="max-width: 760px; line-height: 1.6;">
+                Engineered for serious athletes and dedicated individuals. Choose your training path below to read full curriculum breakdowns or enroll instantly.
             </p>
-            <div class="row text-center">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="media/Flexmo.jpg" class="card-img-top" alt="Flexibility & Mobility">
-                        <div class="card-body">
-                            <h5 class="card-title">52 Week Flexibility & Mobility Online Program</h5>
-                            <a href="https://square.link/u/5B6JG27P" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/conditioning.jpg" class="card-img-top" alt="Conditioning, Speed & Agility">
-                        <div class="card-body">
-                            <h5 class="card-title">16 Week Flexibility & Mobility Online Program</h5>
-                            <a href="https://square.link/u/ap5iTEUX" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/strength (2).jpg" class="rounded card-img-top" alt="Strength & Power">
-                        <div class="card-body">
-                            <h5 class="card-title">8 Week Flexibility & Mobility Online Program</h5>
-                            <a href="https://square.link/u/MF8jWb0e" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </header>
 
-        <!-- Nutrition Programs -->
-        <div class="container my-2">
-            <h1 class="section-title text-center text-warning"><b><i><u>Nutrition Programs</u></i></b></h1>
-            <p class="text-center">
-                Achieve your fitness goals faster with personalized nutrition plans from KROME Fitness! Our programs
-                provide
-                expert guidance on macro balancing, meal timing, and sustainable eating habits for long-term success.
-            </p>
-            <div class="row text-center">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/media/Flexmo.jpg" class="card-img-top" alt="Personalized Meal Plan">
-                        <div class="card-body">
-                            <h5 class="card-title">52 Week Nutrition Plan</h5>
-                            <a href="https://square.link/u/RUb5Oc8J" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
+    <!-- Main Content Catalog -->
+    <main class="container py-4 flex-grow-1">
+
+        <!-- ==========================================
+             1. ONLINE TRAINING PROGRAMS
+        =========================================== -->
+        <section id="online-training" class="program-section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-globe me-1"></i> Tier 1</span>
+                <h2 class="section-title">1. Online <span>Training</span></h2>
+                <p class="text-secondary mb-0">App-delivered coaching, customized periodization, and direct accountability anywhere in the world.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Silver -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Silver Online</h3>
+                        <p class="small text-secondary mb-3">Essential remote strength & fitness</p>
+                        <div class="program-price">$99.00 <small>/ month</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Custom workout split in mobile app</li>
+                            <li><i class="fas fa-check-circle"></i> Video movement demonstrations</li>
+                            <li><i class="fas fa-check-circle"></i> Monthly program progression update</li>
+                            <li><i class="fas fa-check-circle"></i> In-app metric & PR tracking</li>
+                        </ul>
+                        <a href="program_detail.html?id=online-silver" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/8lq2aIq2" target="_blank" class="btn-buy-direct">Buy Now</a>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/strength (2).jpg" class="card-img-top" alt="Macro Coaching">
-                        <div class="card-body">
-                            <h5 class="card-title">16 Week Nutrition Plan</h5>
-                            <a href="https://square.link/u/v2YpZoxI" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
+
+                <!-- Gold -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card featured">
+                        <span class="featured-badge"><i class="fas fa-star me-1"></i> Most Popular</span>
+                        <h3 class="fw-bold text-warning mb-1">Gold Online</h3>
+                        <p class="small text-secondary mb-3">Enhanced coaching & bi-weekly check-ins</p>
+                        <div class="program-price">$149.00 <small>/ month</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Everything in Silver Tier</li>
+                            <li><i class="fas fa-check-circle"></i> Bi-weekly direct coach check-in</li>
+                            <li><i class="fas fa-check-circle"></i> Personalized macro & nutrition guide</li>
+                            <li><i class="fas fa-check-circle"></i> Video lifting form feedback</li>
+                        </ul>
+                        <a href="program_detail.html?id=online-gold" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/m3T7jF34" target="_blank" class="btn-buy-direct">Buy Now</a>
                     </div>
                 </div>
-                <!-- Card 3 -->
-                <div class="col-md-4">
-                    <div class="card my-8">
-                        <img src="media/conditioning.jpg" class="rounded card-img-top" alt="Custom Nutrition Guide">
-                        <div class="card-body">
-                            <h5 class="card-title">8 Week Nutrition Plan</h5>
-                            <a href="https://square.link/u/UlDybyx4" class="btn btn-outline-warning">Buy Now</a>
-                        </div>
+
+                <!-- Platinum -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-info mb-1" style="color: var(--krome-cyan) !important;">Platinum Online</h3>
+                        <p class="small text-secondary mb-3">VIP 1-on-1 performance mentorship</p>
+                        <div class="program-price">$199.00 <small>/ month</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Everything in Gold Tier</li>
+                            <li><i class="fas fa-check-circle"></i> Weekly live 1-on-1 video call</li>
+                            <li><i class="fas fa-check-circle"></i> Daily coach messaging access</li>
+                            <li><i class="fas fa-check-circle"></i> Priority workout plan adjustments</li>
+                        </ul>
+                        <a href="program_detail.html?id=online-platinum" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/20e3zIe5" target="_blank" class="btn-buy-direct">Buy Now</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+
+        <!-- ==========================================
+             2. SPORTS PERFORMANCE PROGRAMS
+        =========================================== -->
+        <section id="sports-performance" class="program-section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-dumbbell me-1"></i> Tier 2</span>
+                <h2 class="section-title">2. Sports <span>Performance Programs</span></h2>
+                <p class="text-secondary mb-0">Sport-specific athletic development protocols built to develop speed, force, and resilience.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Strength & Power -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Strength & Power</h3>
+                        <p class="small text-secondary mb-3">12-week kinetic force protocol</p>
+                        <div class="program-price">$49.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Compound lifting wave cycles</li>
+                            <li><i class="fas fa-check-circle"></i> Rate of force development (RFD)</li>
+                            <li><i class="fas fa-check-circle"></i> Olympic lift variations & jumps</li>
+                            <li><i class="fas fa-check-circle"></i> Complete 12-week printable log</li>
+                        </ul>
+                        <a href="program_detail.html?id=sports-strength" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/KZonj3NA" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Conditioning -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Speed & Conditioning</h3>
+                        <p class="small text-secondary mb-3">12-week acceleration & agility</p>
+                        <div class="program-price">$49.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> First-step acceleration mechanics</li>
+                            <li><i class="fas fa-check-circle"></i> Change of direction (COD) drills</li>
+                            <li><i class="fas fa-check-circle"></i> Sport-specific energy system intervals</li>
+                            <li><i class="fas fa-check-circle"></i> Field & track conditioning templates</li>
+                        </ul>
+                        <a href="program_detail.html?id=sports-conditioning" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Flexibility & Mobility -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Flexibility & Mobility</h3>
+                        <p class="small text-secondary mb-3">8-week joint resilience & recovery</p>
+                        <div class="program-price">$39.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Hip, thoracic, and ankle mobility</li>
+                            <li><i class="fas fa-check-circle"></i> Active end-range strength drills</li>
+                            <li><i class="fas fa-check-circle"></i> Post-workout recovery flows</li>
+                            <li><i class="fas fa-check-circle"></i> Injury prevention & pre-hab routines</li>
+                        </ul>
+                        <a href="program_detail.html?id=sports-flexmob" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/ap5iTEUX" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             3. WEIGHT LOSS & BODY TRANSFORMATION
+        =========================================== -->
+        <section id="weight-loss" class="program-section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-fire me-1"></i> Tier 3</span>
+                <h2 class="section-title">3. Weight Loss & <span>Body Transformation</span></h2>
+                <p class="text-secondary mb-0">High-energy metabolic protocols engineered to shred body fat while preserving lean muscle mass.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- 30-Day Shred -->
+                <div class="col-lg-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">30-Day Shred Challenge</h3>
+                        <p class="small text-secondary mb-3">High-intensity metabolic kickstart</p>
+                        <div class="program-price">$59.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> 30 days of progressive HIIT & resistance circuits</li>
+                            <li><i class="fas fa-check-circle"></i> Caloric deficit blueprint & quick meal guide</li>
+                            <li><i class="fas fa-check-circle"></i> Daily habit tracker & hydration target guide</li>
+                            <li><i class="fas fa-check-circle"></i> Rapid fat-burn without muscle loss</li>
+                        </ul>
+                        <a href="program_detail.html?id=weightloss-30day" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- 12-Week Transformation -->
+                <div class="col-lg-6">
+                    <div class="program-card featured">
+                        <span class="featured-badge"><i class="fas fa-fire me-1"></i> Total Body Overhaul</span>
+                        <h3 class="fw-bold text-warning mb-1">12-Week Transformation</h3>
+                        <p class="small text-secondary mb-3">Sustainable physique & metabolic reboot</p>
+                        <div class="program-price">$129.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> 3 progressive training phases (Rebuild, Sculpt, Peak)</li>
+                            <li><i class="fas fa-check-circle"></i> Comprehensive nutrition & refeed schedule</li>
+                            <li><i class="fas fa-check-circle"></i> Body composition measurement protocols</li>
+                            <li><i class="fas fa-check-circle"></i> Long-term metabolic maintenance plan</li>
+                        </ul>
+                        <a href="program_detail.html?id=weightloss-12week" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/G3H7X5Z1" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             4. NUTRITION PROGRAMS
+        =========================================== -->
+        <section id="nutrition" class="program-section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-apple-alt me-1"></i> Tier 4</span>
+                <h2 class="section-title">4. Nutrition <span>Programs</span></h2>
+                <p class="text-secondary mb-0">Evidence-based fueling strategies to power workouts, accelerate recovery, and optimize body composition.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Guidelines -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Nutrition Guidelines</h3>
+                        <p class="small text-secondary mb-3">Foundational performance eating handbook</p>
+                        <div class="program-price">$29.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Clean eating principles & food lists</li>
+                            <li><i class="fas fa-check-circle"></i> Pre & post workout fueling windows</li>
+                            <li><i class="fas fa-check-circle"></i> Grocery shopping list & meal prep tips</li>
+                            <li><i class="fas fa-check-circle"></i> Hydration & electrolyte strategies</li>
+                        </ul>
+                        <a href="program_detail.html?id=nutrition-guidelines" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/P9kL2m1Q" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Custom Macro Plan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card featured">
+                        <span class="featured-badge"><i class="fas fa-bolt me-1"></i> Precision Fuel</span>
+                        <h3 class="fw-bold text-warning mb-1">Custom Macro Blueprint</h3>
+                        <p class="small text-secondary mb-3">Personalized caloric & macronutrient targets</p>
+                        <div class="program-price">$79.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Custom protein, carb & fat calculations</li>
+                            <li><i class="fas fa-check-circle"></i> Tailored to your exact weight & activity level</li>
+                            <li><i class="fas fa-check-circle"></i> Sample meal plan with easy recipes</li>
+                            <li><i class="fas fa-check-circle"></i> Adjustments based on progress feedback</li>
+                        </ul>
+                        <a href="program_detail.html?id=nutrition-macro" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/T4vW8x9Y" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Supplement Protocol -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="program-card">
+                        <h3 class="fw-bold text-light mb-1">Supplement Protocol</h3>
+                        <p class="small text-secondary mb-3">Science-backed athletic supplementation</p>
+                        <div class="program-price">$19.99 <small>one-time</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Evidence-based supplement hierarchy</li>
+                            <li><i class="fas fa-check-circle"></i> Optimal timing & dosage guide</li>
+                            <li><i class="fas fa-check-circle"></i> Joint health & sleep support stacks</li>
+                            <li><i class="fas fa-check-circle"></i> Debunking marketing hype & wasted money</li>
+                        </ul>
+                        <a href="program_detail.html?id=nutrition-supplement" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/B6nM1p7R" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             5. PERSONAL TRAINING SESSIONS
+        =========================================== -->
+        <section id="personal-training" class="program-section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-user-friends me-1"></i> Tier 5</span>
+                <h2 class="section-title">5. Personal <span>Training Sessions</span></h2>
+                <p class="text-secondary mb-0">Hands-on, in-person coaching with Coach Brown.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- 4-Session Intro Pack -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="program-card featured">
+                        <span class="featured-badge" style="background: linear-gradient(135deg, var(--krome-cyan), #00cca6); color: #0b0b0b; font-weight: 800;"><i class="fas fa-tag me-1"></i> Intro Special</span>
+                        <h4 class="fw-bold text-warning mb-1">4-Session Intro</h4>
+                        <p class="small text-secondary mb-2">Introductory 1-on-1 coaching</p>
+                        <div class="program-price">$250.00 <small>($62.50/ea)</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Four 60-min 1-on-1 sessions</li>
+                            <li><i class="fas fa-check-circle"></i> Biomechanical movement audit</li>
+                            <li><i class="fas fa-check-circle"></i> Custom independent roadmap</li>
+                            <li><i class="fas fa-check-circle"></i> Priority 1-on-1 scheduling</li>
+                        </ul>
+                        <a href="program_detail.html?id=pt-4" class="btn-learn-more">Learn More</a>
+                        <a href="program_detail.html?id=pt-4" class="btn-buy-direct">Get Started</a>
+                    </div>
+                </div>
+
+                <!-- Single Session -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="program-card">
+                        <h4 class="fw-bold text-light mb-1">Single Session</h4>
+                        <p class="small text-secondary mb-2">1-on-1 private coaching</p>
+                        <div class="program-price">$75.00 <small>/ session</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> 60-minute intensive workout</li>
+                            <li><i class="fas fa-check-circle"></i> Biomechanics & form analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time technique coaching</li>
+                        </ul>
+                        <a href="program_detail.html?id=pt-single" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/J2kL8n4V" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- 10-Pack -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="program-card">
+                        <h4 class="fw-bold text-light mb-1">10-Session Pack</h4>
+                        <p class="small text-secondary mb-2">Comprehensive transformation</p>
+                        <div class="program-price">$650.00 <small>($65/ea)</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Ten 60-min 1-on-1 sessions</li>
+                            <li><i class="fas fa-check-circle"></i> Full body composition tracking</li>
+                            <li><i class="fas fa-check-circle"></i> Custom nutrition & home plan</li>
+                        </ul>
+                        <a href="program_detail.html?id=pt-10pack" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/H9jK2m5P" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Monthly Hybrid -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="program-card">
+                        <h4 class="fw-bold text-info mb-1" style="color: var(--krome-cyan) !important;">Monthly Hybrid</h4>
+                        <p class="small text-secondary mb-2">In-person + 24/7 online app</p>
+                        <div class="program-price">$450.00 <small>/ month</small></div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> 4 in-person 1-on-1 sessions</li>
+                            <li><i class="fas fa-check-circle"></i> Unlimited app-based programming</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 direct coach messaging</li>
+                        </ul>
+                        <a href="program_detail.html?id=pt-hybrid" class="btn-learn-more">Learn More</a>
+                        <a href="https://square.link/u/W1qZ7x8M" target="_blank" class="btn-buy-direct">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 KROME Fitness. All Rights Reserved.</p>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Elite Athletic Conditioning, Olympic Strength Mechanics, Sports Nutrition Periodization & Private Personal Coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-phone-alt text-warning"></i>
+                            <a href="tel:4054610727" style="color: var(--krome-cyan); font-weight: 700;">(405) 461-0727</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 text-light font-weight-bold">
+                            <i class="fas fa-envelope text-warning"></i>
+                            <a href="mailto:kromefitness@gmail.com" style="color: var(--krome-cyan); font-weight: 700;">kromefitness@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0, 255, 209, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="ksp_home.html#programs" class="text-secondary me-3">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3">About</a>
+                    <a href="shop.html" class="text-secondary">Shop</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
 </body>
 
 </html>

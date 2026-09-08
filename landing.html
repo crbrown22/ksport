@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Sports Performance | Elite Athlete Transformation Funnel</title>
+    <meta name="description" content="Unlock elite strength, explosive speed, and lean athletic transformation with Coach Brown's proven periodized training systems and customized nutrition protocols.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/landing.html">
+    
+    <!-- Open Graph Social Tags -->
+    <meta property="og:title" content="KROME Sports Performance | Elite Athlete Transformation Funnel">
+    <meta property="og:description" content="Maximize athletic strength, speed, and body transformation with elite protocols from Coach Brown.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/landing.html">
+    <meta property="og:image" content="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/media/strength%20(2).jpg">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(0, 255, 209, 0.22);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           URGENCY ANNOUNCEMENT BAR
+        ---------------------------------- */
+        .urgency-bar {
+            background: linear-gradient(90deg, #111417 0%, #1c1502 50%, #111417 100%);
+            border-bottom: 1px solid var(--krome-gold);
+            padding: 9px 0;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            color: var(--krome-gold);
+        }
+
+        .urgency-bar span {
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           NAVBAR
+        ---------------------------------- */
+        .navbar {
+            background-color: #121212 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.05rem;
+                letter-spacing: 0.6px;
+            }
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .dropdown-menu {
+            background-color: #181818;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-item {
+            color: #e2e8f0;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            color: var(--krome-cyan);
+        }
+
+        /* ----------------------------------
+           HERO SECTION
+        ---------------------------------- */
+        .funnel-hero {
+            background: linear-gradient(135deg, rgba(11, 11, 11, 0.92), rgba(8, 24, 28, 0.94)), url('media/strength%20(2).jpg') center/cover no-repeat;
+            border-bottom: 2px solid var(--krome-cyan);
+            padding: 4rem 0 3.5rem;
+            position: relative;
+        }
+
+        .funnel-badge {
+            background: rgba(0, 255, 209, 0.12);
+            color: var(--krome-cyan);
+            border: 1px solid var(--krome-cyan);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .funnel-title {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .funnel-title span {
+            color: var(--krome-gold);
+            text-shadow: 0 0 25px rgba(255, 212, 71, 0.35);
+        }
+
+        .funnel-title .text-cyan {
+            color: var(--krome-cyan);
+            text-shadow: 0 0 25px rgba(0, 255, 209, 0.35);
+        }
+
+        .funnel-subtitle {
+            color: var(--krome-text-muted);
+            font-size: 1.18rem;
+            line-height: 1.6;
+            margin-bottom: 1.75rem;
+        }
+
+        .btn-funnel-primary {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            padding: 14px 34px;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .btn-funnel-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        .btn-funnel-secondary {
+            background-color: transparent;
+            border: 2px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 40px;
+            padding: 12px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-funnel-secondary:hover {
+            background-color: var(--krome-cyan);
+            color: #0b0b0b;
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.4);
+        }
+
+        /* Lead Card in Hero */
+        .hero-lead-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 2px solid var(--krome-gold);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 212, 71, 0.15);
+        }
+
+        /* ----------------------------------
+           TRUST BAR
+        ---------------------------------- */
+        .trust-bar {
+            background-color: #111417;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+            padding: 22px 0;
+        }
+
+        .trust-item h4 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .trust-item p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        /* ----------------------------------
+           OFFER SWITCHER / TIER TABS
+        ---------------------------------- */
+        .tier-switcher {
+            background: #141414;
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 2rem;
+            overflow: visible;
+        }
+
+        .tier-btn {
+            flex: 1 1 calc(50% - 8px);
+            min-width: 180px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #9ca3af;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+            white-space: normal;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 992px) {
+            .tier-btn {
+                flex: 1 1 0;
+            }
+        }
+
+        .tier-btn:hover {
+            color: var(--krome-cyan);
+            background: rgba(0, 255, 209, 0.05);
+        }
+
+        .tier-btn.active {
+            background: linear-gradient(135deg, rgba(255, 212, 71, 0.15), rgba(0, 255, 209, 0.15));
+            border-color: var(--krome-gold);
+            color: var(--krome-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ----------------------------------
+           CONTENT CARDS & PHASES
+        ---------------------------------- */
+        .content-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-heading {
+            color: var(--krome-cyan);
+            font-weight: 800;
+            font-size: 1.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(0, 255, 209, 0.2);
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-badge-box {
+            background: rgba(0, 255, 209, 0.06);
+            border: 1px solid rgba(0, 255, 209, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            height: 100%;
+        }
+
+        .stat-badge-box small {
+            color: #9ca3af;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-badge-box .stat-value {
+            color: var(--krome-gold);
+            font-size: 1.35rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .inclusion-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .inclusion-row:hover {
+            border-color: rgba(0, 255, 209, 0.3);
+            background: rgba(0, 255, 209, 0.04);
+        }
+
+        .inclusion-row i {
+            color: var(--krome-cyan);
+            font-size: 1.25rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .inclusion-row span {
+            color: #e2e8f0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .phase-block {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--krome-cyan);
+            border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-block h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-block p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        /* ----------------------------------
+           STICKY SIDEBAR CHECKOUT
+        ---------------------------------- */
+        .sticky-checkout-card {
+            background: linear-gradient(170deg, #181818 0%, #0e1719 100%);
+            border: 2px solid var(--krome-gold);
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 30px rgba(255, 212, 71, 0.15);
+        }
+
+        .sidebar-btn-buy {
+            background: linear-gradient(135deg, var(--krome-gold), #f59e0b);
+            color: #0b0b0b;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .sidebar-btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.7);
+            color: #000;
+        }
+
+        /* ----------------------------------
+           EXPLORE SECTION & GRID
+        ---------------------------------- */
+        .explore-other-section {
+            background: linear-gradient(180deg, #101010 0%, #0a0a0a 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .explore-card {
+            background: linear-gradient(160deg, #181818 0%, #12191c 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .explore-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--krome-cyan);
+            box-shadow: 0 12px 30px rgba(0, 255, 209, 0.2);
+            color: inherit;
+        }
+
+        .explore-card-img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* ----------------------------------
+           STICKY BOTTOM BAR (MOBILE)
+        ---------------------------------- */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 212, 71, 0.3);
+            z-index: 1050;
+            padding: 12px 0;
+        }
+
+        /* ----------------------------------
+           FOOTER
+        ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+            margin-top: auto;
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--krome-cyan);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Urgency Ribbon -->
+    <div class="urgency-bar">
+        <div class="container">
+            <i class="fas fa-fire me-1 text-warning"></i> SPRING / SUMMER ATHLETE COHORTS NOW OPEN — <span>LIMITED TO 25 ATHLETES</span> PER CYCLE | CALL <a href="tel:4054610727" style="color: var(--krome-gold); text-decoration: underline;">(405) 461-0727</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="ksp_home.html">
+                <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ksp_home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="ksp_home.html#programs" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-dumbbell me-1"></i> Programs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="programsDropdown">
+                            <li><a class="dropdown-item" href="program_detail.html?id=online"><i class="fas fa-mobile-alt me-2 text-warning"></i> 52-Week Online Training</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=16week"><i class="fas fa-fire me-2 text-info"></i> 16-Week Flagship Program</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=strength"><i class="fas fa-dumbbell me-2 text-warning"></i> Strength & Power</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=conditioning"><i class="fas fa-running me-2 text-info"></i> Conditioning & Agility</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=flexmob"><i class="fas fa-spa me-2 text-success"></i> Flexibility & Mobility</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=shred"><i class="fas fa-bolt me-2 text-warning"></i> 8-Week Shred & Nutrition</a></li>
+                            <li><a class="dropdown-item" href="program_detail.html?id=inperson"><i class="fas fa-user-friends me-2 text-info"></i> In-Person Training</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coaches_bio.html"><i class="fas fa-user-tie me-1"></i> Coach Bio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag me-1"></i> Shop</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-warning btn-sm rounded-pill px-3 py-1 fw-bold" href="tel:4054610727">
+                            <i class="fas fa-phone-alt me-1"></i> (405) 461-0727
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Funnel Hero Section -->
+    <header class="funnel-hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                
+                <!-- Left Hero Value Stack -->
+                <div class="col-lg-7">
+                    <span class="funnel-badge"><i class="fas fa-trophy me-2"></i> Official Direct Athlete Funnel</span>
+                    <h1 class="funnel-title">
+                        Unlock Elite <span class="text-cyan">Strength</span>, Explosive Speed & <span>Lean Shred</span>
+                    </h1>
+                    <p class="funnel-subtitle">
+                        Stop guessing your workouts. Master periodized lifting mechanics, rate-of-force acceleration, and sustainable nutrition blueprints engineered by Coach Brown to turn you into an unbreakable athlete.
+                    </p>
+                    
+                    <!-- Quick Badges -->
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <span class="badge" style="background: rgba(255,212,71,0.15); color: var(--krome-gold); border: 1px solid var(--krome-gold); padding: 7px 14px; font-size: 0.85rem;">
+                            <i class="fas fa-check-circle me-1"></i> Mobile App Access
+                        </span>
+                        <span class="badge" style="background: rgba(0,255,209,0.15); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); padding: 7px 14px; font-size: 0.85rem;">
+                            <i class="fas fa-check-circle me-1"></i> 100+ Video Demos
+                        </span>
+                        <span class="badge" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 7px 14px; font-size: 0.85rem;">
+                            <i class="fas fa-check-circle me-1"></i> Direct Coach Support
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#offer-section" class="btn-funnel-primary">
+                            <i class="fas fa-bolt me-2"></i> Enroll In Flagship Protocol
+                        </a>
+                        <a href="tel:4054610727" class="btn-funnel-secondary">
+                            <i class="fas fa-phone-alt me-2"></i> Call (405) 461-0727
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero: Instant Lead Blueprint Capture -->
+                <div class="col-lg-5" id="lead-capture">
+                    <div class="hero-lead-card text-light">
+                        <div class="text-center mb-3">
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-2">Free Instant Access</span>
+                            <h3 class="fw-bold mb-1 text-warning fs-4">Claim 7-Day Shred & Strength Blueprint</h3>
+                            <p class="text-secondary small mb-0">Enter your info to instantly download our starter training & macro schedule.</p>
+                        </div>
+                        <form id="hero-lead-form" onsubmit="handleLeadSubmit(event)">
+                            <div class="mb-3">
+                                <label class="form-label small text-uppercase fw-bold text-secondary">Full Name</label>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" id="lead-name" placeholder="Alex Johnson" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small text-uppercase fw-bold text-secondary">Email Address</label>
+                                <input type="email" class="form-control bg-dark text-light border-secondary" id="lead-email" placeholder="athlete@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small text-uppercase fw-bold text-secondary">Primary Athletic Goal</label>
+                                <select class="form-select bg-dark text-light border-secondary" id="lead-goal">
+                                    <option value="16week">16-Week Progressive Strength & Shred</option>
+                                    <option value="52week">52-Week Complete Online Coaching</option>
+                                    <option value="conditioning">Speed, Agility & Conditioning</option>
+                                    <option value="flexmob">Flexibility & Joint Longevity</option>
+                                    <option value="inperson">In-Person Personal Training</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="sidebar-btn-buy w-100">
+                                <i class="fas fa-download me-2"></i> Download Free Blueprint Now
+                            </button>
+                            <div id="lead-success-msg" class="alert alert-success mt-3 d-none text-center small mb-0" role="alert">
+                                <i class="fas fa-check-circle me-1"></i> Success! Your free guide has been sent to your email.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Social Proof Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="row text-center g-3">
+                <div class="col-lg-3 col-6">
+                    <div class="trust-item border-end border-secondary border-opacity-25">
+                        <h4 class="text-warning"><i class="fas fa-users me-2" style="color: var(--krome-cyan);"></i>500+</h4>
+                        <p>Athletes Coached</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-item border-end-lg border-secondary border-opacity-25">
+                        <h4 style="color: var(--krome-cyan);"><i class="fas fa-dumbbell me-2 text-warning"></i>100%</h4>
+                        <p>Customized Protocols</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-item border-end border-secondary border-opacity-25">
+                        <h4 class="text-warning"><i class="fas fa-star me-2" style="color: var(--krome-cyan);"></i>4.9 / 5</h4>
+                        <p>Athlete Satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="trust-item">
+                        <h4 style="color: var(--krome-cyan);"><i class="fas fa-medal me-2 text-warning"></i>10+ Yrs</h4>
+                        <p>Proven Performance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Funnel Core Section -->
+    <main class="py-5" id="offer-section">
+        <div class="container">
+
+            <!-- Section Header -->
+            <div class="text-center mb-4">
+                <span class="funnel-badge">Select Your Training Track</span>
+                <h2 class="fw-bold text-uppercase text-light mb-2">Choose Your <span class="text-warning">KROME Transformation System</span></h2>
+                <p class="text-secondary mx-auto" style="max-width: 750px;">Toggle between our flagship training tiers below to view the full phased curriculum, deliverables, and instant enrollment checkout.</p>
+            </div>
+
+            <!-- Tier Switcher -->
+            <div class="tier-switcher">
+                <button type="button" class="tier-btn active" onclick="switchFunnelTier('16week')">
+                    <i class="fas fa-fire me-1 text-warning"></i> 16-Week Flagship ($149/mo)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('52week')">
+                    <i class="fas fa-crown me-1 text-warning"></i> 52-Week Complete ($299/mo)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('shred')">
+                    <i class="fas fa-bolt me-1" style="color: var(--krome-cyan);"></i> 8-Week Shred ($79)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('inperson')">
+                    <i class="fas fa-user-friends me-1 text-warning"></i> In-Person Intro ($250 / 4 Sessions)
+                </button>
+            </div>
+
+            <!-- 2-Column Funnel Grid -->
+            <div class="row g-4">
+
+                <!-- Left 8 Columns: Dynamic Breakdown, Syllabus, Pillars & FAQs -->
+                <div class="col-lg-8">
+                    
+                    <!-- Overview & Quick Stats Card -->
+                    <div class="content-card">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                            <span class="badge" id="funnel-category-badge" style="background: rgba(0,255,209,0.15); color: var(--krome-cyan); font-size: 0.82rem; padding: 6px 14px; border: 1px solid var(--krome-cyan);">
+                                Online Periodized Protocol
+                            </span>
+                            <span class="text-warning fw-bold small" id="funnel-level-badge">
+                                <i class="fas fa-signal me-1"></i> Intermediate to Advanced
+                            </span>
+                        </div>
+                        
+                        <h2 class="fw-bold text-light mb-2" id="funnel-display-title">16-Week Comprehensive Training & Nutrition</h2>
+                        <p class="text-secondary lead fs-6 mb-4" id="funnel-display-desc">
+                            Our signature progressive overload blueprint combining periodized strength waves with macronutrient nutrition protocols for extreme athletic recomposition.
+                        </p>
+
+                        <!-- Key Metrics Grid -->
+                        <div class="row g-3 text-center mb-2">
+                            <div class="col-sm-3 col-6">
+                                <div class="stat-badge-box">
+                                    <small>Duration</small>
+                                    <div class="stat-value" id="funnel-stat-duration">16 Weeks</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <div class="stat-badge-box">
+                                    <small>Frequency</small>
+                                    <div class="stat-value" id="funnel-stat-freq">4-5 Days/Wk</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <div class="stat-badge-box">
+                                    <small>App Access</small>
+                                    <div class="stat-value" id="funnel-stat-access">Instant</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-6">
+                                <div class="stat-badge-box">
+                                    <small>Coach Audit</small>
+                                    <div class="stat-value" id="funnel-stat-support">Included</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase-by-Phase Curriculum Card -->
+                    <div class="content-card">
+                        <div class="card-heading">
+                            <i class="fas fa-layer-group"></i> Phased Periodization Roadmap
+                        </div>
+                        <p class="text-secondary small mb-4">Every block is systematically sequenced to maximize strength adaptation and eliminate training plateaus.</p>
+                        
+                        <div id="funnel-phases-container">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- What's Included Card -->
+                    <div class="content-card">
+                        <div class="card-heading">
+                            <i class="fas fa-box-open"></i> What's Included in Your Protocol
+                        </div>
+                        <div id="funnel-inclusions-container">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- The 5 Pillars of Athletic Dominance -->
+                    <div class="content-card">
+                        <div class="card-heading">
+                            <i class="fas fa-shield-alt"></i> The Five Pillars of Athletic Dominance
+                        </div>
+                        <div class="row g-3 text-center">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-50 h-100">
+                                    <i class="fas fa-dumbbell text-warning fs-4 mb-2"></i>
+                                    <h6 class="fw-bold text-light small mb-1">1. Progressive Overload</h6>
+                                    <p class="text-secondary" style="font-size: 0.78rem; line-height: 1.4;">Systematic wave loading for consistent strength adaptation without burnout.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-50 h-100">
+                                    <i class="fas fa-bolt text-info fs-4 mb-2" style="color: var(--krome-cyan) !important;"></i>
+                                    <h6 class="fw-bold text-light small mb-1">2. Kinetic Velocity</h6>
+                                    <p class="text-secondary" style="font-size: 0.78rem; line-height: 1.4;">Rate of force development (RFD) drills for explosive sprint and field power.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-50 h-100">
+                                    <i class="fas fa-apple-alt text-warning fs-4 mb-2"></i>
+                                    <h6 class="fw-bold text-light small mb-1">3. Precision Fueling</h6>
+                                    <p class="text-secondary" style="font-size: 0.78rem; line-height: 1.4;">Targeted nutrient timing and caloric periodization matched to training volume.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-50 h-100">
+                                    <i class="fas fa-shield-alt text-info fs-4 mb-2" style="color: var(--krome-cyan) !important;"></i>
+                                    <h6 class="fw-bold text-light small mb-1">4. Joint Longevity</h6>
+                                    <p class="text-secondary" style="font-size: 0.78rem; line-height: 1.4;">Pre-hab and end-range mobility routines to bulletproof connective tissue.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-50 h-100">
+                                    <i class="fas fa-spa text-warning fs-4 mb-2"></i>
+                                    <h6 class="fw-bold text-light small mb-1">5. Balance & Recovery</h6>
+                                    <p class="text-secondary" style="font-size: 0.78rem; line-height: 1.4;">Targeted CNS restoration, sleep architecture, and restorative recovery routines.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verified Athlete Reviews -->
+                    <div class="content-card">
+                        <div class="card-heading">
+                            <i class="fas fa-star text-warning"></i> Verified Athlete Results
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 text-start h-100">
+                                    <div class="text-warning mb-2 small">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="text-light small mb-2" style="line-height: 1.5;">"Coach Brown's 16-week protocol took my squat from 315 to 405 while cutting 12 lbs of body fat. The video library and app logging are unmatched."</p>
+                                    <span class="fw-bold text-warning small">— Marcus T., Collegiate Athlete</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 text-start h-100">
+                                    <div class="text-warning mb-2 small">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="text-light small mb-2" style="line-height: 1.5;">"The nutrition schedules and structured conditioning circuits made all the difference. I lost 18 lbs and have never felt this athletic."</p>
+                                    <span class="fw-bold text-warning small">— Sarah L., Transformation Client</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk-Free Guarantee -->
+                    <div class="content-card border-warning border-opacity-50" style="background: linear-gradient(135deg, rgba(255,212,71,0.08), rgba(0,255,209,0.05));">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background: rgba(255, 212, 71, 0.2); width: 60px; height: 60px; min-width: 60px; border: 1px solid var(--krome-gold);">
+                                <i class="fas fa-shield-alt text-warning fs-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-warning mb-1">100% Commitment to Your Progress</h5>
+                                <p class="text-light small mb-0" style="line-height: 1.5;">
+                                    If you execute the program as designed and submit your check-ins without seeing measurable progress, Coach Brown will personally re-program your protocol and provide 1-on-1 audit calls at no extra cost.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Accordion -->
+                    <div class="content-card">
+                        <div class="card-heading">
+                            <i class="fas fa-question-circle"></i> Frequently Asked Questions
+                        </div>
+                        <div class="accordion" id="funnelFaq">
+                            <div class="accordion-item bg-dark border-secondary mb-2 rounded">
+                                <h2 class="accordion-header" id="faqOne">
+                                    <button class="accordion-button collapsed bg-dark text-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        How do I receive access to my workouts after checkout?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne" data-bs-parent="#funnelFaq">
+                                    <div class="accordion-body text-secondary small">
+                                        Immediately upon completing your secure checkout via Square, you will receive an automated confirmation and direct onboarding credentials to access your digital workout portal, video demonstrations, and nutrition PDF guides.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item bg-dark border-secondary mb-2 rounded">
+                                <h2 class="accordion-header" id="faqTwo">
+                                    <button class="accordion-button collapsed bg-dark text-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Do I need full gym equipment to follow this protocol?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#funnelFaq">
+                                    <div class="accordion-body text-secondary small">
+                                        Our strength and athletic programs utilize standard gym equipment (barbells, dumbbells, cable stations, and bands). For home gym athletes, alternative exercise variations are included inside the workout portal.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item bg-dark border-secondary mb-2 rounded">
+                                <h2 class="accordion-header" id="faqThree">
+                                    <button class="accordion-button collapsed bg-dark text-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Can I contact Coach Brown directly with questions?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#funnelFaq">
+                                    <div class="accordion-body text-secondary small">
+                                        Yes! All enrolled athletes receive direct messaging access for exercise technique checks, weight adjustments, and direct coach feedback via phone at (405) 461-0727 or email at kromefitness@gmail.com.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right 4 Columns: Sticky Instant Checkout Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sticky-checkout-card sticky-top" style="top: 90px; z-index: 10;">
+                        
+                        <div class="text-center pb-3 border-bottom border-secondary border-opacity-50 mb-3">
+                            <span class="text-uppercase small fw-bold text-secondary">Instant Enrollment</span>
+                            <h4 class="fw-bold text-warning mt-1 mb-1" id="sidebar-tier-title">16-Week Flagship Program</h4>
+                            <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+                                <span class="text-decoration-line-through text-secondary fs-5" id="sidebar-old-price">$249.00/mo</span>
+                                <span class="fs-2 fw-black text-light" id="sidebar-price" style="color: var(--krome-cyan) !important;">$149.00/mo</span>
+                            </div>
+                            <span class="badge bg-warning text-dark fw-bold mt-1 px-3 py-1 rounded-pill" id="sidebar-save-badge">Save $100/mo Today</span>
+                        </div>
+
+                        <!-- Highlights List -->
+                        <div class="mb-4">
+                            <ul class="list-unstyled mb-0" id="sidebar-feature-list">
+                                <!-- Populated dynamically by JS -->
+                            </ul>
+                        </div>
+
+                        <!-- Instant Checkout Button -->
+                        <a href="https://square.link/u/swbYbkuY" target="_blank" rel="noopener noreferrer" class="sidebar-btn-buy mb-3" id="sidebar-checkout-btn">
+                            <i class="fas fa-lock me-2"></i> Enroll Now &bull; Instant Access
+                        </a>
+
+                        <!-- Direct Call Button -->
+                        <a href="tel:4054610727" class="btn btn-outline-warning w-100 py-2 rounded-pill fw-bold mb-3">
+                            <i class="fas fa-phone-alt me-1"></i> Call (405) 461-0727
+                        </a>
+
+                        <!-- Security Badges -->
+                        <div class="text-center border-top border-secondary border-opacity-25 pt-3">
+                            <div class="d-flex justify-content-center gap-3 text-secondary small mb-2">
+                                <span><i class="fas fa-shield-alt text-warning me-1"></i> SSL Secure</span>
+                                <span><i class="fas fa-bolt text-info me-1"></i> Mobile App</span>
+                                <span><i class="fas fa-clock text-warning me-1"></i> Instant Delivery</span>
+                            </div>
+                            <p class="small text-secondary mb-0" style="font-size: 0.75rem;">
+                                Payments securely processed via Square. Direct enrollment with instant app access and coach onboarding.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Explore All Programs Cross-Sell Grid -->
+    <section class="explore-other-section py-5 border-top border-secondary border-opacity-25">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+                <div>
+                    <span class="funnel-badge mb-2">Complete Catalog</span>
+                    <h3 class="text-warning fw-bold mb-0">
+                        <i class="fas fa-th-large me-2"></i> Explore Other Specialized Programs
+                    </h3>
+                </div>
+                <a href="ksp_home.html#programs" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-2 mt-3 mt-sm-0 fw-semibold">
+                    <i class="fas fa-list me-1"></i> View Full Directory <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="related-container">
+                
+                <div class="col">
+                    <a href="program_detail.html?id=strength" class="explore-card">
+                        <div class="position-relative" style="height: 140px; overflow: hidden;">
+                            <img src="media/strength%20(2).jpg" alt="Strength and Power" class="explore-card-img">
+                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Strength & Power</span>
+                        </div>
+                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                            <div>
+                                <h5 class="fw-bold text-light fs-6 mb-2">Strength & Power Protocol</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                    Master raw powerlifting mechanics, kinetic force chaining, and maximum strength output.
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
+                                <span class="small text-warning fw-semibold">12 Weeks</span>
+                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="program_detail.html?id=conditioning" class="explore-card">
+                        <div class="position-relative" style="height: 140px; overflow: hidden;">
+                            <img src="media/Conditioning%20(1).jpg" alt="Conditioning and Agility" class="explore-card-img">
+                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Conditioning</span>
+                        </div>
+                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                            <div>
+                                <h5 class="fw-bold text-light fs-6 mb-2">Speed, Agility & Conditioning</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                    High-intensity intervals, sprint acceleration, multi-planar footwork, and conditioning.
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
+                                <span class="small text-warning fw-semibold">8 Weeks</span>
+                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="program_detail.html?id=flexmob" class="explore-card">
+                        <div class="position-relative" style="height: 140px; overflow: hidden;">
+                            <img src="media/Flex.jpg" alt="Flexibility and Mobility" class="explore-card-img">
+                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Mobility</span>
+                        </div>
+                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                            <div>
+                                <h5 class="fw-bold text-light fs-6 mb-2">Flexibility & Joint Longevity</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                    Bulletproof tendons, optimize thoracic rotation, and expand hip mobility for pain-free athletics.
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
+                                <span class="small text-warning fw-semibold">6 Weeks</span>
+                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="program_detail.html?id=shred" class="explore-card">
+                        <div class="position-relative" style="height: 140px; overflow: hidden;">
+                            <img src="media/Salmon.jpg" alt="Nutrition and Shred" class="explore-card-img">
+                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Nutrition</span>
+                        </div>
+                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                            <div>
+                                <h5 class="fw-bold text-light fs-6 mb-2">8-Week Shred & Macro Guide</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                    Delicious high-protein recipes and structured calorie periodization for fat loss.
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
+                                <span class="small text-warning fw-semibold">8 Weeks</span>
+                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="sticky-bottom-bar d-block d-md-none text-center">
+        <div class="container d-flex justify-content-between align-items-center gap-2">
+            <a href="tel:4054610727" class="btn btn-outline-warning btn-sm flex-grow-1 fw-bold">
+                <i class="fas fa-phone-alt me-1"></i> Call Coach
+            </a>
+            <a href="https://square.link/u/swbYbkuY" id="mobile-buy-btn" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm flex-grow-1 fw-bold text-dark">
+                <i class="fas fa-bolt me-1"></i> Enroll Now ($149/mo)
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Elite Athletic Conditioning, Olympic Strength Mechanics, Sports Nutrition Periodization & Private Coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <div>
+                            <i class="fas fa-phone-alt text-warning me-2"></i>
+                            <a href="tel:4054610727" style="color: var(--krome-cyan); font-weight: 700;">(405) 461-0727</a>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope text-warning me-2"></i>
+                            <a href="mailto:kromefitness@gmail.com" style="color: var(--krome-cyan); font-weight: 700;">kromefitness@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0, 255, 209, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="ksp_home.html#programs" class="text-secondary me-3">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3">About</a>
+                    <a href="shop.html" class="text-secondary">Shop</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
+    <!-- Funnel Interactive Switcher Script -->
+    <script>
+        const FUNNEL_DATA = {
+            '16week': {
+                title: '16-Week Flagship Training & Nutrition',
+                category: 'Online Flagship Protocol',
+                level: 'Intermediate to Advanced',
+                desc: 'Our signature 16-week flagship progressive overload blueprint combining periodized strength waves with macronutrient nutrition protocols for $149/month.',
+                price: '$149.00/mo',
+                oldPrice: '$249.00/mo',
+                saveText: 'Save $100/mo Today',
+                duration: '16 Weeks',
+                freq: '4-5 Days/Wk',
+                access: 'Instant',
+                support: 'Included',
+                checkoutUrl: 'https://square.link/u/swbYbkuY',
+                phases: [
+                    { name: 'Phase 1 (Weeks 1-4): Neuromuscular Activation & Structural Balance', desc: 'Establish compound movement mechanics, fix muscle imbalances, and activate stabilizing kinetic chains.' },
+                    { name: 'Phase 2 (Weeks 5-8): Progressive Overload & Hypertrophy Waves', desc: 'Systematic volume accumulation, mechanical tension increases, and foundational muscle density building.' },
+                    { name: 'Phase 3 (Weeks 9-12): Peak Explosive Power & Velocity Output', desc: 'Transition heavy force into dynamic field speed with rate-of-force acceleration and plyometrics.' },
+                    { name: 'Phase 4 (Weeks 13-16): Metabolic Conditioning & PR Testing', desc: 'Final athletic taper, metabolic conditioning shred, and 1RM benchmark testing.' }
+                ],
+                inclusions: [
+                    'Complete 16-Week Periodized Workout Program on Mobile App',
+                    '100+ Video Exercise Demonstration Library with Form Guidance',
+                    'Customized Macronutrient & Caloric Periodization Calculator',
+                    'Weekly Check-In Template & Direct Form Review Audits',
+                    'Lifetime Access to All PDF Training Blueprints'
+                ]
+            },
+            '52week': {
+                title: '52-Week Complete Year-Round Training System',
+                category: 'Year-Round Athlete System',
+                level: 'All Experience Levels',
+                desc: 'The ultimate 365-day athletic development system covering off-season bulking, pre-season speed mechanics, and in-season power maintenance.',
+                price: '$299.00/mo',
+                oldPrice: '$499.00/mo',
+                saveText: 'Save $200/mo Today',
+                duration: '52 Weeks',
+                freq: '4-5 Days/Wk',
+                access: 'Instant',
+                support: 'VIP Access',
+                checkoutUrl: 'https://square.link/u/f7vG03u3',
+                phases: [
+                    { name: 'Quarter 1: Foundational Strength & Joint Bulletproofing', desc: 'Build rock-solid tendon elasticity, posterior chain power, and technical mastery.' },
+                    { name: 'Quarter 2: Hypertrophy & Maximum Force Generation', desc: 'Drive functional muscle mass, heavy barbell loading, and maximum power development.' },
+                    { name: 'Quarter 3: Game Velocity, Sprint Mechanics & Agility', desc: 'Speed drills, deceleration mechanics, multi-planar agility, and conditioning.' },
+                    { name: 'Quarter 4: In-Season Maintenance & Peak Performance', desc: 'Retain maximum strength and explosive capacity while minimizing in-season fatigue.' }
+                ],
+                inclusions: [
+                    'Full 365-Day Sequenced Programming (4 Periodized Blocks)',
+                    'Exclusive Priority Access to Coach Brown via Direct Line',
+                    'Quarterly Program Adaptations Based on Progress Benchmarks',
+                    'Comprehensive Recipe Book with 50+ High-Protein Meal Plans',
+                    'VIP Entry into the Private KROME Athlete Accountability Network'
+                ]
+            },
+            'shred': {
+                title: '8-Week Accelerated Fat Loss & Nutrition Protocol',
+                category: 'Rapid Body Recomposition',
+                level: 'Beginner to Advanced',
+                desc: 'A high-impact metabolic conditioning and precision macro blueprint engineered to strip stubborn fat while locking in lean muscle mass.',
+                price: '$79.00',
+                oldPrice: '$129.00',
+                saveText: 'Save $50 Today',
+                duration: '8 Weeks',
+                freq: '4 Days/Wk',
+                access: 'Instant',
+                support: 'Included',
+                checkoutUrl: 'https://square.link/u/swbYbkuY',
+                phases: [
+                    { name: 'Weeks 1-4: Metabolic Reset & Caloric Calibration', desc: 'Ignite fat oxidation with high-density supersets and sustainable macro adjustments.' },
+                    { name: 'Weeks 5-8: High-Definition Shred & Athletic Conditioning', desc: 'Amplify heart rate intervals, carb-cycling timing, and vascular muscle definition.' }
+                ],
+                inclusions: [
+                    '8-Week High-Intensity Fat Loss & Strength Workout Schedule',
+                    'Step-by-Step Macro Calculation Guide for Your Exact Body Weight',
+                    '50+ High-Protein Delicious Recipe Vault (Breakfast, Lunch & Dinner)',
+                    'Supplementation Guide: What Truly Works vs. Wasted Money',
+                    'Direct Email Support with Coach Brown'
+                ]
+            },
+            'inperson': {
+                title: 'In-Person Coaching: 4 Sessions (60 Min Each)',
+                category: 'Introductory In-Person Special',
+                level: 'All Athletic Levels',
+                desc: 'Special introductory 1-on-1 performance coaching package: 4 private 60-minute sessions with Coach Brown. Includes biomechanics movement screen, compound lift calibration, velocity testing, and a personalized independent training roadmap.',
+                price: '$250.00',
+                oldPrice: '$350.00',
+                saveText: 'Intro Special: Save $100',
+                duration: '4 Sessions (60 Min Each)',
+                freq: '60 Mins / Session',
+                access: 'Direct 1-on-1',
+                support: 'Direct 1-on-1',
+                checkoutUrl: 'tel:4054610727',
+                phases: [
+                    { name: 'Session 1: Biomechanical Screening & Movement Audit (60 Min)', desc: 'Comprehensive movement screen, power assessment, joint mobility audit, and target roadmap formulation.' },
+                    { name: 'Session 2: Squat, Hinge & Lower-Body Kinetic Velocity (60 Min)', desc: 'Hands-on barbell cues, hip drive mechanics, knee tracking, and rate-of-force acceleration.' },
+                    { name: 'Session 3: Upper-Body Force Output & Kinetic Chaining (60 Min)', desc: 'Bench press, overhead mechanics, pulling volume, and shoulder pre-hab bulletproofing.' },
+                    { name: 'Session 4: Speed Mechanics, Conditioning & Ongoing Roadmap (60 Min)', desc: 'Sprint start posture, deceleration drills, conditioning plan, and customized take-home program.' }
+                ],
+                inclusions: [
+                    '4 Private 60-Minute 1-on-1 Sessions with Coach Brown',
+                    'Introductory Special Pricing: $250 Total ($62.50 / 60-min session)',
+                    'Real-Time Barbell Technique & Speed Velocity Feedback',
+                    'Comprehensive Body Composition & Power Testing',
+                    'Customized At-Home Independent Training & Recovery Plan',
+                    'VIP Priority Scheduling & Direct Phone Access'
+                ]
+            }
+        };
+
+        function switchFunnelTier(tierKey) {
+            const data = FUNNEL_DATA[tierKey];
+            if (!data) return;
+
+            // Update tab buttons
+            document.querySelectorAll('.tier-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Update main left card
+            document.getElementById('funnel-display-title').textContent = data.title;
+            document.getElementById('funnel-display-desc').textContent = data.desc;
+            document.getElementById('funnel-category-badge').textContent = data.category;
+            document.getElementById('funnel-level-badge').innerHTML = `<i class="fas fa-signal me-1"></i> ${data.level}`;
+            document.getElementById('funnel-stat-duration').textContent = data.duration;
+            document.getElementById('funnel-stat-freq').textContent = data.freq;
+            document.getElementById('funnel-stat-access').textContent = data.access;
+            document.getElementById('funnel-stat-support').textContent = data.support;
+
+            // Render phases
+            const phasesContainer = document.getElementById('funnel-phases-container');
+            phasesContainer.innerHTML = data.phases.map(p => `
+                <div class="phase-block">
+                    <h5><i class="fas fa-chevron-right me-2" style="font-size: 0.85rem; color: var(--krome-cyan);"></i>${p.name}</h5>
+                    <p>${p.desc}</p>
+                </div>
+            `).join('');
+
+            // Render inclusions
+            const inclusionsContainer = document.getElementById('funnel-inclusions-container');
+            inclusionsContainer.innerHTML = data.inclusions.map(inc => `
+                <div class="inclusion-row">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${inc}</span>
+                </div>
+            `).join('');
+
+            // Update sidebar
+            document.getElementById('sidebar-tier-title').textContent = data.title;
+            document.getElementById('sidebar-price').textContent = data.price;
+            document.getElementById('sidebar-old-price').textContent = data.oldPrice;
+            document.getElementById('sidebar-save-badge').textContent = data.saveText;
+
+            const sidebarList = document.getElementById('sidebar-feature-list');
+            const highlightFeatures = data.inclusions.slice(0, 5);
+            sidebarList.innerHTML = highlightFeatures.map(inc => `
+                <li class="mb-2 text-light small d-flex align-items-center gap-2">
+                    <i class="fas fa-check text-warning"></i> <span>${inc}</span>
+                </li>
+            `).join('');
+
+            // Update checkout buttons
+            const checkoutBtn = document.getElementById('sidebar-checkout-btn');
+            const mobileBuyBtn = document.getElementById('mobile-buy-btn');
+            checkoutBtn.href = data.checkoutUrl;
+            mobileBuyBtn.href = data.checkoutUrl;
+
+            if (data.checkoutUrl.startsWith('tel:')) {
+                checkoutBtn.innerHTML = '<i class="fas fa-phone-alt me-2"></i> Call to Schedule Consultation';
+                mobileBuyBtn.innerHTML = '<i class="fas fa-phone-alt me-1"></i> Call Coach (' + data.price + ')';
+            } else {
+                checkoutBtn.innerHTML = '<i class="fas fa-lock me-2"></i> Enroll Now &bull; Instant Access';
+                mobileBuyBtn.innerHTML = '<i class="fas fa-bolt me-1"></i> Enroll Now (' + data.price + ')';
+            }
+        }
+
+        function handleLeadSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
+            const goal = document.getElementById('lead-goal').value;
+
+            // Save lead to localStorage
+            const leads = JSON.parse(localStorage.getItem('krome_leads') || '[]');
+            leads.push({ name, email, goal, timestamp: new Date().toISOString() });
+            localStorage.setItem('krome_leads', JSON.stringify(leads));
+
+            // Show confirmation
+            const successMsg = document.getElementById('lead-success-msg');
+            successMsg.classList.remove('d-none');
+            document.getElementById('hero-lead-form').reset();
+        }
+
+        // Initialize default tier on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstTierBtn = document.querySelector('.tier-btn');
+            if (firstTierBtn) {
+                switchFunnelTier('16week');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
