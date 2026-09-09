@@ -3,7 +3,8 @@
  * Lead Tracker & Google Sheets / Gmail Webhook Integration
  */
 
-const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUeigPgNZL6JeTwOBplygHRVbCLfrO7ETAV9dPOkM0PEaEFVmgNy3ruSaXndJ3sQ-N/exec';
+const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvJxiPMNYhn4Yo9obWfDaiHtNghefuQ7hXbOiwPMjuZvoPbRrmtTO6qv70TtJDsFH9/exec';
+const KROME_CALENDAR_BOOKING_URL = 'https://calendar.app.google/ikECphRQVZif3yUZ8';
 
 /**
  * Dispatches a lead submission payload to Google Apps Script (Sheets + Gmail)
@@ -73,3 +74,4 @@ async function sendLeadToGoogle(leadData) {
 
 window.sendLeadToGoogle = sendLeadToGoogle;
 window.KROME_GOOGLE_SCRIPT_URL = KROME_GOOGLE_SCRIPT_URL;
+window.KROME_CALENDAR_BOOKING_URL = KROME_CALENDAR_BOOKING_URL;
