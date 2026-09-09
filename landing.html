@@ -706,7 +706,7 @@
                     <i class="fas fa-crown me-1 text-warning"></i> 52-Week Complete ($299/mo)
                 </button>
                 <button type="button" class="tier-btn" onclick="switchFunnelTier('shred')">
-                    <i class="fas fa-bolt me-1" style="color: var(--krome-cyan);"></i> 8-Week Shred ($79)
+                    <i class="fas fa-bolt me-1" style="color: var(--krome-cyan);"></i> 8-Week Shred ($99)
                 </button>
                 <button type="button" class="tier-btn" onclick="switchFunnelTier('inperson')">
                     <i class="fas fa-user-friends me-1 text-warning"></i> In-Person Intro ($250 / 4 Sessions)
@@ -1130,6 +1130,7 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/leads.js"></script>
 
     <!-- Funnel Interactive Switcher Script -->
     <script>
@@ -1193,8 +1194,8 @@
                 category: 'Rapid Body Recomposition',
                 level: 'Beginner to Advanced',
                 desc: 'A high-impact metabolic conditioning and precision macro blueprint engineered to strip stubborn fat while locking in lean muscle mass.',
-                price: '$79.00',
-                oldPrice: '$129.00',
+                price: '$99.00',
+                oldPrice: '$149.00',
                 saveText: 'Save $50 Today',
                 duration: '8 Weeks',
                 freq: '4 Days/Wk',
@@ -1308,16 +1309,35 @@
             }
         }
 
-        function handleLeadSubmit(event) {
+        async function handleLeadSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('lead-name').value;
             const email = document.getElementById('lead-email').value;
-            const goal = document.getElementById('lead-goal').value;
+            const goalSelect = document.getElementById('lead-goal');
+            const goalText = goalSelect.options[goalSelect.selectedIndex] ? goalSelect.options[goalSelect.selectedIndex].text : goalSelect.value;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
 
-            // Save lead to localStorage
-            const leads = JSON.parse(localStorage.getItem('krome_leads') || '[]');
-            leads.push({ name, email, goal, timestamp: new Date().toISOString() });
-            localStorage.setItem('krome_leads', JSON.stringify(leads));
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+            }
+
+            // Save lead to Google Sheets & Gmail
+            try {
+                await sendLeadToGoogle({
+                    name: name,
+                    email: email,
+                    program: goalText,
+                    source: 'Landing Page (Free Blueprint Form)'
+                });
+            } catch (err) {
+                console.error('Error submitting lead:', err);
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-download me-2"></i> Download Free Blueprint Now';
+            }
 
             // Show confirmation
             const successMsg = document.getElementById('lead-success-msg');
