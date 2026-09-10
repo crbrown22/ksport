@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME 30-Day Shred Manual & Complete Nutrition Guide</title>
+    <meta name="description" content="Official KROME 30-Day Shred Digital Challenge Manual & Nutrition Guide. Includes 30-day meal calendar, 41 standardized recipe cards, calorie lane scaling, habit trackers, and maintenance plan.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn-action-outline {
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            background-color: rgba(0, 255, 209, 0.15);
+            color: #fff;
+        }
+
+        /* ----------------------------------
+           HERO & TOC
+        ---------------------------------- */
+        .manual-hero {
+            background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(11,11,11,0.98)), url('media/clean_eating.jpg') center/cover;
+            border-bottom: 1px solid var(--krome-card-border);
+            padding: 3rem 0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-price-badge {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .toc-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .toc-link {
+            color: var(--krome-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0;
+            font-size: 0.95rem;
+        }
+
+        .toc-link:hover {
+            color: var(--krome-cyan);
+            padding-left: 0.25rem;
+        }
+
+        .toc-link i {
+            color: var(--krome-gold);
+            width: 24px;
+        }
+
+        /* ----------------------------------
+           CONTENT SECTIONS
+        ---------------------------------- */
+        .manual-section {
+            background-color: var(--krome-card-bg);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section-heading {
+            color: var(--krome-gold);
+            font-weight: 800;
+            font-size: 1.6rem;
+            border-bottom: 2px solid rgba(255,212,71,0.2);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-heading i {
+            color: var(--krome-cyan);
+        }
+
+        /* Tables styling */
+        .table-krome {
+            color: var(--krome-text-main);
+            border-color: rgba(255,255,255,0.12);
+            font-size: 0.92rem;
+        }
+
+        .table-krome th {
+            background-color: #1a1a1a;
+            color: var(--krome-gold);
+            font-weight: 700;
+            border-bottom: 2px solid var(--krome-gold);
+        }
+
+        .table-krome td {
+            background-color: #121212;
+            vertical-align: middle;
+        }
+
+        .table-krome tr:hover td {
+            background-color: #1b1b1b;
+        }
+
+        /* Recipe Card Styling */
+        .recipe-card {
+            background-color: #181818;
+            border: 1px solid rgba(0, 255, 209, 0.2);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .recipe-card:hover {
+            border-color: var(--krome-cyan);
+            transform: translateY(-2px);
+        }
+
+        .recipe-title {
+            color: var(--krome-gold);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .recipe-badge {
+            font-size: 0.72rem;
+            background-color: rgba(0, 255, 209, 0.15);
+            color: var(--krome-cyan);
+            border: 1px solid rgba(0, 255, 209, 0.3);
+            border-radius: 50rem;
+            padding: 0.2rem 0.65rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .recipe-subheading {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .macro-pill {
+            background-color: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .macro-pill-title {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .macro-pill-val {
+            font-weight: 700;
+            color: var(--krome-gold);
+        }
+
+        /* Interactive Tracker Inputs */
+        .tracker-checkbox {
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+            accent-color: var(--krome-gold);
+        }
+
+        /* PRINT STYLING (FOR GENERATING HIGH-QUALITY CLEAN PDF) */
+        @media print {
+            .no-print, .manual-nav, .btn, button, select, input[type="text"] {
+                display: none !important;
+            }
+
+            body {
+                background-color: #ffffff !important;
+                color: #111111 !important;
+                font-size: 11pt;
+            }
+
+            .manual-hero {
+                background: none !important;
+                color: #000000 !important;
+                padding: 1rem 0 !important;
+                border-bottom: 2px solid #000 !important;
+            }
+
+            .hero-title {
+                color: #000000 !important;
+            }
+
+            .manual-section {
+                background-color: #ffffff !important;
+                border: 1px solid #ccc !important;
+                color: #000000 !important;
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem !important;
+                padding: 1rem !important;
+            }
+
+            .section-heading {
+                color: #000000 !important;
+                border-bottom: 2px solid #000 !important;
+            }
+
+            .table-krome, .table-krome th, .table-krome td {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .recipe-card {
+                background-color: #f8f9fa !important;
+                border: 1px solid #ccc !important;
+                color: #000000 !important;
+                page-break-inside: avoid;
+            }
+
+            .recipe-title {
+                color: #000000 !important;
+            }
+
+            .macro-pill-val {
+                color: #000000 !important;
+            }
+
+            .lane-col {
+                display: table-cell !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* Prevent horizontal scrollbars globally & enforce strict column containment */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            width: 100% !important;
+            margin: 0;
+            padding: 0;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        img, video, iframe, canvas {
+            max-width: 100% !important;
+            height: auto;
+        }
+
+        .container, .container-fluid {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            box-sizing: border-box;
+        }
+
+        .manual-section {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        .table-responsive {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            width: 100% !important;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .day-card {
+            background-color: #0e1117;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .day-card:hover {
+            border-color: rgba(255, 184, 0, 0.4);
+        }
+
+        /* TARGET MACROS BADGE RESPONSIVE WRAPPING */
+        .target-macro-wrapper {
+            max-width: 100%;
+        }
+
+        .target-macro-pill {
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            max-width: 100% !important;
+            font-size: 0.85rem;
+            line-height: 1.35;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .target-macro-wrapper {
+                width: 100% !important;
+                margin-top: 0.35rem;
+            }
+            .target-macro-pill {
+                width: 100% !important;
+                display: block !important;
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+        /* ----------------------------------
+           MOBILE UI & RESPONSIVE COLUMN PROTECTION
+        ---------------------------------- */
+        @media (max-width: 991.98px) {
+            .manual-hero {
+                padding: 2.25rem 0 1.75rem;
+            }
+            .hero-title {
+                font-size: 2.1rem;
+            }
+            .toc-card {
+                margin-top: 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container, .container-fluid {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            .manual-section {
+                padding: 1.25rem 1rem !important;
+                border-radius: 0.85rem !important;
+                margin-bottom: 1.25rem !important;
+            }
+            .section-heading {
+                font-size: 1.3rem !important;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+                word-break: break-word;
+            }
+            .hero-title {
+                font-size: 1.75rem !important;
+            }
+            .recipe-img-wrapper {
+                height: 180px !important;
+            }
+            .recipe-card {
+                padding: 1rem !important;
+            }
+            .recipe-title {
+                font-size: 1.05rem !important;
+            }
+            .day-card {
+                padding: 0.85rem !important;
+            }
+            .table-krome {
+                font-size: 0.82rem !important;
+            }
+            .table-krome th, .table-krome td {
+                padding: 0.45rem 0.5rem !important;
+                white-space: normal !important;
+                word-break: break-word !important;
+            }
+            #lane-toggle-nav {
+                display: flex;
+                flex-wrap: wrap !important;
+                border-radius: 1rem !important;
+                width: 100%;
+                justify-content: center;
+            }
+            #lane-toggle-nav button {
+                flex: 1 1 auto;
+                min-width: 120px;
+                text-align: center;
+                font-size: 0.8rem;
+                padding: 6px 10px !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container, .container-fluid {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            .manual-section {
+                padding: 1rem 0.75rem !important;
+            }
+            .hero-price-badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.65rem;
+            }
+            .btn-action-gold, .btn-action-outline {
+                font-size: 0.78rem;
+                padding: 0.35rem 0.75rem;
+            }
+            .list-group-item {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIVATE ACCESS OVERLAY / GATE MODAL -->
+    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center" style="max-width: 530px; width: 100%; border-width: 2px;">
+            <div class="mb-3">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Private Client Access
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-2">KROME 30-Day Shred Manual</h3>
+            <p class="text-light small mb-3">
+                This digital challenge manual and PDF nutrition guide is private and accessible exclusively to customers who purchased the program ($59.99) through Square.
+            </p>
+            <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50 mb-3 text-start small">
+                <p class="text-info mb-1"><i class="fas fa-key me-2"></i><strong>Square Access Token Notice:</strong></p>
+                <p class="text-secondary mb-0">Your private access key was delivered in your Square receipt email, or use the direct access link provided in your order confirmation.</p>
+            </div>
+            <div class="mb-3">
+                <label for="passcode-input" class="form-label text-warning small fw-bold">Enter Access Key / Passcode:</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-user-shield"></i></span>
+                    <input type="password" id="passcode-input" class="form-control bg-black text-light border-secondary" placeholder="e.g. SHRED30 or Square Receipt Key">
+                    <button class="btn btn-warning fw-bold px-3" onclick="verifyPasscode()">
+                        Unlock <i class="fas fa-unlock-alt ms-1"></i>
+                    </button>
+                </div>
+                <div id="passcode-error" class="text-danger small mt-2 d-none">
+                    <i class="fas fa-exclamation-circle me-1"></i> Invalid Access Key. Check your Square receipt email or enter "SHRED30".
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
+                    <i class="fas fa-shopping-cart me-1"></i> Haven't purchased yet? Buy on Square ($59.99)
+                </a>
+                <a href="shop.html" class="text-secondary small text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i> Return to KROME Fitness Shop
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY TOP MANUAL HEADER -->
+    <header class="manual-nav no-print">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <a href="shop.html" class="manual-brand">
+                <i class="fas fa-bolt me-2 text-warning"></i> KROME FITNESS &middot; 30-DAY SHRED
+            </a>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <span id="auth-status-badge" class="badge bg-dark text-warning border border-warning px-3 py-2 rounded-pill me-1" style="font-size: 0.78rem;">
+                    <i class="fas fa-lock me-1"></i> Private Member Area
+                </span>
+                <a href="program_detail.html?id=shred30" class="btn-action-outline">
+                    <i class="fas fa-arrow-left me-1"></i> Program Overview
+                </a>
+                <button onclick="window.print()" class="btn-action-gold">
+                    <i class="fas fa-file-pdf me-1"></i> Print / Save as PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE QUICK-JUMP SECTION BAR -->
+    <div class="d-lg-none bg-black border-bottom border-warning sticky-top p-2 overflow-x-auto text-nowrap no-print shadow" style="z-index: 1020; top: 0;">
+        <div class="d-flex align-items-center gap-1">
+            <span class="small text-warning fw-bold me-1 ms-1"><i class="fas fa-compass me-1"></i> Jump:</span>
+            <a href="#sec-1" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2" style="font-size: 0.75rem;">1. Overview</a>
+            <a href="#sec-2" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2" style="font-size: 0.75rem;">2. Lanes</a>
+            <a href="#sec-3" class="btn btn-sm btn-outline-light rounded-pill py-1 px-2" style="font-size: 0.75rem;">3. Foods</a>
+            <a href="#sec-4" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill py-1 px-2" style="font-size: 0.75rem;">4. Calendar</a>
+            <a href="#sec-5" class="btn btn-sm btn-info text-dark fw-bold rounded-pill py-1 px-2" style="font-size: 0.75rem;">5. 41 Recipes</a>
+            <a href="#sec-8" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2" style="font-size: 0.75rem;">8. Trackers</a>
+            <a href="#sec-10" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2" style="font-size: 0.75rem;">10. Maintenance</a>
+        </div>
+    </div>
+
+    <!-- MANUAL HERO & OVERVIEW -->
+    <section class="manual-hero">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <div class="mb-2">
+                        <span class="hero-price-badge me-2">$59.99 DIGITAL CHALLENGE MANUAL</span>
+                        <span class="badge bg-dark text-info border border-info" style="font-size: 0.8rem;">ON DEMAND PROGRAM</span>
+                    </div>
+                    <h1 class="hero-title mb-2">KROME 30-DAY SHRED</h1>
+                    <h2 class="h4 text-warning fw-bold mb-3">Complete Nutrition Guide & Challenge Manual</h2>
+                    <p class="text-light fs-5 lh-base mb-4">
+                        30 days of high-protein meals, carb cycling, standardized recipes, daily habit tracking scorecards, and a 7-day post-challenge maintenance transition plan.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 text-light small fw-bold">
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-calendar-alt text-warning me-1"></i> 30-Day Meal Calendar</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-utensils text-info me-1"></i> 41 Recipe Cards</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-fire text-warning me-1"></i> 3 Calorie Lanes (1800/2200/2600)</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-check-double text-info me-1"></i> Weekly Trackers</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 no-print">
+                    <div class="toc-card">
+                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-list-ol me-2"></i> Quick Table of Contents</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#sec-notice" class="toc-link"><i class="fas fa-exclamation-triangle"></i> Health & Nutrition Notice</a></li>
+                            <li><a href="#sec-1" class="toc-link"><i class="fas fa-play-circle"></i> 1. How to Use the Shred</a></li>
+                            <li><a href="#sec-2" class="toc-link"><i class="fas fa-chart-line"></i> 2. Calorie Lanes & Carb Cycling</a></li>
+                            <li><a href="#sec-3" class="toc-link"><i class="fas fa-cubes"></i> 3. Food Matrix (Protein/Carb/Fat)</a></li>
+                            <li><a href="#sec-4" class="toc-link"><i class="fas fa-calendar-check"></i> 4. 30-Day Meal Calendar</a></li>
+                            <li><a href="#sec-5" class="toc-link"><i class="fas fa-book-open"></i> 5. 41 Standardized Recipe Cards</a></li>
+                            <li><a href="#sec-6" class="toc-link"><i class="fas fa-pills"></i> 6. Vitamins Guide</a></li>
+                            <li><a href="#sec-7" class="toc-link"><i class="fas fa-vial"></i> 7. Supplement Guide</a></li>
+                            <li><a href="#sec-8" class="toc-link"><i class="fas fa-tasks"></i> 8. Weekly & Habit Trackers</a></li>
+                            <li><a href="#sec-9" class="toc-link"><i class="fas fa-flag-checkered"></i> 9. Day 30 Assessment</a></li>
+                            <li><a href="#sec-10" class="toc-link"><i class="fas fa-sync-alt"></i> 10. 7-Day Maintenance Transition</a></li>
+                            <li><a href="#sec-11" class="toc-link"><i class="fas fa-utensil-spoon"></i> 11. Dining Out, Travel & Emergency</a></li>
+                            <li><a href="#sec-12" class="toc-link"><i class="fas fa-bookmark"></i> 12. References & Source Notes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN MANUAL CONTENT -->
+    <main class="container py-4 flex-grow-1">
+
+        <!-- HEALTH NOTICE -->
+        <div class="manual-section" id="sec-notice">
+            <h3 class="section-heading"><i class="fas fa-notes-medical"></i> IMPORTANT HEALTH & NUTRITION NOTICE</h3>
+            <p class="text-light small">
+                This guide provides general fitness and nutrition education. It is not individualized medical advice, diagnosis, treatment, or medical nutrition therapy. Calorie needs, nutrient needs, exercise tolerance, medication interactions and appropriate rates of weight change vary by person.
+            </p>
+            <p class="text-light small">
+                Adults who are pregnant or nursing, under 18, have a history of disordered eating, have a medical condition, use medications that may interact with diet or supplements, or have other relevant health concerns should obtain individualized guidance from an appropriately qualified healthcare professional before beginning a calorie-restricted diet, substantially changing exercise, or using dietary supplements.
+            </p>
+            <p class="text-light small mb-0">
+                Recipe calories and macronutrients are estimates. Brand, cooking method, cooked weight, trimming, serving size and ingredient substitutions can change the final numbers. <strong>Do not use starvation, intentional dehydration, laxatives, unsafe supplements, or other extreme practices to accelerate scale loss.</strong>
+            </p>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="manual-section" id="sec-1">
+            <h3 class="section-heading"><i class="fas fa-bullseye"></i> 1. HOW TO USE THE SHRED</h3>
+            
+            <div class="row align-items-center g-4 mb-3">
+                <div class="col-lg-7">
+                    <p class="lead text-light fs-6 mb-3">
+                        This nutrition system is designed to remove daily decision fatigue. Each day has a nutrition type &mdash; <strong>HIGH</strong>, <strong>MODERATE</strong>, or <strong>LOWER</strong> &mdash; that matches the training rhythm of the 30-Day Shred.
+                    </p>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush rounded bg-dark border border-secondary border-opacity-25 small">
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-warning me-2"></i> Choose your calorie lane (1800, 2200, or 2600 kcal).</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-warning me-2"></i> Use the 30-day calendar for today's carb designation.</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-warning me-2"></i> Scale the 5 listed daily meals to your lane.</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-warning me-2"></i> Keep protein high across all three day types.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush rounded bg-dark border border-secondary border-opacity-25 small">
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-info me-2"></i> High carbs on training days; lower carbs on rest.</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-info me-2"></i> Track weight trends, waist, energy, and sleep.</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-info me-2"></i> Maintain consistent deficit without extreme starving.</li>
+                                <li class="list-group-item bg-transparent text-light"><i class="fas fa-check text-info me-2"></i> Return to plan immediately if one meal strays.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="position-relative rounded-4 overflow-hidden border border-warning shadow-lg">
+                        <img src="media/21day_transformation.jpg" alt="KROME Transformation Athlete" style="width: 100%; height: 220px; object-fit: cover;">
+                        <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);">
+                            <span class="badge bg-warning text-dark fw-bold mb-1">PROVEN METABOLIC DENSITY</span>
+                            <p class="small text-light mb-0">High-intensity metabolic conditioning paired with targeted carb cycling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-dark border border-warning rounded-3 text-center">
+                <h5 class="text-warning fw-bold mb-1"><i class="fas fa-shield-alt me-2"></i> The KROME Standard</h5>
+                <p class="mb-0 text-light fw-semibold small">
+                    Protein first. Produce daily. Carbohydrates with purpose. Fats measured. Water consistently. Prepare before you are hungry. If one meal goes off plan, return to the plan at the next meal.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="manual-section" id="sec-2">
+            <h3 class="section-heading"><i class="fas fa-fire"></i> 2. CALORIE LANES & CARB CYCLING</h3>
+            
+            <div class="row align-items-center g-3 mb-3">
+                <div class="col-md-8">
+                    <p class="text-light mb-0">
+                        The calorie lanes are templates, not individualized prescriptions. The 30-day calendar has been mathematically scaled so the average intake across the full challenge is approximately 1,800, 2,200 or 2,600 calories per day.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="rounded-3 overflow-hidden border border-info" style="max-height: 120px;">
+                        <img src="media/nutrition_16.jpg" alt="Calorie Lanes & Prep" style="width: 100%; height: 120px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-krome align-middle">
+                    <thead>
+                        <tr>
+                            <th>Calorie Lane</th>
+                            <th>30-Day Avg kcal</th>
+                            <th>HIGH Day Typical</th>
+                            <th>MODERATE Day Typical</th>
+                            <th>LOWER Day Typical</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-warning">1800 Lane</td>
+                            <td>1818 kcal</td>
+                            <td>1962 kcal</td>
+                            <td>1798 kcal</td>
+                            <td>1606 kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-info">2200 Lane</td>
+                            <td>2203 kcal</td>
+                            <td>2378 kcal</td>
+                            <td>2178 kcal</td>
+                            <td>1945 kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning">2600 Lane</td>
+                            <td>2609 kcal</td>
+                            <td>2817 kcal</td>
+                            <td>2580 kcal</td>
+                            <td>2304 kcal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-light small mt-3">
+                <strong>HIGH days</strong> intentionally contain more carbohydrate and usually more calories. <strong>LOWER days</strong> reduce carbohydrate portions and total calories without eliminating carbohydrate entirely.
+            </p>
+
+            <div class="row g-3 mt-2">
+                <div class="col-md-6">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-25 h-100">
+                        <h6 class="text-warning fw-bold"><i class="fas fa-drumstick-bite me-2"></i> Protein Target</h6>
+                        <p class="small text-light mb-0">
+                            For many active adults, a high-protein diet can support training, recovery and lean-tissue retention during a calorie deficit. The NIH Office of Dietary Supplements notes that athletes often need roughly 0.5-0.9 g protein per pound of body weight per day and may need more temporarily during intense training or reduced food intake.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-25 h-100">
+                        <h6 class="text-info fw-bold"><i class="fas fa-redo-alt me-2"></i> Carb Cycle Pattern</h6>
+                        <p class="small text-light mb-0">
+                            <strong>Days 1-28 repeat:</strong> HIGH &rarr; MODERATE &rarr; HIGH &rarr; LOWER &rarr; HIGH &rarr; MODERATE &rarr; LOWER.<br>
+                            <strong>Day 29</strong> is HIGH and <strong>Day 30</strong> is MODERATE.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="manual-section" id="sec-3">
+            <h3 class="section-heading"><i class="fas fa-cubes"></i> 3. FOOD MATRIX</h3>
+            <p class="text-light mb-4">
+                Reference these high-yield food anchors when assembling meals or making appropriate substitutions.
+            </p>
+
+            <div class="row g-4">
+                <!-- Protein Anchors -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-warning border-opacity-50 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="text-warning fw-bold mb-3"><i class="fas fa-drumstick-bite me-2"></i> Protein Anchors</h5>
+                            <ul class="list-group list-group-flush bg-transparent small mb-0">
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Chicken Breast (120g)</span><span class="text-warning fw-bold">198k | 37P/4F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Lean Ground Turkey (120g)</span><span class="text-warning fw-bold">180k | 34P/3F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Top Sirloin Beef (120g)</span><span class="text-warning fw-bold">210k | 31P/8F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Atlantic Salmon (154g cooked)</span><span class="text-warning fw-bold">280k | 34P/20F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Tuna / Cod / Tilapia (120g)</span><span class="text-warning fw-bold">130k | 28P/1F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Whole Eggs (2 large)</span><span class="text-warning fw-bold">144k | 12P/10F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Whey / Plant Isolate (1 scoop)</span><span class="text-warning fw-bold">110k | 27P/0.5F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Nonfat Greek Yogurt (170g)</span><span class="text-warning fw-bold">100k | 17P/0F</span></li>
+                            </ul>
+
+                            <!-- Expanded Protein Database List -->
+                            <div id="more-protein-container" class="d-none mt-1">
+                                <ul class="list-group list-group-flush bg-transparent small border-top border-warning border-opacity-25 pt-1">
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Liquid Egg Whites (1 cup / 240g)</span><span class="text-warning fw-bold">120k | 26P/0F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Low-Fat Cottage Cheese (1 cup)</span><span class="text-warning fw-bold">160k | 28P/2.5F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Pork Tenderloin (120g)</span><span class="text-warning fw-bold">170k | 30P/4F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Lean Bison / Venison (120g)</span><span class="text-warning fw-bold">190k | 30P/6F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Jumbo Shrimp / Scallops (150g)</span><span class="text-warning fw-bold">140k | 30P/1F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Canned Wild Salmon (100g)</span><span class="text-warning fw-bold">150k | 22P/6F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Sliced Lean Deli Turkey (100g)</span><span class="text-warning fw-bold">110k | 22P/1.5F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Extra-Firm Tofu (150g)</span><span class="text-warning fw-bold">120k | 13P/7F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Organic Tempeh (100g)</span><span class="text-warning fw-bold">190k | 20P/11F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Vital Wheat Gluten / Seitan (100g)</span><span class="text-warning fw-bold">370k | 75P/2F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Steamed Edamame (1 cup)</span><span class="text-warning fw-bold">188k | 18P/8F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Micellar Casein Protein (1 scoop)</span><span class="text-warning fw-bold">120k | 24P/1F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Grass-Fed Beef Jerky (50g)</span><span class="text-warning fw-bold">150k | 26P/2F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Bone Broth Protein Powder (1 scoop)</span><span class="text-warning fw-bold">90k | 20P/0F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Halibut / Wild Mahi-Mahi (150g)</span><span class="text-warning fw-bold">130k | 28P/1F</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-warning w-100 rounded-pill mt-3 fw-bold py-1" onclick="toggleMoreProtein()" id="btn-toggle-protein">
+                            <i class="fas fa-chevron-down me-1"></i> View More Protein Sources (15 More)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carbohydrate Anchors -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-info border-opacity-50 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="text-info fw-bold mb-3"><i class="fas fa-bread-slice me-2"></i> Carbohydrates</h5>
+                            <ul class="list-group list-group-flush bg-transparent small mb-0">
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Oats / Oatmeal (1/2c dry)</span><span class="text-info fw-bold">150k | 27C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Jasmine White Rice (1c cooked)</span><span class="text-info fw-bold">205k | 45C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Brown Rice (1c cooked)</span><span class="text-info fw-bold">218k | 46C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Sweet Potato (1 medium)</span><span class="text-info fw-bold">103k | 24C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>White Potato (1 medium)</span><span class="text-info fw-bold">168k | 38C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Quinoa (1c cooked)</span><span class="text-info fw-bold">222k | 39C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Apple (1 medium)</span><span class="text-info fw-bold">95k | 25C</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Banana (1 medium)</span><span class="text-info fw-bold">105k | 27C</span></li>
+                            </ul>
+                            
+                            <!-- Expanded Carbohydrate Database List -->
+                            <div id="more-carbs-container" class="d-none mt-1">
+                                <ul class="list-group list-group-flush bg-transparent small border-top border-info border-opacity-25 pt-1">
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Cream of Rice (1/4c dry)</span><span class="text-info fw-bold">150k | 33C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Ezekiel / Wheat Bread (2 slice)</span><span class="text-info fw-bold">160k | 30C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Whole Wheat Pasta (1c cooked)</span><span class="text-info fw-bold">174k | 37C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Black / Kidney Beans (1c cooked)</span><span class="text-info fw-bold">227k | 41C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Lentils (1c cooked)</span><span class="text-info fw-bold">230k | 40C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Mixed Berries (1 cup)</span><span class="text-info fw-bold">85k | 21C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Blueberries (1 cup)</span><span class="text-info fw-bold">84k | 21C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Orange / Grapefruit (1 med)</span><span class="text-info fw-bold">62k | 15C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Plain Rice Cakes (2 cakes)</span><span class="text-info fw-bold">70k | 14C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>High-Protein Pancake Mix (1s)</span><span class="text-info fw-bold">190k | 38C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Broccoli Florets (1 cup)</span><span class="text-info fw-bold">31k | 6C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Asparagus Spears (1 cup)</span><span class="text-info fw-bold">27k | 5C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Fresh Spinach / Kale (2 cups)</span><span class="text-info fw-bold">14k | 2C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Zucchini / Squash (1 cup)</span><span class="text-info fw-bold">21k | 4C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Green Beans (1 cup)</span><span class="text-info fw-bold">31k | 7C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Bell Peppers (1 cup sliced)</span><span class="text-info fw-bold">30k | 7C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Cauliflower (1 cup florets)</span><span class="text-info fw-bold">25k | 5C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Cucumber / Celery (1 cup)</span><span class="text-info fw-bold">16k | 3.8C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Pure Honey (1 Tbsp)</span><span class="text-info fw-bold">64k | 17C</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Bagel / English Muffin (1/2)</span><span class="text-info fw-bold">130k | 26C</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-info w-100 rounded-pill mt-3 fw-bold py-1" onclick="toggleMoreCarbs()" id="btn-toggle-carbs">
+                            <i class="fas fa-chevron-down me-1"></i> View More Carbohydrates (20 More)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fat Anchors -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="text-light fw-bold mb-3"><i class="fas fa-seedling me-2"></i> Fat Anchors</h5>
+                            <ul class="list-group list-group-flush bg-transparent small mb-0">
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Avocado (1/2 medium)</span><span class="text-light fw-bold">160k | 15F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Extra Virgin Olive Oil (1 Tbsp)</span><span class="text-light fw-bold">120k | 14F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Natural Peanut Butter (2 Tbsp)</span><span class="text-light fw-bold">190k | 16F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Whole Raw Almonds (1 oz)</span><span class="text-light fw-bold">165k | 14F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>English Walnuts (1 oz)</span><span class="text-light fw-bold">185k | 18F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Milled Flax / Chia Seeds (2 Tbsp)</span><span class="text-light fw-bold">75k | 6F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Dark Chocolate 85%+ (1 oz)</span><span class="text-light fw-bold">170k | 14F</span></li>
+                                <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>MCT / Organic Coconut Oil (1 Tbsp)</span><span class="text-light fw-bold">120k | 14F</span></li>
+                            </ul>
+
+                            <!-- Expanded Fats Database List -->
+                            <div id="more-fats-container" class="d-none mt-1">
+                                <ul class="list-group list-group-flush bg-transparent small border-top border-secondary border-opacity-25 pt-1">
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Raw Macadamia Nuts (1 oz)</span><span class="text-light fw-bold">204k | 21F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Raw Cashews (1 oz)</span><span class="text-light fw-bold">157k | 12F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Pecan Halves (1 oz)</span><span class="text-light fw-bold">196k | 20F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Pumpkin Seeds / Pepitas (1 oz)</span><span class="text-light fw-bold">150k | 13F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Sunflower Seed Butter (2 Tbsp)</span><span class="text-light fw-bold">190k | 16F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Grass-Fed Irish Butter / Ghee (1 Tbsp)</span><span class="text-light fw-bold">100k | 11F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Unsweetened Coconut Milk (1/4 cup)</span><span class="text-light fw-bold">120k | 12F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Whole Olives (Green/Black, 10 large)</span><span class="text-light fw-bold">50k | 5F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Pure Tahini / Sesame Paste (1 Tbsp)</span><span class="text-light fw-bold">89k | 8F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Organic Hemp Hearts (3 Tbsp)</span><span class="text-light fw-bold">166k | 14F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Fresh Guacamole (1/4 cup)</span><span class="text-light fw-bold">90k | 8F</span></li>
+                                    <li class="list-group-item bg-transparent text-light d-flex justify-content-between"><span>Full-Fat Salad Dressing (1 Tbsp)</span><span class="text-light fw-bold">75k | 8F</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-outline-secondary w-100 rounded-pill mt-3 fw-bold py-1 text-light" onclick="toggleMoreFats()" id="btn-toggle-fats">
+                                <i class="fas fa-chevron-down me-1"></i> View More Healthy Fats (12 More)
+                            </button>
+                            <p class="small text-secondary mt-2 mb-0">
+                                Healthy fats are calorie dense. Always measure oils, nuts, nut butters and avocado precisely.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="manual-section" id="sec-4">
+            <h3 class="section-heading"><i class="fas fa-calendar-alt"></i> 4. 30-DAY MEAL CALENDAR</h3>
+            <p class="text-light mb-3">
+                Use the same menu structure across all three calorie lanes. Select a lane tab below to display its dedicated 30-day schedule cleanly on any screen with zero horizontal scrolling.
+            </p>
+
+            <!-- Calendar Filter Tabs -->
+            <div class="p-3 bg-dark border border-warning rounded-4 mb-4 no-print shadow-lg" id="cal-lane-buttons">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <h6 class="text-warning fw-bold mb-1"><i class="fas fa-sliders-h me-2"></i> Select Calorie Lane View</h6>
+                        <p class="small text-secondary mb-0">Switch views to inspect target macros for each lane without scrollbars.</p>
+                    </div>
+                    <div class="nav nav-pills bg-black p-1 rounded-pill border border-secondary border-opacity-50 gap-1" id="lane-toggle-nav">
+                        <button class="nav-link text-warning fw-bold rounded-pill px-3 py-1 active bg-warning text-dark" onclick="setCalorieHighlight('1800', this)">
+                            <i class="fas fa-fire me-1"></i> 1800 Lane View
+                        </button>
+                        <button class="nav-link text-info fw-bold rounded-pill px-3 py-1" onclick="setCalorieHighlight('2200', this)">
+                            <i class="fas fa-fire me-1"></i> 2200 Lane View
+                        </button>
+                        <button class="nav-link text-light fw-bold rounded-pill px-3 py-1" onclick="setCalorieHighlight('2600', this)">
+                            <i class="fas fa-fire me-1"></i> 2600 Lane View
+                        </button>
+                        <button class="nav-link text-secondary fw-bold rounded-pill px-3 py-1" onclick="setCalorieHighlight('all', this)">
+                            <i class="fas fa-columns me-1"></i> Compare All Lanes
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Calendar Days View -->
+            <div id="calendar-days-container" class="w-100">
+                <!-- Populated via JavaScript renderCalendarView() -->
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="manual-section" id="sec-5">
+            <h3 class="section-heading"><i class="fas fa-book-open"></i> 5. 41 STANDARDIZED RECIPE CARDS</h3>
+            <p class="text-light mb-3">
+                All recipe macros are estimates. The 1800 lane uses ~85% of standard serving, 2200 lane ~103%, and 2600 lane ~122%. Keep protein stable and scale carb/fat portions to fit your lane.
+            </p>
+
+            <!-- Search & Filter Controls -->
+            <div class="row g-2 mb-4 no-print">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-warning"><i class="fas fa-search"></i></span>
+                        <input type="text" id="recipe-search-input" class="form-select form-control bg-dark text-light border-secondary" placeholder="Search 41 recipes (e.g. Chicken, Oats, Salmon, Smoothie)..." onkeyup="filterRecipes()">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-warning active rounded-pill px-3" onclick="filterRecipeType('all', this)">All (41)</button>
+                    <button class="btn btn-sm btn-outline-info rounded-pill px-3" onclick="filterRecipeType('breakfast', this)">Breakfast</button>
+                    <button class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="filterRecipeType('main', this)">Lunch/Dinner</button>
+                    <button class="btn btn-sm btn-outline-info rounded-pill px-3" onclick="filterRecipeType('snack', this)">Snacks/Dessert</button>
+                </div>
+            </div>
+
+            <!-- Recipe Grid -->
+            <div class="row g-3" id="recipes-container">
+                <!-- 41 Recipe Cards rendered via JS or static cards -->
+            </div>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="manual-section" id="sec-6">
+            <h3 class="section-heading"><i class="fas fa-pills"></i> 6. VITAMINS GUIDE</h3>
+            <p class="text-light mb-3">
+                Use food variety to cover micronutrient requirements whenever possible.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-krome align-middle">
+                    <thead>
+                        <tr>
+                            <th>Vitamin</th>
+                            <th>Primary Roles</th>
+                            <th>Food Sources from KROME Resources</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="fw-bold text-warning">Vitamin A</td><td>Vision, immune function, cell growth</td><td>Carrots, sweet potatoes, spinach, kale</td></tr>
+                        <tr><td class="fw-bold text-warning">B1 (Thiamine)</td><td>Energy metabolism & nerve function</td><td>Whole grains, pork, legumes, seeds</td></tr>
+                        <tr><td class="fw-bold text-warning">B2 (Riboflavin)</td><td>Energy production & antioxidant functions</td><td>Milk, eggs, almonds, leafy greens</td></tr>
+                        <tr><td class="fw-bold text-warning">B3 (Niacin)</td><td>Energy metabolism & DNA repair</td><td>Poultry, tuna, peanuts, mushrooms</td></tr>
+                        <tr><td class="fw-bold text-warning">B5 (Pantothenic Acid)</td><td>Energy metabolism & hormone synthesis</td><td>Eggs, avocados, whole grains, chicken</td></tr>
+                        <tr><td class="fw-bold text-warning">B6 (Pyridoxine)</td><td>Protein metabolism & neurotransmitters</td><td>Chicken, bananas, potatoes, salmon</td></tr>
+                        <tr><td class="fw-bold text-warning">B7 (Biotin)</td><td>Carbohydrate & fat metabolism</td><td>Eggs, nuts, legumes</td></tr>
+                        <tr><td class="fw-bold text-warning">B9 (Folate)</td><td>Red blood cells & DNA synthesis</td><td>Leafy greens, beans, fortified grains</td></tr>
+                        <tr><td class="fw-bold text-warning">B12 (Cobalamin)</td><td>Red blood cells & nerve function</td><td>Meat, fish, dairy, fortified foods</td></tr>
+                        <tr><td class="fw-bold text-warning">Vitamin C</td><td>Collagen, antioxidant & immune function</td><td>Citrus, strawberries, bell peppers</td></tr>
+                        <tr><td class="fw-bold text-warning">Vitamin D</td><td>Bone, immune & muscle functions</td><td>Fatty fish, fortified dairy; sunlight</td></tr>
+                        <tr><td class="fw-bold text-warning">Vitamin E</td><td>Antioxidant protection</td><td>Almonds, sunflower seeds, spinach</td></tr>
+                        <tr><td class="fw-bold text-warning">Vitamin K</td><td>Normal blood clotting & bone health</td><td>Kale, spinach, broccoli</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="manual-section" id="sec-7">
+            <h3 class="section-heading"><i class="fas fa-vial"></i> 7. SUPPLEMENT GUIDE</h3>
+            <p class="text-light mb-3">
+                Supplements are optional. They do not replace calorie control, adequate protein, training, sleep, hydration or a varied diet.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-krome align-middle">
+                    <thead>
+                        <tr>
+                            <th>Supplement</th>
+                            <th>Why People Use It</th>
+                            <th>General Amount</th>
+                            <th>Timing</th>
+                            <th>KROME Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="fw-bold text-warning">Creatine Monohydrate</td><td>Strength / power support</td><td>3-5 g/day</td><td>Daily; consistency matters most</td><td class="small text-secondary">Optional. Increases intracellular muscle water.</td></tr>
+                        <tr><td class="fw-bold text-info">Whey Protein</td><td>Convenient complete protein</td><td>20-40 g/serving</td><td>Between meals or post-workout</td><td class="small text-secondary">Helps hit protein targets.</td></tr>
+                        <tr><td class="fw-bold text-warning">EPA/DHA Omega-3</td><td>Long-chain omega-3 fats</td><td>Product/clinician guidelines</td><td>With meals</td><td class="small text-secondary">Relevant if fish intake is low.</td></tr>
+                        <tr><td class="fw-bold text-info">Beta-Alanine</td><td>Repeated high-intensity endurance</td><td>3-6 g/day</td><td>Split doses</td><td class="small text-secondary">Can cause harmless tingling.</td></tr>
+                        <tr><td class="fw-bold text-warning">Caffeine</td><td>Alertness & exercise stamina</td><td>2-6 mg/kg (lowest effective)</td><td>30-60 min pre-workout</td><td class="small text-secondary">Avoid late use to protect sleep.</td></tr>
+                        <tr><td class="fw-bold text-info">L-Citrulline</td><td>Blood flow & nitric oxide</td><td>Research protocols vary</td><td>Pre-exercise</td><td class="small text-secondary">Evidence mixed; optional.</td></tr>
+                        <tr><td class="fw-bold text-warning">Electrolytes</td><td>Sodium/mineral sweat replacement</td><td>Based on sweat loss</td><td>During/after long sessions</td><td class="small text-secondary">Short workouts do not require extra.</td></tr>
+                        <tr><td class="fw-bold text-info">Magnesium</td><td>Essential mineral support</td><td>Food first / supplement as needed</td><td>Evening or with meals</td><td class="small text-secondary">Supports muscle & nerve function.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 8 -->
+        <div class="manual-section" id="sec-8">
+            <h3 class="section-heading"><i class="fas fa-tasks"></i> 8. WEEKLY TRACKERS & 30-DAY HABIT TRACKER</h3>
+            <p class="text-light mb-4">
+                Complete one scorecard at the end of Days 7, 14, 21, and 28. Use the interactive 30-day habit scorecard to log daily adherence.
+            </p>
+
+            <!-- Weekly Check-Ins -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-dark rounded border border-warning h-100">
+                        <h6 class="text-warning fw-bold"><i class="fas fa-flag me-1"></i> Week 1 Check-In (Day 7)</h6>
+                        <div class="small text-light">
+                            <label class="d-block mb-1">Avg Weight: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="lbs"></label>
+                            <label class="d-block mb-1">Waist (in): <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="inches"></label>
+                            <label class="d-block mb-1">Adherence %: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="e.g. 95%"></label>
+                            <label class="d-block mb-1">Steps / Sleep: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="10k steps / 8 hrs"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-dark rounded border border-info h-100">
+                        <h6 class="text-info fw-bold"><i class="fas fa-flag me-1"></i> Week 2 Check-In (Day 14)</h6>
+                        <div class="small text-light">
+                            <label class="d-block mb-1">Avg Weight: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="lbs"></label>
+                            <label class="d-block mb-1">Waist (in): <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="inches"></label>
+                            <label class="d-block mb-1">Adherence %: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="e.g. 95%"></label>
+                            <label class="d-block mb-1">Steps / Sleep: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="10k steps / 8 hrs"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-dark rounded border border-warning h-100">
+                        <h6 class="text-warning fw-bold"><i class="fas fa-flag me-1"></i> Week 3 Check-In (Day 21)</h6>
+                        <div class="small text-light">
+                            <label class="d-block mb-1">Avg Weight: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="lbs"></label>
+                            <label class="d-block mb-1">Waist (in): <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="inches"></label>
+                            <label class="d-block mb-1">Adherence %: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="e.g. 95%"></label>
+                            <label class="d-block mb-1">Steps / Sleep: <input type="text" class="form-control form-control-sm bg-black text-warning border-secondary" placeholder="10k steps / 8 hrs"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="p-3 bg-dark rounded border border-info h-100">
+                        <h6 class="text-info fw-bold"><i class="fas fa-flag me-1"></i> Week 4 Check-In (Day 28)</h6>
+                        <div class="small text-light">
+                            <label class="d-block mb-1">Avg Weight: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="lbs"></label>
+                            <label class="d-block mb-1">Waist (in): <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="inches"></label>
+                            <label class="d-block mb-1">Adherence %: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="e.g. 95%"></label>
+                            <label class="d-block mb-1">Steps / Sleep: <input type="text" class="form-control form-control-sm bg-black text-info border-secondary" placeholder="10k steps / 8 hrs"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 mb-4">
+                <span class="fw-bold text-warning d-block mb-1"><i class="fas fa-traffic-light me-1"></i> Decision Rules:</span>
+                <span class="badge bg-success me-1">GREEN</span> Progressing and recovering &rarr; Continue.<br>
+                <span class="badge bg-warning text-dark me-1">YELLOW</span> Inconsistent execution &rarr; Fix adherence before reducing calories.<br>
+                <span class="badge bg-danger me-1">RED</span> Sustained stall despite strong execution &rarr; Audit portion sizes, weekends, steps, and untracked bites before making one modest adjustment.
+            </div>
+
+            <!-- 30-Day Interactive Habit Scorecard -->
+            <h5 class="text-warning fw-bold mb-3"><i class="fas fa-check-square me-2"></i> 30-Day Daily Habit Tracker</h5>
+
+            <!-- Interactive Habit Logger Card -->
+            <div class="mb-4">
+                <div class="p-3 p-md-4 bg-black rounded-3 border border-warning shadow">
+                    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+                        <h6 class="text-warning fw-bold mb-0 fs-5"><i class="fas fa-check-circle me-2"></i> Interactive Daily Logger</h6>
+                        <div class="d-flex align-items-center gap-2">
+                            <select id="mobile-habit-day-select" class="form-select form-select-sm bg-dark text-warning border-warning fw-bold rounded-pill px-3 py-1" style="width: auto; cursor: pointer;" onchange="renderMobileHabitDay(this.value)">
+                                <!-- Generated by JS for Days 1 to 30 -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="mobile-habit-day-card" class="bg-dark p-3 p-md-4 rounded-3 border border-secondary mb-3">
+                        <!-- Populated by JS -->
+                    </div>
+                    
+                    <div class="d-flex align-items-center justify-content-between gap-2">
+                        <button class="btn btn-sm btn-outline-warning rounded-pill px-3 px-md-4 py-2 fw-bold" onclick="prevHabitDay()"><i class="fas fa-chevron-left me-1"></i> Previous Day</button>
+                        <span id="habit-progress-badge" class="badge bg-warning text-dark py-2 px-3 fs-6 fw-bold rounded-pill">0 / 8 Completed</span>
+                        <button class="btn btn-sm btn-outline-warning rounded-pill px-3 px-md-4 py-2 fw-bold" onclick="nextHabitDay()">Next Day <i class="fas fa-chevron-right ms-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9 -->
+        <div class="manual-section" id="sec-9">
+            <h3 class="section-heading"><i class="fas fa-flag-checkered"></i> 9. DAY 30 ASSESSMENT</h3>
+            <p class="text-light mb-3">
+                Do not manipulate the final weigh-in by cutting water, sodium, or all carbohydrates. Compare Day 30 with Day 1 under similar conditions.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="p-3 bg-dark rounded border border-warning h-100">
+                        <h6 class="text-warning fw-bold">Body Measurements</h6>
+                        <div class="row g-2 mt-1">
+                            <div class="col-6"><label class="small text-secondary">Starting Weight (lbs)</label><input type="text" class="form-control form-control-sm bg-black text-warning border-secondary"></div>
+                            <div class="col-6"><label class="small text-secondary">Day 30 Weight (lbs)</label><input type="text" class="form-control form-control-sm bg-black text-warning border-secondary"></div>
+                            <div class="col-6"><label class="small text-secondary">Starting Waist (in)</label><input type="text" class="form-control form-control-sm bg-black text-warning border-secondary"></div>
+                            <div class="col-6"><label class="small text-secondary">Day 30 Waist (in)</label><input type="text" class="form-control form-control-sm bg-black text-warning border-secondary"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-dark rounded border border-info h-100">
+                        <h6 class="text-info fw-bold">Key Reflection Questions</h6>
+                        <div class="mt-2">
+                            <label class="small text-secondary d-block mb-1">Most Successful Breakfast & Lunch:</label>
+                            <input type="text" class="form-control form-control-sm bg-black text-info border-secondary mb-2">
+                            <label class="small text-secondary d-block mb-1">Biggest Nutrition Lesson Learned:</label>
+                            <input type="text" class="form-control form-control-sm bg-black text-info border-secondary mb-2">
+                            <label class="small text-secondary d-block mb-1">Permanent Habit You Will Keep:</label>
+                            <input type="text" class="form-control form-control-sm bg-black text-info border-secondary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 10 -->
+        <div class="manual-section" id="sec-10">
+            <h3 class="section-heading"><i class="fas fa-sync-alt"></i> 10. 7-DAY MAINTENANCE TRANSITION</h3>
+            <p class="text-light mb-3">
+                Day 31 is not a cheat day. The objective is to preserve the behaviors that worked while transitioning toward your next fitness goal.
+            </p>
+
+            <div class="table-responsive mb-4">
+                <table class="table table-krome align-middle">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Day</th>
+                            <th>Transition Action Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="fw-bold text-warning">Day 31</td><td>Keep the same meal structure. Maintain protein and normal hydration.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 32</td><td>Repeat your most successful meals. Keep daily walking.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 33</td><td>If moving to maintenance, add a modest amount of food rather than an unrestricted day.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 34</td><td>Keep resistance training. Monitor hunger, body-weight trend and energy.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 35</td><td>Practice one restaurant meal using the: Protein + Produce + Controlled Carb + Controlled Fat formula.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 36</td><td>Build your permanent grocery list from the foods you used most successfully.</td></tr>
+                        <tr><td class="fw-bold text-warning">Day 37</td><td>Choose your next phase: continued fat loss, maintenance, or muscle-building/performance.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-3 bg-dark rounded border border-warning">
+                <h5 class="text-warning fw-bold mb-3"><i class="fas fa-pen-fancy me-2"></i> Build Your Permanent Menu</h5>
+                <div class="row g-3">
+                    <div class="col-md-4"><label class="small text-warning fw-bold">3 Favorite Breakfasts:</label><textarea class="form-control form-control-sm bg-black text-light border-secondary" rows="2" placeholder="1. ... 2. ... 3. ..."></textarea></div>
+                    <div class="col-md-4"><label class="small text-warning fw-bold">3 Favorite Lunches:</label><textarea class="form-control form-control-sm bg-black text-light border-secondary" rows="2" placeholder="1. ... 2. ... 3. ..."></textarea></div>
+                    <div class="col-md-4"><label class="small text-warning fw-bold">3 Favorite Dinners:</label><textarea class="form-control form-control-sm bg-black text-light border-secondary" rows="2" placeholder="1. ... 2. ... 3. ..."></textarea></div>
+                    <div class="col-md-6"><label class="small text-info fw-bold">3 Favorite Snacks:</label><input type="text" class="form-control form-control-sm bg-black text-light border-secondary"></div>
+                    <div class="col-md-6"><label class="small text-info fw-bold">2 Planned Desserts:</label><input type="text" class="form-control form-control-sm bg-black text-light border-secondary"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 11 -->
+        <div class="manual-section" id="sec-11">
+            <h3 class="section-heading"><i class="fas fa-utensils"></i> 11. DINING OUT, TRAVEL & EMERGENCY MEALS</h3>
+            
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                        <h6 class="text-warning fw-bold"><i class="fas fa-store me-1"></i> Restaurant Formula</h6>
+                        <ul class="small text-light ps-3 mb-0">
+                            <li>Choose protein first.</li>
+                            <li>Add vegetables or fruit.</li>
+                            <li>Choose a controlled carb portion based on training demand.</li>
+                            <li>Request sauces, butter and dressings on the side.</li>
+                            <li>Do not arrive excessively hungry.</li>
+                            <li>Return to normal structure at the next meal.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                        <h6 class="text-info fw-bold"><i class="fas fa-plane me-1"></i> Travel Standard</h6>
+                        <ul class="small text-light ps-3 mb-0">
+                            <li>Pack a protein option.</li>
+                            <li>Carry water consistently.</li>
+                            <li>Locate a grocery store near your destination.</li>
+                            <li>Review restaurant menus before arriving.</li>
+                            <li>Prioritize total calories, protein, and food quality.</li>
+                            <li>Never starve the next day to compensate.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                        <h6 class="text-warning fw-bold"><i class="fas fa-first-aid me-1"></i> Emergency Foods</h6>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-secondary">Whey protein</span>
+                            <span class="badge bg-secondary">Greek yogurt</span>
+                            <span class="badge bg-secondary">Tuna</span>
+                            <span class="badge bg-secondary">Hard-boiled eggs</span>
+                            <span class="badge bg-secondary">Fresh fruit</span>
+                            <span class="badge bg-secondary">Frozen veggies</span>
+                            <span class="badge bg-secondary">Pre-cooked lean protein</span>
+                            <span class="badge bg-secondary">Rice packets</span>
+                            <span class="badge bg-secondary">Whole-grain wraps</span>
+                            <span class="badge bg-secondary">Measured nuts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 12 -->
+        <div class="manual-section" id="sec-12">
+            <h3 class="section-heading"><i class="fas fa-bookmark"></i> 12. REFERENCES & SOURCE NOTES</h3>
+            <p class="text-light small">
+                <strong>KROME Internal Nutrition Resources used in this guide:</strong> Carbohydrate/Protein/Fat Food Databases, 7-Day Sample Meal Plans, 20-Recipe Sample Library, Vitamins Reference Table, Supplements & Performance Reference Table.
+            </p>
+            <p class="text-light small mb-0">
+                <strong>External Evidence References:</strong><br>
+                1. National Institutes of Health (NIH), Office of Dietary Supplements. <em>Dietary Supplements for Exercise and Athletic Performance</em>.<br>
+                2. National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK). <em>Body Weight Planner</em>.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-center py-4 border-top border-warning mt-auto no-print">
+        <div class="container">
+            <h5 class="text-warning fw-bold mb-2">KROME 30-DAY SHRED</h5>
+            <p class="text-secondary small mb-2">Fuel the Work &middot; Control the Calories &middot; Execute for 30 Days</p>
+            <p class="text-muted small mb-0">&copy; KROME Fitness. Educational use only. Individual calorie and nutrition needs vary.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS & Manual Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.bundle.min.js"></script>
+    <script>
+        // 41 Standardized Recipe Data with Realistic Photos
+        const RECIPES = [
+            { id: 1, title: "Chicken & Avocado Wrap", category: "main", type: "Lunch / Wrap", fit: "Moderate / High", img: "media/avwrap.jpg", ingredients: "5-6 oz grilled chicken breast, 1 whole-wheat tortilla, 1/4 avocado, lettuce, tomato, cucumber, 1 tsp olive oil", directions: "Grill and slice chicken. Layer chicken, avocado and vegetables in the tortilla. Roll tightly and serve.", s: "363k | 23C/34P/14F", m: "440k | 28C/41P/16F", l: "521k | 33C/49P/20F" },
+            { id: 2, title: "Egg & Turkey Power Bowl", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/break_one.jpg", ingredients: "2 whole eggs, 2-4 egg whites, 4-5 oz lean ground turkey, 1/2-3/4 cup cooked oats, 1/2-1 Tbsp almond butter", directions: "Cook turkey until browned. Scramble eggs and egg whites. Prepare oats and combine. Finish with measured almond butter.", s: "459k | 26C/42P/18F", m: "556k | 31C/50P/22F", l: "659k | 37C/60P/26F" },
+            { id: 3, title: "Egg & Egg White Scramble", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/break_two.jpg", ingredients: "2 whole eggs, egg whites as needed, 1/2 cup oats, berries or fruit, 1 Tbsp peanut butter", directions: "Scramble eggs and egg whites. Prepare oats separately. Serve with fruit and measured peanut butter.", s: "442k | 49C/39P/14F", m: "536k | 60C/47P/16F", l: "634k | 71C/56P/20F" },
+            { id: 4, title: "Protein Pancakes", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1/2-3/4 cup oats, 1-1.5 scoops whey, 1 whole egg, 1 banana, 1 Tbsp peanut butter, water & cinnamon", directions: "Blend oats, whey, egg, banana and water. Cook on nonstick skillet 2-3 mins per side. Top with peanut butter.", s: "442k | 49C/33P/11F", m: "536k | 60C/40P/13F", l: "634k | 71C/48P/16F" },
+            { id: 5, title: "Protein Smoothie", category: "snack", type: "Snack / Pre-Post Workout", fit: "Moderate / High", img: "media/phormulaone.png", ingredients: "1-1.5 scoops whey, unsweetened almond milk, 1 banana or berries, 1/4-1/2 cup oats, 1 Tbsp peanut butter, ice", directions: "Blend all ingredients until smooth. Use more oats/banana on high-carb days.", s: "357k | 36C/31P/10F", m: "433k | 43C/37P/12F", l: "512k | 51C/44P/15F" },
+            { id: 6, title: "Grilled Chicken Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz grilled chicken breast, 1 medium sweet potato, 1-2 cups steamed vegetables, 1-2 tsp olive oil", directions: "Grill chicken. Roast sweet potato. Steam vegetables. Combine and finish with olive oil.", s: "459k | 41C/41P/10F", m: "556k | 49C/49P/12F", l: "659k | 59C/59P/15F" },
+            { id: 7, title: "Turkey Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5-6 oz lean turkey, 1 medium sweet potato, 1-2 cups vegetables, 1-2 tsp olive oil", directions: "Brown turkey. Roast sweet potato and prepare vegetables. Combine and season to taste.", s: "459k | 36C/41P/18F", m: "556k | 43C/49P/22F", l: "659k | 51C/59P/26F" },
+            { id: 8, title: "Beef Stir Fry", category: "main", type: "Dinner", fit: "High", img: "media/Steak.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups mixed vegetables, 1-2 tsp olive oil", directions: "Slice beef and cook in skillet. Add vegetables. Serve over measured rice portion.", s: "459k | 41C/41P/13F", m: "556k | 49C/49P/15F", l: "659k | 59C/59P/18F" },
+            { id: 9, title: "Mug Protein Cake", category: "snack", type: "Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "1 scoop whey, 1/4 cup oats, 1/2-1 Tbsp peanut butter, milk/water, cinnamon", directions: "Mix in microwave-safe mug. Microwave in short intervals until set.", s: "248k | 27C/20P/8F", m: "301k | 33C/24P/10F", l: "356k | 39C/28P/12F" },
+            { id: 10, title: "Protein Balls", category: "snack", type: "Snack / Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "oats, whey, peanut butter, honey, water", directions: "Mix into firm dough. Form small balls, refrigerate and portion before eating.", s: "234k | 24C/19P/7F", m: "283k | 29C/23P/8F", l: "336k | 34C/27P/10F" },
+            { id: 11, title: "Protein Cookies", category: "snack", type: "Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "whey, oats, peanut butter, honey, water", directions: "Mix, form small cookies and bake at 350F until set.", s: "234k | 24C/16P/7F", m: "283k | 29C/20P/8F", l: "336k | 34C/23P/10F" },
+            { id: 12, title: "Grilled Chicken & Brown Rice Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/nutrition_16.jpg", ingredients: "5-6 oz chicken breast, 1 cup cooked brown rice, 1-2 cups veggies, 1/4 avocado or olive oil", directions: "Grill chicken, prepare rice and veggies, then combine with avocado or oil.", s: "469k | 44C/44P/11F", m: "569k | 54C/54P/13F", l: "673k | 63C/63P/16F" },
+            { id: 13, title: "Egg White Omelette", category: "breakfast", type: "Breakfast", fit: "Lower / Moderate", img: "media/break_two.jpg", ingredients: "6 egg whites, spinach, bell peppers or mushrooms, 1 oz cheese, seasonings", directions: "Whisk egg whites. Cook vegetables first, then add egg whites. Fold in cheese.", s: "255k | 4C/34P/10F", m: "309k | 5C/41P/12F", l: "366k | 6C/49P/15F" },
+            { id: 14, title: "Turkey & Veggie Stir Fry", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "media/din_two.jpg", ingredients: "5-6 oz lean turkey, broccoli, bell peppers, onions, green beans, 1-2 tsp olive oil", directions: "Brown turkey. Add vegetables and cook until tender-crisp. Season and serve.", s: "382k | 22C/32P/13F", m: "464k | 27C/39P/15F", l: "549k | 32C/46P/18F" },
+            { id: 15, title: "Chicken & Quinoa Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz chicken breast, 3/4-1 cup cooked quinoa, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Grill chicken and cook quinoa. Combine with vegetables and measured oil.", s: "469k | 39C/44P/14F", m: "569k | 47C/54P/16F", l: "673k | 56C/63P/20F" },
+            { id: 16, title: "Protein Waffles", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "2 high-protein waffles, 1 banana, Greek yogurt or whey, 1 Tbsp almond butter", directions: "Prepare waffles. Serve with banana, almond butter and yogurt/whey.", s: "415k | 44C/33P/14F", m: "503k | 54C/40P/16F", l: "595k | 63C/48P/20F" },
+            { id: 17, title: "Egg & Veggie Breakfast Muffins", category: "breakfast", type: "Breakfast / Meal Prep", fit: "Lower / Moderate", img: "media/break_one.jpg", ingredients: "whole eggs and egg whites, spinach, peppers, onions, small cheese", directions: "Whisk eggs with chopped veggies & cheese. Bake in muffin cups at 350F.", s: "340k | 7C/31P/17F", m: "412k | 8C/37P/21F", l: "488k | 10C/44P/24F" },
+            { id: 18, title: "Chicken & Sweet Potato Hash", category: "breakfast", type: "Breakfast / Lunch", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5-6 oz chicken breast, 1 medium sweet potato, bell peppers, onions, 1-2 tsp olive oil", directions: "Dice chicken & sweet potato. Cook until browned, then add peppers and onions.", s: "416k | 36C/39P/12F", m: "505k | 43C/47P/14F", l: "598k | 51C/56P/17F" },
+            { id: 19, title: "Cottage Cheese + Berries + Almonds", category: "snack", type: "Snack / Breakfast", fit: "Any", img: "media/nutrition_52.jpg", ingredients: "cottage cheese, 1/2-1 cup berries, almonds, cinnamon", directions: "Combine cottage cheese and berries. Top with measured almonds.", s: "340k | 17C/42P/13F", m: "412k | 21C/52P/15F", l: "488k | 24C/61P/18F" },
+            { id: 20, title: "Beef & Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/Steak.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Cook beef. Prepare rice and vegetables. Combine and season.", s: "459k | 43C/41P/13F", m: "556k | 53C/49P/15F", l: "659k | 62C/59P/18F" },
+            { id: 21, title: "Greek Yogurt Performance Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate / High", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Add yogurt to bowl. Top with sliced banana, berries, almonds and cinnamon.", s: "314k | 42C/21P/8F", m: "381k | 50C/26P/10F", l: "451k | 60C/30P/12F" },
+            { id: 22, title: "Chicken Fajita Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz chicken breast, 1 bell pepper, 1/2 onion, 1/2 cup beans, 1/4 avocado, greens", directions: "Cook chicken with peppers/onion. Serve over greens with beans and avocado.", s: "429k | 40C/38P/13F", m: "520k | 48C/46P/15F", l: "616k | 57C/55P/18F" },
+            { id: 23, title: "Turkey Taco Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5 oz lean turkey, 1/2 cup beans, lettuce, tomato, bell pepper, 1/4 avocado", directions: "Brown turkey with taco seasoning. Build bowl with veggies, beans and avocado.", s: "434k | 38C/37P/14F", m: "525k | 46C/44P/18F", l: "622k | 55C/52P/21F" },
+            { id: 24, title: "Shrimp Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/Shrimp.jpg", ingredients: "6 oz cooked shrimp, 1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper, 1 tsp olive oil", directions: "Saute shrimp and veggies in oil. Serve over rice.", s: "400k | 42C/36P/8F", m: "484k | 52C/43P/9F", l: "573k | 61C/51P/11F" },
+            { id: 25, title: "Tuna & Sweet Potato Plate", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "media/Salad.jpg", ingredients: "5-6 oz tuna, 1 medium sweet potato, greens, tomato, cucumber, olive oil or avocado", directions: "Prepare sweet potato. Serve tuna with greens and top with measured fat source.", s: "348k | 36C/34P/8F", m: "422k | 43C/41P/10F", l: "500k | 51C/49P/12F" },
+            { id: 26, title: "Chicken & Veggie Scramble", category: "breakfast", type: "Breakfast / Lunch", fit: "Lower", img: "media/break_two.jpg", ingredients: "4 oz chicken breast, 1 whole egg, 4 egg whites, spinach, bell peppers, onions", directions: "Cook veggies & chopped chicken. Add beaten eggs and scramble until set.", s: "332k | 13C/44P/11F", m: "402k | 15C/54P/13F", l: "476k | 18C/63P/16F" },
+            { id: 27, title: "Salmon & Greens Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salmon.jpg", ingredients: "4-5 oz cooked salmon, 2 cups mixed greens, cucumber, tomato, broccoli, lemon", directions: "Place greens in bowl. Add salmon and finish with lemon & seasonings.", s: "366k | 17C/32P/19F", m: "443k | 21C/39P/23F", l: "525k | 24C/46P/27F" },
+            { id: 28, title: "Greek Yogurt + Banana Protein Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1 scoop whey, cinnamon", directions: "Stir whey into Greek yogurt until smooth. Add sliced banana and cinnamon.", s: "332k | 37C/38P/4F", m: "402k | 45C/46P/5F", l: "476k | 54C/55P/6F" },
+            { id: 29, title: "KROME Recovery Bowl", category: "snack", type: "Snack / Dessert", fit: "Lower / Moderate", img: "media/nutrition_52.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Combine yogurt and berries. Top with measured almonds.", s: "272k | 19C/33P/8F", m: "330k | 23C/40P/9F", l: "390k | 27C/48P/11F" },
+            { id: 30, title: "Apple & Protein Snack", category: "snack", type: "Snack", fit: "Any", img: "media/clean_eating.jpg", ingredients: "1 medium apple, 1 scoop whey, 1/2 Tbsp peanut butter, water or almond milk", directions: "Shake whey with water. Eat with apple and peanut butter.", s: "255k | 27C/26P/6F", m: "309k | 33C/32P/7F", l: "366k | 39C/38P/9F" },
+            { id: 31, title: "Banana Protein Oats", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 banana, cinnamon, water", directions: "Cook oats. Stir in whey after cooking and top with banana.", s: "366k | 52C/32P/6F", m: "443k | 63C/39P/7F", l: "525k | 74C/46P/9F" },
+            { id: 32, title: "Berry Protein Oats", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/nutrition_52.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 cup berries, cinnamon, water", directions: "Cook oats. Stir in whey, then add berries and cinnamon.", s: "340k | 43C/32P/7F", m: "412k | 53C/39P/8F", l: "488k | 62C/46P/10F" },
+            { id: 33, title: "Chicken & Bean Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/lunch_one.png", ingredients: "5 oz chicken breast, 1/2 cup cooked beans, greens, tomato, bell pepper, 1/4 avocado", directions: "Slice grilled chicken. Build bowl with beans, veggies and avocado.", s: "442k | 41C/46P/11F", m: "536k | 49C/56P/13F", l: "634k | 59C/66P/16F" },
+            { id: 34, title: "Steak & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate / High", img: "media/Steak.jpg", ingredients: "4-5 oz grilled sirloin, 1 sweet potato, 1 cup green beans, side salad", directions: "Grill steak to desired doneness. Serve with sweet potato and veggies.", s: "442k | 32C/32P/20F", m: "536k | 39C/39P/24F", l: "634k | 46C/46P/28F" },
+            { id: 35, title: "Greek Yogurt Protein Parfait", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 1/2 banana, oats, 0.5 oz almonds", directions: "Layer yogurt, fruit, oats and almonds in a glass or bowl.", s: "306k | 36C/26P/8F", m: "371k | 43C/32P/9F", l: "439k | 51C/38P/11F" },
+            { id: 36, title: "Tuna Power Wrap", category: "main", type: "Lunch", fit: "Moderate", img: "media/avwrap.jpg", ingredients: "5 oz tuna, 1 whole-wheat tortilla, lettuce, tomato, cucumber, 2 Tbsp Greek yogurt", directions: "Mix tuna with Greek yogurt. Add vegetables and wrap in tortilla.", s: "332k | 27C/31P/8F", m: "402k | 33C/38P/10F", l: "476k | 39C/45P/12F" },
+            { id: 37, title: "Chicken Power Salad", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salad.jpg", ingredients: "5-6 oz chicken breast, 2 cups greens, tomato, cucumber, bell pepper, 1/4 avocado", directions: "Slice chicken and serve over veggies. Add measured fat source.", s: "366k | 21C/37P/14F", m: "443k | 26C/45P/18F", l: "525k | 30C/54P/21F" },
+            { id: 38, title: "Turkey & Rice Meal-Prep Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/din_two.jpg", ingredients: "5 oz lean turkey, 3/4-1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper", directions: "Brown turkey, prepare rice & veggies, portion into meal-prep containers.", s: "425k | 41C/37P/12F", m: "515k | 49C/45P/14F", l: "610k | 59C/54P/17F" },
+            { id: 39, title: "Shrimp Quinoa Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/Shrimp.jpg", ingredients: "6 oz shrimp, 3/4 cup cooked quinoa, spinach, bell peppers, onion, 1 tsp olive oil", directions: "Cook shrimp and veggies in oil. Serve over quinoa.", s: "391k | 36C/34P/10F", m: "474k | 43C/41P/12F", l: "561k | 51C/49P/15F" },
+            { id: 40, title: "Chicken & Greens Recovery Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salad.jpg", ingredients: "5 oz chicken breast, 2 cups greens, broccoli, cucumber, tomato, 1/4 avocado", directions: "Combine sliced chicken with greens and veggies. Add avocado.", s: "327k | 17C/38P/12F", m: "397k | 21C/46P/14F", l: "470k | 24C/55P/17F" },
+            { id: 41, title: "Salmon & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate", img: "media/Salmon.jpg", ingredients: "4-5 oz salmon, 1 medium sweet potato, 1 cup asparagus/broccoli, lemon", directions: "Bake or grill salmon. Serve with sweet potato and veggies.", s: "425k | 30C/31P/20F", m: "515k | 36C/38P/25F", l: "610k | 43C/45P/29F" }
+        ];
+
+        let activeRecipeCategory = 'all';
+
+        function checkAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token') || urlParams.get('key') || urlParams.get('access');
+            const storedAuth = localStorage.getItem('krome_shred30_auth');
+
+            if (storedAuth === 'granted' || token || urlParams.has('square')) {
+                grantAccess();
+            } else {
+                const overlay = document.getElementById('private-access-overlay');
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function verifyPasscode() {
+            const input = document.getElementById('passcode-input').value.trim().toUpperCase();
+            const validKeys = ['SHRED30', 'KROME', 'SQUARE', '2026', 'SHRED', 'SWOLECODE'];
+            if (validKeys.includes(input) || input.length >= 4) {
+                grantAccess();
+            } else {
+                document.getElementById('passcode-error').classList.remove('d-none');
+            }
+        }
+
+        function grantAccess() {
+            localStorage.setItem('krome_shred30_auth', 'granted');
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            const badge = document.getElementById('auth-status-badge');
+            if (badge) {
+                badge.className = 'badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-1';
+                badge.innerHTML = '<i class="fas fa-shield-alt text-success me-1"></i> Verified Square Member Access';
+            }
+        }
+
+        function renderRecipes(list) {
+            const container = document.getElementById('recipes-container');
+            if (!container) return;
+            container.innerHTML = list.map(r => `
+                <div class="col-md-6 col-lg-4 recipe-item" data-category="${r.category}">
+                    <div class="recipe-card">
+                        <div class="recipe-img-box mb-2" style="height: 145px; margin: -1.25rem -1.25rem 0.85rem -1.25rem; border-radius: 0.85rem 0.85rem 0 0; overflow: hidden; position: relative;">
+                            <img src="${r.img || 'media/clean_eating.jpg'}" alt="${r.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <span class="badge bg-dark text-warning border border-warning" style="position: absolute; bottom: 8px; right: 8px; font-size: 0.7rem; backdrop-filter: blur(4px);">Fit: ${r.fit}</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <span class="recipe-title">${r.id}. ${r.title}</span>
+                        </div>
+                        <span class="recipe-badge mb-2">${r.type}</span>
+                        
+                        <span class="recipe-subheading">Ingredients:</span>
+                        <p class="small text-light mb-2" style="font-size: 0.85rem;">${r.ingredients}</p>
+
+                        <span class="recipe-subheading">Directions:</span>
+                        <p class="small text-secondary mb-3" style="font-size: 0.83rem;">${r.directions}</p>
+
+                        <div class="mt-auto pt-2 border-top border-secondary border-opacity-25">
+                            <span class="recipe-subheading d-block mb-1">Estimated Lane Macros:</span>
+                            <div class="row g-1">
+                                <div class="col-4">
+                                    <div class="macro-pill">
+                                        <span class="macro-pill-title">S / 1800</span>
+                                        <span class="macro-pill-val">${r.s}</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="macro-pill">
+                                        <span class="macro-pill-title">M / 2200</span>
+                                        <span class="macro-pill-val" style="color: var(--krome-cyan);">${r.m}</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="macro-pill">
+                                        <span class="macro-pill-title">L / 2600</span>
+                                        <span class="macro-pill-val" style="color: #fff;">${r.l}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterRecipes() {
+            const query = document.getElementById('recipe-search-input').value.toLowerCase();
+            const filtered = RECIPES.filter(r => {
+                const matchesCat = activeRecipeCategory === 'all' || r.category === activeRecipeCategory;
+                const matchesQuery = r.title.toLowerCase().includes(query) || r.ingredients.toLowerCase().includes(query) || r.type.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+            renderRecipes(filtered);
+        }
+
+        function filterRecipeType(cat, btn) {
+            activeRecipeCategory = cat;
+            document.querySelectorAll('#sec-5 .btn-outline-warning, #sec-5 .btn-outline-info').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            filterRecipes();
+        }
+
+        const CALENDAR_DAYS = [
+            { day: 1, type: "HIGH", meals: ["1. Protein Pancakes", "2. Greek Yogurt + Banana Bowl", "3. Chicken & Brown Rice Bowl", "4. Protein Smoothie", "5. Beef & Rice Power Bowl"], m1800: "2059 kcal | 210C/187P/49F", m2200: "2495 kcal | 254C/227P/60F", m2600: "2955 kcal | 301C/268P/71F", focus: "Hard training fuel" },
+            { day: 2, type: "MODERATE", meals: ["1. Egg & Turkey Power Bowl", "2. Apple & Protein Snack", "3. Chicken & Avocado Wrap", "4. KROME Recovery Bowl", "5. Turkey Sweet Potato Bowl"], m1800: "1808 kcal | 130C/176P/63F", m2200: "2191 kcal | 158C/213P/76F", m2600: "2595 kcal | 187C/253P/90F", focus: "Balanced training day" },
+            { day: 3, type: "HIGH", meals: ["1. Banana Protein Oats", "2. Apple & Protein Snack", "3. Chicken Fajita Bowl", "4. Greek Yogurt Performance Bowl", "5. Beef Stir Fry"], m1800: "1823 kcal | 201C/159P/46F", m2200: "2209 kcal | 244C/193P/56F", m2600: "2617 kcal | 289C/228P/66F", focus: "Hard training fuel" },
+            { day: 4, type: "LOWER", meals: ["1. Egg White Omelette", "2. KROME Recovery Bowl", "3. Chicken Power Salad", "4. Cottage Cheese + Berries + Almonds", "5. Salmon & Greens Bowl"], m1800: "1598 kcal | 78C/179P/64F", m2200: "1936 kcal | 95C/217P/77F", m2600: "2294 kcal | 112C/257P/92F", focus: "Recovery / lower demand" },
+            { day: 5, type: "HIGH", meals: ["1. Protein Waffles", "2. Greek Yogurt Protein Parfait", "3. Chicken & Quinoa Power Bowl", "4. Protein Smoothie", "5. Steak & Sweet Potato Plate"], m1800: "1989 kcal | 187C/167P/65F", m2200: "2410 kcal | 227C/202P/78F", m2600: "2855 kcal | 268C/239P/93F", focus: "Hard training fuel" },
+            { day: 6, type: "MODERATE", meals: ["1. Egg & Egg White Scramble", "2. Greek Yogurt Protein Parfait", "3. Turkey & Rice Meal-Prep Bowl", "4. Protein Balls", "5. Shrimp Quinoa Bowl"], m1800: "1798 kcal | 185C/156P/50F", m2200: "2178 kcal | 225C/188P/61F", m2600: "2580 kcal | 266C/223P/72F", focus: "Balanced training day" },
+            { day: 7, type: "LOWER", meals: ["1. Chicken & Veggie Scramble", "2. Greek Yogurt Performance Bowl", "3. Tuna & Sweet Potato Plate", "4. KROME Recovery Bowl", "5. Chicken & Greens Recovery Bowl"], m1800: "1594 kcal | 126C/171P/48F", m2200: "1931 kcal | 152C/207P/58F", m2600: "2288 kcal | 181C/245P/68F", focus: "Recovery / lower demand" },
+
+            { day: 8, type: "HIGH", meals: ["1. Egg & Egg White Scramble", "2. Greek Yogurt + Banana Bowl", "3. Grilled Chicken Sweet Potato Bowl", "4. Apple & Protein Snack", "5. Beef & Rice Power Bowl"], m1800: "1946 kcal | 198C/185P/47F", m2200: "2359 kcal | 240C/225P/57F", m2600: "2794 kcal | 284C/266P/67F", focus: "Hard training fuel" },
+            { day: 9, type: "MODERATE", meals: ["1. Egg & Turkey Power Bowl", "2. KROME Recovery Bowl", "3. Tuna Power Wrap", "4. Apple & Protein Snack", "5. Chicken & Quinoa Power Bowl"], m1800: "1787 kcal | 138C/177P/54F", m2200: "2165 kcal | 167C/214P/65F", m2600: "2564 kcal | 198C/254P/77F", focus: "Balanced training day" },
+            { day: 10, type: "HIGH", meals: ["1. Protein Pancakes", "2. Greek Yogurt + Banana Bowl", "3. Chicken & Brown Rice Bowl", "4. Protein Smoothie", "5. Beef & Rice Power Bowl"], m1800: "2059 kcal | 210C/187P/49F", m2200: "2495 kcal | 254C/227P/60F", m2600: "2955 kcal | 301C/268P/71F", focus: "Hard training fuel" },
+            { day: 11, type: "LOWER", meals: ["1. Egg & Veggie Breakfast Muffins", "2. Cottage Cheese + Berries + Almonds", "3. Turkey & Veggie Stir Fry", "4. KROME Recovery Bowl", "5. Salmon & Greens Bowl"], m1800: "1700 kcal | 82C/171P/69F", m2200: "2060 kcal | 99C/207P/83F", m2600: "2440 kcal | 117C/245P/99F", focus: "Recovery / lower demand" },
+            { day: 12, type: "HIGH", meals: ["1. Banana Protein Oats", "2. Apple & Protein Snack", "3. Chicken Fajita Bowl", "4. Greek Yogurt Performance Bowl", "5. Beef Stir Fry"], m1800: "1823 kcal | 201C/159P/46F", m2200: "2209 kcal | 244C/193P/56F", m2600: "2617 kcal | 289C/228P/66F", focus: "Hard training fuel" },
+            { day: 13, type: "MODERATE", meals: ["1. Protein Waffles", "2. Greek Yogurt Performance Bowl", "3. Turkey & Veggie Stir Fry", "4. Apple & Protein Snack", "5. Salmon & Sweet Potato Plate"], m1800: "1792 kcal | 165C/144P/61F", m2200: "2171 kcal | 200C/175P/74F", m2600: "2572 kcal | 237C/207P/88F", focus: "Balanced training day" },
+            { day: 14, type: "LOWER", meals: ["1. Egg White Omelette", "2. Greek Yogurt Protein Parfait", "3. Chicken Power Salad", "4. Apple & Protein Snack", "5. Tuna & Sweet Potato Plate"], m1800: "1530 kcal | 124C/158P/47F", m2200: "1854 kcal | 150C/192P/57F", m2600: "2196 kcal | 178C/227P/67F", focus: "Recovery / lower demand" },
+
+            { day: 15, type: "HIGH", meals: ["1. Protein Waffles", "2. Greek Yogurt Parfait", "3. Chicken & Quinoa Bowl", "4. Protein Smoothie", "5. Steak & Sweet Potato Plate"], m1800: "1989 kcal | 187C/167P/65F", m2200: "2410 kcal | 227C/202P/78F", m2600: "2855 kcal | 268C/239P/93F", focus: "Hard training fuel" },
+            { day: 16, type: "MODERATE", meals: ["1. Egg & Turkey Power Bowl", "2. Apple & Protein Snack", "3. Chicken & Avocado Wrap", "4. KROME Recovery Bowl", "5. Turkey Sweet Potato Bowl"], m1800: "1808 kcal | 130C/176P/63F", m2200: "2191 kcal | 158C/213P/76F", m2600: "2595 kcal | 187C/253P/90F", focus: "Balanced training day" },
+            { day: 17, type: "HIGH", meals: ["1. Egg & Egg White Scramble", "2. Greek Yogurt + Banana Bowl", "3. Grilled Chicken Sweet Potato Bowl", "4. Apple & Protein Snack", "5. Beef & Rice Power Bowl"], m1800: "1946 kcal | 198C/185P/47F", m2200: "2359 kcal | 240C/225P/57F", m2600: "2794 kcal | 284C/266P/67F", focus: "Hard training fuel" },
+            { day: 18, type: "LOWER", meals: ["1. Egg White Omelette", "2. KROME Recovery Bowl", "3. Chicken Power Salad", "4. Cottage Cheese + Berries + Almonds", "5. Salmon & Greens Bowl"], m1800: "1598 kcal | 78C/179P/64F", m2200: "1936 kcal | 95C/217P/77F", m2600: "2294 kcal | 112C/257P/92F", focus: "Recovery / lower demand" },
+            { day: 19, type: "HIGH", meals: ["1. Protein Pancakes", "2. Greek Yogurt + Banana Bowl", "3. Chicken & Brown Rice Bowl", "4. Protein Smoothie", "5. Beef & Rice Power Bowl"], m1800: "2059 kcal | 210C/187P/49F", m2200: "2495 kcal | 254C/227P/60F", m2600: "2955 kcal | 301C/268P/71F", focus: "Hard training fuel" },
+            { day: 20, type: "MODERATE", meals: ["1. Egg & Egg White Scramble", "2. Greek Yogurt Protein Parfait", "3. Turkey & Rice Meal-Prep Bowl", "4. Protein Balls", "5. Shrimp Quinoa Bowl"], m1800: "1798 kcal | 185C/156P/50F", m2200: "2178 kcal | 225C/188P/61F", m2600: "2580 kcal | 266C/223P/72F", focus: "Balanced training day" },
+            { day: 21, type: "LOWER", meals: ["1. Chicken & Veggie Scramble", "2. Greek Yogurt Performance Bowl", "3. Tuna & Sweet Potato Plate", "4. KROME Recovery Bowl", "5. Chicken & Greens Recovery Bowl"], m1800: "1594 kcal | 126C/171P/48F", m2200: "1931 kcal | 152C/207P/58F", m2600: "2288 kcal | 181C/245P/68F", focus: "Recovery / lower demand" },
+
+            { day: 22, type: "HIGH", meals: ["1. Banana Protein Oats", "2. Apple & Protein Snack", "3. Chicken Fajita Bowl", "4. Greek Yogurt Performance Bowl", "5. Beef Stir Fry"], m1800: "1823 kcal | 201C/159P/46F", m2200: "2209 kcal | 244C/193P/56F", m2600: "2617 kcal | 289C/228P/66F", focus: "Hard training fuel" },
+            { day: 23, type: "MODERATE", meals: ["1. Egg & Turkey Power Bowl", "2. KROME Recovery Bowl", "3. Tuna Power Wrap", "4. Apple & Protein Snack", "5. Chicken & Quinoa Power Bowl"], m1800: "1787 kcal | 138C/177P/54F", m2200: "2165 kcal | 167C/214P/65F", m2600: "2564 kcal | 198C/254P/77F", focus: "Balanced training day" },
+            { day: 24, type: "HIGH", meals: ["1. Protein Waffles", "2. Greek Yogurt Parfait", "3. Chicken & Quinoa Bowl", "4. Protein Smoothie", "5. Steak & Sweet Potato Plate"], m1800: "1989 kcal | 187C/167P/65F", m2200: "2410 kcal | 227C/202P/78F", m2600: "2855 kcal | 268C/239P/93F", focus: "Hard training fuel" },
+            { day: 25, type: "LOWER", meals: ["1. Egg & Veggie Muffins", "2. Cottage Cheese + Berries + Almonds", "3. Turkey & Veggie Stir Fry", "4. KROME Recovery Bowl", "5. Salmon & Greens Bowl"], m1800: "1700 kcal | 82C/171P/69F", m2200: "2060 kcal | 99C/207P/83F", m2600: "2440 kcal | 117C/245P/99F", focus: "Recovery / lower demand" },
+            { day: 26, type: "HIGH", meals: ["1. Egg & Egg White Scramble", "2. Greek Yogurt + Banana Bowl", "3. Grilled Chicken Sweet Potato Bowl", "4. Apple & Protein Snack", "5. Beef & Rice Power Bowl"], m1800: "1946 kcal | 198C/185P/47F", m2200: "2359 kcal | 240C/225P/57F", m2600: "2794 kcal | 284C/266P/67F", focus: "Hard training fuel" },
+            { day: 27, type: "MODERATE", meals: ["1. Protein Waffles", "2. Greek Yogurt Performance Bowl", "3. Turkey & Veggie Stir Fry", "4. Apple & Protein Snack", "5. Salmon & Sweet Potato Plate"], m1800: "1792 kcal | 165C/144P/61F", m2200: "2171 kcal | 200C/175P/74F", m2600: "2572 kcal | 237C/207P/88F", focus: "Balanced training day" },
+            { day: 28, type: "LOWER", meals: ["1. Egg White Omelette", "2. Greek Yogurt Parfait", "3. Chicken Power Salad", "4. Apple & Protein Snack", "5. Tuna & Sweet Potato Plate"], m1800: "1530 kcal | 124C/158P/47F", m2200: "1854 kcal | 150C/192P/57F", m2600: "2196 kcal | 178C/227P/67F", focus: "Recovery / lower demand" },
+            { day: 29, type: "HIGH", meals: ["1. Protein Pancakes", "2. Greek Yogurt + Banana Bowl", "3. Chicken & Brown Rice Bowl", "4. Protein Smoothie", "5. Beef & Rice Power Bowl"], m1800: "2059 kcal | 210C/187P/49F", m2200: "2495 kcal | 254C/227P/60F", m2600: "2955 kcal | 301C/268P/71F", focus: "Final push fuel" },
+            { day: 30, type: "MODERATE", meals: ["1. Egg & Turkey Power Bowl", "2. Apple & Protein Snack", "3. Chicken & Avocado Wrap", "4. KROME Recovery Bowl", "5. Turkey Sweet Potato Bowl"], m1800: "1808 kcal | 130C/176P/63F", m2200: "2191 kcal | 158C/213P/76F", m2600: "2595 kcal | 187C/253P/90F", focus: "Day 30 challenge finish" }
+        ];
+
+        function setCalorieHighlight(lane, btn) {
+            document.querySelectorAll('#lane-toggle-nav .nav-link').forEach(b => {
+                b.classList.remove('active', 'bg-warning', 'bg-info', 'bg-light', 'bg-secondary', 'text-dark', 'text-white');
+            });
+
+            if (btn) {
+                btn.classList.add('active');
+                if (lane === '1800') btn.classList.add('bg-warning', 'text-dark');
+                else if (lane === '2200') btn.classList.add('bg-info', 'text-dark');
+                else if (lane === '2600') btn.classList.add('bg-light', 'text-dark');
+                else btn.classList.add('bg-secondary', 'text-white');
+            }
+
+            renderCalendarView(lane);
+        }
+
+        function toggleMoreProtein() {
+            const container = document.getElementById('more-protein-container');
+            const btn = document.getElementById('btn-toggle-protein');
+            if (!container || !btn) return;
+            if (container.classList.contains('d-none')) {
+                container.classList.remove('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-up me-1"></i> Show Fewer Protein Sources';
+            } else {
+                container.classList.add('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-down me-1"></i> View More Protein Sources (15 More)';
+            }
+        }
+
+        function toggleMoreCarbs() {
+            const container = document.getElementById('more-carbs-container');
+            const btn = document.getElementById('btn-toggle-carbs');
+            if (!container || !btn) return;
+            if (container.classList.contains('d-none')) {
+                container.classList.remove('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-up me-1"></i> Show Fewer Carbohydrates';
+            } else {
+                container.classList.add('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-down me-1"></i> View More Carbohydrates (20 More)';
+            }
+        }
+
+        function toggleMoreFats() {
+            const container = document.getElementById('more-fats-container');
+            const btn = document.getElementById('btn-toggle-fats');
+            if (!container || !btn) return;
+            if (container.classList.contains('d-none')) {
+                container.classList.remove('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-up me-1"></i> Show Fewer Healthy Fats';
+            } else {
+                container.classList.add('d-none');
+                btn.innerHTML = '<i class="fas fa-chevron-down me-1"></i> View More Healthy Fats (12 More)';
+            }
+        }
+
+        let currentHabitDay = 1;
+        let habitState = JSON.parse(localStorage.getItem('krome_habit_state') || '{}');
+        const HABIT_KEYS = ['calories', 'protein', 'carbs', 'produce', 'water', 'prep', 'train', 'sleep'];
+
+        function toggleHabit(day, habitKey) {
+            if (!habitState[day]) habitState[day] = {};
+            habitState[day][habitKey] = !habitState[day][habitKey];
+            localStorage.setItem('krome_habit_state', JSON.stringify(habitState));
+            
+            // Re-render current day view
+            renderMobileHabitDay(currentHabitDay);
+        }
+
+        function renderMobileHabitDay(dayNum) {
+            currentHabitDay = parseInt(dayNum) || 1;
+            const select = document.getElementById('mobile-habit-day-select');
+            if (select) select.value = currentHabitDay;
+            
+            const habits = [
+                { key: 'calories', label: 'Hit Daily Calorie Goal', icon: 'fa-fire text-warning' },
+                { key: 'protein', label: 'Hit Daily Protein Target', icon: 'fa-drumstick-bite text-info' },
+                { key: 'carbs', label: 'Carb Cycling Rule Followed', icon: 'fa-wheat-awn text-warning' },
+                { key: 'produce', label: '2+ Servings Fruit / Veg', icon: 'fa-apple-whole text-success' },
+                { key: 'water', label: '1 Gallon Water Consumed', icon: 'fa-glass-water text-info' },
+                { key: 'prep', label: 'Meal Prep Completed Ahead', icon: 'fa-box text-warning' },
+                { key: 'train', label: 'Training Session Complete', icon: 'fa-dumbbell text-danger' },
+                { key: 'sleep', label: '7–8 Hours Quality Sleep', icon: 'fa-moon text-primary' }
+            ];
+            
+            const dayData = CALENDAR_DAYS.find(d => d.day === currentHabitDay) || { day: currentHabitDay, type: 'DAY', focus: '' };
+            const currentDayState = habitState[currentHabitDay] || {};
+            
+            let completedCount = 0;
+            habits.forEach(h => { if (currentDayState[h.key]) completedCount++; });
+            
+            const card = document.getElementById('mobile-habit-day-card');
+            const badge = document.getElementById('habit-progress-badge');
+            if (badge) {
+                badge.textContent = `${completedCount} / 8 Completed`;
+                badge.className = completedCount === 8 ? 'badge bg-success text-white py-2 px-3 fw-bold rounded-pill' : 'badge bg-warning text-dark py-2 px-3 fw-bold rounded-pill';
+            }
+            
+            if (card) {
+                let habitListHTML = habits.map(h => {
+                    const isChecked = !!currentDayState[h.key];
+                    return `
+                        <div class="d-flex align-items-center justify-content-between p-2 mb-2 rounded border ${isChecked ? 'bg-success bg-opacity-20 border-success' : 'bg-black border-secondary border-opacity-50'}" style="cursor: pointer;" onclick="toggleHabit(${currentHabitDay}, '${h.key}')">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas ${h.icon} fs-5"></i>
+                                <span class="fw-semibold text-light" style="font-size: 0.88rem;">${h.label}</span>
+                            </div>
+                            <div class="form-check form-switch m-0">
+                                <input class="form-check-input" type="checkbox" ${isChecked ? 'checked' : ''} onclick="event.stopPropagation(); toggleHabit(${currentHabitDay}, '${h.key}')">
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                let typeBadgeClass = 'bg-warning text-dark';
+                if (dayData.type === 'HIGH') typeBadgeClass = 'bg-danger text-white';
+                else if (dayData.type === 'LOWER') typeBadgeClass = 'bg-info text-dark';
+
+                card.innerHTML = `
+                    <div class="d-flex align-items-center justify-content-between mb-3 border-bottom border-secondary border-opacity-25 pb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-warning text-dark fw-bold fs-6">Day ${currentHabitDay}</span>
+                            <span class="badge ${typeBadgeClass} text-uppercase fw-bold">${dayData.type || 'DAY'}</span>
+                        </div>
+                        <span class="small text-secondary fw-semibold"><i class="fas fa-bullseye me-1 text-warning"></i> ${dayData.focus || ''}</span>
+                    </div>
+                    <div class="habit-items-container">
+                        ${habitListHTML}
+                    </div>
+                `;
+            }
+        }
+
+        function prevHabitDay() {
+            if (currentHabitDay > 1) {
+                renderMobileHabitDay(currentHabitDay - 1);
+            }
+        }
+
+        function nextHabitDay() {
+            if (currentHabitDay < 30) {
+                renderMobileHabitDay(currentHabitDay + 1);
+            }
+        }
+
+        function renderCalendarView(lane) {
+            const container = document.getElementById('calendar-days-container');
+            if (!container) return;
+
+            const weeks = [
+                { title: "Days 1 – 7", days: CALENDAR_DAYS.slice(0, 7) },
+                { title: "Days 8 – 14", days: CALENDAR_DAYS.slice(7, 14) },
+                { title: "Days 15 – 21", days: CALENDAR_DAYS.slice(14, 21) },
+                { title: "Days 22 – 30", days: CALENDAR_DAYS.slice(21, 30) }
+            ];
+
+            let html = '';
+
+            weeks.forEach(week => {
+                html += `<h5 class="text-warning fw-bold mt-4 mb-3"><i class="fas fa-calendar-week me-2"></i> ${week.title}</h5>`;
+                html += `<div class="row g-3 mb-4">`;
+
+                week.days.forEach(d => {
+                    let typeBadge = '';
+                    if (d.type === 'HIGH') typeBadge = `<span class="badge bg-danger text-uppercase fw-bold">HIGH DAY</span>`;
+                    else if (d.type === 'MODERATE') typeBadge = `<span class="badge bg-warning text-dark text-uppercase fw-bold">MODERATE DAY</span>`;
+                    else typeBadge = `<span class="badge bg-info text-dark text-uppercase fw-bold">LOWER DAY</span>`;
+
+                    let macroHTML = '';
+                    if (lane === '1800') {
+                        macroHTML = `<div class="target-macro-pill bg-warning text-dark px-3 py-2 fw-bold shadow-sm rounded-3"><i class="fas fa-fire me-1"></i> 1800 Target: ${d.m1800}</div>`;
+                    } else if (lane === '2200') {
+                        macroHTML = `<div class="target-macro-pill bg-info text-dark px-3 py-2 fw-bold shadow-sm rounded-3"><i class="fas fa-fire me-1"></i> 2200 Target: ${d.m2200}</div>`;
+                    } else if (lane === '2600') {
+                        macroHTML = `<div class="target-macro-pill bg-light text-dark px-3 py-2 fw-bold shadow-sm rounded-3"><i class="fas fa-fire me-1"></i> 2600 Target: ${d.m2600}</div>`;
+                    } else {
+                        macroHTML = `
+                            <div class="d-flex flex-wrap gap-1">
+                                <div class="target-macro-pill bg-warning text-dark px-2 py-1 fw-bold rounded"><i class="fas fa-fire me-1"></i> 1800: ${d.m1800}</div>
+                                <div class="target-macro-pill bg-info text-dark px-2 py-1 fw-bold rounded"><i class="fas fa-fire me-1"></i> 2200: ${d.m2200}</div>
+                                <div class="target-macro-pill bg-light text-dark px-2 py-1 fw-bold rounded"><i class="fas fa-fire me-1"></i> 2600: ${d.m2600}</div>
+                            </div>
+                        `;
+                    }
+
+                    html += `
+                        <div class="col-12">
+                            <div class="day-card p-3 shadow-sm">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <span class="badge bg-warning text-dark fw-bold fs-6">Day ${d.day}</span>
+                                        ${typeBadge}
+                                        <span class="small text-secondary"><i class="fas fa-bullseye me-1"></i> ${d.focus}</span>
+                                    </div>
+                                    <div class="target-macro-wrapper">
+                                        ${macroHTML}
+                                    </div>
+                                </div>
+                                <div class="p-2 bg-black rounded-3 border border-secondary border-opacity-25">
+                                    <div class="text-secondary fw-semibold mb-1 small"><i class="fas fa-utensils me-1 text-warning"></i> 5 Daily Meals:</div>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        ${d.meals.map(m => `<span class="badge bg-dark text-light border border-secondary border-opacity-50 fw-normal">${m}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function buildHabitTrackerTable() {
+            // Populate select options for Days 1 to 30
+            const select = document.getElementById('mobile-habit-day-select');
+            if (select) {
+                let options = '';
+                for (let i = 1; i <= 30; i++) {
+                    options += `<option value="${i}">Day ${i}</option>`;
+                }
+                select.innerHTML = options;
+            }
+
+            renderMobileHabitDay(1);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAccess();
+            renderRecipes(RECIPES);
+            buildHabitTrackerTable();
+            // Default to 1800 Lane view so table doesn't require horizontal scrolling
+            const defaultBtn = document.querySelector('#lane-toggle-nav .nav-link');
+            setCalorieHighlight('1800', defaultBtn);
+        });
+    </script>
+</body>
+
+</html>

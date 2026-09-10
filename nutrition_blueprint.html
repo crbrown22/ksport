@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Nutrition E-Book Blueprint | Energy, Macros & Workout Timing</title>
+    <meta name="description" content="Official KROME FITNESS Nutrition E-Book Blueprint. Includes Mifflin-St Jeor REE/TDEE energy balance formulas, macro ratio math, categorized grocery lists, and pre/post-workout timing guide.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn-action-outline {
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            background-color: rgba(0, 255, 209, 0.15);
+            color: #fff;
+        }
+
+        /* ----------------------------------
+           HERO & TOC
+        ---------------------------------- */
+        .manual-hero {
+            background: linear-gradient(135deg, rgba(20,20,20,0.96), rgba(11,11,11,0.98));
+            border-bottom: 1px solid var(--krome-card-border);
+            padding: 3rem 0 2.5rem 0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-price-badge {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .toc-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .toc-link {
+            color: var(--krome-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0;
+            font-size: 0.95rem;
+        }
+
+        .toc-link:hover {
+            color: var(--krome-cyan);
+        }
+
+        .toc-link i {
+            width: 24px;
+            color: var(--krome-gold);
+        }
+
+        /* ----------------------------------
+           SECTIONS & CARDS
+        ---------------------------------- */
+        .manual-section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .section-heading {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .krome-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        /* Table styling */
+        .table-krome {
+            color: #f8f9fa;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .table-krome th {
+            background-color: #1a1a1a;
+            color: var(--krome-gold);
+            border-bottom: 2px solid var(--krome-gold);
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-krome td {
+            background-color: #121212;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Grocery checkbox item */
+        .grocery-item {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+        .grocery-item:hover {
+            background-color: rgba(255, 212, 71, 0.08);
+        }
+        .grocery-item.checked {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        /* Timeline Card */
+        .timeline-card {
+            border-left: 4px solid var(--krome-gold);
+            background-color: #121212;
+            padding: 1rem 1.25rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .timeline-card-cyan {
+            border-left: 4px solid var(--krome-cyan);
+            background-color: #121212;
+            padding: 1rem 1.25rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        /* Printable CSS */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            .manual-section {
+                border-bottom: 1px solid #ccc !important;
+                padding: 1.5rem 0 !important;
+                page-break-inside: avoid;
+            }
+
+            .section-heading {
+                color: #000000 !important;
+                border-bottom: 2px solid #000 !important;
+                padding-bottom: 0.25rem;
+            }
+
+            .krome-card, .toc-card, .bg-dark, .bg-black {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+            }
+
+            .text-warning, .text-info, .text-cyan, .text-gold {
+                color: #000000 !important;
+                font-weight: bold;
+            }
+
+            .text-light, .text-muted, .text-secondary {
+                color: #333333 !important;
+            }
+
+            .table-krome th {
+                background-color: #eee !important;
+                color: #000 !important;
+                border-bottom: 2px solid #000 !important;
+            }
+
+            .table-krome td {
+                background-color: #fff !important;
+                color: #000 !important;
+                border-color: #ccc !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            .manual-section {
+                padding: 1.5rem 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIVATE ACCESS OVERLAY / GATE MODAL -->
+    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center" style="max-width: 530px; width: 100%; border-width: 2px;">
+            <div class="mb-3">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Private Digital E-Book
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-2">Nutrition E-Book Blueprint</h3>
+            <p class="text-light small mb-3">
+                This digital guide ($28) is distributed through Square upon purchase. Includes Mifflin-St Jeor energy formulas, macro ratio charts, categorized grocery lists, and workout timing.
+            </p>
+            <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50 mb-3 text-start small">
+                <p class="text-info mb-1"><i class="fas fa-key me-2"></i><strong>Square Access Token Notice:</strong></p>
+                <p class="text-secondary mb-0">Enter your access key from your Square receipt email, or use passcode <strong>BLUEPRINT28</strong> for instant access.</p>
+            </div>
+            <div class="mb-3">
+                <label for="passcode-input" class="form-label text-warning small fw-bold">Enter Access Key / Passcode:</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-user-shield"></i></span>
+                    <input type="password" id="passcode-input" class="form-control bg-black text-light border-secondary" placeholder="e.g. BLUEPRINT28 or Receipt Key">
+                    <button class="btn btn-warning fw-bold px-3" onclick="verifyPasscode()">
+                        Unlock <i class="fas fa-unlock-alt ms-1"></i>
+                    </button>
+                </div>
+                <div id="passcode-error" class="text-danger small mt-2 d-none">
+                    <i class="fas fa-exclamation-circle me-1"></i> Invalid Access Key. Check your receipt or enter "BLUEPRINT28".
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
+                    <i class="fas fa-shopping-cart me-1"></i> Purchase Blueprint on Square ($28)
+                </a>
+                <a href="shop.html" class="text-secondary small text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i> Return to KROME Fitness Shop
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY TOP MANUAL HEADER -->
+    <header class="manual-nav no-print">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <a href="shop.html" class="manual-brand">
+                <i class="fas fa-bolt me-2 text-warning"></i> KROME FITNESS &middot; BLUEPRINT
+            </a>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <span class="hero-price-badge me-2"><i class="fas fa-book me-1"></i> $28 DIGITAL GUIDE</span>
+                <a href="#sec-6" class="btn-action-gold btn-sm">
+                    <i class="fas fa-calculator me-1"></i> Worksheet
+                </a>
+                <button onclick="window.print()" class="btn-action-outline btn-sm">
+                    <i class="fas fa-print me-1"></i> Print / PDF
+                </button>
+                <a href="shop.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-light">
+                    <i class="fas fa-store me-1"></i> Shop
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="manual-hero">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-warning text-dark fw-bold text-uppercase px-3 py-1 rounded-pill">
+                            <i class="fas fa-book-open me-1"></i> KROME FITNESS E-BOOK
+                        </span>
+                        <span class="badge bg-info text-dark fw-bold px-3 py-1 rounded-pill">$28 DIGITAL GUIDE</span>
+                    </div>
+                    <h1 class="hero-title mb-3">NUTRITION E-BOOK BLUEPRINT</h1>
+                    <p class="lead text-light mb-4" style="font-size: 1.15rem;">
+                        Energy balance formulas, macro ratio charts, categorized grocery lists, and a practical pre/post-workout timing guide.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <a href="#sec-2" class="badge bg-dark border border-warning text-warning text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-fire me-1"></i> Energy Balance
+                        </a>
+                        <a href="#sec-3" class="badge bg-dark border border-info text-info text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-chart-pie me-1"></i> Macro Math
+                        </a>
+                        <a href="#sec-4" class="badge bg-dark border border-success text-success text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-shopping-basket me-1"></i> Grocery Blueprint
+                        </a>
+                        <a href="#sec-5" class="badge bg-dark border border-primary text-primary text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-stopwatch me-1"></i> Workout Timing
+                        </a>
+                        <a href="#sec-6" class="badge bg-warning text-dark text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-calculator me-1"></i> Open Worksheet
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TABLE OF CONTENTS CARD -->
+                <div class="col-lg-4 no-print">
+                    <div class="toc-card shadow-lg">
+                        <h6 class="text-warning fw-bold text-uppercase mb-3 pb-2 border-bottom border-warning border-opacity-25">
+                            <i class="fas fa-list-ol me-2"></i> Table of Contents
+                        </h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#sec-1" class="toc-link"><i class="fas fa-cogs"></i> 1. The System</a></li>
+                            <li><a href="#sec-2" class="toc-link"><i class="fas fa-fire"></i> 2. Energy Balance</a></li>
+                            <li><a href="#sec-3" class="toc-link"><i class="fas fa-calculator"></i> 3. Macro Math</a></li>
+                            <li><a href="#sec-4" class="toc-link"><i class="fas fa-shopping-cart"></i> 4. Grocery Blueprint</a></li>
+                            <li><a href="#sec-5" class="toc-link"><i class="fas fa-stopwatch"></i> 5. Workout Timing</a></li>
+                            <li><a href="#sec-6" class="toc-link"><i class="fas fa-edit"></i> 6. Energy & Macro Worksheet</a></li>
+                            <li><a href="#sec-7" class="toc-link"><i class="fas fa-shield-alt"></i> 7. Evidence Notes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container my-4">
+
+        <!-- SECTION 1: THE SYSTEM -->
+        <div class="manual-section" id="sec-1">
+            <h3 class="section-heading"><i class="fas fa-cogs me-2"></i> 1. THE SYSTEM</h3>
+            <div class="p-4 bg-black rounded-4 border border-warning shadow-sm mb-4">
+                <h4 class="text-warning fw-bold mb-2">Calculate. Build. Fuel. Adjust.</h4>
+                <p class="text-light mb-0 fs-5">
+                    This blueprint teaches you how to create a nutrition plan you understand instead of handing you another rigid menu. Estimate energy needs, translate calories into macros, shop by category, then organize food around training.
+                </p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card text-center border-warning">
+                        <div class="display-6 fw-bold text-warning mb-2">1</div>
+                        <h5 class="fw-bold text-light mb-2">Calculate</h5>
+                        <p class="small text-secondary mb-0">Estimate REE and TDEE using standardized scientific equations.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card text-center border-info">
+                        <div class="display-6 fw-bold text-info mb-2">2</div>
+                        <h5 class="fw-bold text-light mb-2">Build</h5>
+                        <p class="small text-secondary mb-0">Set total daily calorie targets and translate into macro grams.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card text-center border-success">
+                        <div class="display-6 fw-bold text-success mb-2">3</div>
+                        <h5 class="fw-bold text-light mb-2">Fuel</h5>
+                        <p class="small text-secondary mb-0">Shop by category and plan nutrient-dense meals around training.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card text-center border-primary">
+                        <div class="display-6 fw-bold text-primary mb-2">4</div>
+                        <h5 class="fw-bold text-light mb-2">Adjust</h5>
+                        <p class="small text-secondary mb-0">Use real-world trends in body weight, hunger, and performance to refine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: ENERGY BALANCE -->
+        <div class="manual-section" id="sec-2">
+            <h3 class="section-heading"><i class="fas fa-fire me-2"></i> 2. ENERGY BALANCE</h3>
+            <h5 class="text-light fw-bold mb-3">Start with an Estimate</h5>
+
+            <div class="row g-4 mb-4">
+                <!-- Formulas Card -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-warning">
+                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-square-root-alt me-2"></i> Mifflin-St Jeor REE Equations</h5>
+                        <div class="p-3 bg-black rounded-3 border border-secondary mb-3">
+                            <span class="badge bg-warning text-dark fw-bold mb-1">Men REE</span>
+                            <div class="fw-bold fs-6 text-light font-monospace">REE = (10 x kg) + (6.25 x cm) - (5 x age) + 5</div>
+                        </div>
+                        <div class="p-3 bg-black rounded-3 border border-secondary mb-3">
+                            <span class="badge bg-info text-dark fw-bold mb-1">Women REE</span>
+                            <div class="fw-bold fs-6 text-light font-monospace">REE = (10 x kg) + (6.25 x cm) - (5 x age) - 161</div>
+                        </div>
+                        <div class="p-3 bg-dark rounded-3 border border-warning border-opacity-50">
+                            <span class="badge bg-success text-dark fw-bold mb-1">TDEE Estimate</span>
+                            <div class="fw-bold fs-6 text-warning font-monospace">TDEE = REE x Activity Factor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Callout Box -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-info d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="text-info fw-bold mb-3"><i class="fas fa-lightbulb me-2"></i> Understanding Activity Factors</h5>
+                            <p class="text-light mb-3">
+                                Total Daily Energy Expenditure (TDEE) accounts for your Resting Energy Expenditure (REE) multiplied by daily physical movement and structured exercise.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-black rounded-3 border border-info border-opacity-50">
+                            <p class="text-warning fw-bold mb-1"><i class="fas fa-exclamation-triangle me-2"></i> Important Rule:</p>
+                            <p class="small text-secondary mb-0">
+                                Activity factors are estimates, not exact measurements. Always use real-world trends in body weight, hunger, recovery, and performance over 2–3 weeks to refine your starting number.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Multiplier Table -->
+            <div class="table-responsive">
+                <table class="table table-krome align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Activity Level</th>
+                            <th>Multiplier</th>
+                            <th>Starting Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-warning">Low</td>
+                            <td class="fw-bold text-info font-monospace">1.2</td>
+                            <td>Mostly sedentary, little structured training</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning">Light</td>
+                            <td class="fw-bold text-info font-monospace">1.35</td>
+                            <td>Some daily movement, roughly 1–3 sessions/week</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning">Moderate</td>
+                            <td class="fw-bold text-info font-monospace">1.55</td>
+                            <td>Regular movement, roughly 3–5 sessions/week</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning">High</td>
+                            <td class="fw-bold text-info font-monospace">1.75</td>
+                            <td>High daily movement and frequent demanding training</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning">Very High</td>
+                            <td class="fw-bold text-info font-monospace">1.9</td>
+                            <td>Heavy training plus highly active work or multiple sessions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 3: MACRO MATH -->
+        <div class="manual-section" id="sec-3">
+            <h3 class="section-heading"><i class="fas fa-calculator me-2"></i> 3. MACRO MATH</h3>
+            <h5 class="text-light fw-bold mb-3">Turn Calories into Grams</h5>
+
+            <!-- Macro Energy Density Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded-3 border border-warning">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="text-warning fw-bold mb-0">Protein</h5>
+                            <span class="badge bg-warning text-dark font-monospace fw-bold">4 kcal / g</span>
+                        </div>
+                        <p class="small text-light mb-0">Essential for muscle tissue repair, enzyme synthesis, amino acids and elevated satiety.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded-3 border border-info">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="text-info fw-bold mb-0">Carbohydrate</h5>
+                            <span class="badge bg-info text-dark font-monospace fw-bold">4 kcal / g</span>
+                        </div>
+                        <p class="small text-light mb-0">Primary fuel source for muscle glycogen and higher-intensity athletic training sessions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-dark rounded-3 border border-secondary">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="text-light fw-bold mb-0">Fat</h5>
+                            <span class="badge bg-secondary text-white font-monospace fw-bold">9 kcal / g</span>
+                        </div>
+                        <p class="small text-light mb-0">Crucial for essential fatty acids, hormone production, cell membrane function and vitamin absorption.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macro Ratio Frameworks -->
+            <h5 class="text-warning fw-bold mb-2">Illustrative Macro Ratio Frameworks</h5>
+            <p class="small text-secondary mb-3">These are starting frameworks — not universal requirements. Choose based on training volume and preference.</p>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <div class="krome-card border-info">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-info fw-bold mb-0">Higher-Carb Performance</h6>
+                            <span class="badge bg-info text-dark font-monospace fw-bold">50C / 25P / 25F</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 10px; background-color: #222;">
+                            <div class="progress-bar bg-info" style="width: 50%"></div>
+                            <div class="progress-bar bg-warning" style="width: 25%"></div>
+                            <div class="progress-bar bg-secondary" style="width: 25%"></div>
+                        </div>
+                        <p class="small text-secondary mb-0">High-volume training, field/court sport, endurance-heavy phases.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="krome-card border-warning">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-warning fw-bold mb-0">Balanced Training</h6>
+                            <span class="badge bg-warning text-dark font-monospace fw-bold">40C / 30P / 30F</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 10px; background-color: #222;">
+                            <div class="progress-bar bg-info" style="width: 40%"></div>
+                            <div class="progress-bar bg-warning" style="width: 30%"></div>
+                            <div class="progress-bar bg-secondary" style="width: 30%"></div>
+                        </div>
+                        <p class="small text-secondary mb-0">General resistance training, body composition and mixed activity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="krome-card border-secondary">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-light fw-bold mb-0">Lower-Carb Preference</h6>
+                            <span class="badge bg-secondary text-white font-monospace fw-bold">30C / 35P / 35F</span>
+                        </div>
+                        <div class="progress mb-2" style="height: 10px; background-color: #222;">
+                            <div class="progress-bar bg-info" style="width: 30%"></div>
+                            <div class="progress-bar bg-warning" style="width: 35%"></div>
+                            <div class="progress-bar bg-secondary" style="width: 35%"></div>
+                        </div>
+                        <p class="small text-secondary mb-0">People who prefer fewer starches while still keeping carbohydrate available.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macro Ratio Conversion Reference Table -->
+            <div class="table-responsive">
+                <table class="table table-krome align-middle text-center mb-0">
+                    <thead>
+                        <tr>
+                            <th>Calories</th>
+                            <th>Framework</th>
+                            <th>Carbs (g)</th>
+                            <th>Protein (g)</th>
+                            <th>Fat (g)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-light">1800 kcal</td>
+                            <td class="text-info fw-bold">Higher-Carb Performance</td>
+                            <td class="fw-bold text-info font-monospace">225 g</td>
+                            <td class="fw-bold text-warning font-monospace">112 g</td>
+                            <td class="fw-bold text-secondary font-monospace">50 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">1800 kcal</td>
+                            <td class="text-warning fw-bold">Balanced Training</td>
+                            <td class="fw-bold text-info font-monospace">180 g</td>
+                            <td class="fw-bold text-warning font-monospace">135 g</td>
+                            <td class="fw-bold text-secondary font-monospace">60 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">1800 kcal</td>
+                            <td class="text-light fw-bold">Lower-Carb Preference</td>
+                            <td class="fw-bold text-info font-monospace">135 g</td>
+                            <td class="fw-bold text-warning font-monospace">158 g</td>
+                            <td class="fw-bold text-secondary font-monospace">70 g</td>
+                        </tr>
+                        <tr class="border-top border-secondary">
+                            <td class="fw-bold text-light">2200 kcal</td>
+                            <td class="text-info fw-bold">Higher-Carb Performance</td>
+                            <td class="fw-bold text-info font-monospace">275 g</td>
+                            <td class="fw-bold text-warning font-monospace">138 g</td>
+                            <td class="fw-bold text-secondary font-monospace">61 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">2200 kcal</td>
+                            <td class="text-warning fw-bold">Balanced Training</td>
+                            <td class="fw-bold text-info font-monospace">220 g</td>
+                            <td class="fw-bold text-warning font-monospace">165 g</td>
+                            <td class="fw-bold text-secondary font-monospace">73 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">2200 kcal</td>
+                            <td class="text-light fw-bold">Lower-Carb Preference</td>
+                            <td class="fw-bold text-info font-monospace">165 g</td>
+                            <td class="fw-bold text-warning font-monospace">192 g</td>
+                            <td class="fw-bold text-secondary font-monospace">86 g</td>
+                        </tr>
+                        <tr class="border-top border-secondary">
+                            <td class="fw-bold text-light">2600 kcal</td>
+                            <td class="text-info fw-bold">Higher-Carb Performance</td>
+                            <td class="fw-bold text-info font-monospace">325 g</td>
+                            <td class="fw-bold text-warning font-monospace">162 g</td>
+                            <td class="fw-bold text-secondary font-monospace">72 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">2600 kcal</td>
+                            <td class="text-warning fw-bold">Balanced Training</td>
+                            <td class="fw-bold text-info font-monospace">260 g</td>
+                            <td class="fw-bold text-warning font-monospace">195 g</td>
+                            <td class="fw-bold text-secondary font-monospace">87 g</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light">2600 kcal</td>
+                            <td class="text-light fw-bold">Lower-Carb Preference</td>
+                            <td class="fw-bold text-info font-monospace">195 g</td>
+                            <td class="fw-bold text-warning font-monospace">227 g</td>
+                            <td class="fw-bold text-secondary font-monospace">101 g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 4: GROCERY BLUEPRINT -->
+        <div class="manual-section" id="sec-4">
+            <h3 class="section-heading"><i class="fas fa-shopping-basket me-2"></i> 4. SHOP WITH A SYSTEM</h3>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                <h5 class="text-light fw-bold mb-0">Categorized Grocery Blueprint</h5>
+                <div class="input-group input-group-sm no-print" style="max-width: 280px;">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-search"></i></span>
+                    <input type="text" id="grocery-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search grocery items..." onkeyup="filterGroceryList(this.value)">
+                </div>
+            </div>
+
+            <div class="row g-4" id="grocery-grid">
+                <!-- Lean / Flexible Proteins -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-warning">
+                        <h6 class="text-warning fw-bold mb-3"><i class="fas fa-drumstick-bite me-2"></i> Lean / Flexible Proteins</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Chicken breast</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Lean turkey</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Tuna</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Tilapia</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Shrimp</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Eggs and egg whites</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Nonfat Greek yogurt</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Cottage cheese</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Whey protein</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Lean beef / sirloin</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Higher-Fat Proteins -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-warning border-opacity-50">
+                        <h6 class="text-warning fw-bold mb-3"><i class="fas fa-fish me-2"></i> Higher-Fat Proteins</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Salmon</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Chicken thigh</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Whole eggs</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-warning"></i> Higher-fat beef cuts when planned</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Starches / Training Carbs -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-info">
+                        <h6 class="text-info fw-bold mb-3"><i class="fas fa-bread-slice me-2"></i> Starches / Training Carbs</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Oats</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Rice (White / Jasmine)</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Brown rice</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Quinoa</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Potatoes</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Sweet potatoes</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Beans (Black / Kidney)</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Whole-grain tortillas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fruit -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-info border-opacity-50">
+                        <h6 class="text-info fw-bold mb-3"><i class="fas fa-apple-alt me-2"></i> Fruit</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Apples</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Bananas</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Mixed berries</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Grapes</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Oranges</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Pears</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Pineapple</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Strawberries</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Watermelon</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-info"></i> Kiwi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vegetables / Volume Foods -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-success">
+                        <h6 class="text-success fw-bold mb-3"><i class="fas fa-carrot me-2"></i> Vegetables / Volume Foods</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Spinach and mixed greens</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Broccoli</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Bell peppers</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Asparagus</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Green beans</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Cauliflower</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Cabbage</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Carrots</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Cucumber</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Mushrooms</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Onions</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Zucchini</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-success"></i> Tomatoes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dietary Fats -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-secondary">
+                        <h6 class="text-light fw-bold mb-3"><i class="fas fa-seedling me-2"></i> Dietary Fats</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Avocado</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Olive oil</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Almonds</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Walnuts</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Cashews</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Peanut butter</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Peanuts</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Pecans</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Sunflower seeds</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-light"></i> Flax seeds</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Convenience Foods -->
+                <div class="col-md-6 col-lg-4 grocery-card-col">
+                    <div class="krome-card border-primary">
+                        <h6 class="text-primary fw-bold mb-3"><i class="fas fa-box-open me-2"></i> Convenience Foods</h6>
+                        <ul class="list-group list-group-flush bg-transparent small">
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Frozen vegetables</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Canned tuna</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Pre-cooked lean protein</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Rice packets</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Single-serve Greek yogurt</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Fruit</li>
+                            <li class="list-group-item bg-transparent text-light grocery-item" onclick="toggleGrocery(this)"><i class="far fa-square me-2 text-primary"></i> Protein powder</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: WORKOUT NUTRITION -->
+        <div class="manual-section" id="sec-5">
+            <h3 class="section-heading"><i class="fas fa-stopwatch me-2"></i> 5. WORKOUT NUTRITION</h3>
+
+            <div class="row g-4 mb-4">
+                <!-- Pre-Workout Timing -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-warning">
+                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-hourglass-start me-2"></i> Pre-Workout Timing</h5>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="timeline-card">
+                                <span class="badge bg-warning text-dark font-monospace fw-bold mb-1">2–4 h Before</span>
+                                <h6 class="fw-bold text-light mb-1">Balanced Pre-Workout Meal</h6>
+                                <p class="small text-secondary mb-0">Carbohydrate + protein feeding. Moderate fat and fiber if tolerated well without digestion issues.</p>
+                            </div>
+                            <div class="timeline-card">
+                                <span class="badge bg-warning text-dark font-monospace fw-bold mb-1">60–120 min Before</span>
+                                <h6 class="fw-bold text-light mb-1">Targeted Snack or Small Meal</h6>
+                                <p class="small text-secondary mb-0">Smaller snack or meal emphasizing fast-digesting carbs plus some lean protein.</p>
+                            </div>
+                            <div class="timeline-card">
+                                <span class="badge bg-warning text-dark font-monospace fw-bold mb-1">15–60 min Before</span>
+                                <h6 class="fw-bold text-light mb-1">Quick Carb Top-Off</h6>
+                                <p class="small text-secondary mb-0">Optional simple carbohydrate (e.g., fruit, rice cake) when needed and tolerated for immediate energy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-Workout Timing -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-cyan">
+                        <h5 class="text-info fw-bold mb-3"><i class="fas fa-hourglass-end me-2"></i> Post-Workout Timing</h5>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="timeline-card-cyan">
+                                <span class="badge bg-info text-dark font-monospace fw-bold mb-1">0–2 h After</span>
+                                <h6 class="fw-bold text-light mb-1">Recovery Protein & Carb Feeding</h6>
+                                <p class="small text-secondary mb-0">Quality protein feeding (25–40g). Carbohydrate intake scaled based on training volume and next session timing.</p>
+                            </div>
+                            <div class="timeline-card-cyan">
+                                <span class="badge bg-info text-dark font-monospace fw-bold mb-1">3–5 h After</span>
+                                <h6 class="fw-bold text-light mb-1">Normal Daily Distribution</h6>
+                                <p class="small text-secondary mb-0">Continue normal protein distribution (3–5 distinct protein feedings) across the remainder of the day.</p>
+                            </div>
+                            <div class="timeline-card-cyan">
+                                <span class="badge bg-info text-dark font-monospace fw-bold mb-1">&lt;4 h Recovery Phase</span>
+                                <h6 class="fw-bold text-light mb-1">Rapid Turnaround Protocol</h6>
+                                <p class="small text-secondary mb-0">When another demanding training session is coming soon on the same day, rapid carbohydrate replenishment becomes more urgent.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Takeaway Banner -->
+            <div class="p-4 bg-black rounded-4 border border-warning text-center">
+                <span class="badge bg-warning text-dark fw-bold text-uppercase mb-2 px-3 py-1 rounded-pill">
+                    <i class="fas fa-shield-alt me-1"></i> Key Takeaway
+                </span>
+                <p class="fs-5 fw-bold text-light mb-0">
+                    No panic window: total daily intake and protein distribution matter more than racing to consume a shake within 30 minutes.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 6: BUILD YOUR PLAN (Energy & Macro Worksheet) -->
+        <div class="manual-section" id="sec-6">
+            <h3 class="section-heading"><i class="fas fa-edit me-2"></i> 6. BUILD YOUR PLAN</h3>
+            <h5 class="text-warning fw-bold mb-3">Energy & Macro Interactive Worksheet</h5>
+
+            <div class="row g-4">
+                <!-- Worksheet Input Controls -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-warning">
+                        <h6 class="text-warning fw-bold mb-3"><i class="fas fa-sliders-h me-2"></i> Step 1: Input Your Metrics</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <label for="ws-gender" class="form-label small text-secondary fw-bold mb-1">Biological Gender:</label>
+                                <select id="ws-gender" class="form-select bg-black text-warning border-secondary fw-bold" onchange="calculateWorksheet()">
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="ws-age" class="form-label small text-secondary fw-bold mb-1">Age (years):</label>
+                                <input type="number" id="ws-age" class="form-control bg-black text-light border-secondary fw-bold" value="30" min="15" max="90" oninput="calculateWorksheet()">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="ws-weight-lb" class="form-label small text-secondary fw-bold mb-1">Body Weight (lbs):</label>
+                                <input type="number" id="ws-weight-lb" class="form-control bg-black text-light border-secondary fw-bold" value="180" min="80" max="450" oninput="updateWeightFromLb()">
+                            </div>
+                            <div class="col-6">
+                                <label for="ws-weight-kg" class="form-label small text-secondary fw-bold mb-1">Body Weight (kg):</label>
+                                <input type="number" id="ws-weight-kg" class="form-control bg-black text-info border-secondary fw-bold" value="81.6" step="0.1" readonly>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="ws-height-in" class="form-label small text-secondary fw-bold mb-1">Height (inches):</label>
+                                <input type="number" id="ws-height-in" class="form-control bg-black text-light border-secondary fw-bold" value="70" min="48" max="90" oninput="updateHeightFromIn()">
+                            </div>
+                            <div class="col-6">
+                                <label for="ws-height-cm" class="form-label small text-secondary fw-bold mb-1">Height (cm):</label>
+                                <input type="number" id="ws-height-cm" class="form-control bg-black text-info border-secondary fw-bold" value="177.8" step="0.1" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="ws-activity" class="form-label small text-secondary fw-bold mb-1">Activity Multiplier:</label>
+                                <select id="ws-activity" class="form-select bg-black text-light border-secondary fw-bold" onchange="calculateWorksheet()">
+                                    <option value="1.2">Low (1.2) - Mostly sedentary</option>
+                                    <option value="1.35">Light (1.35) - 1-3 sessions/week</option>
+                                    <option value="1.55" selected>Moderate (1.55) - 3-5 sessions/week</option>
+                                    <option value="1.75">High (1.75) - Demanding training</option>
+                                    <option value="1.9">Very High (1.9) - Heavy training + physical job</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="ws-goal" class="form-label small text-secondary fw-bold mb-1">Primary Goal Target:</label>
+                                <select id="ws-goal" class="form-select bg-black text-warning border-secondary fw-bold" onchange="calculateWorksheet()">
+                                    <option value="maintenance" selected>Maintenance (100% TDEE)</option>
+                                    <option value="fat_loss">Fat Loss / Shred (-15% Caloric Deficit)</option>
+                                    <option value="muscle_gain">Lean Muscle Gain (+15% Caloric Surplus)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="ws-framework" class="form-label small text-secondary fw-bold mb-1">Macro Framework Ratio:</label>
+                                <select id="ws-framework" class="form-select bg-black text-info border-secondary fw-bold" onchange="calculateWorksheet()">
+                                    <option value="performance">Higher-Carb Performance (50C / 25P / 25F)</option>
+                                    <option value="balanced" selected>Balanced Training (40C / 30P / 30F)</option>
+                                    <option value="lower_carb">Lower-Carb Preference (30C / 35P / 35F)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheet Outputs Display -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-info d-flex flex-column justify-content-between">
+                        <div>
+                            <h6 class="text-info fw-bold mb-3"><i class="fas fa-check-circle me-2"></i> Step 2: Calculated Energy & Macro Blueprint</h6>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-6">
+                                    <div class="p-3 bg-black rounded-3 border border-secondary text-center">
+                                        <div class="small text-secondary fw-bold text-uppercase">Estimated REE</div>
+                                        <div id="out-ree" class="display-6 fw-bold text-light font-monospace">1,792</div>
+                                        <div class="small text-muted">kcal / day</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 bg-black rounded-3 border border-info text-center">
+                                        <div class="small text-info fw-bold text-uppercase">Estimated TDEE</div>
+                                        <div id="out-tdee" class="display-6 fw-bold text-info font-monospace">2,778</div>
+                                        <div class="small text-muted">kcal / day</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-dark rounded-3 border border-warning text-center mb-3">
+                                <div class="small text-warning fw-bold text-uppercase">Starting Daily Calorie Target</div>
+                                <div id="out-target-calories" class="display-5 fw-bold text-warning font-monospace">2,778</div>
+                                <div id="out-goal-label" class="small text-light fw-bold">Maintenance Target</div>
+                            </div>
+
+                            <div class="row g-2 text-center">
+                                <div class="col-4">
+                                    <div class="p-2 bg-black rounded-3 border border-warning">
+                                        <div class="small text-warning fw-bold">Protein</div>
+                                        <div id="out-protein-g" class="fs-4 fw-bold text-light font-monospace">208 g</div>
+                                        <div id="out-protein-kcal" class="small text-secondary">833 kcal</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2 bg-black rounded-3 border border-info">
+                                        <div class="small text-info fw-bold">Carbs</div>
+                                        <div id="out-carbs-g" class="fs-4 fw-bold text-light font-monospace">278 g</div>
+                                        <div id="out-carbs-kcal" class="small text-secondary">1111 kcal</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2 bg-black rounded-3 border border-secondary">
+                                        <div class="small text-light fw-bold">Fat</div>
+                                        <div id="out-fat-g" class="fs-4 fw-bold text-light font-monospace">93 g</div>
+                                        <div id="out-fat-kcal" class="small text-secondary">833 kcal</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 no-print d-flex gap-2">
+                            <button class="btn btn-warning w-100 fw-bold rounded-pill py-2" onclick="window.print()">
+                                <i class="fas fa-print me-1"></i> Print / Export Blueprint PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: EVIDENCE NOTES -->
+        <div class="manual-section" id="sec-7">
+            <h3 class="section-heading"><i class="fas fa-shield-alt me-2"></i> 7. EVIDENCE NOTES</h3>
+            <div class="p-4 bg-dark rounded-4 border border-secondary">
+                <h5 class="text-warning fw-bold mb-2">Nutrition Guidance, Not Nutrition Dogma</h5>
+                <p class="text-light mb-3">
+                    The Blueprint uses the Mifflin-St Jeor resting-energy equation, NIH/NIDDK energy-balance concepts, NIH sports-nutrition guidance, and evidence-based nutrient-timing principles. Macro percentage charts are explicitly illustrative, because there is no single macro ratio that fits every goal and training program.
+                </p>
+                <div class="p-3 bg-black rounded-3 border border-secondary text-secondary small">
+                    <i class="fas fa-info-circle me-1 text-info"></i> <strong>Disclaimer:</strong> General education only. Not medical nutrition therapy. Individual needs vary.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-light py-4 border-top border-warning no-print">
+        <div class="container text-center">
+            <div class="fw-bold text-warning mb-1">KROME FITNESS &middot; NUTRITION E-BOOK BLUEPRINT</div>
+            <p class="small text-secondary mb-3">$28 Digital Guide &middot; Distributed through Square upon purchase</p>
+            <div class="d-flex justify-content-center gap-3 small">
+                <a href="shop.html" class="text-secondary text-decoration-none">Shop</a>
+                <a href="shred30_manual.html" class="text-secondary text-decoration-none">30-Day Shred Manual</a>
+                <a href="program_detail.html" class="text-secondary text-decoration-none">Online Training</a>
+                <a href="contact.html" class="text-secondary text-decoration-none">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- KROME Navbar Auto-Retract Script -->
+    <script src="js/navbar.js"></script>
+
+    <script>
+        // Passcode verification for digital guide access
+        function verifyPasscode() {
+            const input = document.getElementById('passcode-input').value.trim();
+            const err = document.getElementById('passcode-error');
+            if (input.toUpperCase() === 'BLUEPRINT28' || input.toUpperCase() === 'SHRED30' || input.length >= 6) {
+                document.getElementById('private-access-overlay').style.display = 'none';
+                localStorage.setItem('krome_blueprint_unlocked', 'true');
+            } else {
+                err.classList.remove('d-none');
+            }
+        }
+
+        // Auto-unlock if previously unlocked
+        if (localStorage.getItem('krome_blueprint_unlocked') === 'true') {
+            document.getElementById('private-access-overlay').style.display = 'none';
+        }
+
+        // Unit Conversion Helpers
+        function updateWeightFromLb() {
+            const lb = parseFloat(document.getElementById('ws-weight-lb').value) || 0;
+            const kg = (lb * 0.453592).toFixed(1);
+            document.getElementById('ws-weight-kg').value = kg;
+            calculateWorksheet();
+        }
+
+        function updateHeightFromIn() {
+            const inch = parseFloat(document.getElementById('ws-height-in').value) || 0;
+            const cm = (inch * 2.54).toFixed(1);
+            document.getElementById('ws-height-cm').value = cm;
+            calculateWorksheet();
+        }
+
+        // Interactive Worksheet & Calculator
+        function calculateWorksheet() {
+            const gender = document.getElementById('ws-gender').value;
+            const age = parseFloat(document.getElementById('ws-age').value) || 30;
+            const kg = parseFloat(document.getElementById('ws-weight-kg').value) || 81.6;
+            const cm = parseFloat(document.getElementById('ws-height-cm').value) || 177.8;
+            const activity = parseFloat(document.getElementById('ws-activity').value) || 1.55;
+            const goal = document.getElementById('ws-goal').value;
+            const framework = document.getElementById('ws-framework').value;
+
+            // Mifflin-St Jeor REE
+            let ree = (10 * kg) + (6.25 * cm) - (5 * age);
+            if (gender === 'male') {
+                ree += 5;
+            } else {
+                ree -= 161;
+            }
+            ree = Math.round(ree);
+
+            // TDEE
+            const tdee = Math.round(ree * activity);
+
+            // Calorie Target
+            let targetCalories = tdee;
+            let goalLabel = "Maintenance Target";
+            if (goal === 'fat_loss') {
+                targetCalories = Math.round(tdee * 0.85);
+                goalLabel = "Fat Loss / Caloric Deficit (-15%)";
+            } else if (goal === 'muscle_gain') {
+                targetCalories = Math.round(tdee * 1.15);
+                goalLabel = "Lean Muscle Gain / Caloric Surplus (+15%)";
+            }
+
+            // Macro ratios
+            let carbPct = 0.40;
+            let proteinPct = 0.30;
+            let fatPct = 0.30;
+
+            if (framework === 'performance') {
+                carbPct = 0.50;
+                proteinPct = 0.25;
+                fatPct = 0.25;
+            } else if (framework === 'lower_carb') {
+                carbPct = 0.30;
+                proteinPct = 0.35;
+                fatPct = 0.35;
+            }
+
+            const proteinKcal = Math.round(targetCalories * proteinPct);
+            const carbKcal = Math.round(targetCalories * carbPct);
+            const fatKcal = Math.round(targetCalories * fatPct);
+
+            const proteinG = Math.round(proteinKcal / 4);
+            const carbG = Math.round(carbKcal / 4);
+            const fatG = Math.round(fatKcal / 9);
+
+            // Render Outputs
+            document.getElementById('out-ree').innerText = ree.toLocaleString();
+            document.getElementById('out-tdee').innerText = tdee.toLocaleString();
+            document.getElementById('out-target-calories').innerText = targetCalories.toLocaleString();
+            document.getElementById('out-goal-label').innerText = goalLabel;
+
+            document.getElementById('out-protein-g').innerText = proteinG + ' g';
+            document.getElementById('out-protein-kcal').innerText = proteinKcal + ' kcal';
+
+            document.getElementById('out-carbs-g').innerText = carbG + ' g';
+            document.getElementById('out-carbs-kcal').innerText = carbKcal + ' kcal';
+
+            document.getElementById('out-fat-g').innerText = fatG + ' g';
+            document.getElementById('out-fat-kcal').innerText = fatKcal + ' kcal';
+        }
+
+        // Checkable Grocery List
+        function toggleGrocery(el) {
+            el.classList.toggle('checked');
+            const icon = el.querySelector('i');
+            if (el.classList.contains('checked')) {
+                icon.className = 'fas fa-check-square me-2 text-success';
+            } else {
+                icon.className = 'far fa-square me-2';
+            }
+        }
+
+        // Grocery List Filter
+        function filterGroceryList(query) {
+            const q = query.toLowerCase().trim();
+            const items = document.querySelectorAll('.grocery-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(q)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial Calculation on Load
+        document.addEventListener('DOMContentLoaded', calculateWorksheet);
+    </script>
+</body>
+
+</html>

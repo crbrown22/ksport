@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Athlete Supplement Protocol | Evidence-Based Supplement Guide</title>
+    <meta name="description" content="Official KROME PERFORMANCE & WELLNESS Athlete Supplement Protocol. Goal-specific supplement stacks, master evidence matrix, life-stage safety guidance, and interactive stack builder.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.15rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn-action-outline {
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            background-color: rgba(0, 255, 209, 0.15);
+            color: #fff;
+        }
+
+        /* ----------------------------------
+           HERO & TOC
+        ---------------------------------- */
+        .manual-hero {
+            background: linear-gradient(135deg, rgba(20,20,20,0.96), rgba(11,11,11,0.98));
+            border-bottom: 1px solid var(--krome-card-border);
+            padding: 3rem 0 2.5rem 0;
+        }
+
+        .hero-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-price-badge {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .toc-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .toc-link {
+            color: var(--krome-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0;
+            font-size: 0.95rem;
+        }
+
+        .toc-link:hover {
+            color: var(--krome-cyan);
+        }
+
+        .toc-link i {
+            width: 24px;
+            color: var(--krome-gold);
+        }
+
+        /* ----------------------------------
+           SECTIONS & CARDS
+        ---------------------------------- */
+        .manual-section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .section-heading {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .krome-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        /* Table styling */
+        .table-krome {
+            color: #f8f9fa;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .table-krome th {
+            background-color: #1a1a1a;
+            color: var(--krome-gold);
+            border-bottom: 2px solid var(--krome-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-krome td {
+            background-color: #121212;
+            border-color: rgba(255, 255, 255, 0.08);
+            font-size: 0.9rem;
+        }
+
+        /* Level Badges */
+        .badge-foundation { background-color: #059669; color: #fff; }
+        .badge-performance { background-color: #0284c7; color: #fff; }
+        .badge-situational { background-color: #d97706; color: #fff; }
+        .badge-clinician { background-color: #7c3aed; color: #fff; }
+        .badge-optional { background-color: #4b5563; color: #fff; }
+
+        /* Printable CSS */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            .manual-section {
+                border-bottom: 1px solid #ccc !important;
+                padding: 1.5rem 0 !important;
+                page-break-inside: avoid;
+            }
+
+            .section-heading {
+                color: #000000 !important;
+                border-bottom: 2px solid #000 !important;
+                padding-bottom: 0.25rem;
+            }
+
+            .krome-card, .toc-card, .bg-dark, .bg-black {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+            }
+
+            .text-warning, .text-info, .text-cyan, .text-gold {
+                color: #000000 !important;
+                font-weight: bold;
+            }
+
+            .text-light, .text-muted, .text-secondary {
+                color: #333333 !important;
+            }
+
+            .table-krome th {
+                background-color: #eee !important;
+                color: #000 !important;
+                border-bottom: 2px solid #000 !important;
+            }
+
+            .table-krome td {
+                background-color: #fff !important;
+                color: #000 !important;
+                border-color: #ccc !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            .manual-section {
+                padding: 1.5rem 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIVATE ACCESS OVERLAY / GATE MODAL -->
+    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center" style="max-width: 530px; width: 100%; border-width: 2px;">
+            <div class="mb-3">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Private Digital E-Book
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-2">Athlete Supplement Protocol</h3>
+            <p class="text-light small mb-3">
+                This digital guide ($28) is distributed through Square upon purchase. Includes sport-, goal- and life-stage evidence guidance for performance supplements.
+            </p>
+            <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50 mb-3 text-start small">
+                <p class="text-info mb-1"><i class="fas fa-key me-2"></i><strong>Square Access Token Notice:</strong></p>
+                <p class="text-secondary mb-0">Enter your access key from your Square receipt email, or use passcode <strong>PROTOCOL28</strong> for instant access.</p>
+            </div>
+            <div class="mb-3">
+                <label for="passcode-input" class="form-label text-warning small fw-bold">Enter Access Key / Passcode:</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-user-shield"></i></span>
+                    <input type="password" id="passcode-input" class="form-control bg-black text-light border-secondary" placeholder="e.g. PROTOCOL28 or Receipt Key">
+                    <button class="btn btn-warning fw-bold px-3" onclick="verifyPasscode()">
+                        Unlock <i class="fas fa-unlock-alt ms-1"></i>
+                    </button>
+                </div>
+                <div id="passcode-error" class="text-danger small mt-2 d-none">
+                    <i class="fas fa-exclamation-circle me-1"></i> Invalid Access Key. Check your receipt or enter "PROTOCOL28".
+                </div>
+            </div>
+            <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
+                    <i class="fas fa-shopping-cart me-1"></i> Purchase Protocol on Square ($28)
+                </a>
+                <a href="shop.html" class="text-secondary small text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i> Return to KROME Fitness Shop
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY TOP MANUAL HEADER -->
+    <header class="manual-nav no-print">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <a href="shop.html" class="manual-brand">
+                <i class="fas fa-capsules me-2 text-warning"></i> KROME PERFORMANCE &middot; PROTOCOL
+            </a>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <span class="hero-price-badge me-2"><i class="fas fa-book me-1"></i> $28 DIGITAL GUIDE</span>
+                <a href="#sec-6" class="btn-action-gold btn-sm">
+                    <i class="fas fa-pills me-1"></i> Stack Builder
+                </a>
+                <button onclick="window.print()" class="btn-action-outline btn-sm">
+                    <i class="fas fa-print me-1"></i> Print / PDF
+                </button>
+                <a href="shop.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-light">
+                    <i class="fas fa-store me-1"></i> Shop
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="manual-hero">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge bg-warning text-dark fw-bold text-uppercase px-3 py-1 rounded-pill">
+                            <i class="fas fa-book-open me-1"></i> KROME PERFORMANCE & WELLNESS
+                        </span>
+                        <span class="badge bg-info text-dark fw-bold px-3 py-1 rounded-pill">$28 DIGITAL GUIDE</span>
+                    </div>
+                    <h1 class="hero-title mb-3">ATHLETE SUPPLEMENT PROTOCOL</h1>
+                    <p class="lead text-light mb-4" style="font-size: 1.15rem;">
+                        A sport-, goal- and life-stage guide to creatine, protein, caffeine, beta-alanine, nitrate, electrolytes, vitamins and more.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <a href="#sec-3-power" class="badge bg-dark border border-warning text-warning text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-dumbbell me-1"></i> Power & Strength
+                        </a>
+                        <a href="#sec-3-field" class="badge bg-dark border border-info text-info text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-running me-1"></i> Team Sports
+                        </a>
+                        <a href="#sec-3-bodybuilding" class="badge bg-dark border border-success text-success text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-user-ninja me-1"></i> Bodybuilding
+                        </a>
+                        <a href="#sec-3-fatloss" class="badge bg-dark border border-danger text-danger text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-fire me-1"></i> Fat Loss
+                        </a>
+                        <a href="#sec-3-muscle" class="badge bg-dark border border-primary text-primary text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-chart-line me-1"></i> Lean Muscle
+                        </a>
+                        <a href="#sec-3-endurance" class="badge bg-dark border border-secondary text-light text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-biking me-1"></i> Endurance
+                        </a>
+                        <a href="#sec-4" class="badge bg-dark border border-warning text-gold text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-users me-1"></i> Kids-Older Adults
+                        </a>
+                        <a href="#sec-6" class="badge bg-warning text-dark text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-vial me-1"></i> Open Protocol
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TABLE OF CONTENTS CARD -->
+                <div class="col-lg-4 no-print">
+                    <div class="toc-card shadow-lg">
+                        <h6 class="text-warning fw-bold text-uppercase mb-3 pb-2 border-bottom border-warning border-opacity-25">
+                            <i class="fas fa-list-ol me-2"></i> Table of Contents
+                        </h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#sec-1" class="toc-link"><i class="fas fa-shield-alt"></i> 1. The KROME Rule</a></li>
+                            <li><a href="#sec-2" class="toc-link"><i class="fas fa-database"></i> 2. Master Supplement Database</a></li>
+                            <li><a href="#sec-3" class="toc-link"><i class="fas fa-trophy"></i> 3. Sport & Goal Protocols</a></li>
+                            <li><a href="#sec-4" class="toc-link"><i class="fas fa-heartbeat"></i> 4. Health & Life-Stage Guidance</a></li>
+                            <li><a href="#sec-5" class="toc-link"><i class="fas fa-tablets"></i> 5. Micronutrient Vitamin Database</a></li>
+                            <li><a href="#sec-6" class="toc-link"><i class="fas fa-vials"></i> 6. Interactive Stack Builder</a></li>
+                            <li><a href="#sec-7" class="toc-link"><i class="fas fa-user-shield"></i> 7. Athlete Safety & Testing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container my-4">
+
+        <!-- SECTION 1: THE KROME RULE -->
+        <div class="manual-section" id="sec-1">
+            <h3 class="section-heading"><i class="fas fa-shield-alt me-2"></i> 1. THE KROME RULE</h3>
+            <div class="p-4 bg-black rounded-4 border border-warning shadow-sm mb-4">
+                <h4 class="text-warning fw-bold mb-2">Purpose over hype.</h4>
+                <p class="text-light mb-0 fs-5">
+                    A supplement earns a place only when it has a clear job, acceptable risk, evidence-supported rationale, and does not replace a more important behavior.
+                </p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card border-success">
+                        <span class="badge badge-foundation fw-bold mb-2">Tier 1</span>
+                        <h5 class="fw-bold text-light mb-2">Foundation</h5>
+                        <p class="small text-secondary mb-0">Strong practical value when a real need exists (e.g., Creatine, Whey).</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card border-info">
+                        <span class="badge badge-performance fw-bold mb-2">Tier 2</span>
+                        <h5 class="fw-bold text-light mb-2">Performance-Specific</h5>
+                        <p class="small text-secondary mb-0">Useful for certain events or training demands (e.g., Caffeine, Beta-alanine, Nitrate).</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card border-warning">
+                        <span class="badge badge-situational fw-bold mb-2">Tier 3</span>
+                        <h5 class="fw-bold text-light mb-2">Situational</h5>
+                        <p class="small text-secondary mb-0">Mixed evidence or context dependent (e.g., Electrolytes, HMB, Tart Cherry).</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="krome-card border-primary">
+                        <span class="badge badge-clinician fw-bold mb-2">Tier 4</span>
+                        <h5 class="fw-bold text-light mb-2">Clinician-Guided</h5>
+                        <p class="small text-secondary mb-0">Use to correct a specific health/nutrition need (e.g., Vitamin D, B12, Iron, Zinc).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: MASTER DATABASE -->
+        <div class="manual-section" id="sec-2">
+            <h3 class="section-heading"><i class="fas fa-database me-2"></i> 2. MASTER DATABASE</h3>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                <h5 class="text-light fw-bold mb-0">Supplement Evidence Matrix</h5>
+                <div class="input-group input-group-sm no-print" style="max-width: 280px;">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-search"></i></span>
+                    <input type="text" id="supp-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search supplements..." onkeyup="filterSupplementTable(this.value)">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-krome align-middle mb-0" id="supp-master-table">
+                    <thead>
+                        <tr>
+                            <th>Supplement</th>
+                            <th>Level</th>
+                            <th>Primary Use</th>
+                            <th>Adult Starting Protocol</th>
+                            <th>Timing</th>
+                            <th>Key Caution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Creatine monohydrate</td>
+                            <td><span class="badge badge-foundation fw-bold">Foundation</span></td>
+                            <td>Strength, power, repeated high-intensity work, lean-mass support</td>
+                            <td class="text-info fw-bold font-monospace">3–5 g/day; optional adult loading 20 g/day split for 5–7 days</td>
+                            <td>Daily; timing less important than consistency</td>
+                            <td>Water-weight gain is common. Strong fit for strength/power; little direct value for pure endurance.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Whey protein</td>
+                            <td><span class="badge badge-foundation fw-bold">Foundation</span></td>
+                            <td>Convenient high-quality protein to help meet daily protein needs</td>
+                            <td class="text-info fw-bold font-monospace">20–40 g per serving as needed</td>
+                            <td>Post-workout or between meals</td>
+                            <td>Food first. Useful when whole-food protein is impractical.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">EPA / DHA omega-3</td>
+                            <td><span class="badge badge-clinician fw-bold">Health / Situational</span></td>
+                            <td>Provides long-chain omega-3 fatty acids; may support cardiovascular health</td>
+                            <td class="text-info fw-bold font-monospace">Use food intake, product label and clinician guidance</td>
+                            <td>With meals</td>
+                            <td>Not a performance necessity. Review bleeding risk / medication interactions.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Beta-alanine</td>
+                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
+                            <td>Raises muscle carnosine; may help repeated hard efforts lasting roughly 1–4 minutes</td>
+                            <td class="text-info fw-bold font-monospace">About 4–6 g/day for at least 2–4 weeks in many protocols</td>
+                            <td>Split doses</td>
+                            <td>Tingling (paresthesia) can occur. Benefit is event-specific; not a universal endurance supplement.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Caffeine</td>
+                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
+                            <td>Alertness; lower perceived effort; can improve some endurance and intermittent-sport performance</td>
+                            <td class="text-info fw-bold font-monospace">Start low; research often uses 2–6 mg/kg</td>
+                            <td>15–60 min pre-exercise</td>
+                            <td>More is not better. Sleep, anxiety, heart rhythm and individual tolerance matter. Avoid pure caffeine powder.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">L-citrulline / citrulline malate</td>
+                            <td><span class="badge badge-optional fw-bold">Optional</span></td>
+                            <td>Blood-flow / pump support; possible exercise benefit</td>
+                            <td class="text-info fw-bold font-monospace">Protocols vary (6–8g citrulline malate); evidence is mixed</td>
+                            <td>Pre-workout</td>
+                            <td>Do not present as essential. GI discomfort can occur.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Beetroot / dietary nitrate</td>
+                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
+                            <td>May reduce oxygen cost and improve some endurance outcomes</td>
+                            <td class="text-info fw-bold font-monospace">Standardized products commonly provide ~5–11 mmol nitrate</td>
+                            <td>About 2.5–3 h pre-exercise</td>
+                            <td>Response varies; stronger evidence in endurance contexts than bodybuilding.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Electrolytes</td>
+                            <td><span class="badge badge-situational fw-bold">Situational</span></td>
+                            <td>Helps replace sodium and other electrolytes during high sweat loss</td>
+                            <td class="text-info fw-bold font-monospace">Match to sweat losses / session conditions</td>
+                            <td>During / after prolonged, hot or high-sweat training</td>
+                            <td>Short gym sessions often do not require a special electrolyte product.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Magnesium</td>
+                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
+                            <td>Essential mineral; deficiency correction supports normal muscle/nerve function</td>
+                            <td class="text-info fw-bold font-monospace">Meet needs from food; supplement only when appropriate</td>
+                            <td>With food; timing is secondary</td>
+                            <td>Not a universal sleep or cramp treatment. Excess supplemental magnesium can cause GI effects.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Zinc</td>
+                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
+                            <td>Essential mineral for immune and reproductive function</td>
+                            <td class="text-info fw-bold font-monospace">Meet needs from food; supplement only when intake/status warrants</td>
+                            <td>With food</td>
+                            <td>Do not market as a testosterone booster in zinc-replete people. Long-term high doses can cause harm.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Tart cherry</td>
+                            <td><span class="badge badge-optional fw-bold">Optional Recovery</span></td>
+                            <td>May modestly help soreness/recovery in some settings</td>
+                            <td class="text-info fw-bold font-monospace">Product protocols vary</td>
+                            <td>Often evening or around hard blocks</td>
+                            <td>Optional; evidence depends on product and protocol.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Melatonin</td>
+                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
+                            <td>Sleep-timing aid, not a muscle-recovery supplement</td>
+                            <td class="text-info fw-bold font-monospace">Use only with appropriate medical/pharmacist guidance</td>
+                            <td>Before intended sleep when advised</td>
+                            <td>Not a routine sports supplement; may cause next-day drowsiness and interact with medications.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">HMB</td>
+                            <td><span class="badge badge-situational fw-bold">Situational</span></td>
+                            <td>May help recovery or lean-mass retention in selected high-stress or novice contexts</td>
+                            <td class="text-info fw-bold font-monospace">3 g/day is common in studies</td>
+                            <td>Split doses</td>
+                            <td>Evidence is mixed; not a default replacement for adequate protein and resistance training.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Greens powder</td>
+                            <td><span class="badge badge-optional fw-bold">Optional Convenience</span></td>
+                            <td>May add some micronutrients when produce intake is poor</td>
+                            <td class="text-info fw-bold font-monospace">Follow label; avoid megadose products</td>
+                            <td>Anytime</td>
+                            <td>Does not replace fruits and vegetables. Check for overlapping vitamin/mineral doses.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 3: SPORT & GOAL PROTOCOLS -->
+        <div class="manual-section" id="sec-3">
+            <h3 class="section-heading"><i class="fas fa-trophy me-2"></i> 3. SPORT & GOAL PROTOCOLS</h3>
+            <div class="p-3 bg-black rounded-3 border border-warning mb-4">
+                <p class="text-warning fw-bold mb-0"><i class="fas fa-check-circle me-2"></i> Core Principle: Use the minimum effective stack.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Power & Strength Sports -->
+                <div class="col-lg-6" id="sec-3-power">
+                    <div class="krome-card border-warning">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-warning fw-bold mb-0"><i class="fas fa-dumbbell me-2"></i> Power & Strength Sports</h5>
+                            <span class="badge bg-warning text-dark fw-bold">Strength / Sprint</span>
+                        </div>
+                        <p class="small text-secondary mb-3">Examples: Football, baseball power work, sprinting, Olympic lifting, powerlifting, throwing events</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Foundation:</strong> Creatine 3–5 g/day; adequate daily protein; whey only when convenient</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Pre-training option:</strong> Caffeine, starting at low end of evidence dosing, 15–60 min pre if tolerated</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Situational:</strong> Beta-alanine when repeated high-intensity bouts are important; electrolytes for hot/high-sweat sessions</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Optional:</strong> Citrulline for pump/blood-flow goals (mixed evidence)</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Avoid:</strong> Stacking multiple stimulants, proprietary pre-workouts, dehydration strategies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Field & Court Sports -->
+                <div class="col-lg-6" id="sec-3-field">
+                    <div class="krome-card border-info">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-info fw-bold mb-0"><i class="fas fa-running me-2"></i> Field & Court Sports</h5>
+                            <span class="badge bg-info text-dark fw-bold">Intermittent High-Intensity</span>
+                        </div>
+                        <p class="small text-secondary mb-3">Examples: Soccer, basketball, lacrosse, hockey, tennis, volleyball</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-info">Foundation:</strong> Protein adequacy; creatine may support repeated sprint/high-intensity training; hydration</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-info">Pre-game option:</strong> Caffeine can help some intermittent long-duration performance; trial in training first</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-info">Situational:</strong> Beta-alanine for repeated intense efforts; electrolytes during prolonged/hot sessions; nitrate for conditioning blocks</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-info">Recovery:</strong> Protein feeding plus carbohydrate-rich food after demanding sessions</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Avoid:</strong> Using supplements to compensate for low carbohydrate intake, poor sleep, or chronic under-fueling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Combat & Weight-Class Sports -->
+                <div class="col-lg-6">
+                    <div class="krome-card border-danger">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-danger fw-bold mb-0"><i class="fas fa-fist-raised me-2"></i> Combat & Weight-Class Sports</h5>
+                            <span class="badge bg-danger text-white fw-bold">Combat / Weight-Class</span>
+                        </div>
+                        <p class="small text-secondary mb-3">Examples: Wrestling, boxing, MMA, judo, grappling</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Foundation:</strong> Protein adequacy; creatine can support training but may increase body water/scale weight</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Pre-training option:</strong> Low-dose caffeine if tolerated and permitted</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Situational:</strong> Electrolytes during high sweat losses; beta-alanine for repeated hard rounds</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning"><i class="fas fa-exclamation-triangle me-1"></i> Critical Caution:</strong> Do not combine stimulant stacks with intentional dehydration. Weight cuts require qualified sport/medical oversight.</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Avoid:</strong> Diuretics, laxatives, unregulated fat burners, extreme water manipulation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bodybuilding / Physique -->
+                <div class="col-lg-6" id="sec-3-bodybuilding">
+                    <div class="krome-card border-success">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-success fw-bold mb-0"><i class="fas fa-user-ninja me-2"></i> Bodybuilding / Physique</h5>
+                            <span class="badge bg-success text-dark fw-bold">Hypertrophy / Composition</span>
+                        </div>
+                        <p class="small text-secondary mb-3">Examples: Resistance training, bodybuilding, physique, fitness competitions</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-success">Foundation:</strong> Creatine 3–5 g/day; daily protein target; whey for convenience</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-success">Training option:</strong> Caffeine before sessions if it improves training quality without harming sleep</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-success">Optional:</strong> Citrulline for pump; beta-alanine if sessions include sustained high-intensity work</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-success">Health layer:</strong> Omega-3 when diet is low in fatty fish; vitamin/mineral supplementation only when intake or status warrants</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Contest caution:</strong> Do not rely on diuretics, stimulant fat burners, laxatives, or severe dehydration for appearance</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Priority:</strong> Progressive resistance training, sufficient calories/protein, sleep and adherence</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fat Loss / Weight Management -->
+                <div class="col-lg-6" id="sec-3-fatloss">
+                    <div class="krome-card border-warning border-opacity-75">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-warning fw-bold mb-0"><i class="fas fa-fire me-2"></i> Fat Loss / Weight Management</h5>
+                            <span class="badge bg-warning text-dark fw-bold">Calorie Deficit</span>
+                        </div>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Foundation:</strong> Protein adequacy; whey can be a convenient low-effort protein source</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Performance support:</strong> Creatine can help maintain strength/training quality even if scale weight rises slightly from water</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Optional:</strong> Caffeine may support training performance and alertness, but it is not required for fat loss</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Hydration:</strong> Electrolytes only when sweat losses/session conditions justify them</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-danger">Avoid:</strong> Fat burners, detox products, laxatives, stimulant stacking, and using supplements in place of a calorie deficit</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-info"><i class="fas fa-bullseye me-1"></i> Reality check:</strong> Supplements do not override energy balance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lean Muscle Gain -->
+                <div class="col-lg-6" id="sec-3-muscle">
+                    <div class="krome-card border-primary">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-primary fw-bold mb-0"><i class="fas fa-chart-line me-2"></i> Lean Muscle Gain</h5>
+                            <span class="badge bg-primary text-white fw-bold">Hypertrophy / Surplus</span>
+                        </div>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-primary">Foundation:</strong> Creatine 3–5 g/day; sufficient total calories; adequate daily protein</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-primary">Protein tool:</strong> Whey 20–40 g when needed to reach the daily target</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-primary">Training option:</strong> Caffeine if it improves training output without harming sleep/appetite</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-primary">Situational:</strong> Beta-alanine for high-density training; citrulline optional; HMB not a default for trained athletes</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-primary">Health layer:</strong> Omega-3 or micronutrient supplements only when food intake/status supports the need</li>
+                            <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Priority:</strong> A controlled calorie surplus and progressive overload drive the result</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cardiovascular / Endurance -->
+                <div class="col-12" id="sec-3-endurance">
+                    <div class="krome-card border-secondary">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="text-light fw-bold mb-0"><i class="fas fa-biking me-2"></i> Cardiovascular / Endurance</h5>
+                            <span class="badge bg-secondary text-white fw-bold">Aerobic / Long Duration</span>
+                        </div>
+                        <p class="small text-secondary mb-3">Examples: Distance running, cycling, rowing, triathlon, prolonged conditioning</p>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush bg-transparent small mb-0">
+                                    <li class="list-group-item bg-transparent text-light"><strong class="text-light">Foundation:</strong> Adequate carbohydrate, hydration, electrolytes when indicated, and adequate protein</li>
+                                    <li class="list-group-item bg-transparent text-light"><strong class="text-light">Performance option 1:</strong> Caffeine before key sessions/races if individually tolerated</li>
+                                    <li class="list-group-item bg-transparent text-light"><strong class="text-light">Performance option 2:</strong> Beetroot / dietary nitrate 2.5–3 h before selected endurance sessions/events</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush bg-transparent small mb-0">
+                                    <li class="list-group-item bg-transparent text-light"><strong class="text-light">Situational:</strong> Beta-alanine is more relevant to hard efforts of a few minutes than long steady-state endurance</li>
+                                    <li class="list-group-item bg-transparent text-light"><strong class="text-warning">Creatine note:</strong> Not a primary pure-endurance ergogenic aid, though it may support strength training within an endurance program</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: HEALTH & WELLNESS -->
+        <div class="manual-section" id="sec-4">
+            <h3 class="section-heading"><i class="fas fa-heartbeat me-2"></i> 4. HEALTH & WELLNESS</h3>
+            <h5 class="text-light fw-bold mb-3">Life-Stage Guidance</h5>
+
+            <div class="row g-4">
+                <!-- Children -->
+                <div class="col-md-6">
+                    <div class="krome-card border-warning">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h5 class="text-warning fw-bold mb-0"><i class="fas fa-child me-2"></i> Children (School Age)</h5>
+                            <span class="badge bg-warning text-dark fw-bold">Food & Growth First</span>
+                        </div>
+                        <p class="small text-light mb-2">
+                            Food, growth, hydration, sleep and physical activity are the protocol. Performance-enhancing supplement stacks are not appropriate.
+                        </p>
+                        <ul class="small text-secondary ps-3 mb-0">
+                            <li><strong>AAP Guidance:</strong> Young athletes improve through calories, fluids, training, conditioning and rest.</li>
+                            <li><strong>Vitamin D:</strong> NIH target for ages 1–13 is 15 mcg (600 IU)/day from food plus supplements if needed.</li>
+                            <li><strong>Food Checklist:</strong> Use produce for vitamins A/C/K, eggs/dairy for B vitamins and D, whole grains for B vitamins.</li>
+                            <li><strong class="text-danger">Avoid:</strong> Energy drinks, pre-workouts, caffeine powders, creatine stacks and weight-loss supplements.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Teens -->
+                <div class="col-md-6">
+                    <div class="krome-card border-info">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h5 class="text-info fw-bold mb-0"><i class="fas fa-user-graduate me-2"></i> Teens (Ages 14–18)</h5>
+                            <span class="badge bg-info text-dark fw-bold">Adequacy & Caution</span>
+                        </div>
+                        <p class="small text-light mb-2">
+                            Keep the focus on adequate food, protein from meals, carbohydrates for sport, fluids, sleep and recovery.
+                        </p>
+                        <ul class="small text-secondary ps-3 mb-0">
+                            <li><strong>AAP Notes:</strong> Most young athletes do not need supplements when diet is adequate.</li>
+                            <li><strong>Key Micronutrients:</strong> Vitamin D: 15 mcg (600 IU)/day; Vitamin B12: 2.4 mcg/day.</li>
+                            <li><strong>Hydration:</strong> Energy drinks are not sports hydration. Avoid stimulant pre-workouts and dry scooping.</li>
+                            <li><strong class="text-warning">Clinical Oversight:</strong> For restricted eating, rapid growth, or vegan patterns, consult a pediatrician/dietitian.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Adults -->
+                <div class="col-md-6">
+                    <div class="krome-card border-success">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h5 class="text-success fw-bold mb-0"><i class="fas fa-user me-2"></i> Adults (Ages 19–70)</h5>
+                            <span class="badge bg-success text-dark fw-bold">Purposeful Protocol</span>
+                        </div>
+                        <p class="small text-light mb-2">
+                            Use food first, then supplement for a clear purpose: performance, convenience, documented low intake, or clinician need.
+                        </p>
+                        <ul class="small text-secondary ps-3 mb-0">
+                            <li><strong>Strongest Adult Options:</strong> Creatine for strength/power, Caffeine for performance, Whey for convenience.</li>
+                            <li><strong>Vitamin D Target:</strong> 15 mcg (600 IU)/day for ages 19–70. Cover daily intake from food before isolating vitamins.</li>
+                            <li><strong>Safety Checks:</strong> Review medications, pregnancy, kidney/heart health, anxiety and sleep before supplementing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Older Adults -->
+                <div class="col-md-6">
+                    <div class="krome-card border-primary">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h5 class="text-primary fw-bold mb-0"><i class="fas fa-user-shield me-2"></i> Older Adults (Ages 71+)</h5>
+                            <span class="badge bg-primary text-white fw-bold">Muscle & Bone Health</span>
+                        </div>
+                        <p class="small text-light mb-2">
+                            Priorities shift toward maintaining muscle, strength, bone health, adequate protein, hydration and correcting nutrient gaps.
+                        </p>
+                        <ul class="small text-secondary ps-3 mb-0">
+                            <li><strong>Vitamin D Target:</strong> NIH recommends 20 mcg (800 IU)/day. Skin production declines with age.</li>
+                            <li><strong>Vitamin B12:</strong> Higher risk for deficiency due to reduced gastric absorption with aging.</li>
+                            <li><strong>Creatine & Muscle:</strong> Studied alongside resistance training for muscle retention; review with clinician if taking medications.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: MICRONUTRIENTS -->
+        <div class="manual-section" id="sec-5">
+            <h3 class="section-heading"><i class="fas fa-tablets me-2"></i> 5. MICRONUTRIENTS</h3>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                <div>
+                    <h5 class="text-light fw-bold mb-0">KROME Vitamin Database</h5>
+                    <p class="small text-secondary mb-0">Food-first vitamin coverage with age-specific attention to vitamin D and B12.</p>
+                </div>
+                <div class="input-group input-group-sm no-print" style="max-width: 280px;">
+                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-search"></i></span>
+                    <input type="text" id="vit-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search vitamins..." onkeyup="filterVitaminTable(this.value)">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-krome align-middle mb-0" id="vit-master-table">
+                    <thead>
+                        <tr>
+                            <th>Vitamin</th>
+                            <th>Role</th>
+                            <th>Adult Reference Intake</th>
+                            <th>Food Sources</th>
+                            <th>Use Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Vitamin A</td>
+                            <td>Vision, immune function, cell growth</td>
+                            <td class="text-info fw-bold font-monospace">900 mcg men / 700 mcg women</td>
+                            <td>Carrots, sweet potatoes, spinach, kale</td>
+                            <td>Food-first; avoid high-dose preformed vitamin A unless medically indicated.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B1 (Thiamine)</td>
+                            <td>Energy metabolism, nerve function</td>
+                            <td class="text-info fw-bold font-monospace">1.2 mg men / 1.1 mg women</td>
+                            <td>Whole grains, pork, legumes, seeds</td>
+                            <td>Deficiency can impair function; extra beyond adequacy is not an energy booster.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B2 (Riboflavin)</td>
+                            <td>Energy metabolism</td>
+                            <td class="text-info fw-bold font-monospace">1.3 mg men / 1.1 mg women</td>
+                            <td>Milk, eggs, almonds, leafy greens</td>
+                            <td>Support adequacy through varied foods.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B3 (Niacin)</td>
+                            <td>Energy metabolism, DNA-related functions</td>
+                            <td class="text-info fw-bold font-monospace">16 mg men / 14 mg women</td>
+                            <td>Poultry, tuna, peanuts, mushrooms</td>
+                            <td>High-dose niacin can cause adverse effects; not a performance supplement.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B5 (Pantothenic acid)</td>
+                            <td>Coenzyme and energy metabolism</td>
+                            <td class="text-info fw-bold font-monospace">5 mg adults</td>
+                            <td>Eggs, avocado, whole grains, chicken</td>
+                            <td>Deficiency is uncommon with varied diets.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B6 (Pyridoxine)</td>
+                            <td>Protein metabolism, neurotransmitter synthesis</td>
+                            <td class="text-info fw-bold font-monospace">About 1.3–2 mg depending on age/sex</td>
+                            <td>Chicken, bananas, potatoes, salmon</td>
+                            <td>Chronic high-dose supplemental B6 can damage nerves.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B7 (Biotin)</td>
+                            <td>Fat and carbohydrate metabolism</td>
+                            <td class="text-info fw-bold font-monospace">30 mcg adults</td>
+                            <td>Eggs, nuts, legumes</td>
+                            <td>High-dose biotin can interfere with lab tests.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B9 (Folate)</td>
+                            <td>DNA synthesis, red blood cell formation</td>
+                            <td class="text-info fw-bold font-monospace">400 mcg DFE adults</td>
+                            <td>Leafy greens, beans, fortified grains</td>
+                            <td>Life-stage needs vary, especially pregnancy.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">B12 (Cobalamin)</td>
+                            <td>Red blood cell and nerve function</td>
+                            <td class="text-info fw-bold font-monospace">2.4 mcg adults</td>
+                            <td>Meat, fish, dairy, fortified foods</td>
+                            <td>Older adults and vegans may need special attention to intake/absorption.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Vitamin C</td>
+                            <td>Collagen formation, antioxidant and immune functions</td>
+                            <td class="text-info fw-bold font-monospace">90 mg men / 75 mg women</td>
+                            <td>Citrus, strawberries, bell peppers</td>
+                            <td>More is not automatically better; prioritize foods.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Vitamin D</td>
+                            <td>Bone, immune and muscle function</td>
+                            <td class="text-info fw-bold font-monospace">15 mcg (600 IU) adults 19–70; 20 mcg (800 IU) age 71+</td>
+                            <td>Fatty fish, fortified dairy/foods, sunlight</td>
+                            <td>Check status/risk before high-dose supplementation.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Vitamin E</td>
+                            <td>Antioxidant function</td>
+                            <td class="text-info fw-bold font-monospace">15 mg adults</td>
+                            <td>Almonds, sunflower seeds, spinach</td>
+                            <td>High-dose supplements are not routinely needed for athletes.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-warning fs-6">Vitamin K</td>
+                            <td>Blood clotting, bone-related function</td>
+                            <td class="text-info fw-bold font-monospace">120 mcg men / 90 mcg women</td>
+                            <td>Kale, spinach, broccoli</td>
+                            <td>People taking warfarin need consistent intake and clinician guidance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 6: INTERACTIVE STACK BUILDER -->
+        <div class="manual-section" id="sec-6">
+            <h3 class="section-heading"><i class="fas fa-vials me-2"></i> 6. INTERACTIVE STACK BUILDER</h3>
+            <p class="text-light mb-4">
+                Select your primary sport/goal and age group to generate a custom evidence-based supplement stack with daily timing and safety notes.
+            </p>
+
+            <div class="row g-4">
+                <!-- Selector Inputs -->
+                <div class="col-lg-5">
+                    <div class="krome-card border-warning">
+                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-sliders-h me-2"></i> Stack Parameters</h5>
+                        
+                        <div class="mb-3">
+                            <label for="stack-goal-select" class="form-label text-light small fw-bold">Primary Sport / Goal:</label>
+                            <select id="stack-goal-select" class="form-select bg-black text-warning border-secondary fw-bold" onchange="generateCustomStack()">
+                                <option value="power">Power & Strength (Sprinting, Lifting, Football)</option>
+                                <option value="field">Field & Court Sports (Soccer, Basketball, Tennis)</option>
+                                <option value="combat">Combat & Weight-Class (MMA, Wrestling, Boxing)</option>
+                                <option value="bodybuilding">Bodybuilding / Physique / Hypertrophy</option>
+                                <option value="fatloss">Fat Loss & Weight Management</option>
+                                <option value="muscle">Lean Muscle Gain / Surplus</option>
+                                <option value="endurance">Endurance & Cardiovascular (Running, Cycling)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stack-age-select" class="form-label text-light small fw-bold">Life-Stage / Age Group:</label>
+                            <select id="stack-age-select" class="form-select bg-black text-info border-secondary fw-bold" onchange="generateCustomStack()">
+                                <option value="adults">Adult (Ages 19–70)</option>
+                                <option value="teens">Teen (Ages 14–18)</option>
+                                <option value="kids">Child (School Age)</option>
+                                <option value="older">Older Adult (Ages 71+)</option>
+                            </select>
+                        </div>
+
+                        <div class="p-3 bg-black rounded-3 border border-secondary mb-3">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="check-high-sweat" onchange="generateCustomStack()">
+                                <label class="form-check-label text-light small fw-bold" for="check-high-sweat">High Sweat / Hot Conditions</label>
+                            </div>
+                            <div class="form-check form-switch mb-0">
+                                <input class="form-check-input" type="checkbox" id="check-vegan" onchange="generateCustomStack()">
+                                <label class="form-check-label text-light small fw-bold" for="check-vegan">Plant-Based / Low Dairy Intake</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-warning w-100 rounded-pill fw-bold" onclick="generateCustomStack()">
+                            <i class="fas fa-magic me-1"></i> Update Stack Blueprint
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Stack Output Card -->
+                <div class="col-lg-7">
+                    <div class="krome-card border-info" id="stack-output-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3 border-bottom border-secondary border-opacity-25 pb-2">
+                            <h5 class="text-info fw-bold mb-0"><i class="fas fa-clipboard-check me-2"></i> Personalized Stack Blueprint</h5>
+                            <button onclick="window.print()" class="btn btn-sm btn-outline-info rounded-pill no-print">
+                                <i class="fas fa-print me-1"></i> Print Stack
+                            </button>
+                        </div>
+
+                        <div id="stack-results-content">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: ATHLETE SAFETY & THIRD-PARTY TESTING -->
+        <div class="manual-section" id="sec-7">
+            <h3 class="section-heading"><i class="fas fa-user-shield me-2"></i> 7. ATHLETE SAFETY</h3>
+            
+            <div class="p-4 bg-black rounded-4 border border-warning shadow-sm mb-4">
+                <h4 class="text-warning fw-bold mb-2">Third-party testing matters.</h4>
+                <p class="text-light mb-0">
+                    Competitive athletes should reduce contamination risk by choosing independently certified products (e.g. NSF Certified for Sport, Informed-Sport, Cologne List) and checking current anti-doping rules. Certification reduces risk but does not eliminate it.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="krome-card border-danger">
+                        <h5 class="text-danger fw-bold mb-3"><i class="fas fa-ban me-2"></i> Banned / High-Risk Substances</h5>
+                        <p class="small text-secondary mb-3">Avoid products containing or masking banned or hazardous compounds:</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-times-circle text-danger me-2"></i> Anabolic steroids and prohormones</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-times-circle text-danger me-2"></i> SARMs (Selective Androgen Receptor Modulators)</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-times-circle text-danger me-2"></i> Pure anhydrous caffeine powder</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-times-circle text-danger me-2"></i> Unregulated multi-ingredient fat burners</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-times-circle text-danger me-2"></i> Diuretics, laxatives and extreme dehydration protocols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="krome-card border-warning">
+                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-exclamation-triangle me-2"></i> Safety Rules for Minors</h5>
+                        <p class="small text-secondary mb-3">Children and teens do not follow adult performance stacks in this guide:</p>
+                        <ul class="list-group list-group-flush bg-transparent small mb-0">
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-check-circle text-warning me-2"></i> Priority: Adequate food, hydration, sleep and structured training</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-check-circle text-warning me-2"></i> No energy drinks, pre-workouts or weight-loss supplements</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-check-circle text-warning me-2"></i> Micronutrients only under pediatric or dietitian guidance</li>
+                            <li class="list-group-item bg-transparent text-light"><i class="fas fa-check-circle text-warning me-2"></i> Always check third-party testing for safety and heavy metal compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER & DISCLAIMER -->
+        <div class="py-4 text-center border-top border-secondary border-opacity-25 mt-4">
+            <p class="text-warning fw-bold fs-5 mb-1">KROME STANDARD</p>
+            <p class="text-light mb-2">Food first. Evidence next. Minimum effective stack.</p>
+            <p class="small text-secondary mb-0">
+                KROME Fitness &middot; Athlete Supplement Protocol &middot; General education only. Not medical nutrition therapy or medical advice.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- BOOTSTRAP 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // PASSCODE / ACCESS VERIFICATION
+        function verifyPasscode() {
+            const input = document.getElementById('passcode-input').value.trim();
+            const errorDiv = document.getElementById('passcode-error');
+            if (input.toUpperCase() === 'PROTOCOL28' || input.length >= 6) {
+                document.getElementById('private-access-overlay').style.display = 'none';
+                localStorage.setItem('krome_protocol_unlocked', 'true');
+            } else {
+                errorDiv.classList.remove('d-none');
+            }
+        }
+
+        // Auto unlock if previously unlocked
+        if (localStorage.getItem('krome_protocol_unlocked') === 'true') {
+            document.getElementById('private-access-overlay').style.display = 'none';
+        }
+
+        // SUPPLEMENT TABLE SEARCH
+        function filterSupplementTable(query) {
+            const filter = query.toLowerCase();
+            const rows = document.querySelectorAll('#supp-master-table tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // VITAMIN TABLE SEARCH
+        function filterVitaminTable(query) {
+            const filter = query.toLowerCase();
+            const rows = document.querySelectorAll('#vit-master-table tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // CUSTOM STACK BUILDER LOGIC
+        function generateCustomStack() {
+            const goal = document.getElementById('stack-goal-select').value;
+            const age = document.getElementById('stack-age-select').value;
+            const sweat = document.getElementById('check-high-sweat').checked;
+            const vegan = document.getElementById('check-vegan').checked;
+            const output = document.getElementById('stack-results-content');
+
+            if (age === 'kids') {
+                output.innerHTML = `
+                    <div class="alert alert-warning border-warning text-dark fw-bold">
+                        <i class="fas fa-child me-2"></i> Child Safety Notice (School Age)
+                    </div>
+                    <p class="text-light">
+                        Performance-enhancing supplement stacks are <strong>not recommended</strong> for children. The protocol for young athletes is adequate whole food, hydration, sleep, and structured training.
+                    </p>
+                    <div class="p-3 bg-black rounded-3 border border-secondary mb-3">
+                        <h6 class="text-warning fw-bold mb-2">Recommended Focus:</h6>
+                        <ul class="small text-light mb-0">
+                            <li>Whole food protein & carbohydrates around practice</li>
+                            <li>Water & milk / fortified plant milk for hydration</li>
+                            <li>Vitamin D: 15 mcg (600 IU)/day if dietary intake or sunlight is low (consult pediatrician)</li>
+                        </ul>
+                    </div>
+                `;
+                return;
+            }
+
+            let foundationItems = [];
+            let performanceItems = [];
+            let situationalItems = [];
+            let cautions = [];
+
+            if (age === 'teens') {
+                cautions.push("AAP guidance: Teens should focus primarily on whole foods. Avoid energy drinks, high-stimulant pre-workouts, and dry scooping.");
+            }
+
+            // Goal Specific Stacks
+            if (goal === 'power') {
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Post-workout or daily with meals' });
+                if (age !== 'teens') {
+                    foundationItems.push({ name: 'Whey / Plant Protein Isolate', dose: '20–40 g as needed', timing: 'Post-workout or convenient snack' });
+                    performanceItems.push({ name: 'Caffeine', dose: '100–200 mg (start low)', timing: '15–60 min pre-workout' });
+                } else {
+                    foundationItems.push({ name: 'Whole Food Protein / Whey', dose: '20–30 g as needed', timing: 'Post-workout' });
+                }
+                situationalItems.push({ name: 'Beta-Alanine', dose: '3.2–4 g/day', timing: 'Split doses daily (for repeated sprint/hard bouts)' });
+            } else if (goal === 'field') {
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Daily consistency' });
+                foundationItems.push({ name: 'Protein (Whey/Plant)', dose: '20–30 g as needed', timing: 'Post-training or match recovery' });
+                if (age !== 'teens') {
+                    performanceItems.push({ name: 'Caffeine', dose: '150–200 mg', timing: '30–45 min pre-match' });
+                }
+                situationalItems.push({ name: 'Beetroot / Dietary Nitrate', dose: '5–11 mmol nitrate', timing: '2.5–3 hours pre-match/conditioning' });
+            } else if (goal === 'combat') {
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Daily (note: monitor scale weight for cuts)' });
+                foundationItems.push({ name: 'Whey Protein', dose: '25–40 g', timing: 'Post-sparring / post-workout' });
+                situationalItems.push({ name: 'Beta-Alanine', dose: '4–6 g daily', timing: 'Split doses (helps repeated 3–5 min rounds)' });
+                cautions.push("Critical: Do not combine stimulant stacks with intentional dehydration or extreme weight cuts.");
+            } else if (goal === 'bodybuilding') {
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Daily' });
+                foundationItems.push({ name: 'Whey / Casein Protein', dose: '25–40 g', timing: 'Post-workout or before bed' });
+                if (age !== 'teens') {
+                    performanceItems.push({ name: 'Caffeine', dose: '150–300 mg', timing: '30–45 min pre-workout' });
+                    performanceItems.push({ name: 'L-Citrulline Malate', dose: '6–8 g', timing: '30–45 min pre-workout' });
+                }
+            } else if (goal === 'fatloss') {
+                foundationItems.push({ name: 'Whey / Plant Protein Isolate', dose: '25–35 g', timing: 'Between meals to support satiety & retain muscle' });
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Daily (retains strength in deficit)' });
+                if (age !== 'teens') {
+                    performanceItems.push({ name: 'Caffeine', dose: '100–200 mg', timing: 'Pre-workout (helps alertness and training drive)' });
+                }
+                cautions.push("Supplements do not override a calorie deficit. Avoid unregulated fat burners.");
+            } else if (goal === 'muscle') {
+                foundationItems.push({ name: 'Creatine Monohydrate', dose: '3–5 g daily', timing: 'Daily' });
+                foundationItems.push({ name: 'Whey / Mass Protein', dose: '30–40 g', timing: 'Post-workout or between meals' });
+                if (age !== 'teens') {
+                    performanceItems.push({ name: 'Caffeine', dose: '150–250 mg', timing: '30 min pre-workout' });
+                }
+            } else if (goal === 'endurance') {
+                foundationItems.push({ name: 'Electrolytes / Carbohydrate Fuel', dose: 'Match to sweat rate & session duration', timing: 'During training (>60 min)' });
+                foundationItems.push({ name: 'Protein (Whey/Plant)', dose: '20–30 g', timing: 'Post-run / post-ride recovery' });
+                performanceItems.push({ name: 'Beetroot Juice / Dietary Nitrate', dose: '5–11 mmol nitrate', timing: '2.5–3 hours pre-race/long run' });
+                if (age !== 'teens') {
+                    performanceItems.push({ name: 'Caffeine', dose: '100–200 mg', timing: '15–60 min pre-race' });
+                }
+            }
+
+            // Conditional additions
+            if (sweat) {
+                situationalItems.push({ name: 'Sodium & Electrolyte Replacement', dose: '300–600 mg sodium per hour of heavy sweat', timing: 'During & post session' });
+            }
+            if (vegan) {
+                foundationItems.push({ name: 'Vitamin B12', dose: '2.4 mcg daily or 250 mcg weekly', timing: 'With meals' });
+                situationalItems.push({ name: 'Plant-Based Protein Powder (Pea/Rice Blend)', dose: '25–35 g', timing: 'Daily as needed' });
+            }
+            if (age === 'older') {
+                foundationItems.push({ name: 'Vitamin D3', dose: '20 mcg (800 IU) daily', timing: 'With fat-containing meal' });
+                foundationItems.push({ name: 'Vitamin B12', dose: '2.4 mcg daily', timing: 'Daily' });
+            }
+
+            let html = `
+                <div class="mb-3">
+                    <span class="badge bg-warning text-dark fw-bold me-2">Selected Goal: ${goal.toUpperCase()}</span>
+                    <span class="badge bg-info text-dark fw-bold">Life-Stage: ${age.toUpperCase()}</span>
+                </div>
+
+                <h6 class="text-warning fw-bold border-bottom border-warning border-opacity-25 pb-1 mb-2">
+                    <i class="fas fa-check-square me-2"></i> Tier 1: Foundation Stack
+                </h6>
+                <ul class="list-group list-group-flush bg-transparent small mb-3">
+                    ${foundationItems.map(item => `
+                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                            <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
+                            <span class="badge bg-dark text-warning border border-warning font-monospace">${item.dose}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+
+            if (performanceItems.length > 0) {
+                html += `
+                    <h6 class="text-info fw-bold border-bottom border-info border-opacity-25 pb-1 mb-2">
+                        <i class="fas fa-bolt me-2"></i> Tier 2: Performance-Specific Ergogenics
+                    </h6>
+                    <ul class="list-group list-group-flush bg-transparent small mb-3">
+                        ${performanceItems.map(item => `
+                            <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                                <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
+                                <span class="badge bg-dark text-info border border-info font-monospace">${item.dose}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            }
+
+            if (situationalItems.length > 0) {
+                html += `
+                    <h6 class="text-light fw-bold border-bottom border-secondary border-opacity-25 pb-1 mb-2">
+                        <i class="fas fa-filter me-2"></i> Tier 3: Situational Support
+                    </h6>
+                    <ul class="list-group list-group-flush bg-transparent small mb-3">
+                        ${situationalItems.map(item => `
+                            <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                                <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
+                                <span class="badge bg-dark text-light border border-secondary font-monospace">${item.dose}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            }
+
+            if (cautions.length > 0) {
+                html += `
+                    <div class="p-3 bg-black rounded-3 border border-danger border-opacity-50 mt-3">
+                        <h6 class="text-danger fw-bold mb-1"><i class="fas fa-exclamation-triangle me-2"></i> Safety & Caution Notes:</h6>
+                        <ul class="small text-secondary ps-3 mb-0">
+                            ${cautions.map(c => `<li>${c}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            output.innerHTML = html;
+        }
+
+        // Initialize stack generator on load
+        document.addEventListener('DOMContentLoaded', generateCustomStack);
+    </script>
+</body>
+
+</html>

@@ -800,6 +800,88 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
+
+        /* ----------------------------------
+           MOBILE UI OPTIMIZATION
+        ---------------------------------- */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: #111418;
+                border-top: 1px solid rgba(0, 255, 209, 0.3);
+                border-bottom: 2px solid var(--krome-gold);
+                padding: 1.25rem 1rem;
+                margin-top: 0.75rem;
+                border-radius: 12px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+            }
+            .nav-link {
+                padding: 0.75rem 1rem !important;
+                font-size: 1.05rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+            .dropdown-menu {
+                background-color: #1a1e24;
+                border-color: rgba(255, 212, 71, 0.3);
+                margin-top: 0.5rem;
+            }
+            .dropdown-item {
+                padding: 0.75rem 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-carousel-slide {
+                min-height: 440px;
+                padding: 50px 15px 70px;
+            }
+            .hero-carousel-slide h1 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+            }
+            .hero-carousel-slide p {
+                font-size: 1rem;
+            }
+            .hero-cta-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+                width: 100%;
+            }
+            .btn-hero-primary, .btn-hero-outline {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+                padding: 14px 20px;
+                min-height: 48px;
+            }
+            .video-wrapper {
+                margin-bottom: 1.5rem;
+            }
+            .contact-form-container {
+                padding: 1.5rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+            .program-card-img-wrapper {
+                height: 180px;
+            }
+            .btn-learn-more, .btn-submit-consult {
+                min-height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 

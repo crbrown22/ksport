@@ -260,6 +260,61 @@
         footer a:hover {
             color: var(--krome-cyan);
         }
+
+        /* ----------------------------------
+           MOBILE UI OPTIMIZATIONS
+        ---------------------------------- */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: #111418;
+                border-top: 1px solid rgba(0, 255, 209, 0.3);
+                border-bottom: 2px solid var(--krome-gold);
+                padding: 1.25rem 1rem;
+                margin-top: 0.75rem;
+                border-radius: 12px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+            }
+            .nav-link {
+                padding: 0.75rem 1rem !important;
+                font-size: 1.05rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #shop-category-filters {
+                display: flex;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+                width: 100%;
+            }
+            #shop-category-filters .btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-img-wrapper {
+                height: 180px;
+            }
+            .btn-shop-order {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
@@ -407,6 +462,50 @@
                 </div>
             </div>
 
+            <!-- $28.00 - Nutrition E-Book Blueprint -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="nutrition" data-ondemand="true" data-price="28.00">
+                <div class="product-card" style="border-color: rgba(255, 212, 71, 0.4);">
+                    <div class="product-img-wrapper">
+                        <img src="media/clean_eating.jpg" alt="Nutrition E-Book Blueprint">
+                        <span class="product-tag" style="background-color: var(--krome-gold); color: #000;">$28.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">Digital Guide</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title text-warning">Nutrition E-Book Blueprint</h3>
+                        <p class="card-text">Energy balance formulas, macro ratio charts, categorized grocery lists, and workout timing guide.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="nutrition_blueprint.html" class="btn-shop-order" style="border-color: var(--krome-gold); color: var(--krome-gold);"><i class="fas fa-book-open me-1"></i> Open Blueprint $28</a>
+                            <a href="nutrition_blueprint.html" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-calculator me-1"></i> Interactive Worksheet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $28.00 - Athlete Supplement Protocol -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="nutrition" data-ondemand="true" data-price="28.00">
+                <div class="product-card" style="border-color: rgba(0, 255, 209, 0.4);">
+                    <div class="product-img-wrapper">
+                        <img src="media/facility_weights.jpg" alt="Athlete Supplement Protocol">
+                        <span class="product-tag" style="background-color: var(--krome-cyan); color: #000;">$28.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Digital Guide</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title text-info">Athlete Supplement Protocol</h3>
+                        <p class="card-text">Sport-, goal- and life-stage evidence guide to creatine, protein, caffeine, nitrate, and vitamins.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="supplement_protocol.html" class="btn-shop-order" style="border-color: var(--krome-cyan); color: var(--krome-cyan);"><i class="fas fa-capsules me-1"></i> Open Protocol $28</a>
+                            <a href="supplement_protocol.html#sec-6" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-vials me-1"></i> Stack Builder</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- $28.00 -->
             <div class="col-lg-3 col-md-6 shop-item" data-category="gear" data-price="28.00">
                 <div class="product-card">
@@ -481,7 +580,8 @@
                         <p class="card-text">High-density metabolic resistance workouts, carb-cycling diet plan, and core sculpting routines.</p>
                         <div class="d-flex flex-column gap-2 mt-auto">
                             <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $59.99</a>
-                            <a href="program_detail.html?id=shred30" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                            <a href="program_detail.html?id=shred30" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Program Details</a>
+                            <span class="badge bg-dark text-info border border-info border-opacity-50 py-1" style="font-size: 0.72rem;"><i class="fas fa-lock me-1 text-warning"></i> Manual link delivered via Square upon purchase</span>
                         </div>
                     </div>
                 </div>
