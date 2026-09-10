@@ -318,81 +318,492 @@
         </div>
     </header>
 
+    <!-- Category Filter Tabs & Sort Selector -->
+    <div class="container mt-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div class="d-flex flex-wrap gap-2" id="shop-category-filters">
+                <button class="btn btn-sm btn-warning fw-bold rounded-pill px-3 py-2 active" onclick="filterShop('all', this)"><i class="fas fa-th-large me-1"></i> All Products</button>
+                <button class="btn btn-sm btn-outline-info fw-bold rounded-pill px-3 py-2" onclick="filterShop('ondemand', this)"><i class="fas fa-bolt me-1"></i> On Demand</button>
+                <button class="btn btn-sm btn-outline-warning fw-bold rounded-pill px-3 py-2" onclick="filterShop('online', this)"><i class="fas fa-mobile-alt me-1"></i> Online Coaching</button>
+                <button class="btn btn-sm btn-outline-info fw-bold rounded-pill px-3 py-2" onclick="filterShop('sports', this)"><i class="fas fa-running me-1"></i> Sports Protocols</button>
+                <button class="btn btn-sm btn-outline-warning fw-bold rounded-pill px-3 py-2" onclick="filterShop('weightloss', this)"><i class="fas fa-fire me-1"></i> Weight Loss & Shred</button>
+                <button class="btn btn-sm btn-outline-info fw-bold rounded-pill px-3 py-2" onclick="filterShop('nutrition', this)"><i class="fas fa-apple-alt me-1"></i> Nutrition & Fuel</button>
+                <button class="btn btn-sm btn-outline-warning fw-bold rounded-pill px-3 py-2" onclick="filterShop('pt', this)"><i class="fas fa-user-friends me-1"></i> In-Person Training</button>
+                <button class="btn btn-sm btn-outline-light fw-bold rounded-pill px-3 py-2" onclick="filterShop('gear', this)"><i class="fas fa-tshirt me-1"></i> Gear & Apparel</button>
+            </div>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                <label for="shop-sort" class="text-secondary small fw-bold mb-0" style="white-space: nowrap;"><i class="fas fa-sort-amount-down-alt me-1 text-warning"></i> Sort:</label>
+                <select id="shop-sort" class="form-select form-select-sm bg-dark text-warning border-secondary rounded-pill px-3" style="width: auto; cursor: pointer;" onchange="sortProducts(this.value)">
+                    <option value="low-to-high" selected>Price: Low to High</option>
+                    <option value="high-to-low">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <!-- Products Grid -->
-    <main class="container py-5 flex-grow-1">
-        <div class="row g-4">
-            
-            <!-- Product 5: 21-Day Transformation Program -->
-            <div class="col-lg-3 col-md-6">
+    <main class="container py-2 flex-grow-1">
+        <div class="row g-4" id="shop-products-grid">
+
+            <!-- $9.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="weightloss" data-ondemand="true" data-price="9.99">
                 <div class="product-card">
                     <div class="product-img-wrapper">
-                        <img src="media/21day_transformation.jpg" alt="21-Day Transformation Program">
+                        <img src="media/21day_transformation.jpg" alt="21-Day Athlete Transformation">
                         <span class="product-tag">$9.99</span>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">21-Day Transformation</h3>
-                        <p class="card-text">High-intensity 21-day accelerated athletic conditioning and metabolic reset protocol for rapid PRs and body recomposition. Only $9.99.</p>
-                        <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Enroll ($9.99)</a>
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">Weight Loss</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">21-Day Athlete Jumpstart</h3>
+                        <p class="card-text">High-intensity 21-day conditioning reset, custom macro calculator, and daily habit tracking scorecard.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $9.99</a>
+                            <a href="program_detail.html?id=transformation-21" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 1 -->
-            <div class="col-lg-3 col-md-6">
+            <!-- $19.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="nutrition" data-ondemand="true" data-price="19.99">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/phormulaone.png" alt="Supplementation Protocol">
+                        <span class="product-tag">$19.99</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Nutrition</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Supplement Protocol</h3>
+                        <p class="card-text">Evidence-based supplement manual for recovery, power output, joint protection, and gut health.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/B6nM1p7R" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $19.99</a>
+                            <a href="program_detail.html?id=supplement-protocol" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $25.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="gear" data-price="25.00">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="media/shirt.PNG" alt="KROME Performance Athletic Tee">
-                        <span class="product-tag">Apparel</span>
+                        <span class="product-tag">$25.00</span>
                     </div>
                     <div class="card-body">
+                        <span class="badge bg-dark text-light border border-secondary mb-2" style="font-size: 0.7rem;">Merchandise</span>
                         <h3 class="card-title">KROME Performance Tee</h3>
                         <p class="card-text">Ultra-breathable athletic moisture-wicking blend tailored for high-intensity lifting sessions and conditioning drills.</p>
-                        <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 2 -->
-            <div class="col-lg-3 col-md-6">
+            <!-- $28.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="gear" data-price="28.00">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="media/hat.PNG" alt="KROME Snapback Performance Hat">
-                        <span class="product-tag">Headwear</span>
+                        <span class="product-tag">$28.00</span>
                     </div>
                     <div class="card-body">
+                        <span class="badge bg-dark text-light border border-secondary mb-2" style="font-size: 0.7rem;">Merchandise</span>
                         <h3 class="card-title">KROME Snapback Hat</h3>
                         <p class="card-text">Structured performance athletic cap with embroidered logo, moisture-absorbent headband, and adjustable snap.</p>
-                        <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 3 -->
-            <div class="col-lg-3 col-md-6">
+            <!-- $29.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="nutrition" data-ondemand="true" data-price="29.99">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Salad.jpg" alt="Nutrition Guidelines E-Book">
+                        <span class="product-tag">$29.99</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Nutrition</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Nutrition E-Book Blueprint</h3>
+                        <p class="card-text">Energy balance formulas, macro ratio charts, categorized grocery lists, and pre/post-workout timing guide.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/P9kL2m1Q" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $29.99</a>
+                            <a href="program_detail.html?id=nutrition-guidelines" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $30.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="gear" data-price="30.00">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="media/bottle.PNG" alt="KROME Insulated Shaker Bottle">
-                        <span class="product-tag">Gear</span>
+                        <span class="product-tag">$30.00</span>
                     </div>
                     <div class="card-body">
+                        <span class="badge bg-dark text-light border border-secondary mb-2" style="font-size: 0.7rem;">Merchandise</span>
                         <h3 class="card-title">Insulated Shaker Bottle</h3>
                         <p class="card-text">Heavy-duty stainless shaker bottle with leak-proof seal and silent mixer for pre-workout and protein shakes.</p>
-                        <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 4 -->
-            <div class="col-lg-3 col-md-6">
+            <!-- $59.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="weightloss" data-ondemand="true" data-price="59.99">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/clean_eating.jpg" alt="30-Day Shred Challenge">
+                        <span class="product-tag">$59.99</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">Weight Loss</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">30-Day Shred Challenge</h3>
+                        <p class="card-text">High-density metabolic resistance workouts, carb-cycling diet plan, and core sculpting routines.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $59.99</a>
+                            <a href="program_detail.html?id=shred30" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $65.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="gear" data-price="65.00">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="media/sweat.PNG" alt="KROME Heavyweight Training Hoodie">
-                        <span class="product-tag">Apparel</span>
+                        <span class="product-tag">$65.00</span>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">Heavyweight Training Hoodie</h3>
+                        <span class="badge bg-dark text-light border border-secondary mb-2" style="font-size: 0.7rem;">Merchandise</span>
+                        <h3 class="card-title">Heavyweight Hoodie</h3>
                         <p class="card-text">Premium heavyweight fleece training hoodie designed for warm-ups, chilly outdoor sprints, and lifestyle recovery.</p>
-                        <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        <div class="mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Inquire / Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $75.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="pt" data-price="75.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/strength (2).jpg" alt="Single Private Session">
+                        <span class="product-tag">$75.00</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Personal Training</span>
+                        <h3 class="card-title">Single Private Session</h3>
+                        <p class="card-text">Single 60-minute private session with Coach Brown for a targeted movement audit, squat/bench/deadlift fix.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Book $75 Session</a>
+                            <a href="program_detail.html?id=pt-1" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $79.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="nutrition" data-ondemand="true" data-price="79.99">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Salmon.jpg" alt="Custom Macro Blueprint">
+                        <span class="product-tag">$79.99</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Nutrition</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Custom Macro Blueprint</h3>
+                        <p class="card-text">Personalized macro setup calculated for your exact weight and goals, carb-cycling rules, and 30+ recipes.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/T4vW8x9Y" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $79.99</a>
+                            <a href="program_detail.html?id=macro-blueprint" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $99.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="online" data-price="99.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/online_8_real.jpg" alt="Silver Online Coaching">
+                        <span class="product-tag">$99.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Online Coaching</span>
+                        <h3 class="card-title">Silver Online Coaching</h3>
+                        <p class="card-text">Mobile app workout splits, HD video movement tutorials, monthly overload updates, and email support.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/8lq2aIq2" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $99/mo</a>
+                            <a href="program_detail.html?id=online-silver" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $99.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="weightloss" data-ondemand="true" data-price="99.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/shred_guide.jpg" alt="8-Week Fat Loss & Shred">
+                        <span class="product-tag">$99.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">Weight Loss</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">8-Week Fat Loss & Shred</h3>
+                        <p class="card-text">2-month body recomposition protocol, metabolic resistance circuits, carb-cycling guides, and 50+ recipe vault.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $99.00</a>
+                            <a href="program_detail.html?id=weightloss-8" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $99.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="sports" data-ondemand="true" data-price="99.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/strength_power_real.jpg" alt="Strength & Power Protocol">
+                        <span class="product-tag">$99.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Sports Protocol</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Strength & Power Protocol</h3>
+                        <p class="card-text">12-week kinetic force development manual, compound wave loading, Olympic lifts, and plyometric progressions.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/KZonj3NA" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $99.00</a>
+                            <a href="program_detail.html?id=sports-strength" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $99.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="sports" data-ondemand="true" data-price="99.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/speed_agility_real.jpg" alt="Speed & Conditioning Protocol">
+                        <span class="product-tag">$99.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Sports Protocol</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Speed & Conditioning</h3>
+                        <p class="card-text">8-week acceleration, deceleration, directional agility, and energy-system conditioning manual.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/f7vG03u3" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $99.00</a>
+                            <a href="program_detail.html?id=sports-speed" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $99.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="sports" data-ondemand="true" data-price="99.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/flex_mobility_real.jpg" alt="Flexibility & Mobility Blueprint">
+                        <span class="product-tag">$99.00</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">Sports Protocol</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">Flexibility & Mobility</h3>
+                        <p class="card-text">Joint decompression, hip capsule mobility, thoracic spine unlocking, and injury bulletproofing guide.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/8lq2aIq2" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $99.00</a>
+                            <a href="program_detail.html?id=sports-flexmob" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $129.99 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="weightloss" data-ondemand="true" data-price="129.99">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/transformation_body.jpg" alt="12-Week Transformation Blueprint">
+                        <span class="product-tag">$129.99</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">Weight Loss</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">On Demand</span>
+                        </div>
+                        <h3 class="card-title">12-Week Transformation</h3>
+                        <p class="card-text">3-phase physique overhaul combining rebuild, sculpt, and peak training blocks with structured refeed schedules.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/G3H7X5Z1" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Buy $129.99</a>
+                            <a href="program_detail.html?id=transformation-12" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $149.00/mo -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="online" data-price="149.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/online_16_real.jpg" alt="16-Week KSP System">
+                        <span class="product-tag">$149.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Online Coaching</span>
+                        <h3 class="card-title">16-Week KSP System</h3>
+                        <p class="card-text">4-phase periodized athletic transformation with mobile app splits, HD video library, and macro syncing.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $149/mo</a>
+                            <a href="program_detail.html?id=online-16" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $149.00/mo -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="online" data-price="149.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Coachbsb.jpg" alt="Gold 1-on-1 Coaching">
+                        <span class="product-tag">$149.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Online Coaching</span>
+                        <h3 class="card-title">Gold 1-on-1 Coaching</h3>
+                        <p class="card-text">Bi-weekly 1-on-1 coach check-ins, custom macro nutrition guide, lifting video form audits, and app access.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/m3T7jF34" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $149/mo</a>
+                            <a href="program_detail.html?id=online-gold" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $199.00/mo -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="online" data-price="199.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Hardman.jpg" alt="Platinum VIP Mentorship">
+                        <span class="product-tag">$199.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Online Coaching</span>
+                        <h3 class="card-title">Platinum VIP Mentorship</h3>
+                        <p class="card-text">Weekly live 1-on-1 video consultations with Coach Brown, daily priority messaging, and custom competition prep.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/20e3zIe5" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $199/mo</a>
+                            <a href="program_detail.html?id=online-platinum" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $250.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="pt" data-price="250.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/pt_4_real.jpg" alt="4 Sessions Intro Coaching Pack">
+                        <span class="product-tag">$250.00</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Personal Training</span>
+                        <h3 class="card-title">4-Session Intro Pack</h3>
+                        <p class="card-text">Special 1-on-1 intro coaching: movement screening, compound lift calibration, and 4 private 60-min sessions.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Book $250 Pack</a>
+                            <a href="program_detail.html?id=pt-4" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $350.00/mo -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="online" data-price="350.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/online_52_real.jpg" alt="52-Week Year-Round System">
+                        <span class="product-tag">$350.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Online Coaching</span>
+                        <h3 class="card-title">52-Week Year-Round</h3>
+                        <p class="card-text">365-day athletic periodization covering off-season hypertrophy, pre-season speed, and in-season maintenance.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="https://square.link/u/f7vG03u3" target="_blank" class="btn-shop-order"><i class="fas fa-shopping-cart me-1"></i> Enroll $350/mo</a>
+                            <a href="program_detail.html?id=online-52" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $450.00/mo -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="pt" data-price="450.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Sprint.jpg" alt="Monthly Hybrid In-Person + Online">
+                        <span class="product-tag">$450.00/mo</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Personal Training</span>
+                        <h3 class="card-title">Monthly Hybrid Coaching</h3>
+                        <p class="card-text">4 monthly in-person private sessions combined with 24/7 mobile app custom programming and video reviews.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Enroll $450/mo</a>
+                            <a href="program_detail.html?id=pt-hybrid" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $650.00 -->
+            <div class="col-lg-3 col-md-6 shop-item" data-category="pt" data-price="650.00">
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="media/Sledwork.jpg" alt="10 Sessions Private Pack">
+                        <span class="product-tag">$650.00</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="badge bg-dark text-warning border border-warning mb-2" style="font-size: 0.7rem;">Personal Training</span>
+                        <h3 class="card-title">10-Session Training Pack</h3>
+                        <p class="card-text">Ten private 60-minute 1-on-1 sessions at KROME to overload compound lifts and enhance kinetic velocity.</p>
+                        <div class="d-flex flex-column gap-2 mt-auto">
+                            <a href="contact.html" class="btn-shop-order"><i class="fas fa-clipboard-check me-1"></i> Book $650 Pack</a>
+                            <a href="program_detail.html?id=pt-10" class="btn btn-sm btn-outline-secondary rounded-pill text-light py-1"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -450,6 +861,71 @@
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/navbar.js"></script>
+    <script>
+        function sortProducts(order = 'low-to-high') {
+            const grid = document.getElementById('shop-products-grid');
+            if (!grid) return;
+            const items = Array.from(grid.querySelectorAll('.shop-item'));
+            items.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price') || 0);
+                const priceB = parseFloat(b.getAttribute('data-price') || 0);
+                return order === 'low-to-high' ? priceA - priceB : priceB - priceA;
+            });
+            items.forEach(item => grid.appendChild(item));
+        }
+
+        function filterShop(category, btnElem) {
+            // Update active button state
+            const buttons = document.querySelectorAll('#shop-category-filters button');
+            buttons.forEach(b => {
+                b.classList.remove('active', 'btn-warning', 'btn-info', 'btn-light', 'text-dark');
+                const onclickAttr = b.getAttribute('onclick') || '';
+                if (onclickAttr.includes('online') || onclickAttr.includes('weightloss') || onclickAttr.includes('pt') || onclickAttr.includes('all')) {
+                    b.classList.add('btn-outline-warning');
+                } else if (onclickAttr.includes('gear')) {
+                    b.classList.add('btn-outline-light');
+                } else {
+                    b.classList.add('btn-outline-info');
+                }
+            });
+
+            if (btnElem) {
+                btnElem.classList.remove('btn-outline-warning', 'btn-outline-info', 'btn-outline-light');
+                if (category === 'gear') {
+                    btnElem.classList.add('btn-light', 'active');
+                } else if (category === 'sports' || category === 'nutrition' || category === 'ondemand') {
+                    btnElem.classList.add('btn-info', 'active', 'text-dark');
+                } else {
+                    btnElem.classList.add('btn-warning', 'active', 'text-dark');
+                }
+            }
+
+            // Filter items
+            const items = document.querySelectorAll('#shop-products-grid .shop-item');
+            items.forEach(item => {
+                const itemCat = item.getAttribute('data-category');
+                const isOnDemand = item.getAttribute('data-ondemand') === 'true';
+
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else if (category === 'ondemand') {
+                    item.style.display = isOnDemand ? 'block' : 'none';
+                } else if (itemCat === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const sortSelect = document.getElementById('shop-sort');
+            const sortVal = sortSelect ? sortSelect.value : 'low-to-high';
+            sortProducts(sortVal);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            sortProducts('low-to-high');
+        });
+    </script>
 
 </body>
 

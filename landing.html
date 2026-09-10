@@ -706,16 +706,28 @@
             <!-- Tier Switcher -->
             <div class="tier-switcher">
                 <button type="button" class="tier-btn active" onclick="switchFunnelTier('16week')">
-                    <i class="fas fa-fire me-1 text-warning"></i> 16 Week KSP Transformation System ($149/mo)
+                    <i class="fas fa-fire me-1 text-warning"></i> 16 Wk KSP System ($149/mo)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('gold')">
+                    <i class="fas fa-star me-1 text-warning"></i> Gold Online ($149/mo)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('silver')">
+                    <i class="fas fa-mobile-alt me-1" style="color: var(--krome-cyan);"></i> Silver Online ($99/mo)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('platinum')">
+                    <i class="fas fa-gem me-1 text-info"></i> Platinum VIP ($199/mo)
                 </button>
                 <button type="button" class="tier-btn" onclick="switchFunnelTier('52week')">
-                    <i class="fas fa-crown me-1 text-warning"></i> 52-Week Complete ($350/mo)
+                    <i class="fas fa-crown me-1 text-warning"></i> 52-Wk Complete ($350/mo)
                 </button>
                 <button type="button" class="tier-btn" onclick="switchFunnelTier('shred')">
-                    <i class="fas fa-bolt me-1" style="color: var(--krome-cyan);"></i> 8-Week Shred ($99)
+                    <i class="fas fa-bolt me-1" style="color: var(--krome-cyan);"></i> 8-Wk Shred ($99)
+                </button>
+                <button type="button" class="tier-btn" onclick="switchFunnelTier('strength')">
+                    <i class="fas fa-dumbbell me-1 text-warning"></i> Strength & Power ($49.99)
                 </button>
                 <button type="button" class="tier-btn" onclick="switchFunnelTier('inperson')">
-                    <i class="fas fa-user-friends me-1 text-warning"></i> In-Person Intro ($250 / 4 Sessions)
+                    <i class="fas fa-user-friends me-1 text-warning"></i> In-Person Intro ($250)
                 </button>
             </div>
 
@@ -772,10 +784,34 @@
 
                     <!-- Phase-by-Phase Curriculum Card -->
                     <div class="content-card">
-                        <div class="card-heading">
-                            <i class="fas fa-layer-group"></i> Phased Periodization Roadmap
+                        <div class="card-heading d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <span><i class="fas fa-layer-group text-warning me-2"></i> Phased Periodization Roadmap</span>
+                            <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.75rem;">Systematic KSP Progression</span>
                         </div>
-                        <p class="text-secondary small mb-4">Every block is systematically sequenced to maximize strength adaptation and eliminate training plateaus.</p>
+
+                        <!-- Comprehensive KSP Periodization Vision Overview Banner -->
+                        <div class="p-3 mb-4 rounded border border-secondary border-opacity-50" style="background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(30,30,38,0.95));">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="rounded-circle p-2 bg-dark text-warning border border-warning d-none d-sm-flex align-items-center justify-content-center" style="min-width: 44px; width: 44px; height: 44px;">
+                                    <i class="fas fa-bullseye fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold text-warning mb-1"><i class="fas fa-eye me-1"></i> The Overall KSP Vision & Periodization Purpose</h6>
+                                    <p class="text-light small mb-2" style="line-height: 1.55;" id="ksp-vision-roadmap-overview">
+                                        The overarching KROME Sports Performance (KSP) vision is rooted in science-based, non-linear periodization. Rather than random workouts that lead to premature plateaus and joint fatigue, every KSP protocol is intentionally mapped into distinct tactical blocks. Each phase builds systematically on the last—transitioning from neuromuscular stability and joint resilience, into progressive overload hypertrophy, through explosive velocity output, and finally into peak athletic competition or recomposition.
+                                    </p>
+                                    <div class="d-flex flex-wrap gap-2 pt-2 border-top border-secondary border-opacity-25">
+                                        <span class="badge bg-dark text-info border border-info" id="ksp-vision-goal-badge"><i class="fas fa-trophy me-1"></i> Objective: Systematic Athletic Overhaul</span>
+                                        <span class="badge bg-dark text-light border border-secondary"><i class="fas fa-chart-line me-1"></i> Plateau-Proof Block Sequencing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <p class="text-secondary small mb-0 fw-semibold"><i class="fas fa-stream me-1 text-warning"></i> Program Phase-by-Phase Roadmap:</p>
+                            <span class="text-secondary small fw-semibold" id="ksp-phase-count-badge">4 Blocks Included</span>
+                        </div>
                         
                         <div id="funnel-phases-container">
                             <!-- Populated dynamically by JS -->
@@ -784,9 +820,33 @@
 
                     <!-- What's Included Card -->
                     <div class="content-card">
-                        <div class="card-heading">
-                            <i class="fas fa-box-open"></i> What's Included in Your Protocol
+                        <div class="card-heading d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <span><i class="fas fa-box-open text-warning me-2"></i> What's Included in Your Protocol</span>
+                            <span class="badge bg-dark text-info border border-info" style="font-size: 0.75rem;">Full KSP Delivery Standard</span>
                         </div>
+
+                        <!-- Comprehensive KSP Delivery System Overview Banner -->
+                        <div class="p-3 mb-4 rounded border border-secondary border-opacity-50" style="background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(22,32,38,0.95));">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="rounded-circle p-2 bg-dark text-info border border-info d-none d-sm-flex align-items-center justify-content-center" style="min-width: 44px; width: 44px; height: 44px; color: var(--krome-cyan) !important;">
+                                    <i class="fas fa-cube fs-5"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="color: var(--krome-cyan);"><i class="fas fa-check-double me-1"></i> The All-In-One KSP Execution Standard</h6>
+                                    <p class="text-light small mb-2" style="line-height: 1.55;" id="ksp-vision-included-overview">
+                                        KSP believes that a true athletic transformation requires an all-encompassing support system, not just a static workout sheet. Every offer is backed by our complete delivery framework: mobile app workout splits, HD video movement tutorials for bulletproof technique, precision macronutrient nutrition strategies matched to your training volume, and direct coach accountability so every rep, meal, and benchmark is tracked toward total physical success.
+                                    </p>
+                                    <div class="d-flex flex-wrap gap-2 pt-2 border-top border-secondary border-opacity-25">
+                                        <span class="badge bg-dark text-warning border border-warning"><i class="fas fa-shield-alt me-1"></i> Zero Guesswork Guarantee</span>
+                                        <span class="badge bg-dark text-light border border-secondary"><i class="fas fa-mobile-alt me-1"></i> App & Video Library</span>
+                                        <span class="badge bg-dark text-info border border-info"><i class="fas fa-utensils me-1"></i> Nutrition & Macro Sync</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-secondary small mb-3 fw-semibold"><i class="fas fa-list-check me-1 text-warning"></i> Included Deliverables & Feature Checklist:</p>
+
                         <div id="funnel-inclusions-container">
                             <!-- Populated dynamically by JS -->
                         </div>
@@ -992,108 +1052,360 @@
         </div>
     </main>
 
-    <!-- Explore All Programs Cross-Sell Grid -->
-    <section class="explore-other-section py-5 border-top border-secondary border-opacity-25">
+    <!-- Complete Special Offers & Program Catalog Section -->
+    <section class="explore-other-section py-5 border-top border-secondary border-opacity-25" id="special-offers-catalog">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
                 <div>
-                    <span class="funnel-badge mb-2">Complete Catalog</span>
+                    <span class="funnel-badge mb-2"><i class="fas fa-tags me-1"></i> Special Offers Catalog</span>
                     <h3 class="text-warning fw-bold mb-0">
-                        <i class="fas fa-th-large me-2"></i> Explore Other Specialized Programs
+                        <i class="fas fa-th-large me-2"></i> KROME Special Offers & Training Programs
                     </h3>
+                    <p class="text-secondary small mb-0 mt-1">Explore all online subscriptions, specialized athletic protocols, nutrition plans, and in-person coaching options.</p>
                 </div>
-                <a href="ksp_home.html#programs" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-2 mt-3 mt-sm-0 fw-semibold">
-                    <i class="fas fa-list me-1"></i> View Full Directory <i class="fas fa-arrow-right ms-1"></i>
+                <a href="program_online.html" class="btn btn-outline-warning btn-sm rounded-pill px-3 py-2 mt-3 mt-sm-0 fw-semibold">
+                    <i class="fas fa-external-link-alt me-1"></i> Dedicated Catalog Page <i class="fas fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="related-container">
-                
-                <div class="col">
-                    <a href="program_detail.html?id=strength" class="explore-card">
-                        <div class="position-relative" style="height: 140px; overflow: hidden;">
-                            <img src="media/strength_power_real.jpg" alt="Strength and Power" class="explore-card-img">
-                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Strength & Power</span>
-                        </div>
-                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
-                            <div>
-                                <h5 class="fw-bold text-light fs-6 mb-2">Strength & Power Protocol</h5>
-                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    Master raw powerlifting mechanics, kinetic force chaining, and maximum strength output.
-                                </p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
-                                <span class="small text-warning fw-semibold">12 Weeks</span>
-                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col">
-                    <a href="program_detail.html?id=conditioning" class="explore-card">
-                        <div class="position-relative" style="height: 140px; overflow: hidden;">
-                            <img src="media/speed_agility_real.jpg" alt="Conditioning and Agility" class="explore-card-img">
-                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Conditioning</span>
-                        </div>
-                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
-                            <div>
-                                <h5 class="fw-bold text-light fs-6 mb-2">Speed, Agility & Conditioning</h5>
-                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    High-intensity intervals, sprint acceleration, multi-planar footwork, and conditioning.
-                                </p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
-                                <span class="small text-warning fw-semibold">8 Weeks</span>
-                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
-                            </div>
-                        </div>
-                    </a>
+            <!-- Category Section 1: Online Training Subscriptions -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <h4 class="text-light fw-bold fs-5 mb-0"><i class="fas fa-wifi text-warning me-2"></i> Online Coaching Subscriptions</h4>
+                    <span class="badge bg-dark text-warning border border-warning border-opacity-50">App-Delivered & Managed</span>
                 </div>
-
-                <div class="col">
-                    <a href="program_detail.html?id=flexmob" class="explore-card">
-                        <div class="position-relative" style="height: 140px; overflow: hidden;">
-                            <img src="media/flex_mobility_real.jpg" alt="Flexibility and Mobility" class="explore-card-img">
-                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Mobility</span>
-                        </div>
-                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
-                            <div>
-                                <h5 class="fw-bold text-light fs-6 mb-2">Flexibility & Joint Longevity</h5>
-                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    Bulletproof tendons, optimize thoracic rotation, and expand hip mobility for pain-free athletics.
-                                </p>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/online_8_real.jpg" alt="Silver Online Coaching" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-info border border-info">$99.00 / Month</span>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
-                                <span class="small text-warning fw-semibold">6 Weeks</span>
-                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Silver Online Coaching</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">App-delivered custom workout splits, video demonstrations, monthly progression updates, and PR tracking.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/8lq2aIq2" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-bolt me-1"></i> Enroll $99/mo</a>
+                                    <button type="button" onclick="switchFunnelTier('silver'); window.scrollTo({top: 400, behavior: 'smooth'});" class="btn btn-outline-info btn-sm rounded-pill px-2" title="View in Calculator"><i class="fas fa-eye"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-warning h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/online_16_real.jpg" alt="Gold Online Coaching" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-warning text-dark fw-bold">MOST POPULAR &bull; $149.00 / Mo</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Gold Online Coaching</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Custom workout programming, bi-weekly direct coach check-ins, macro guidance, and lifting video form reviews.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/m3T7jF34" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-star me-1"></i> Enroll $149/mo</a>
+                                    <button type="button" onclick="switchFunnelTier('gold'); window.scrollTo({top: 400, behavior: 'smooth'});" class="btn btn-outline-info btn-sm rounded-pill px-2" title="View in Calculator"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/online_52_real.jpg" alt="Platinum VIP Mentorship" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$199.00 / Month</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Platinum VIP Mentorship</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">VIP 1-on-1 mentorship featuring weekly live video call strategy sessions, daily messaging, and real-time routine adjustments.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/20e3zIe5" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-crown me-1"></i> Enroll $199/mo</a>
+                                    <button type="button" onclick="switchFunnelTier('platinum'); window.scrollTo({top: 400, behavior: 'smooth'});" class="btn btn-outline-info btn-sm rounded-pill px-2" title="View in Calculator"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/online_52_real.jpg" alt="52-Week Year-Round Athlete System" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">365-Day System &bull; $350.00 / Mo</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">52-Week Complete System</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Full year-round periodized athlete development covering off-season bulking, pre-season speed, and in-season maintenance.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/f7vG03u3" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-fire me-1"></i> Enroll $350/mo</a>
+                                    <button type="button" onclick="switchFunnelTier('52week'); window.scrollTo({top: 400, behavior: 'smooth'});" class="btn btn-outline-info btn-sm rounded-pill px-2" title="View in Calculator"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col">
-                    <a href="program_detail.html?id=shred" class="explore-card">
-                        <div class="position-relative" style="height: 140px; overflow: hidden;">
-                            <img src="media/shred_guide.jpg" alt="Nutrition and Shred" class="explore-card-img">
-                            <span class="badge position-absolute top-0 start-0 m-2" style="background: rgba(11,11,11,0.85); color: var(--krome-cyan); border: 1px solid var(--krome-cyan); font-size: 0.72rem;">Nutrition</span>
-                        </div>
-                        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
-                            <div>
-                                <h5 class="fw-bold text-light fs-6 mb-2">8-Week Shred & Macro Guide</h5>
-                                <p class="text-secondary small mb-3" style="line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    Delicious high-protein recipes and structured calorie periodization for fat loss.
-                                </p>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 mt-auto">
-                                <span class="small text-warning fw-semibold">8 Weeks</span>
-                                <span class="btn btn-outline-info btn-sm rounded-pill px-3 py-1 fw-bold" style="color: var(--krome-cyan); border-color: var(--krome-cyan); font-size: 0.78rem;">Details &rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
             </div>
+
+            <!-- Category Section 2: Sports Performance Protocols -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <h4 class="text-light fw-bold fs-5 mb-0"><i class="fas fa-running text-warning me-2"></i> Sports Performance Protocols</h4>
+                    <span class="badge bg-dark text-info border border-info border-opacity-50">One-Time Purchase &bull; Lifetime Access</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/strength_power_real.jpg" alt="Strength and Power Protocol" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$99.00 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Strength & Power Protocol</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">12-week kinetic force chaining, wave loading, Olympic lift variations, and maximum strength development manual.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/KZonj3NA" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-dumbbell me-1"></i> Buy $99.00</a>
+                                    <a href="program_detail.html?id=strength" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/speed_agility_real.jpg" alt="Speed & Conditioning Protocol" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-info border border-info">$99.00 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Speed, Agility & Conditioning</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">8-week sprint posture mechanics, multi-planar footwork, change-of-direction drills, and conditioning intervals.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-bolt me-1"></i> Buy $99.00</a>
+                                    <a href="program_detail.html?id=conditioning" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/flex_mobility_real.jpg" alt="Flexibility & Joint Mobility" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$99.00 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Flexibility & Joint Longevity</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Bulletproof tendon resilience, expand hip & thoracic mobility, and eliminate joint pain for lifetime athleticism.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/ap5iTEUX" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-heartbeat me-1"></i> Buy $99.00</a>
+                                    <a href="program_detail.html?id=flexmob" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Section 3: Weight Loss & Transformation -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <h4 class="text-light fw-bold fs-5 mb-0"><i class="fas fa-fire text-warning me-2"></i> Weight Loss & Body Recomposition</h4>
+                    <span class="badge bg-dark text-danger border border-danger border-opacity-50">Accelerated Fat Loss</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col">
+                        <div class="card bg-dark border-warning h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/transformation_body.jpg" alt="21-Day Athlete Transformation" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-warning text-dark fw-bold">SPECIAL BUNDLE &bull; $9.99</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">21-Day Athlete Transformation</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">21-day high-intensity athletic jumpstart protocol with macro calculator and daily habit accountability guide.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-shopping-cart me-1"></i> Add $9.99</a>
+                                    <a href="program_detail.html?id=transformation-21" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/clean_eating.jpg" alt="30-Day Shred Challenge" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$59.99 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">30-Day Shred Challenge</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">30 days of progressive HIIT, metabolic resistance circuits, and a caloric deficit blueprint for rapid fat loss.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-fire me-1"></i> Buy $59.99</a>
+                                    <a href="program_detail.html?id=shred30" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/shred_guide.jpg" alt="8-Week Accelerated Fat Loss" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-info border border-info">$99.00 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">8-Week Fat Loss & Shred</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">High-impact metabolic conditioning and precision macro blueprint to strip stubborn fat while maintaining muscle.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/swbYbkuY" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-bolt me-1"></i> Buy $99.00</a>
+                                    <a href="program_detail.html?id=shred" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/transformation_body.jpg" alt="12-Week Total Transformation" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$129.99 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">12-Week Transformation</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">3-phase physique overhaul combining rebuild, sculpt, and peak training blocks with structured refeed schedules.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/G3H7X5Z1" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-sync me-1"></i> Buy $129.99</a>
+                                    <a href="program_detail.html?id=transformation-12" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Section 4: Nutrition & Macro Plans -->
+            <div class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <h4 class="text-light fw-bold fs-5 mb-0"><i class="fas fa-utensils text-warning me-2"></i> Nutrition & Supplementation Blueprints</h4>
+                    <span class="badge bg-dark text-success border border-success border-opacity-50">Macro Precision</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/nutrition_8.jpg" alt="Nutrition Guidelines" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$29.99 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Nutrition Guidelines E-Book</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Foundational eating habits, meal timing windows, grocery shopping checklists, and high-protein food choices.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/P9kL2m1Q" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-book me-1"></i> Buy $29.99</a>
+                                    <a href="program_detail.html?id=nutrition-guidelines" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/nutrition_16.jpg" alt="Custom Macro Blueprint" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-info border border-info">$79.99 Setup</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Custom Macro Blueprint</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Precision protein, carb, and fat targets tailored to your weight, body composition, and caloric output with 30+ recipes.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/T4vW8x9Y" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-calculator me-1"></i> Buy $79.99</a>
+                                    <a href="program_detail.html?id=macro-blueprint" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/nutrition_52.jpg" alt="Supplementation Protocol" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$19.99 One-Time</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Supplementation Protocol</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Evidence-based supplementation guide: what truly drives recovery, muscle synthesis, and stamina vs wasted money.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/B6nM1p7R" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-pills me-1"></i> Buy $19.99</a>
+                                    <a href="program_detail.html?id=supplement-protocol" class="btn btn-outline-info btn-sm rounded-pill px-3">Details &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Section 5: In-Person Coaching Packages -->
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <h4 class="text-light fw-bold fs-5 mb-0"><i class="fas fa-user-friends text-warning me-2"></i> In-Person Personal Training (KROME Facility)</h4>
+                    <span class="badge bg-dark text-warning border border-warning border-opacity-50">1-on-1 Direct Coaching</span>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    <div class="col">
+                        <div class="card bg-dark border-warning h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/pt_4_real.jpg" alt="4-Session Intro Special" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-warning text-dark fw-bold">INTRO SPECIAL &bull; $250.00</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">4-Session Intro Pack</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">4 private 60-min 1-on-1 sessions ($62.50/session) with movement audit, technique correction, and velocity screen.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="contact.html" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-calendar-alt me-1"></i> Book $250</a>
+                                    <button type="button" onclick="switchFunnelTier('inperson'); window.scrollTo({top: 400, behavior: 'smooth'});" class="btn btn-outline-info btn-sm rounded-pill px-2" title="View in Calculator"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/pt_8_real.jpg" alt="Single PT Session" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-info border border-info">$75.00 / Session</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Single 1-on-1 PT Session</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">Single private 60-minute intensive coaching session for biomechanics tune-ups, 1RM testing, or power calibration.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/J2kL8n4V" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-calendar-check me-1"></i> Book $75</a>
+                                    <a href="contact.html" class="btn btn-outline-info btn-sm rounded-pill px-2"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/pt_12_real.jpg" alt="10-Session PT Package" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$650.00 Pack</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">10-Session PT Package</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">10 private 60-minute sessions ($65/session) for sustained athletic progression, speed mechanics, and power building.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/H9jK2m5P" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-trophy me-1"></i> Book $650</a>
+                                    <a href="contact.html" class="btn btn-outline-info btn-sm rounded-pill px-2"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-dark border-secondary h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                            <div class="position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="media/pt_12_real.jpg" alt="Monthly Hybrid Training" class="w-full h-100 object-fit-cover" style="width: 100%; height: 100%; object-fit: cover;">
+                                <span class="badge position-absolute top-0 start-0 m-2 bg-dark text-warning border border-warning">$450.00 / Month</span>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold text-light fs-6 mb-1">Monthly Hybrid Coaching</h5>
+                                <p class="text-secondary small mb-3" style="line-height: 1.4;">4 private in-person sessions per month + full app-based remote programming and nutrition guidance for total performance.</p>
+                                <div class="mt-auto pt-2 border-top border-secondary border-opacity-25 d-flex gap-2">
+                                    <a href="https://square.link/u/W1qZ7x8M" target="_blank" class="btn btn-warning btn-sm fw-bold flex-grow-1 rounded-pill"><i class="fas fa-layer-group me-1"></i> Enroll $450/mo</a>
+                                    <a href="contact.html" class="btn btn-outline-info btn-sm rounded-pill px-2"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1166,6 +1478,8 @@
                 access: 'Instant',
                 support: 'Included',
                 checkoutUrl: 'https://square.link/u/swbYbkuY',
+                vision: 'The 16-Week KSP System is our signature periodization blueprint designed to completely overhaul an athlete\'s physical capability. The overall goal is to systematically guide you through 4 distinct 4-week training blocks—neuromuscular activation, progressive overload hypertrophy, peak kinetic velocity, and metabolic conditioning—while syncing macronutrient intake for extreme athletic recomposition.',
+                deliveryVision: 'Enrolling in the 16-Week System provides total access to the full KSP ecosystem: app-based workout splits, 100+ HD exercise video demonstrations, custom macronutrient calculators, weekly check-ins, form audits, and lifetime access to PDF blueprints.',
                 phases: [
                     { name: 'Phase 1 (Weeks 1-4): Neuromuscular Activation & Structural Balance', desc: 'Establish compound movement mechanics, fix muscle imbalances, and activate stabilizing kinetic chains.' },
                     { name: 'Phase 2 (Weeks 5-8): Progressive Overload & Hypertrophy Waves', desc: 'Systematic volume accumulation, mechanical tension increases, and foundational muscle density building.' },
@@ -1193,6 +1507,8 @@
                 access: 'Instant',
                 support: 'VIP Access',
                 checkoutUrl: 'https://square.link/u/f7vG03u3',
+                vision: 'The 52-Week System represents KSP\'s year-round athletic vision: systematic 365-day periodization covering off-season hypertrophy & kinetic strength, pre-season speed & agility, in-season fatigue management, and post-season restoration to ensure peak performance year after year without plateaus or burnout.',
+                deliveryVision: 'A 365-day continuous athletic commitment featuring quarterly program adaptations based on progress benchmarks, full mobile app integration, direct priority line access to Coach Brown, 50+ recipe meal plans, and VIP entry to the KSP athlete network.',
                 phases: [
                     { name: 'Quarter 1: Foundational Strength & Joint Bulletproofing', desc: 'Build rock-solid tendon elasticity, posterior chain power, and technical mastery.' },
                     { name: 'Quarter 2: Hypertrophy & Maximum Force Generation', desc: 'Drive functional muscle mass, heavy barbell loading, and maximum power development.' },
@@ -1220,6 +1536,8 @@
                 access: 'Instant',
                 support: 'Included',
                 checkoutUrl: 'https://square.link/u/swbYbkuY',
+                vision: 'The 8-Week Shred vision focuses on rapid body recomposition: stripping stubborn fat while shielding hard-earned lean muscle tissue. KSP achieves this goal using high-density metabolic resistance circuits paired with precision caloric deficit macro periodization.',
+                deliveryVision: 'Includes the 8-Week High-Intensity workout schedule, step-by-step macro calculation guide tailored to your body weight, 50+ high-protein recipe vault, evidence-based supplement guide, and direct email support with Coach Brown.',
                 phases: [
                     { name: 'Weeks 1-4: Metabolic Reset & Caloric Calibration', desc: 'Ignite fat oxidation with high-density supersets and sustainable macro adjustments.' },
                     { name: 'Weeks 5-8: High-Definition Shred & Athletic Conditioning', desc: 'Amplify heart rate intervals, carb-cycling timing, and vascular muscle definition.' }
@@ -1232,6 +1550,115 @@
                     'Direct Email Support with Coach Brown'
                 ]
             },
+            'silver': {
+                title: 'Silver Online Coaching Package',
+                category: 'Essential Remote Strength & Fitness',
+                level: 'Beginner to Intermediate',
+                desc: 'App-delivered custom workout splits, exercise demonstration videos, monthly progression updates, and in-app PR tracking for $99/month.',
+                price: '$99.00/mo',
+                oldPrice: '$149.00/mo',
+                saveText: 'Save $50/mo Today',
+                duration: 'Monthly Recurring',
+                freq: '3-4 Days/Wk',
+                access: 'Mobile App',
+                support: 'Monthly Check-In',
+                checkoutUrl: 'https://square.link/u/8lq2aIq2',
+                vision: 'Silver Online Coaching is engineered for self-motivated athletes who need structure, exercise technique clarity, and steady volume progressions. KSP\'s vision for Silver is to eliminate gym guesswork by delivering professionally periodized workout splits directly to your phone.',
+                deliveryVision: 'Silver delivers custom mobile app workout splits, HD video movement demonstrations for every lift, monthly progressive overload updates, in-app PR/weight metric tracking, and direct email coach support.',
+                phases: [
+                    { name: 'Phase 1: Foundational Movement & Resistance Split', desc: 'Custom workout split delivered via mobile app with full video demonstrations.' },
+                    { name: 'Phase 2: Monthly Progressive Overload Updates', desc: 'Sustained metric tracking, PR logging, and routine progressions every 30 days.' }
+                ],
+                inclusions: [
+                    'Custom workout split delivered directly in mobile app',
+                    'Full video movement demonstrations & technique tips',
+                    'Monthly program progression & volume adjustment updates',
+                    'In-app metric, weight load, and PR tracking',
+                    'Direct email support with Coach Brown'
+                ]
+            },
+            'gold': {
+                title: 'Gold Online Coaching Package',
+                category: 'Enhanced Coaching & Bi-Weekly Check-Ins',
+                level: 'Intermediate to Advanced',
+                desc: 'Our most popular remote coaching tier: includes custom programming, bi-weekly direct coach check-ins, macro guidance, and video form analysis for $149/month.',
+                price: '$149.00/mo',
+                oldPrice: '$229.00/mo',
+                saveText: 'Save $80/mo Today',
+                duration: 'Monthly Recurring',
+                freq: '4-5 Days/Wk',
+                access: 'Mobile App + Coach',
+                support: 'Bi-Weekly Check-Ins',
+                checkoutUrl: 'https://square.link/u/m3T7jF34',
+                vision: 'Gold Online Coaching bridges remote training with hands-on 1-on-1 coach guidance. KSP\'s goal for Gold is to provide continuous bi-weekly video form reviews, direct progress check-ins, and dynamic macro nutrition adjustments so you receive personalized coaching wherever you train.',
+                deliveryVision: 'Includes everything in Silver plus bi-weekly direct 1-on-1 coach check-ins & progress reviews with Coach Brown, personalized macro calculation & nutrition guide, lifting video form audits, and in-app messaging support.',
+                phases: [
+                    { name: 'Phase 1: Customized Strength & Conditioning Split', desc: 'Periodized training routines matched to your specific athletic goals.' },
+                    { name: 'Phase 2: Macro & Nutrition Guide Calibration', desc: 'Personalized caloric targets, protein requirements, and workout fueling.' },
+                    { name: 'Phase 3: Bi-Weekly Video Form Audit & Progress Adjustments', desc: 'Submit lifting videos for direct coach critique and movement adjustments.' }
+                ],
+                inclusions: [
+                    'Everything in Silver Tier Coaching',
+                    'Bi-weekly direct 1-on-1 coach check-in & progress review',
+                    'Personalized macro calculation & nutrition guide',
+                    'Lifting video movement feedback & form analysis',
+                    'In-app messaging support with Coach Brown'
+                ]
+            },
+            'platinum': {
+                title: 'Platinum VIP Online Mentorship',
+                category: 'VIP 1-on-1 Performance Mentorship',
+                level: 'Elite Athletes & Competitors',
+                desc: 'VIP 1-on-1 remote mentorship featuring weekly live video calls, daily coach messaging access, and priority workout plan modifications for $199/month.',
+                price: '$199.00/mo',
+                oldPrice: '$299.00/mo',
+                saveText: 'Save $100/mo Today',
+                duration: 'Monthly Recurring',
+                freq: '5-6 Days/Wk',
+                access: 'VIP Priority',
+                support: 'Weekly Live Video',
+                checkoutUrl: 'https://square.link/u/20e3zIe5',
+                vision: 'Platinum VIP Mentorship is KSP\'s top-tier remote coaching experience designed for elite competitors and high-level athletes. The vision is total 1-on-1 access: weekly live video call consultations, daily priority messaging, and real-time routine modifications for maximum competition output.',
+                deliveryVision: 'Includes everything in Gold plus weekly live 1-on-1 video call consultations with Coach Brown, daily priority messaging, real-time routine adjustments, full competition/season nutrition guides, and VIP access to KSP events.',
+                phases: [
+                    { name: 'Weekly Live 1-on-1 Coaching Calls', desc: 'Strategic review of training logs, recovery metrics, and competition prep.' },
+                    { name: 'Daily Priority Messaging Access', desc: 'Direct access to Coach Brown for real-time exercise substitutes and coaching.' }
+                ],
+                inclusions: [
+                    'Everything in Gold Tier Coaching',
+                    'Weekly live 1-on-1 video call consultation with Coach Brown',
+                    'Daily priority messaging & real-time routine adjustments',
+                    'Full nutrition periodization & competition prep guides',
+                    'VIP priority access to all KROME training events'
+                ]
+            },
+            'strength': {
+                title: 'Strength & Power Protocol (12 Weeks)',
+                category: '12-Week Kinetic Force Protocol',
+                level: 'Intermediate to Advanced',
+                desc: 'Master heavy compound lifting mechanics, kinetic force chaining, rate-of-force acceleration, and maximum strength output for a one-time $49.99.',
+                price: '$49.99',
+                oldPrice: '$99.99',
+                saveText: 'Save 50% Today',
+                duration: '12 Weeks',
+                freq: '4 Days/Wk',
+                access: 'Instant PDF/App',
+                support: 'Included',
+                checkoutUrl: 'https://square.link/u/KZonj3NA',
+                vision: 'The Strength & Power Protocol is built to maximize raw force output, kinetic energy transfer, and 1RM compound lift performance. KSP\'s goal is to systematically train neural drive, Olympic lift variations, and rate-of-force acceleration across 3 heavy 4-week wave blocks.',
+                deliveryVision: 'Includes the full 12-Week Printable & Digital Training Manual, compound lifting wave load calculators, Olympic lift variations, plyometric progression guides, and joint bulletproofing warm-up protocols.',
+                phases: [
+                    { name: 'Block 1 (Weeks 1-4): Kinetic Base & Compound Mechanics', desc: 'Hypertrophy waves, joint preparation, and technique calibration.' },
+                    { name: 'Block 2 (Weeks 5-8): Max Force & Rate of Force Development', desc: 'Heavy wave loading, Olympic pull variations, and explosive plyometrics.' },
+                    { name: 'Block 3 (Weeks 9-12): Peak Power & 1RM Testing', desc: 'Neural drive amplification, athletic taper, and PR benchmarking.' }
+                ],
+                inclusions: [
+                    'Full 12-Week Printable & Digital Training Manual',
+                    'Compound Lifting Wave Charts & Load Calculators',
+                    'Olympic Lift Variations & Plyometric Progression Routines',
+                    'Joint Bulletproofing & Pre-Hab Warm-Up Guide'
+                ]
+            },
             'inperson': {
                 title: 'In-Person Coaching: 4 Sessions (60 Min Each)',
                 category: 'Introductory In-Person Special',
@@ -1239,12 +1666,14 @@
                 desc: 'Special introductory 1-on-1 performance coaching package: 4 private 60-minute sessions with Coach Brown. Includes biomechanics movement screen, compound lift calibration, velocity testing, and a personalized independent training roadmap.',
                 price: '$250.00',
                 oldPrice: '$350.00',
-                saveText: 'Intro Special: Save $100',
+                saveText: 'Save $100 Today',
                 duration: '4 Sessions (60 Min Each)',
                 freq: '60 Mins / Session',
                 access: 'Direct 1-on-1',
                 support: 'Direct 1-on-1',
                 checkoutUrl: 'contact.html',
+                vision: 'In-Person Coaching provides direct 1-on-1 biomechanical calibration at KSP\'s facility. The overarching vision is to perform deep movement audits, fix technique bottlenecks on squat/bench/deadlift, screen sprint mechanics, and construct a personalized roadmap for independent athletic mastery.',
+                deliveryVision: 'Includes 4 private 60-minute 1-on-1 sessions with Coach Brown, real-time barbell velocity & form feedback, comprehensive body composition & power testing, and a take-home independent training roadmap.',
                 phases: [
                     { name: 'Session 1: Biomechanical Screening & Movement Audit (60 Min)', desc: 'Comprehensive movement screen, power assessment, joint mobility audit, and target roadmap formulation.' },
                     { name: 'Session 2: Squat, Hinge & Lower-Body Kinetic Velocity (60 Min)', desc: 'Hands-on barbell cues, hip drive mechanics, knee tracking, and rate-of-force acceleration.' },
@@ -1307,6 +1736,20 @@
             document.getElementById('funnel-stat-freq').textContent = data.freq;
             document.getElementById('funnel-stat-access').textContent = data.access;
             document.getElementById('funnel-stat-support').textContent = data.support;
+
+            // Update KSP Vision & Delivery text dynamically
+            if (data.vision && document.getElementById('ksp-vision-roadmap-overview')) {
+                document.getElementById('ksp-vision-roadmap-overview').textContent = data.vision;
+            }
+            if (data.deliveryVision && document.getElementById('ksp-vision-included-overview')) {
+                document.getElementById('ksp-vision-included-overview').textContent = data.deliveryVision;
+            }
+            if (document.getElementById('ksp-vision-goal-badge')) {
+                document.getElementById('ksp-vision-goal-badge').innerHTML = `<i class="fas fa-trophy me-1"></i> KSP Goal: ${data.category}`;
+            }
+            if (document.getElementById('ksp-phase-count-badge')) {
+                document.getElementById('ksp-phase-count-badge').textContent = `${data.phases.length} ${data.phases.length === 1 ? 'Phase' : 'Blocks'} Included`;
+            }
 
             // Render phases
             const phasesContainer = document.getElementById('funnel-phases-container');
