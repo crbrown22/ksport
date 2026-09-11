@@ -175,10 +175,18 @@
             height: 100%;
         }
 
+        .btn-xs {
+            padding: 0.2rem 0.55rem;
+            font-size: 0.75rem;
+            line-height: 1.25;
+        }
+
         /* Table styling */
         .table-krome {
             color: #f8f9fa;
             border-color: rgba(255, 255, 255, 0.12);
+            table-layout: fixed;
+            width: 100%;
         }
 
         .table-krome th {
@@ -188,12 +196,17 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .table-krome td {
             background-color: #121212;
             border-color: rgba(255, 255, 255, 0.08);
             font-size: 0.9rem;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Level Badges */
@@ -257,15 +270,205 @@
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
+                letter-spacing: -0.3px;
             }
+
+            .manual-nav {
+                padding: 0.6rem 0;
+            }
+
+            .manual-brand {
+                font-size: 0.95rem;
+                letter-spacing: 0.5px;
+            }
+
+            .manual-hero {
+                padding: 1.75rem 0 1.5rem 0;
+            }
+
             .container {
-                padding-left: 0.75rem !important;
-                padding-right: 0.75rem !important;
+                padding-left: 0.85rem !important;
+                padding-right: 0.85rem !important;
             }
+
             .manual-section {
-                padding: 1.5rem 0.5rem !important;
+                padding: 1.5rem 0.25rem !important;
             }
+
+            .section-heading {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .krome-card {
+                padding: 1.15rem;
+                border-radius: 0.75rem;
+            }
+
+            .toc-card {
+                padding: 1.15rem;
+            }
+
+            /* Responsive Action Buttons */
+            .btn-action-gold, .btn-action-outline {
+                padding: 0.35rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            /* Touch Friendly Mobile Pills in Hero */
+            .manual-hero .badge {
+                font-size: 0.8rem !important;
+                padding: 0.45rem 0.75rem !important;
+                line-height: 1.2;
+            }
+
+            /* Tables Mobile Polish - Text Wrap & Zero Horizontal Scroll */
+            .table-responsive {
+                overflow-x: hidden !important;
+            }
+
+            .table-krome {
+                table-layout: fixed !important;
+                width: 100% !important;
+            }
+
+            .table-krome th, .table-krome td {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 0.35rem !important;
+                white-space: normal !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                word-break: normal !important;
+                vertical-align: top !important;
+            }
+
+            .table-krome th:nth-child(1), .table-krome td:nth-child(1) {
+                width: 42% !important;
+            }
+
+            .table-krome th:nth-child(2), .table-krome td:nth-child(2) {
+                width: 58% !important;
+            }
+
+            .table-krome .btn-xs, .table-krome .btn {
+                font-size: 0.7rem !important;
+                padding: 0.2rem 0.45rem !important;
+                white-space: normal !important;
+                max-width: 100% !important;
+                text-align: center !important;
+            }
+
+            .table-krome .badge {
+                font-size: 0.62rem !important;
+                white-space: normal !important;
+                display: inline-block !important;
+                text-align: left !important;
+                max-width: 100% !important;
+            }
+
+            /* Mobile Back to top button sizing */
+            .back-to-top-btn {
+                width: 42px;
+                height: 42px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .supp-search-wrap {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 0.5rem;
+            }
+
+            .btn-header-shop {
+                display: none !important;
+            }
+        }
+
+        /* Back to top button styling */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #121212;
+            color: var(--krome-gold);
+            border: 2px solid var(--krome-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 212, 71, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease, background-color 0.2s ease;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--krome-gold);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.5);
+        }
+
+        .back-to-top-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Interactive Pop-Up Trigger Styles */
+        .clickable-row {
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .clickable-row:hover {
+            background-color: rgba(255, 212, 71, 0.12) !important;
+        }
+
+        .supp-pop-card {
+            cursor: pointer;
+            background-color: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .supp-pop-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.25);
+        }
+
+        .vit-pop-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--krome-cyan) !important;
+            box-shadow: 0 6px 20px rgba(0, 255, 209, 0.25);
+        }
+
+        .table-responsive {
+            -webkit-overflow-scrolling: touch;
+            border-radius: 0.75rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--krome-gold) #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -302,6 +505,9 @@
                 </div>
             </div>
             <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="shred30_manual.html" class="btn btn-warning rounded-pill btn-sm fw-bold text-dark">
+                    <i class="fas fa-fire me-1"></i> 30-Day Shred Program Manual
+                </a>
                 <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
                     <i class="fas fa-shopping-cart me-1"></i> Purchase Protocol on Square ($28)
                 </a>
@@ -319,14 +525,16 @@
                 <i class="fas fa-capsules me-2 text-warning"></i> KROME PERFORMANCE &middot; PROTOCOL
             </a>
             <div class="d-flex flex-wrap align-items-center gap-2">
-                <span class="hero-price-badge me-2"><i class="fas fa-book me-1"></i> $28 DIGITAL GUIDE</span>
+                <a href="shred30_manual.html" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-1">
+                    <i class="fas fa-fire me-1"></i> 30-Day Shred Manual
+                </a>
                 <a href="#sec-6" class="btn-action-gold btn-sm">
                     <i class="fas fa-pills me-1"></i> Stack Builder
                 </a>
                 <button onclick="window.print()" class="btn-action-outline btn-sm">
                     <i class="fas fa-print me-1"></i> Print / PDF
                 </button>
-                <a href="shop.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-light">
+                <a href="shop.html" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 text-light btn-header-shop">
                     <i class="fas fa-store me-1"></i> Shop
                 </a>
             </div>
@@ -342,7 +550,9 @@
                         <span class="badge bg-warning text-dark fw-bold text-uppercase px-3 py-1 rounded-pill">
                             <i class="fas fa-book-open me-1"></i> KROME PERFORMANCE & WELLNESS
                         </span>
-                        <span class="badge bg-info text-dark fw-bold px-3 py-1 rounded-pill">$28 DIGITAL GUIDE</span>
+                        <a href="shred30_manual.html" class="badge bg-success text-white fw-bold px-3 py-1 rounded-pill text-decoration-none">
+                            <i class="fas fa-check-circle me-1"></i> Included with 30-Day Shred
+                        </a>
                     </div>
                     <h1 class="hero-title mb-3">ATHLETE SUPPLEMENT PROTOCOL</h1>
                     <p class="lead text-light mb-4" style="font-size: 1.15rem;">
@@ -350,6 +560,9 @@
                     </p>
 
                     <div class="d-flex flex-wrap gap-2 mb-4">
+                        <a href="shred30_manual.html" class="badge bg-warning text-dark text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-fire me-1"></i> 30-Day Shred Manual
+                        </a>
                         <a href="#sec-3-power" class="badge bg-dark border border-warning text-warning text-decoration-none px-3 py-2 rounded-pill fw-bold">
                             <i class="fas fa-dumbbell me-1"></i> Power & Strength
                         </a>
@@ -383,6 +596,9 @@
                         <h6 class="text-warning fw-bold text-uppercase mb-3 pb-2 border-bottom border-warning border-opacity-25">
                             <i class="fas fa-list-ol me-2"></i> Table of Contents
                         </h6>
+                        <a href="shred30_manual.html" class="btn btn-sm btn-warning text-dark fw-bold w-100 rounded-pill mb-3 py-2 shadow-sm d-flex align-items-center justify-content-center">
+                            <i class="fas fa-fire me-2"></i> Return to 30-Day Shred Manual <i class="fas fa-arrow-right ms-auto"></i>
+                        </a>
                         <ul class="list-unstyled mb-0">
                             <li><a href="#sec-1" class="toc-link"><i class="fas fa-shield-alt"></i> 1. The KROME Rule</a></li>
                             <li><a href="#sec-2" class="toc-link"><i class="fas fa-database"></i> 2. Master Supplement Database</a></li>
@@ -447,137 +663,193 @@
         <div class="manual-section" id="sec-2">
             <h3 class="section-heading"><i class="fas fa-database me-2"></i> 2. MASTER DATABASE</h3>
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-                <h5 class="text-light fw-bold mb-0">Supplement Evidence Matrix</h5>
-                <div class="input-group input-group-sm no-print" style="max-width: 280px;">
+                <div>
+                    <h5 class="text-light fw-bold mb-0">Supplement Evidence Matrix</h5>
+                    <p class="small text-secondary mb-0">Click or tap any item or Quick Pop-Up button to view full protocols, timing, cautions, and athletic rationale in a pop-up window.</p>
+                </div>
+                <div class="input-group input-group-sm no-print supp-search-wrap" style="max-width: 280px;">
                     <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-search"></i></span>
                     <input type="text" id="supp-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search supplements..." onkeyup="filterSupplementTable(this.value)">
                 </div>
             </div>
 
+            <!-- Full Master Table View -->
             <div class="table-responsive">
                 <table class="table table-krome align-middle mb-0" id="supp-master-table">
                     <thead>
                         <tr>
-                            <th>Supplement</th>
-                            <th>Level</th>
-                            <th>Primary Use</th>
-                            <th>Adult Starting Protocol</th>
-                            <th>Timing</th>
-                            <th>Key Caution</th>
+                            <th>Supplement Item</th>
+                            <th>Primary Use & Benefits</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Creatine monohydrate</td>
-                            <td><span class="badge badge-foundation fw-bold">Foundation</span></td>
-                            <td>Strength, power, repeated high-intensity work, lean-mass support</td>
-                            <td class="text-info fw-bold font-monospace">3–5 g/day; optional adult loading 20 g/day split for 5–7 days</td>
-                            <td>Daily; timing less important than consistency</td>
-                            <td>Water-weight gain is common. Strong fit for strength/power; little direct value for pure endurance.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('creatine')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-bolt me-1 text-warning"></i> Creatine monohydrate</div>
+                                <span class="badge badge-foundation fw-bold mt-1">Foundation</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('creatine')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Strength, power, repeated high-intensity work, lean-mass support</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Whey protein</td>
-                            <td><span class="badge badge-foundation fw-bold">Foundation</span></td>
-                            <td>Convenient high-quality protein to help meet daily protein needs</td>
-                            <td class="text-info fw-bold font-monospace">20–40 g per serving as needed</td>
-                            <td>Post-workout or between meals</td>
-                            <td>Food first. Useful when whole-food protein is impractical.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('whey')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-prescription-bottle me-1 text-warning"></i> Whey protein</div>
+                                <span class="badge badge-foundation fw-bold mt-1">Foundation</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('whey')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Convenient high-quality protein to help meet daily protein needs</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">EPA / DHA omega-3</td>
-                            <td><span class="badge badge-clinician fw-bold">Health / Situational</span></td>
-                            <td>Provides long-chain omega-3 fatty acids; may support cardiovascular health</td>
-                            <td class="text-info fw-bold font-monospace">Use food intake, product label and clinician guidance</td>
-                            <td>With meals</td>
-                            <td>Not a performance necessity. Review bleeding risk / medication interactions.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('omega3')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-fish me-1 text-warning"></i> EPA / DHA omega-3</div>
+                                <span class="badge badge-clinician fw-bold mt-1">Health / Situational</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('omega3')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Long-chain omega-3 fatty acids; supports heart, joint & inflammation health</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Beta-alanine</td>
-                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
-                            <td>Raises muscle carnosine; may help repeated hard efforts lasting roughly 1–4 minutes</td>
-                            <td class="text-info fw-bold font-monospace">About 4–6 g/day for at least 2–4 weeks in many protocols</td>
-                            <td>Split doses</td>
-                            <td>Tingling (paresthesia) can occur. Benefit is event-specific; not a universal endurance supplement.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('beta_alanine')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-fire me-1 text-warning"></i> Beta-alanine</div>
+                                <span class="badge badge-performance fw-bold mt-1">Performance-Specific</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('beta_alanine')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Raises muscle carnosine; helps repeated hard efforts lasting 1–4 mins</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Caffeine</td>
-                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
-                            <td>Alertness; lower perceived effort; can improve some endurance and intermittent-sport performance</td>
-                            <td class="text-info fw-bold font-monospace">Start low; research often uses 2–6 mg/kg</td>
-                            <td>15–60 min pre-exercise</td>
-                            <td>More is not better. Sleep, anxiety, heart rhythm and individual tolerance matter. Avoid pure caffeine powder.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('caffeine')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-mug-hot me-1 text-warning"></i> Caffeine</div>
+                                <span class="badge badge-performance fw-bold mt-1">Performance-Specific</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('caffeine')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Alertness; lower RPE; supports endurance & intermittent sport power</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">L-citrulline / citrulline malate</td>
-                            <td><span class="badge badge-optional fw-bold">Optional</span></td>
-                            <td>Blood-flow / pump support; possible exercise benefit</td>
-                            <td class="text-info fw-bold font-monospace">Protocols vary (6–8g citrulline malate); evidence is mixed</td>
-                            <td>Pre-workout</td>
-                            <td>Do not present as essential. GI discomfort can occur.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('citrulline')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-heartbeat me-1 text-warning"></i> L-citrulline / Citrulline malate</div>
+                                <span class="badge badge-optional fw-bold mt-1">Optional</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('citrulline')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Blood-flow / pump support; nitric oxide precursor</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Beetroot / dietary nitrate</td>
-                            <td><span class="badge badge-performance fw-bold">Performance-Specific</span></td>
-                            <td>May reduce oxygen cost and improve some endurance outcomes</td>
-                            <td class="text-info fw-bold font-monospace">Standardized products commonly provide ~5–11 mmol nitrate</td>
-                            <td>About 2.5–3 h pre-exercise</td>
-                            <td>Response varies; stronger evidence in endurance contexts than bodybuilding.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('beetroot')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-apple-alt me-1 text-warning"></i> Beetroot / Dietary nitrate</div>
+                                <span class="badge badge-performance fw-bold mt-1">Performance-Specific</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('beetroot')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Reduces oxygen cost of exercise; enhances submaximal endurance stamina</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Electrolytes</td>
-                            <td><span class="badge badge-situational fw-bold">Situational</span></td>
-                            <td>Helps replace sodium and other electrolytes during high sweat loss</td>
-                            <td class="text-info fw-bold font-monospace">Match to sweat losses / session conditions</td>
-                            <td>During / after prolonged, hot or high-sweat training</td>
-                            <td>Short gym sessions often do not require a special electrolyte product.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('electrolytes')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-tint me-1 text-warning"></i> Electrolytes</div>
+                                <span class="badge badge-situational fw-bold mt-1">Situational</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('electrolytes')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Replaces sodium and key minerals lost in heavy sweat</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Magnesium</td>
-                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
-                            <td>Essential mineral; deficiency correction supports normal muscle/nerve function</td>
-                            <td class="text-info fw-bold font-monospace">Meet needs from food; supplement only when appropriate</td>
-                            <td>With food; timing is secondary</td>
-                            <td>Not a universal sleep or cramp treatment. Excess supplemental magnesium can cause GI effects.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('magnesium')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-capsules me-1 text-warning"></i> Magnesium</div>
+                                <span class="badge badge-clinician fw-bold mt-1">Clinician / Need-Based</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('magnesium')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Supports nerve, muscle relaxation, and energy production</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Zinc</td>
-                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
-                            <td>Essential mineral for immune and reproductive function</td>
-                            <td class="text-info fw-bold font-monospace">Meet needs from food; supplement only when intake/status warrants</td>
-                            <td>With food</td>
-                            <td>Do not market as a testosterone booster in zinc-replete people. Long-term high doses can cause harm.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('zinc')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-shield-alt me-1 text-warning"></i> Zinc</div>
+                                <span class="badge badge-clinician fw-bold mt-1">Clinician / Need-Based</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('zinc')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Essential mineral for immune defense, tissue repair & hormone status</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Tart cherry</td>
-                            <td><span class="badge badge-optional fw-bold">Optional Recovery</span></td>
-                            <td>May modestly help soreness/recovery in some settings</td>
-                            <td class="text-info fw-bold font-monospace">Product protocols vary</td>
-                            <td>Often evening or around hard blocks</td>
-                            <td>Optional; evidence depends on product and protocol.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('tart_cherry')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-leaf me-1 text-warning"></i> Tart cherry</div>
+                                <span class="badge badge-optional fw-bold mt-1">Optional Recovery</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('tart_cherry')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Anthocyanins may reduce muscle soreness & inflammation</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Melatonin</td>
-                            <td><span class="badge badge-clinician fw-bold">Clinician / Need-Based</span></td>
-                            <td>Sleep-timing aid, not a muscle-recovery supplement</td>
-                            <td class="text-info fw-bold font-monospace">Use only with appropriate medical/pharmacist guidance</td>
-                            <td>Before intended sleep when advised</td>
-                            <td>Not a routine sports supplement; may cause next-day drowsiness and interact with medications.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('melatonin')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-moon me-1 text-warning"></i> Melatonin</div>
+                                <span class="badge badge-clinician fw-bold mt-1">Clinician / Need-Based</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('melatonin')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Sleep-timing and circadian phase shift aid</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">HMB</td>
-                            <td><span class="badge badge-situational fw-bold">Situational</span></td>
-                            <td>May help recovery or lean-mass retention in selected high-stress or novice contexts</td>
-                            <td class="text-info fw-bold font-monospace">3 g/day is common in studies</td>
-                            <td>Split doses</td>
-                            <td>Evidence is mixed; not a default replacement for adequate protein and resistance training.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('hmb')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-cubes me-1 text-warning"></i> HMB</div>
+                                <span class="badge badge-situational fw-bold mt-1">Situational</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('hmb')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Leucine metabolite; may help muscle retention in caloric deficits</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Greens powder</td>
-                            <td><span class="badge badge-optional fw-bold">Optional Convenience</span></td>
-                            <td>May add some micronutrients when produce intake is poor</td>
-                            <td class="text-info fw-bold font-monospace">Follow label; avoid megadose products</td>
-                            <td>Anytime</td>
-                            <td>Does not replace fruits and vegetables. Check for overlapping vitamin/mineral doses.</td>
+                        <tr class="clickable-row" onclick="openSupplementModal('greens')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-seedling me-1 text-warning"></i> Greens powder</div>
+                                <span class="badge badge-optional fw-bold mt-1">Optional Convenience</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-action-gold rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openSupplementModal('greens')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Concentrated plant nutrients when produce intake is low</td>
                         </tr>
                     </tbody>
                 </table>
@@ -817,116 +1089,179 @@
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                 <div>
                     <h5 class="text-light fw-bold mb-0">KROME Vitamin Database</h5>
-                    <p class="small text-secondary mb-0">Food-first vitamin coverage with age-specific attention to vitamin D and B12.</p>
+                    <p class="small text-secondary mb-0">Click or tap any vitamin or Quick Pop-Up button to view full reference intakes, food sources, and athletic notes in a pop-up window.</p>
                 </div>
-                <div class="input-group input-group-sm no-print" style="max-width: 280px;">
+                <div class="input-group input-group-sm no-print supp-search-wrap" style="max-width: 280px;">
                     <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-search"></i></span>
                     <input type="text" id="vit-search-input" class="form-control bg-dark text-light border-secondary" placeholder="Search vitamins..." onkeyup="filterVitaminTable(this.value)">
                 </div>
             </div>
 
+            <!-- Full Vitamin Table View -->
             <div class="table-responsive">
                 <table class="table table-krome align-middle mb-0" id="vit-master-table">
                     <thead>
                         <tr>
-                            <th>Vitamin</th>
-                            <th>Role</th>
-                            <th>Adult Reference Intake</th>
-                            <th>Food Sources</th>
-                            <th>Use Note</th>
+                            <th>Vitamin Item</th>
+                            <th>Primary Biological Role</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Vitamin A</td>
-                            <td>Vision, immune function, cell growth</td>
-                            <td class="text-info fw-bold font-monospace">900 mcg men / 700 mcg women</td>
-                            <td>Carrots, sweet potatoes, spinach, kale</td>
-                            <td>Food-first; avoid high-dose preformed vitamin A unless medically indicated.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('vit_a')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-eye me-1 text-info"></i> Vitamin A</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('vit_a')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Vision, immune function, cell growth & tissue repair</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B1 (Thiamine)</td>
-                            <td>Energy metabolism, nerve function</td>
-                            <td class="text-info fw-bold font-monospace">1.2 mg men / 1.1 mg women</td>
-                            <td>Whole grains, pork, legumes, seeds</td>
-                            <td>Deficiency can impair function; extra beyond adequacy is not an energy booster.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b1')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-bolt me-1 text-info"></i> B1 (Thiamine)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b1')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Energy metabolism, nerve function</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B2 (Riboflavin)</td>
-                            <td>Energy metabolism</td>
-                            <td class="text-info fw-bold font-monospace">1.3 mg men / 1.1 mg women</td>
-                            <td>Milk, eggs, almonds, leafy greens</td>
-                            <td>Support adequacy through varied foods.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b2')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-sun me-1 text-info"></i> B2 (Riboflavin)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b2')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Energy production via electron transport</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B3 (Niacin)</td>
-                            <td>Energy metabolism, DNA-related functions</td>
-                            <td class="text-info fw-bold font-monospace">16 mg men / 14 mg women</td>
-                            <td>Poultry, tuna, peanuts, mushrooms</td>
-                            <td>High-dose niacin can cause adverse effects; not a performance supplement.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b3')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-fire-alt me-1 text-info"></i> B3 (Niacin)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b3')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Energy metabolism, DNA repair</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B5 (Pantothenic acid)</td>
-                            <td>Coenzyme and energy metabolism</td>
-                            <td class="text-info fw-bold font-monospace">5 mg adults</td>
-                            <td>Eggs, avocado, whole grains, chicken</td>
-                            <td>Deficiency is uncommon with varied diets.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b5')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-atom me-1 text-info"></i> B5 (Pantothenic acid)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b5')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Coenzyme A synthesis & fuel conversion</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B6 (Pyridoxine)</td>
-                            <td>Protein metabolism, neurotransmitter synthesis</td>
-                            <td class="text-info fw-bold font-monospace">About 1.3–2 mg depending on age/sex</td>
-                            <td>Chicken, bananas, potatoes, salmon</td>
-                            <td>Chronic high-dose supplemental B6 can damage nerves.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b6')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-dna me-1 text-info"></i> B6 (Pyridoxine)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b6')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Protein metabolism, neurotransmitter synthesis</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B7 (Biotin)</td>
-                            <td>Fat and carbohydrate metabolism</td>
-                            <td class="text-info fw-bold font-monospace">30 mcg adults</td>
-                            <td>Eggs, nuts, legumes</td>
-                            <td>High-dose biotin can interfere with lab tests.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b7')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-cutlery me-1 text-info"></i> B7 (Biotin)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b7')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Fat and carbohydrate metabolism</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B9 (Folate)</td>
-                            <td>DNA synthesis, red blood cell formation</td>
-                            <td class="text-info fw-bold font-monospace">400 mcg DFE adults</td>
-                            <td>Leafy greens, beans, fortified grains</td>
-                            <td>Life-stage needs vary, especially pregnancy.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b9')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-heart me-1 text-info"></i> B9 (Folate)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b9')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">DNA synthesis, red blood cell formation</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">B12 (Cobalamin)</td>
-                            <td>Red blood cell and nerve function</td>
-                            <td class="text-info fw-bold font-monospace">2.4 mcg adults</td>
-                            <td>Meat, fish, dairy, fortified foods</td>
-                            <td>Older adults and vegans may need special attention to intake/absorption.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('b12')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-brain me-1 text-info"></i> B12 (Cobalamin)</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('b12')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Red blood cell & neurological function</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Vitamin C</td>
-                            <td>Collagen formation, antioxidant and immune functions</td>
-                            <td class="text-info fw-bold font-monospace">90 mg men / 75 mg women</td>
-                            <td>Citrus, strawberries, bell peppers</td>
-                            <td>More is not automatically better; prioritize foods.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('vit_c')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-apple-alt me-1 text-info"></i> Vitamin C</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('vit_c')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Collagen formation, antioxidant defense</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Vitamin D</td>
-                            <td>Bone, immune and muscle function</td>
-                            <td class="text-info fw-bold font-monospace">15 mcg (600 IU) adults 19–70; 20 mcg (800 IU) age 71+</td>
-                            <td>Fatty fish, fortified dairy/foods, sunlight</td>
-                            <td>Check status/risk before high-dose supplementation.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('vit_d')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-sun me-1 text-info"></i> Vitamin D</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('vit_d')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Bone, immune & muscle function</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Vitamin E</td>
-                            <td>Antioxidant function</td>
-                            <td class="text-info fw-bold font-monospace">15 mg adults</td>
-                            <td>Almonds, sunflower seeds, spinach</td>
-                            <td>High-dose supplements are not routinely needed for athletes.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('vit_e')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-shield-alt me-1 text-info"></i> Vitamin E</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('vit_e')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Fat-soluble antioxidant protection</td>
                         </tr>
-                        <tr>
-                            <td class="fw-bold text-warning fs-6">Vitamin K</td>
-                            <td>Blood clotting, bone-related function</td>
-                            <td class="text-info fw-bold font-monospace">120 mcg men / 90 mcg women</td>
-                            <td>Kale, spinach, broccoli</td>
-                            <td>People taking warfarin need consistent intake and clinician guidance.</td>
+                        <tr class="clickable-row" onclick="openVitaminModal('vit_k')">
+                            <td>
+                                <div class="fw-bold text-warning fs-6"><i class="fas fa-bone me-1 text-info"></i> Vitamin K</div>
+                                <span class="badge bg-info text-dark font-monospace fw-bold mt-1" style="font-size:0.68rem;">Essential Micronutrient</span>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-xs btn-outline-info rounded-pill px-3 py-1 text-nowrap" onclick="event.stopPropagation(); openVitaminModal('vit_k')">
+                                        <i class="fas fa-window-restore me-1"></i> Quick Pop-Up
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="text-light small align-middle">Blood clotting & bone protein synthesis</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1217,9 +1552,9 @@
                 </h6>
                 <ul class="list-group list-group-flush bg-transparent small mb-3">
                     ${foundationItems.map(item => `
-                        <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                        <li class="list-group-item bg-transparent text-light d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-1 py-2 px-1">
                             <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
-                            <span class="badge bg-dark text-warning border border-warning font-monospace">${item.dose}</span>
+                            <span class="badge bg-dark text-warning border border-warning font-monospace mt-1 mt-sm-0">${item.dose}</span>
                         </li>
                     `).join('')}
                 </ul>
@@ -1232,9 +1567,9 @@
                     </h6>
                     <ul class="list-group list-group-flush bg-transparent small mb-3">
                         ${performanceItems.map(item => `
-                            <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                            <li class="list-group-item bg-transparent text-light d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-1 py-2 px-1">
                                 <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
-                                <span class="badge bg-dark text-info border border-info font-monospace">${item.dose}</span>
+                                <span class="badge bg-dark text-info border border-info font-monospace mt-1 mt-sm-0">${item.dose}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -1248,9 +1583,9 @@
                     </h6>
                     <ul class="list-group list-group-flush bg-transparent small mb-3">
                         ${situationalItems.map(item => `
-                            <li class="list-group-item bg-transparent text-light d-flex justify-content-between align-items-center">
+                            <li class="list-group-item bg-transparent text-light d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-1 py-2 px-1">
                                 <div><strong>${item.name}</strong> <span class="text-secondary">(${item.timing})</span></div>
-                                <span class="badge bg-dark text-light border border-secondary font-monospace">${item.dose}</span>
+                                <span class="badge bg-dark text-light border border-secondary font-monospace mt-1 mt-sm-0">${item.dose}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -1271,9 +1606,155 @@
             output.innerHTML = html;
         }
 
+        // Back to top button scroll listener
+        window.addEventListener('scroll', function () {
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                if (window.scrollY > 300) {
+                    btt.classList.add('show');
+                } else {
+                    btt.classList.remove('show');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Initialize stack generator on load
-        document.addEventListener('DOMContentLoaded', generateCustomStack);
+        document.addEventListener('DOMContentLoaded', () => {
+            generateCustomStack();
+        });
     </script>
+
+    <!-- SUPPLEMENT DETAIL POP-UP MODAL -->
+    <div class="modal fade" id="supplementDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border border-warning" style="box-shadow: 0 0 30px rgba(255, 212, 71, 0.3);">
+                <div class="modal-header border-secondary bg-black py-3 px-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <i id="supp-modal-icon" class="fas fa-capsules text-warning fs-3"></i>
+                        <div>
+                            <h4 class="modal-title text-warning fw-bold mb-0" id="supp-modal-title">Supplement Name</h4>
+                            <span id="supp-modal-badge" class="badge bg-warning text-dark font-monospace fw-bold mt-1">Tier 1</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-3 p-md-4">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="p-3 bg-black rounded-3 border border-secondary">
+                                <h6 class="text-warning fw-bold mb-2"><i class="fas fa-bullseye me-2"></i> Primary Purpose & Performance Benefits</h6>
+                                <p class="text-light mb-0 fs-6" id="supp-modal-use"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-black rounded-3 border border-secondary h-100">
+                                <h6 class="text-info fw-bold mb-2"><i class="fas fa-vial me-2"></i> Adult Starting Protocol</h6>
+                                <p class="text-info font-monospace fw-bold mb-0 fs-6" id="supp-modal-protocol"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-black rounded-3 border border-secondary h-100">
+                                <h6 class="text-warning fw-bold mb-2"><i class="fas fa-clock me-2"></i> Optimal Timing & Schedule</h6>
+                                <p class="text-light mb-0" id="supp-modal-timing"></p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 bg-black rounded-3 border border-danger border-opacity-50">
+                                <h6 class="text-danger fw-bold mb-2"><i class="fas fa-exclamation-triangle me-2"></i> Key Cautions & Safety Guidance</h6>
+                                <p class="text-light mb-0" id="supp-modal-caution"></p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 bg-black rounded-3 border border-warning">
+                                <h6 class="text-warning fw-bold mb-1"><i class="fas fa-lightbulb me-2"></i> KROME Athletic Rationale</h6>
+                                <p class="text-secondary small mb-0" id="supp-modal-rationale"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary bg-black py-2 px-3 d-flex justify-content-between">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-sm btn-outline-warning text-light" id="supp-modal-prev-btn" onclick="navSupplementModal(-1)">
+                            <i class="fas fa-chevron-left me-1"></i> Previous Item
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-warning text-light" id="supp-modal-next-btn" onclick="navSupplementModal(1)">
+                            Next Item <i class="fas fa-chevron-right ms-1"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-action-gold" data-bs-dismiss="modal">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VITAMIN DETAIL POP-UP MODAL -->
+    <div class="modal fade" id="vitaminDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light border border-info" style="box-shadow: 0 0 30px rgba(0, 255, 209, 0.3);">
+                <div class="modal-header border-secondary bg-black py-3 px-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <i id="vit-modal-icon" class="fas fa-tablets text-info fs-3"></i>
+                        <div>
+                            <h4 class="modal-title text-info fw-bold mb-0" id="vit-modal-title">Vitamin Name</h4>
+                            <span class="badge bg-info text-dark font-monospace fw-bold mt-1">Essential Micronutrient</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-3 p-md-4">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="p-3 bg-black rounded-3 border border-secondary">
+                                <h6 class="text-info fw-bold mb-2"><i class="fas fa-heartbeat me-2"></i> Primary Biological Role</h6>
+                                <p class="text-light mb-0 fs-6" id="vit-modal-role"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-black rounded-3 border border-secondary h-100">
+                                <h6 class="text-warning fw-bold mb-2"><i class="fas fa-flask me-2"></i> Adult Reference Intake (RDA/AI)</h6>
+                                <p class="text-warning font-monospace fw-bold mb-0 fs-6" id="vit-modal-intake"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 bg-black rounded-3 border border-secondary h-100">
+                                <h6 class="text-info fw-bold mb-2"><i class="fas fa-apple-alt me-2"></i> Primary Food Sources</h6>
+                                <p class="text-light mb-0" id="vit-modal-sources"></p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 bg-black rounded-3 border border-info">
+                                <h6 class="text-info fw-bold mb-2"><i class="fas fa-notes-medical me-2"></i> Athletic Considerations & Use Notes</h6>
+                                <p class="text-light mb-0" id="vit-modal-note"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary bg-black py-2 px-3 d-flex justify-content-between">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-sm btn-outline-info text-light" id="vit-modal-prev-btn" onclick="navVitaminModal(-1)">
+                            <i class="fas fa-chevron-left me-1"></i> Previous Item
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-info text-light" id="vit-modal-next-btn" onclick="navVitaminModal(1)">
+                            Next Item <i class="fas fa-chevron-right ms-1"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-action-gold" data-bs-dismiss="modal">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

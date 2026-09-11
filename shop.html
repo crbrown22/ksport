@@ -286,18 +286,20 @@
         @media (max-width: 768px) {
             #shop-category-filters {
                 display: flex;
-                flex-wrap: nowrap !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 8px;
+                flex-wrap: wrap !important;
+                gap: 0.4rem !important;
                 width: 100%;
             }
             #shop-category-filters .btn {
-                flex-shrink: 0;
+                flex: 1 1 calc(50% - 0.4rem);
+                text-align: center;
+                justify-content: center;
                 white-space: nowrap;
                 min-height: 40px;
-                display: flex;
+                display: inline-flex;
                 align-items: center;
+                font-size: 0.8rem;
+                padding: 0.45rem 0.6rem !important;
             }
             .hero-title {
                 font-size: 2rem;
@@ -313,6 +315,54 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+        }
+        /* Back to top button styling */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #121212;
+            color: var(--krome-gold);
+            border: 2px solid var(--krome-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 212, 71, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease, background-color 0.2s ease;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--krome-gold);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.5);
+        }
+
+        .back-to-top-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top-btn {
+                width: 42px;
+                height: 42px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -367,9 +417,20 @@
         <div class="container">
             <span class="hero-badge"><i class="fas fa-tshirt me-2"></i> Official Apparel & Accessories</span>
             <h1 class="hero-title">KROME <span>Official Store</span></h1>
-            <p class="lead text-light mx-auto" style="max-width: 720px; line-height: 1.6;">
+            <p class="lead text-light mx-auto mb-3" style="max-width: 720px; line-height: 1.6;">
                 Engineered for high-output training sessions, lifting comfort, and athletic representation.
             </p>
+            <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-center gap-2 mt-3">
+                <a href="shred30_manual.html" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-2 shadow-sm d-inline-flex align-items-center justify-content-center">
+                    <i class="fas fa-fire me-2"></i> 30-Day Shred Manual
+                </a>
+                <a href="nutrition_blueprint.html" class="btn btn-sm btn-success text-white fw-bold rounded-pill px-3 py-2 shadow-sm d-inline-flex align-items-center justify-content-center">
+                    <i class="fas fa-book-open me-2"></i> Nutrition Blueprint E-Book
+                </a>
+                <a href="supplement_protocol.html" class="btn btn-sm btn-info text-dark fw-bold rounded-pill px-3 py-2 shadow-sm d-inline-flex align-items-center justify-content-center">
+                    <i class="fas fa-pills me-2"></i> Supplement Protocol E-Book
+                </a>
+            </div>
         </div>
     </header>
 
@@ -1022,11 +1083,31 @@
             sortProducts(sortVal);
         }
 
+        // Back to top button scroll listener
+        window.addEventListener('scroll', function () {
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                if (window.scrollY > 300) {
+                    btt.classList.add('show');
+                } else {
+                    btt.classList.remove('show');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             sortProducts('low-to-high');
         });
     </script>
 
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 </body>
 
 </html>

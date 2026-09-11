@@ -274,6 +274,55 @@
             accent-color: var(--krome-gold);
         }
 
+        /* Back to top button styling */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #121212;
+            color: var(--krome-gold);
+            border: 2px solid var(--krome-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 212, 71, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease, background-color 0.2s ease;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--krome-gold);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.5);
+        }
+
+        .back-to-top-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top-btn {
+                width: 42px;
+                height: 42px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1rem;
+            }
+        }
+
         /* PRINT STYLING (FOR GENERATING HIGH-QUALITY CLEAN PDF) */
         @media print {
             .no-print, .manual-nav, .btn, button, select, input[type="text"] {
@@ -582,16 +631,30 @@
     </header>
 
     <!-- MOBILE QUICK-JUMP SECTION BAR -->
-    <div class="d-lg-none bg-black border-bottom border-warning sticky-top p-2 overflow-x-auto text-nowrap no-print shadow" style="z-index: 1020; top: 0;">
-        <div class="d-flex align-items-center gap-1">
-            <span class="small text-warning fw-bold me-1 ms-1"><i class="fas fa-compass me-1"></i> Jump:</span>
-            <a href="#sec-1" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2" style="font-size: 0.75rem;">1. Overview</a>
-            <a href="#sec-2" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2" style="font-size: 0.75rem;">2. Lanes</a>
-            <a href="#sec-3" class="btn btn-sm btn-outline-light rounded-pill py-1 px-2" style="font-size: 0.75rem;">3. Foods</a>
-            <a href="#sec-4" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill py-1 px-2" style="font-size: 0.75rem;">4. Calendar</a>
-            <a href="#sec-5" class="btn btn-sm btn-info text-dark fw-bold rounded-pill py-1 px-2" style="font-size: 0.75rem;">5. 41 Recipes</a>
-            <a href="#sec-8" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2" style="font-size: 0.75rem;">8. Trackers</a>
-            <a href="#sec-10" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2" style="font-size: 0.75rem;">10. Maintenance</a>
+    <div class="d-lg-none bg-black border-bottom border-warning p-2 no-print shadow" style="z-index: 1020; position: relative;">
+        <div class="container-fluid px-1">
+            <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="small text-warning fw-bold"><i class="fas fa-compass me-1"></i> Quick Jump Navigation:</span>
+                <span class="badge bg-success text-white" style="font-size: 0.7rem;"><i class="fas fa-gift me-1"></i> 2 E-Books Included</span>
+            </div>
+            <div class="d-flex flex-column gap-1 mb-2">
+                <a href="nutrition_blueprint.html" class="btn btn-sm btn-success text-white fw-bold rounded-pill py-2 px-3 w-100 d-flex align-items-center justify-content-center" style="font-size: 0.82rem; box-shadow: 0 0 10px rgba(25, 135, 84, 0.4);">
+                    <i class="fas fa-book-open me-2"></i> Nutrition Blueprint E-Book (Included Free) <i class="fas fa-arrow-right ms-auto"></i>
+                </a>
+                <a href="supplement_protocol.html" class="btn btn-sm btn-info text-dark fw-bold rounded-pill py-2 px-3 w-100 d-flex align-items-center justify-content-center" style="font-size: 0.82rem; box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);">
+                    <i class="fas fa-pills me-2"></i> Athlete Supplement Protocol E-Book (Included Free) <i class="fas fa-arrow-right ms-auto"></i>
+                </a>
+            </div>
+            <div class="d-flex flex-wrap gap-1 align-items-center justify-content-start">
+                <a href="#sec-1" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">1. Overview</a>
+                <a href="#sec-2" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">2. Lanes</a>
+                <a href="#sec-3" class="btn btn-sm btn-outline-light rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">3. Foods</a>
+                <a href="#sec-4" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">4. Calendar</a>
+                <a href="#sec-5" class="btn btn-sm btn-info text-dark fw-bold rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">5. 41 Recipes</a>
+                <a href="#sec-7" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">7. Supplements</a>
+                <a href="#sec-8" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">8. Trackers</a>
+                <a href="#sec-10" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">10. Maintenance</a>
+            </div>
         </div>
     </div>
 
@@ -611,16 +674,26 @@
                     </p>
 
                     <div class="d-flex flex-wrap gap-2 text-light small fw-bold">
+                        <a href="nutrition_blueprint.html" class="bg-dark px-3 py-2 rounded-pill border border-success text-success text-decoration-none"><i class="fas fa-book me-1"></i> Nutrition Blueprint Included</a>
+                        <a href="supplement_protocol.html" class="bg-dark px-3 py-2 rounded-pill border border-info text-info text-decoration-none"><i class="fas fa-pills me-1"></i> Supplement Protocol Included</a>
                         <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-calendar-alt text-warning me-1"></i> 30-Day Meal Calendar</span>
                         <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-utensils text-info me-1"></i> 41 Recipe Cards</span>
-                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-fire text-warning me-1"></i> 3 Calorie Lanes (1800/2200/2600)</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-fire text-warning me-1"></i> 3 Calorie Lanes</span>
                         <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-check-double text-info me-1"></i> Weekly Trackers</span>
                     </div>
                 </div>
 
                 <div class="col-lg-4 no-print">
                     <div class="toc-card">
-                        <h5 class="text-warning fw-bold mb-3"><i class="fas fa-list-ol me-2"></i> Quick Table of Contents</h5>
+                        <h5 class="text-warning fw-bold mb-2"><i class="fas fa-list-ol me-2"></i> Quick Table of Contents</h5>
+                        <div class="d-flex flex-column gap-2 mb-3">
+                            <a href="nutrition_blueprint.html" class="btn btn-sm btn-success text-white fw-bold w-100 rounded-pill py-2 px-3 d-flex align-items-center justify-content-center" style="font-size: 0.84rem; box-shadow: 0 0 10px rgba(25, 135, 84, 0.4);">
+                                <i class="fas fa-book me-2"></i> Nutrition Blueprint E-Book <i class="fas fa-arrow-right ms-auto"></i>
+                            </a>
+                            <a href="supplement_protocol.html" class="btn btn-sm btn-info text-dark fw-bold w-100 rounded-pill py-2 px-3 d-flex align-items-center justify-content-center" style="font-size: 0.84rem; box-shadow: 0 0 10px rgba(13, 202, 240, 0.4);">
+                                <i class="fas fa-pills me-2"></i> Athlete Supplement Protocol <i class="fas fa-arrow-right ms-auto"></i>
+                            </a>
+                        </div>
                         <ul class="list-unstyled mb-0">
                             <li><a href="#sec-notice" class="toc-link"><i class="fas fa-exclamation-triangle"></i> Health & Nutrition Notice</a></li>
                             <li><a href="#sec-1" class="toc-link"><i class="fas fa-play-circle"></i> 1. How to Use the Shred</a></li>
@@ -1035,6 +1108,19 @@
         <!-- SECTION 7 -->
         <div class="manual-section" id="sec-7">
             <h3 class="section-heading"><i class="fas fa-vial"></i> 7. SUPPLEMENT GUIDE</h3>
+            
+            <!-- Included E-Book Highlight Banner -->
+            <div class="p-3 bg-black rounded-3 border border-info shadow-sm mb-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div>
+                    <span class="badge bg-info text-dark fw-bold mb-1"><i class="fas fa-gift me-1"></i> FULL E-BOOK INCLUDED FREE</span>
+                    <h5 class="text-info fw-bold mb-1">Athlete Supplement Protocol E-Book</h5>
+                    <p class="small text-secondary mb-0">Goal-specific stacks, master evidence matrix, life-stage safety guidance, and interactive stack builder.</p>
+                </div>
+                <a href="supplement_protocol.html" class="btn btn-sm btn-info text-dark fw-bold rounded-pill px-3 py-2 shadow">
+                    <i class="fas fa-pills me-1"></i> Open Supplement Protocol E-Book <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+
             <p class="text-light mb-3">
                 Supplements are optional. They do not replace calorie control, adequate protein, training, sleep, hydration or a varied diet.
             </p>
@@ -1309,49 +1395,49 @@
     <!-- Bootstrap 5 JS & Manual Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.bundle.min.js"></script>
     <script>
-        // 41 Standardized Recipe Data with Realistic Photos
+        // 41 Standardized Recipe Data with Detailed Prep, Heating & Realistic Photos
         const RECIPES = [
-            { id: 1, title: "Chicken & Avocado Wrap", category: "main", type: "Lunch / Wrap", fit: "Moderate / High", img: "media/avwrap.jpg", ingredients: "5-6 oz grilled chicken breast, 1 whole-wheat tortilla, 1/4 avocado, lettuce, tomato, cucumber, 1 tsp olive oil", directions: "Grill and slice chicken. Layer chicken, avocado and vegetables in the tortilla. Roll tightly and serve.", s: "363k | 23C/34P/14F", m: "440k | 28C/41P/16F", l: "521k | 33C/49P/20F" },
-            { id: 2, title: "Egg & Turkey Power Bowl", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/break_one.jpg", ingredients: "2 whole eggs, 2-4 egg whites, 4-5 oz lean ground turkey, 1/2-3/4 cup cooked oats, 1/2-1 Tbsp almond butter", directions: "Cook turkey until browned. Scramble eggs and egg whites. Prepare oats and combine. Finish with measured almond butter.", s: "459k | 26C/42P/18F", m: "556k | 31C/50P/22F", l: "659k | 37C/60P/26F" },
-            { id: 3, title: "Egg & Egg White Scramble", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/break_two.jpg", ingredients: "2 whole eggs, egg whites as needed, 1/2 cup oats, berries or fruit, 1 Tbsp peanut butter", directions: "Scramble eggs and egg whites. Prepare oats separately. Serve with fruit and measured peanut butter.", s: "442k | 49C/39P/14F", m: "536k | 60C/47P/16F", l: "634k | 71C/56P/20F" },
-            { id: 4, title: "Protein Pancakes", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1/2-3/4 cup oats, 1-1.5 scoops whey, 1 whole egg, 1 banana, 1 Tbsp peanut butter, water & cinnamon", directions: "Blend oats, whey, egg, banana and water. Cook on nonstick skillet 2-3 mins per side. Top with peanut butter.", s: "442k | 49C/33P/11F", m: "536k | 60C/40P/13F", l: "634k | 71C/48P/16F" },
-            { id: 5, title: "Protein Smoothie", category: "snack", type: "Snack / Pre-Post Workout", fit: "Moderate / High", img: "media/phormulaone.png", ingredients: "1-1.5 scoops whey, unsweetened almond milk, 1 banana or berries, 1/4-1/2 cup oats, 1 Tbsp peanut butter, ice", directions: "Blend all ingredients until smooth. Use more oats/banana on high-carb days.", s: "357k | 36C/31P/10F", m: "433k | 43C/37P/12F", l: "512k | 51C/44P/15F" },
-            { id: 6, title: "Grilled Chicken Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz grilled chicken breast, 1 medium sweet potato, 1-2 cups steamed vegetables, 1-2 tsp olive oil", directions: "Grill chicken. Roast sweet potato. Steam vegetables. Combine and finish with olive oil.", s: "459k | 41C/41P/10F", m: "556k | 49C/49P/12F", l: "659k | 59C/59P/15F" },
-            { id: 7, title: "Turkey Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5-6 oz lean turkey, 1 medium sweet potato, 1-2 cups vegetables, 1-2 tsp olive oil", directions: "Brown turkey. Roast sweet potato and prepare vegetables. Combine and season to taste.", s: "459k | 36C/41P/18F", m: "556k | 43C/49P/22F", l: "659k | 51C/59P/26F" },
-            { id: 8, title: "Beef Stir Fry", category: "main", type: "Dinner", fit: "High", img: "media/Steak.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups mixed vegetables, 1-2 tsp olive oil", directions: "Slice beef and cook in skillet. Add vegetables. Serve over measured rice portion.", s: "459k | 41C/41P/13F", m: "556k | 49C/49P/15F", l: "659k | 59C/59P/18F" },
-            { id: 9, title: "Mug Protein Cake", category: "snack", type: "Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "1 scoop whey, 1/4 cup oats, 1/2-1 Tbsp peanut butter, milk/water, cinnamon", directions: "Mix in microwave-safe mug. Microwave in short intervals until set.", s: "248k | 27C/20P/8F", m: "301k | 33C/24P/10F", l: "356k | 39C/28P/12F" },
-            { id: 10, title: "Protein Balls", category: "snack", type: "Snack / Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "oats, whey, peanut butter, honey, water", directions: "Mix into firm dough. Form small balls, refrigerate and portion before eating.", s: "234k | 24C/19P/7F", m: "283k | 29C/23P/8F", l: "336k | 34C/27P/10F" },
-            { id: 11, title: "Protein Cookies", category: "snack", type: "Dessert", fit: "Any", img: "media/clean_eating.jpg", ingredients: "whey, oats, peanut butter, honey, water", directions: "Mix, form small cookies and bake at 350F until set.", s: "234k | 24C/16P/7F", m: "283k | 29C/20P/8F", l: "336k | 34C/23P/10F" },
-            { id: 12, title: "Grilled Chicken & Brown Rice Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/nutrition_16.jpg", ingredients: "5-6 oz chicken breast, 1 cup cooked brown rice, 1-2 cups veggies, 1/4 avocado or olive oil", directions: "Grill chicken, prepare rice and veggies, then combine with avocado or oil.", s: "469k | 44C/44P/11F", m: "569k | 54C/54P/13F", l: "673k | 63C/63P/16F" },
-            { id: 13, title: "Egg White Omelette", category: "breakfast", type: "Breakfast", fit: "Lower / Moderate", img: "media/break_two.jpg", ingredients: "6 egg whites, spinach, bell peppers or mushrooms, 1 oz cheese, seasonings", directions: "Whisk egg whites. Cook vegetables first, then add egg whites. Fold in cheese.", s: "255k | 4C/34P/10F", m: "309k | 5C/41P/12F", l: "366k | 6C/49P/15F" },
-            { id: 14, title: "Turkey & Veggie Stir Fry", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "media/din_two.jpg", ingredients: "5-6 oz lean turkey, broccoli, bell peppers, onions, green beans, 1-2 tsp olive oil", directions: "Brown turkey. Add vegetables and cook until tender-crisp. Season and serve.", s: "382k | 22C/32P/13F", m: "464k | 27C/39P/15F", l: "549k | 32C/46P/18F" },
-            { id: 15, title: "Chicken & Quinoa Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz chicken breast, 3/4-1 cup cooked quinoa, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Grill chicken and cook quinoa. Combine with vegetables and measured oil.", s: "469k | 39C/44P/14F", m: "569k | 47C/54P/16F", l: "673k | 56C/63P/20F" },
-            { id: 16, title: "Protein Waffles", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "2 high-protein waffles, 1 banana, Greek yogurt or whey, 1 Tbsp almond butter", directions: "Prepare waffles. Serve with banana, almond butter and yogurt/whey.", s: "415k | 44C/33P/14F", m: "503k | 54C/40P/16F", l: "595k | 63C/48P/20F" },
-            { id: 17, title: "Egg & Veggie Breakfast Muffins", category: "breakfast", type: "Breakfast / Meal Prep", fit: "Lower / Moderate", img: "media/break_one.jpg", ingredients: "whole eggs and egg whites, spinach, peppers, onions, small cheese", directions: "Whisk eggs with chopped veggies & cheese. Bake in muffin cups at 350F.", s: "340k | 7C/31P/17F", m: "412k | 8C/37P/21F", l: "488k | 10C/44P/24F" },
-            { id: 18, title: "Chicken & Sweet Potato Hash", category: "breakfast", type: "Breakfast / Lunch", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5-6 oz chicken breast, 1 medium sweet potato, bell peppers, onions, 1-2 tsp olive oil", directions: "Dice chicken & sweet potato. Cook until browned, then add peppers and onions.", s: "416k | 36C/39P/12F", m: "505k | 43C/47P/14F", l: "598k | 51C/56P/17F" },
-            { id: 19, title: "Cottage Cheese + Berries + Almonds", category: "snack", type: "Snack / Breakfast", fit: "Any", img: "media/nutrition_52.jpg", ingredients: "cottage cheese, 1/2-1 cup berries, almonds, cinnamon", directions: "Combine cottage cheese and berries. Top with measured almonds.", s: "340k | 17C/42P/13F", m: "412k | 21C/52P/15F", l: "488k | 24C/61P/18F" },
-            { id: 20, title: "Beef & Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/Steak.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Cook beef. Prepare rice and vegetables. Combine and season.", s: "459k | 43C/41P/13F", m: "556k | 53C/49P/15F", l: "659k | 62C/59P/18F" },
-            { id: 21, title: "Greek Yogurt Performance Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate / High", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Add yogurt to bowl. Top with sliced banana, berries, almonds and cinnamon.", s: "314k | 42C/21P/8F", m: "381k | 50C/26P/10F", l: "451k | 60C/30P/12F" },
-            { id: 22, title: "Chicken Fajita Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/lunch_one.png", ingredients: "5-6 oz chicken breast, 1 bell pepper, 1/2 onion, 1/2 cup beans, 1/4 avocado, greens", directions: "Cook chicken with peppers/onion. Serve over greens with beans and avocado.", s: "429k | 40C/38P/13F", m: "520k | 48C/46P/15F", l: "616k | 57C/55P/18F" },
-            { id: 23, title: "Turkey Taco Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "media/din_one.jpg", ingredients: "5 oz lean turkey, 1/2 cup beans, lettuce, tomato, bell pepper, 1/4 avocado", directions: "Brown turkey with taco seasoning. Build bowl with veggies, beans and avocado.", s: "434k | 38C/37P/14F", m: "525k | 46C/44P/18F", l: "622k | 55C/52P/21F" },
-            { id: 24, title: "Shrimp Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "media/Shrimp.jpg", ingredients: "6 oz cooked shrimp, 1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper, 1 tsp olive oil", directions: "Saute shrimp and veggies in oil. Serve over rice.", s: "400k | 42C/36P/8F", m: "484k | 52C/43P/9F", l: "573k | 61C/51P/11F" },
-            { id: 25, title: "Tuna & Sweet Potato Plate", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "media/Salad.jpg", ingredients: "5-6 oz tuna, 1 medium sweet potato, greens, tomato, cucumber, olive oil or avocado", directions: "Prepare sweet potato. Serve tuna with greens and top with measured fat source.", s: "348k | 36C/34P/8F", m: "422k | 43C/41P/10F", l: "500k | 51C/49P/12F" },
-            { id: 26, title: "Chicken & Veggie Scramble", category: "breakfast", type: "Breakfast / Lunch", fit: "Lower", img: "media/break_two.jpg", ingredients: "4 oz chicken breast, 1 whole egg, 4 egg whites, spinach, bell peppers, onions", directions: "Cook veggies & chopped chicken. Add beaten eggs and scramble until set.", s: "332k | 13C/44P/11F", m: "402k | 15C/54P/13F", l: "476k | 18C/63P/16F" },
-            { id: 27, title: "Salmon & Greens Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salmon.jpg", ingredients: "4-5 oz cooked salmon, 2 cups mixed greens, cucumber, tomato, broccoli, lemon", directions: "Place greens in bowl. Add salmon and finish with lemon & seasonings.", s: "366k | 17C/32P/19F", m: "443k | 21C/39P/23F", l: "525k | 24C/46P/27F" },
-            { id: 28, title: "Greek Yogurt + Banana Protein Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1 scoop whey, cinnamon", directions: "Stir whey into Greek yogurt until smooth. Add sliced banana and cinnamon.", s: "332k | 37C/38P/4F", m: "402k | 45C/46P/5F", l: "476k | 54C/55P/6F" },
-            { id: 29, title: "KROME Recovery Bowl", category: "snack", type: "Snack / Dessert", fit: "Lower / Moderate", img: "media/nutrition_52.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Combine yogurt and berries. Top with measured almonds.", s: "272k | 19C/33P/8F", m: "330k | 23C/40P/9F", l: "390k | 27C/48P/11F" },
-            { id: 30, title: "Apple & Protein Snack", category: "snack", type: "Snack", fit: "Any", img: "media/clean_eating.jpg", ingredients: "1 medium apple, 1 scoop whey, 1/2 Tbsp peanut butter, water or almond milk", directions: "Shake whey with water. Eat with apple and peanut butter.", s: "255k | 27C/26P/6F", m: "309k | 33C/32P/7F", l: "366k | 39C/38P/9F" },
-            { id: 31, title: "Banana Protein Oats", category: "breakfast", type: "Breakfast", fit: "High", img: "media/nutrition_8.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 banana, cinnamon, water", directions: "Cook oats. Stir in whey after cooking and top with banana.", s: "366k | 52C/32P/6F", m: "443k | 63C/39P/7F", l: "525k | 74C/46P/9F" },
-            { id: 32, title: "Berry Protein Oats", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "media/nutrition_52.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 cup berries, cinnamon, water", directions: "Cook oats. Stir in whey, then add berries and cinnamon.", s: "340k | 43C/32P/7F", m: "412k | 53C/39P/8F", l: "488k | 62C/46P/10F" },
-            { id: 33, title: "Chicken & Bean Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/lunch_one.png", ingredients: "5 oz chicken breast, 1/2 cup cooked beans, greens, tomato, bell pepper, 1/4 avocado", directions: "Slice grilled chicken. Build bowl with beans, veggies and avocado.", s: "442k | 41C/46P/11F", m: "536k | 49C/56P/13F", l: "634k | 59C/66P/16F" },
-            { id: 34, title: "Steak & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate / High", img: "media/Steak.jpg", ingredients: "4-5 oz grilled sirloin, 1 sweet potato, 1 cup green beans, side salad", directions: "Grill steak to desired doneness. Serve with sweet potato and veggies.", s: "442k | 32C/32P/20F", m: "536k | 39C/39P/24F", l: "634k | 46C/46P/28F" },
-            { id: 35, title: "Greek Yogurt Protein Parfait", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate", img: "media/nutrition_8.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 1/2 banana, oats, 0.5 oz almonds", directions: "Layer yogurt, fruit, oats and almonds in a glass or bowl.", s: "306k | 36C/26P/8F", m: "371k | 43C/32P/9F", l: "439k | 51C/38P/11F" },
-            { id: 36, title: "Tuna Power Wrap", category: "main", type: "Lunch", fit: "Moderate", img: "media/avwrap.jpg", ingredients: "5 oz tuna, 1 whole-wheat tortilla, lettuce, tomato, cucumber, 2 Tbsp Greek yogurt", directions: "Mix tuna with Greek yogurt. Add vegetables and wrap in tortilla.", s: "332k | 27C/31P/8F", m: "402k | 33C/38P/10F", l: "476k | 39C/45P/12F" },
-            { id: 37, title: "Chicken Power Salad", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salad.jpg", ingredients: "5-6 oz chicken breast, 2 cups greens, tomato, cucumber, bell pepper, 1/4 avocado", directions: "Slice chicken and serve over veggies. Add measured fat source.", s: "366k | 21C/37P/14F", m: "443k | 26C/45P/18F", l: "525k | 30C/54P/21F" },
-            { id: 38, title: "Turkey & Rice Meal-Prep Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/din_two.jpg", ingredients: "5 oz lean turkey, 3/4-1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper", directions: "Brown turkey, prepare rice & veggies, portion into meal-prep containers.", s: "425k | 41C/37P/12F", m: "515k | 49C/45P/14F", l: "610k | 59C/54P/17F" },
-            { id: 39, title: "Shrimp Quinoa Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/Shrimp.jpg", ingredients: "6 oz shrimp, 3/4 cup cooked quinoa, spinach, bell peppers, onion, 1 tsp olive oil", directions: "Cook shrimp and veggies in oil. Serve over quinoa.", s: "391k | 36C/34P/10F", m: "474k | 43C/41P/12F", l: "561k | 51C/49P/15F" },
-            { id: 40, title: "Chicken & Greens Recovery Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "media/Salad.jpg", ingredients: "5 oz chicken breast, 2 cups greens, broccoli, cucumber, tomato, 1/4 avocado", directions: "Combine sliced chicken with greens and veggies. Add avocado.", s: "327k | 17C/38P/12F", m: "397k | 21C/46P/14F", l: "470k | 24C/55P/17F" },
-            { id: 41, title: "Salmon & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate", img: "media/Salmon.jpg", ingredients: "4-5 oz salmon, 1 medium sweet potato, 1 cup asparagus/broccoli, lemon", directions: "Bake or grill salmon. Serve with sweet potato and veggies.", s: "425k | 30C/31P/20F", m: "515k | 36C/38P/25F", l: "610k | 43C/45P/29F" }
+            { id: 1, title: "Chicken & Avocado Wrap", category: "main", type: "Lunch / Wrap", fit: "Moderate / High", img: "src/assets/images/chicken_wrap_1789144072313.jpg", ingredients: "5-6 oz grilled chicken breast, 1 whole-wheat tortilla, 1/4 avocado, lettuce, tomato, cucumber, 1 tsp olive oil", directions: "Prep & Cook: Season chicken with garlic, sea salt & pepper. Grill on medium-high for 6-7 mins per side (165°F internal). Slice thin. Assembly: Warm tortilla in dry skillet for 15s. Layer mashed avocado, sliced chicken, crisp lettuce, tomato, & cucumber. Roll tightly. Heat/Serve: Serve immediately or toast in a press for 2 mins.", s: "363k | 23C/34P/14F", m: "440k | 28C/41P/16F", l: "521k | 33C/49P/20F" },
+            { id: 2, title: "Egg & Turkey Power Bowl", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "src/assets/images/egg_turkey_power_bowl_1789144516733.jpg", ingredients: "2 whole eggs, 2-4 egg whites, 4-5 oz lean ground turkey, 1/2-3/4 cup cooked oats, 1/2-1 Tbsp almond butter", directions: "Prep & Cook: Brown turkey in skillet over medium heat (6-8 mins) with garlic & paprika. Scramble eggs & egg whites in nonstick pan. Microwave oats with water (90s). Assembly & Heating: Layer warm oats in bowl, top with turkey, eggs, and almond butter swirl. Reheat meal prep: Microwave 60-75s.", s: "459k | 26C/42P/18F", m: "556k | 31C/50P/22F", l: "659k | 37C/60P/26F" },
+            { id: 3, title: "Egg & Egg White Scramble", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "src/assets/images/egg_white_scramble_1789144527542.jpg", ingredients: "2 whole eggs, egg whites as needed, 1/2 cup oats, berries or fruit, 1 Tbsp peanut butter", directions: "Prep & Cook: Whisk eggs and whites together. Scramble on medium-low heat until fluffy. Microwave oats (90s) with cinnamon. Assembly: Bowl eggs alongside oats, fresh berries, and peanut butter. Reheat: Microwave eggs 30-45s on medium power to retain fluffiness.", s: "442k | 49C/39P/14F", m: "536k | 60C/47P/16F", l: "634k | 71C/56P/20F" },
+            { id: 4, title: "Protein Pancakes", category: "breakfast", type: "Breakfast", fit: "High", img: "src/assets/images/protein_pancakes_1789144043099.jpg", ingredients: "1/2-3/4 cup oats, 1-1.5 scoops whey, 1 whole egg, 1 banana, 1 Tbsp peanut butter, water & cinnamon", directions: "Prep: Blend oats, whey, egg, banana, cinnamon, and 1/3 cup water until smooth. Cook: Heat nonstick pan on medium heat with oil spray. Pour batter into 4-inch cakes; cook 2-3 mins until bubbling, flip for 1-2 mins. Serving & Reheat: Top with peanut butter. Reheat in toaster or 25s in microwave.", s: "442k | 49C/33P/11F", m: "536k | 60C/40P/13F", l: "634k | 71C/48P/16F" },
+            { id: 5, title: "Protein Smoothie", category: "snack", type: "Snack / Pre-Post Workout", fit: "Moderate / High", img: "src/assets/images/protein_smoothie_1789144055561.jpg", ingredients: "1-1.5 scoops whey, unsweetened almond milk, 1 banana or berries, 1/4-1/2 cup oats, 1 Tbsp peanut butter, ice", directions: "Prep & Blend: Add liquid first, then whey, oats, fruit, peanut butter, and 1 cup ice into high-speed blender. Blend 45-60s until silky smooth. Serve: Consume immediately post-workout or freeze into popsicles for prep.", s: "357k | 36C/31P/10F", m: "433k | 43C/37P/12F", l: "512k | 51C/44P/15F" },
+            { id: 6, title: "Grilled Chicken Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "src/assets/images/chicken_sweet_potato_1789143927965.jpg", ingredients: "5-6 oz grilled chicken breast, 1 medium sweet potato, 1-2 cups steamed vegetables, 1-2 tsp olive oil", directions: "Prep & Cook: Dice sweet potato and roast at 400°F for 25 mins with olive oil spray. Grill chicken 6-7 mins per side (165°F). Steam broccoli/veggies. Assembly & Heating: Combine in bowl with olive oil. Meal prep reheat: Microwave covered for 90-120s.", s: "459k | 41C/41P/10F", m: "556k | 49C/49P/12F", l: "659k | 59C/59P/15F" },
+            { id: 7, title: "Turkey Sweet Potato Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "src/assets/images/turkey_taco_bowl_1789143975877.jpg", ingredients: "5-6 oz lean turkey, 1 medium sweet potato, 1-2 cups vegetables, 1-2 tsp olive oil", directions: "Prep & Cook: Brown turkey in skillet with garlic, cumin & sea salt (7-9 mins). Bake cubical sweet potatoes (400°F, 22 mins). Steam veggies. Assembly & Reheat: Assemble bowl drizzled with olive oil. Microwave 90s for quick meal prep.", s: "459k | 36C/41P/18F", m: "556k | 43C/49P/22F", l: "659k | 51C/59P/26F" },
+            { id: 8, title: "Beef Stir Fry", category: "main", type: "Dinner", fit: "High", img: "src/assets/images/beef_stir_fry_1789144538979.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups mixed vegetables, 1-2 tsp olive oil", directions: "Prep & Cook: Slice sirloin into thin strips. Heat skillet with olive oil over high heat. Sear beef 3-4 mins, remove. Toss bell peppers, broccoli & onions for 4 mins. Return beef. Serving: Plate over warm Jasmine or brown rice. Reheat: Microwave 90s.", s: "459k | 41C/41P/13F", m: "556k | 49C/49P/15F", l: "659k | 59C/59P/18F" },
+            { id: 9, title: "Mug Protein Cake", category: "snack", type: "Dessert", fit: "Any", img: "src/assets/images/mug_protein_cake_1789143824893.jpg", ingredients: "1 scoop whey, 1/4 cup oats, 1/2-1 Tbsp peanut butter, milk/water, cinnamon", directions: "Prep: Mix whey, oat flour, cinnamon, 1/4 tsp baking powder, and 3-4 Tbsp milk in a microwave mug until smooth batter. Heating: Microwave on high for 45-55s (do not overcook). Top with peanut butter melted over warm cake.", s: "248k | 27C/20P/8F", m: "301k | 33C/24P/10F", l: "356k | 39C/28P/12F" },
+            { id: 10, title: "Protein Balls", category: "snack", type: "Snack / Dessert", fit: "Any", img: "src/assets/images/protein_balls_1789143848487.jpg", ingredients: "oats, whey, peanut butter, honey, water", directions: "Prep: Mix rolled oats, whey protein, peanut butter, honey, and 2 Tbsp warm water into a thick dough. Roll into 6 even balls. Chilling: Store in fridge for 30 mins to set. Serve chilled straight from fridge.", s: "234k | 24C/19P/7F", m: "283k | 29C/23P/8F", l: "336k | 34C/27P/10F" },
+            { id: 11, title: "Protein Cookies", category: "snack", type: "Dessert", fit: "Any", img: "src/assets/images/protein_cookies_1789143864374.jpg", ingredients: "whey, oats, peanut butter, honey, water", directions: "Prep & Baking: Mix oats, whey, peanut butter & honey. Press into cookie shapes on parchment baking sheet. Bake at 350°F for 8-10 mins until edges turn gold. Storage: Cool completely. Microwave 10s if enjoyed warm.", s: "234k | 24C/16P/7F", m: "283k | 29C/20P/8F", l: "336k | 34C/23P/10F" },
+            { id: 12, title: "Grilled Chicken & Brown Rice Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "src/assets/images/nutrition_16_1788989372880.jpg", ingredients: "5-6 oz chicken breast, 1 cup cooked brown rice, 1-2 cups veggies, 1/4 avocado or olive oil", directions: "Prep & Cook: Season and grill chicken breast (6-7 mins per side). Cook brown rice. Steam greens/peppers. Assembly & Heating: Pack bowl with rice base, sliced chicken, veggies, and fresh avocado. Reheat: Microwave 90s covered.", s: "469k | 44C/44P/11F", m: "569k | 54C/54P/13F", l: "673k | 63C/63P/16F" },
+            { id: 13, title: "Egg White Omelette", category: "breakfast", type: "Breakfast", fit: "Lower / Moderate", img: "src/assets/images/egg_white_scramble_1789144527542.jpg", ingredients: "6 egg whites, spinach, bell peppers or mushrooms, 1 oz cheese, seasonings", directions: "Prep & Cook: Sauté spinach & bell peppers in nonstick pan 2 mins. Pour whisked egg whites over veggies. Cook medium-low until set, sprinkle cheese, fold in half. Serve: Hot off the pan. Reheat: 30s in microwave.", s: "255k | 4C/34P/10F", m: "309k | 5C/41P/12F", l: "366k | 6C/49P/15F" },
+            { id: 14, title: "Turkey & Veggie Stir Fry", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "src/assets/images/turkey_veggie_stir_fry_1789144549680.jpg", ingredients: "5-6 oz lean turkey, broccoli, bell peppers, onions, green beans, 1-2 tsp olive oil", directions: "Prep & Cook: Brown turkey in olive oil over medium-high heat with soy/amino sauce & garlic (7 mins). Add broccoli florets, peppers & green beans; stir-fry 4-5 mins. Serve & Reheat: Serve hot. Reheat 90s.", s: "382k | 22C/32P/13F", m: "464k | 27C/39P/15F", l: "549k | 32C/46P/18F" },
+            { id: 15, title: "Chicken & Quinoa Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "src/assets/images/chicken_sweet_potato_1789143927965.jpg", ingredients: "5-6 oz chicken breast, 3/4-1 cup cooked quinoa, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Prep & Cook: Simmer quinoa (1:2 water ratio) 15 mins. Grill seasoned chicken breast 6 mins/side. Steam mixed veggies. Assembly & Reheat: Layer quinoa, chicken, and veggies with olive oil dressing. Reheat 90s.", s: "469k | 39C/44P/14F", m: "569k | 47C/54P/16F", l: "673k | 56C/63P/20F" },
+            { id: 16, title: "Protein Waffles", category: "breakfast", type: "Breakfast", fit: "High", img: "src/assets/images/protein_waffles_1789143878885.jpg", ingredients: "2 high-protein waffles, 1 banana, Greek yogurt or whey, 1 Tbsp almond butter", directions: "Cooking & Assembly: Toast high-protein waffles until golden-crisp (3-4 mins). Top warm waffles with almond butter, sliced banana, and dollop of Greek yogurt mixed with whey. Serve immediately.", s: "415k | 44C/33P/14F", m: "503k | 54C/40P/16F", l: "595k | 63C/48P/20F" },
+            { id: 17, title: "Egg & Veggie Breakfast Muffins", category: "breakfast", type: "Breakfast / Meal Prep", fit: "Lower / Moderate", img: "src/assets/images/egg_muffins_1789143894194.jpg", ingredients: "whole eggs and egg whites, spinach, peppers, onions, small cheese", directions: "Prep & Baking: Whisk eggs, whites, diced peppers, spinach, and cheese. Divide into sprayed muffin tin. Bake at 350°F for 18-20 mins until puffy & set. Storage & Reheat: Store in fridge; reheat 30s in microwave.", s: "340k | 7C/31P/17F", m: "412k | 8C/37P/21F", l: "488k | 10C/44P/24F" },
+            { id: 18, title: "Chicken & Sweet Potato Hash", category: "breakfast", type: "Breakfast / Lunch", fit: "Moderate / High", img: "src/assets/images/chicken_sweet_potato_1789143927965.jpg", ingredients: "5-6 oz chicken breast, 1 medium sweet potato, bell peppers, onions, 1-2 tsp olive oil", directions: "Prep & Cook: Finely cube sweet potato & chicken. Sauté sweet potato in olive oil on skillet (10 mins covered), add chicken, peppers & onions; cook 6-8 mins until crispy hash forms. Reheat: Microwave 75s.", s: "416k | 36C/39P/12F", m: "505k | 43C/47P/14F", l: "598k | 51C/56P/17F" },
+            { id: 19, title: "Cottage Cheese + Berries + Almonds", category: "snack", type: "Snack / Breakfast", fit: "Any", img: "src/assets/images/cottage_cheese_berries_1789143912367.jpg", ingredients: "cottage cheese, 1/2-1 cup berries, almonds, cinnamon", directions: "Prep & Assembly: Scoop chilled low-fat cottage cheese into bowl. Top with fresh blueberries/strawberries, sliced almonds, and a dash of cinnamon. No cooking required; serve chilled immediately.", s: "340k | 17C/42P/13F", m: "412k | 21C/52P/15F", l: "488k | 24C/61P/18F" },
+            { id: 20, title: "Beef & Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "src/assets/images/beef_rice_bowl_1789144561977.jpg", ingredients: "5-6 oz lean beef, 1 cup cooked rice, 1-2 cups veggies, 1-2 tsp olive oil", directions: "Prep & Cook: Season ground sirloin/steak strips with sea salt & pepper. Brown in skillet (5-6 mins). Steam mixed green veggies. Serve over steamed white/brown rice. Reheat meal prep: Microwave 90s.", s: "459k | 43C/41P/13F", m: "556k | 53C/49P/15F", l: "659k | 62C/59P/18F" },
+            { id: 21, title: "Greek Yogurt Performance Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate / High", img: "src/assets/images/greek_yogurt_bowl_1789144084924.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Prep & Assembly: Place Greek yogurt in a bowl. Arrange sliced banana, fresh berries, and raw almonds on top. Sprinkle cinnamon. Serve fresh & cold.", s: "314k | 42C/21P/8F", m: "381k | 50C/26P/10F", l: "451k | 60C/30P/12F" },
+            { id: 22, title: "Chicken Fajita Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "src/assets/images/chicken_fajita_bowl_1789144572707.jpg", ingredients: "5-6 oz chicken breast, 1 bell pepper, 1/2 onion, 1/2 cup beans, 1/4 avocado, greens", directions: "Prep & Cook: Sauté sliced chicken, bell peppers & onions with fajita seasoning in skillet (8 mins). Warm black beans. Assembly: Layer greens base, fajitas, beans & fresh avocado slices. Reheat: Microwave 90s.", s: "429k | 40C/38P/13F", m: "520k | 48C/46P/15F", l: "616k | 57C/55P/18F" },
+            { id: 23, title: "Turkey Taco Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate / High", img: "src/assets/images/turkey_taco_bowl_1789143975877.jpg", ingredients: "5 oz lean turkey, 1/2 cup beans, lettuce, tomato, bell pepper, 1/4 avocado", directions: "Prep & Cook: Cook ground turkey in skillet with low-sodium taco seasoning (7-8 mins). Build bowl with shredded lettuce, diced tomato, peppers, black beans, turkey & avocado. Reheat: Microwave meat/beans 60s.", s: "434k | 38C/37P/14F", m: "525k | 46C/44P/18F", l: "622k | 55C/52P/21F" },
+            { id: 24, title: "Shrimp Rice Power Bowl", category: "main", type: "Lunch / Dinner", fit: "High", img: "src/assets/images/shrimp_rice_bowl_1789144581102.jpg", ingredients: "6 oz cooked shrimp, 1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper, 1 tsp olive oil", directions: "Prep & Cook: Sauté peeled shrimp in olive oil with garlic & lemon (3-4 mins until pink). Steam broccoli florets. Serve hot over steamed jasmine rice. Reheat: Microwave 45-60s gently.", s: "400k | 42C/36P/8F", m: "484k | 52C/43P/9F", l: "573k | 61C/51P/11F" },
+            { id: 25, title: "Tuna & Sweet Potato Plate", category: "main", type: "Lunch / Dinner", fit: "Lower / Moderate", img: "src/assets/images/tuna_sweet_potato_plate_1789144591533.jpg", ingredients: "5-6 oz tuna, 1 medium sweet potato, greens, tomato, cucumber, olive oil or avocado", directions: "Prep & Cook: Microwave sweet potato (poked with fork, 5 mins) or bake. Flake albacore tuna onto plate alongside baked sweet potato and side salad drizzled with olive oil. Serve warm or cold.", s: "348k | 36C/34P/8F", m: "422k | 43C/41P/10F", l: "500k | 51C/49P/12F" },
+            { id: 26, title: "Chicken & Veggie Scramble", category: "breakfast", type: "Breakfast / Lunch", fit: "Lower", img: "src/assets/images/chicken_veggie_scramble_1789144604969.jpg", ingredients: "4 oz chicken breast, 1 whole egg, 4 egg whites, spinach, bell peppers, onions", directions: "Prep & Cook: Heat pre-cooked diced chicken in pan 1 min with diced veggies. Pour in beaten whole egg + egg whites. Scramble gently until set (3 mins). Serve immediately hot.", s: "332k | 13C/44P/11F", m: "402k | 15C/54P/13F", l: "476k | 18C/63P/16F" },
+            { id: 27, title: "Salmon & Greens Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "src/assets/images/salmon_greens_bowl_1789144615109.jpg", ingredients: "4-5 oz cooked salmon, 2 cups mixed greens, cucumber, tomato, broccoli, lemon", directions: "Prep & Cook: Bake salmon fillet at 400°F for 12-14 mins until flaky. Arrange bed of mixed greens, cucumber, tomato, and broccoli. Top with salmon & lemon juice squeeze.", s: "366k | 17C/32P/19F", m: "443k | 21C/39P/23F", l: "525k | 24C/46P/27F" },
+            { id: 28, title: "Greek Yogurt + Banana Protein Bowl", category: "breakfast", type: "Breakfast / Snack", fit: "High", img: "src/assets/images/greek_yogurt_bowl_1789144084924.jpg", ingredients: "1 cup nonfat Greek yogurt, 1 banana, 1 scoop whey, cinnamon", directions: "Prep: Vigorous stir whey protein into Greek yogurt until smooth cream consistency. Slice banana over top; dust with cinnamon. Serve chilled.", s: "332k | 37C/38P/4F", m: "402k | 45C/46P/5F", l: "476k | 54C/55P/6F" },
+            { id: 29, title: "KROME Recovery Bowl", category: "snack", type: "Snack / Dessert", fit: "Lower / Moderate", img: "src/assets/images/cottage_cheese_berries_1789143912367.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 0.5 oz almonds, cinnamon", directions: "Prep: Spoon cold Greek yogurt into dessert bowl. Mix in fresh berries and sliced almonds for crunch. Finish with cinnamon. Serve immediately.", s: "272k | 19C/33P/8F", m: "330k | 23C/40P/9F", l: "390k | 27C/48P/11F" },
+            { id: 30, title: "Apple & Protein Snack", category: "snack", type: "Snack", fit: "Any", img: "src/assets/images/apple_protein_snack_1789143989352.jpg", ingredients: "1 medium apple, 1 scoop whey, 1/2 Tbsp peanut butter, water or almond milk", directions: "Prep: Core and slice fresh apple. Mix whey protein with 6 oz cold water/almond milk in shaker cup. Spread peanut butter on apple slices & enjoy alongside shake.", s: "255k | 27C/26P/6F", m: "309k | 33C/32P/7F", l: "366k | 39C/38P/9F" },
+            { id: 31, title: "Banana Protein Oats", category: "breakfast", type: "Breakfast", fit: "High", img: "src/assets/images/oatmeal_berries_1789144022733.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 banana, cinnamon, water", directions: "Prep & Cook: Microwave oats in 1 cup water for 90s. Let cool 1 min, then fold in whey protein (prevents clumping). Top with sliced banana & cinnamon.", s: "366k | 52C/32P/6F", m: "443k | 63C/39P/7F", l: "525k | 74C/46P/9F" },
+            { id: 32, title: "Berry Protein Oats", category: "breakfast", type: "Breakfast", fit: "Moderate / High", img: "src/assets/images/oatmeal_berries_1789144022733.jpg", ingredients: "1/2 cup dry oats, 1 scoop whey, 1 cup berries, cinnamon, water", directions: "Prep & Cook: Microwave dry oats in 1 cup water for 90s. Stir in whey protein powder until creamy. Top with fresh berries and cinnamon.", s: "340k | 43C/32P/7F", m: "412k | 53C/39P/8F", l: "488k | 62C/46P/10F" },
+            { id: 33, title: "Chicken & Bean Power Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "src/assets/images/chicken_bean_power_bowl_1789144625580.jpg", ingredients: "5 oz chicken breast, 1/2 cup cooked beans, greens, tomato, bell pepper, 1/4 avocado", directions: "Prep & Cook: Grill seasoned chicken breast 6 mins/side (165°F). Heat black/pinto beans. Arrange salad greens base with diced tomato, pepper, warm beans, chicken & avocado. Reheat: Microwave 60-90s.", s: "442k | 41C/46P/11F", m: "536k | 49C/56P/13F", l: "634k | 59C/66P/16F" },
+            { id: 34, title: "Steak & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate / High", img: "src/assets/images/steak_sweet_potato_1789144005039.jpg", ingredients: "4-5 oz grilled sirloin, 1 sweet potato, 1 cup green beans, side salad", directions: "Prep & Cook: Sear sirloin in hot skillet with sea salt & garlic 3-4 mins per side for medium-rare. Bake sweet potato (400°F 45 mins or microwave 5 mins). Steam green beans. Serve hot. Reheat: Microwave 60s.", s: "442k | 32C/32P/20F", m: "536k | 39C/39P/24F", l: "634k | 46C/46P/28F" },
+            { id: 35, title: "Greek Yogurt Protein Parfait", category: "breakfast", type: "Breakfast / Snack", fit: "Moderate", img: "src/assets/images/yogurt_parfait_1789144636391.jpg", ingredients: "1 cup nonfat Greek yogurt, 1/2 cup berries, 1/2 banana, oats, 0.5 oz almonds", directions: "Prep & Assembly: In a tall glass or bowl, alternate layers of Greek yogurt, dry oats, sliced banana, and berries. Top with sliced almonds. Serve chilled.", s: "306k | 36C/26P/8F", m: "371k | 43C/32P/9F", l: "439k | 51C/38P/11F" },
+            { id: 36, title: "Tuna Power Wrap", category: "main", type: "Lunch", fit: "Moderate", img: "src/assets/images/tuna_wrap_1789144648396.jpg", ingredients: "5 oz tuna, 1 whole-wheat tortilla, lettuce, tomato, cucumber, 2 Tbsp Greek yogurt", directions: "Prep: Mix drained albacore tuna with Greek yogurt, salt & black pepper. Spread onto whole-wheat tortilla with cucumber slices, tomato, and lettuce. Slice in half. Serve chilled.", s: "332k | 27C/31P/8F", m: "402k | 33C/38P/10F", l: "476k | 39C/45P/12F" },
+            { id: 37, title: "Chicken Power Salad", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "src/assets/images/chicken_power_salad_real_1789145099022.jpg", ingredients: "5-6 oz chicken breast, 2 cups greens, tomato, cucumber, bell pepper, 1/4 avocado", directions: "Prep & Cook: Grill seasoned chicken breast (6-7 mins per side), then slice into strips. Toss mixed greens, cherry tomatoes, sliced cucumbers, and bell peppers in a bowl. Top with warm sliced chicken and avocado. Serve fresh.", s: "366k | 21C/37P/14F", m: "443k | 26C/45P/18F", l: "525k | 30C/54P/21F" },
+            { id: 38, title: "Turkey & Rice Meal-Prep Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "media/din_two.jpg", ingredients: "5 oz lean turkey, 3/4-1 cup cooked rice, 1 cup broccoli, 1/2 bell pepper", directions: "Prep & Cook: Brown lean ground turkey with garlic & onion powder (7 mins). Steam broccoli florets & peppers. Portion rice, turkey, and veggies into containers. Reheat: Microwave covered for 90s.", s: "425k | 41C/37P/12F", m: "515k | 49C/45P/14F", l: "610k | 59C/54P/17F" },
+            { id: 39, title: "Shrimp Quinoa Bowl", category: "main", type: "Lunch / Dinner", fit: "Moderate", img: "src/assets/images/shrimp_quinoa_bowl_1789143942436.jpg", ingredients: "6 oz shrimp, 3/4 cup cooked quinoa, spinach, bell peppers, onion, 1 tsp olive oil", directions: "Prep & Cook: Cook quinoa in water (15 mins). Sauté shrimp & diced peppers in olive oil on high heat (3-4 mins). Fold in fresh spinach until wilted. Serve hot over quinoa. Reheat: Microwave 60s.", s: "391k | 36C/34P/10F", m: "474k | 43C/41P/12F", l: "561k | 51C/49P/15F" },
+            { id: 40, title: "Chicken & Greens Recovery Bowl", category: "main", type: "Lunch / Dinner", fit: "Lower", img: "src/assets/images/chicken_greens_recovery_bowl_real_1789145111307.jpg", ingredients: "5 oz chicken breast, 2 cups greens, broccoli, cucumber, tomato, 1/4 avocado", directions: "Prep & Cook: Grill chicken breast and slice thin. Steam broccoli florets and dark kale/spinach. Arrange greens in a deep bowl, add warm veggies, sliced chicken, avocado, and fresh lemon squeeze. Reheat: Microwave 75s.", s: "327k | 17C/38P/12F", m: "397k | 21C/46P/14F", l: "470k | 24C/55P/17F" },
+            { id: 41, title: "Salmon & Sweet Potato Plate", category: "main", type: "Dinner", fit: "Moderate", img: "src/assets/images/salmon_plate_1789143959366.jpg", ingredients: "4-5 oz salmon, 1 medium sweet potato, 1 cup asparagus/broccoli, lemon", directions: "Prep & Cook: Season salmon fillet with lemon & herbs; bake at 400°F for 12-14 mins. Roast cubed sweet potato (25 mins) and asparagus. Plate together hot. Reheat: Microwave 60s.", s: "425k | 30C/31P/20F", m: "515k | 36C/38P/25F", l: "610k | 43C/45P/29F" }
         ];
 
         let activeRecipeCategory = 'all';
@@ -1399,7 +1485,7 @@
                 <div class="col-md-6 col-lg-4 recipe-item" data-category="${r.category}">
                     <div class="recipe-card">
                         <div class="recipe-img-box mb-2" style="height: 145px; margin: -1.25rem -1.25rem 0.85rem -1.25rem; border-radius: 0.85rem 0.85rem 0 0; overflow: hidden; position: relative;">
-                            <img src="${r.img || 'media/clean_eating.jpg'}" alt="${r.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="${r.img || 'media/clean_eating.jpg'}" alt="${r.title}" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover;">
                             <span class="badge bg-dark text-warning border border-warning" style="position: absolute; bottom: 8px; right: 8px; font-size: 0.7rem; backdrop-filter: blur(4px);">Fit: ${r.fit}</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-start mb-1">
@@ -1410,8 +1496,8 @@
                         <span class="recipe-subheading">Ingredients:</span>
                         <p class="small text-light mb-2" style="font-size: 0.85rem;">${r.ingredients}</p>
 
-                        <span class="recipe-subheading">Directions:</span>
-                        <p class="small text-secondary mb-3" style="font-size: 0.83rem;">${r.directions}</p>
+                        <span class="recipe-subheading" style="color: #ffc107; font-weight: 700;">Directions & Heating:</span>
+                        <p class="small text-white mb-3" style="font-size: 0.85rem; line-height: 1.45; color: #ffffff !important;">${r.directions}</p>
 
                         <div class="mt-auto pt-2 border-top border-secondary border-opacity-25">
                             <span class="recipe-subheading d-block mb-1">Estimated Lane Macros:</span>
@@ -1638,6 +1724,257 @@
             }
         }
 
+        const MEAL_PORTIONS = {
+            "Protein Pancakes": {
+                "1800": "1/2 c oats, 1 scoop whey, 1 egg, 1/2 banana, 1 tsp PB",
+                "2200": "3/4 c oats, 1 scoop whey, 1 egg, 1 banana, 1 Tbsp PB",
+                "2600": "1 c oats, 1.25 scoops whey, 1 egg, 1 banana, 1.5 Tbsp PB"
+            },
+            "Greek Yogurt + Banana Bowl": {
+                "1800": "3/4 c Greek yogurt, 1/2 banana, 1/4 c berries, 0.25 oz almonds",
+                "2200": "1 c Greek yogurt, 1 banana, 1/2 c berries, 0.5 oz almonds",
+                "2600": "1.25 c Greek yogurt, 1 lg banana, 3/4 c berries, 0.75 oz almonds"
+            },
+            "Greek Yogurt Performance Bowl": {
+                "1800": "3/4 c Greek yogurt, 1/2 banana, 1/4 c berries, 0.25 oz almonds",
+                "2200": "1 c Greek yogurt, 1 banana, 1/2 c berries, 0.5 oz almonds",
+                "2600": "1.25 c Greek yogurt, 1 lg banana, 3/4 c berries, 0.75 oz almonds"
+            },
+            "Greek Yogurt Parfait": {
+                "1800": "3/4 c Greek yogurt, 1/3 c berries, 2 Tbsp oats, 0.25 oz almonds",
+                "2200": "1 c Greek yogurt, 1/2 c berries, 3 Tbsp oats, 0.5 oz almonds",
+                "2600": "1.25 c Greek yogurt, 3/4 c berries, 1/4 c oats, 0.75 oz almonds"
+            },
+            "Greek Yogurt Protein Parfait": {
+                "1800": "3/4 c Greek yogurt, 1/3 c berries, 2 Tbsp oats, 0.25 oz almonds",
+                "2200": "1 c Greek yogurt, 1/2 c berries, 3 Tbsp oats, 0.5 oz almonds",
+                "2600": "1.25 c Greek yogurt, 3/4 c berries, 1/4 c oats, 0.75 oz almonds"
+            },
+            "Chicken & Brown Rice Bowl": {
+                "1800": "4.5 oz chicken, 1/2 c brown rice, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz chicken, 3/4 c brown rice, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 c brown rice, 2 c veggies, 2 tsp oil"
+            },
+            "Grilled Chicken & Brown Rice Bowl": {
+                "1800": "4.5 oz chicken, 1/2 c brown rice, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz chicken, 3/4 c brown rice, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 c brown rice, 2 c veggies, 2 tsp oil"
+            },
+            "Protein Smoothie": {
+                "1800": "1 scoop whey, 1/4 c oats, 1/2 banana, 1 tsp PB, almond milk",
+                "2200": "1 scoop whey, 1/3 c oats, 1 banana, 1 Tbsp PB, almond milk",
+                "2600": "1.5 scoops whey, 1/2 c oats, 1 banana, 1.5 Tbsp PB, almond milk"
+            },
+            "Beef & Rice Power Bowl": {
+                "1800": "4.5 oz beef, 1/2 c cooked rice, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz beef, 3/4 c cooked rice, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz beef, 1 c cooked rice, 2 c veggies, 2 tsp oil"
+            },
+            "Egg & Turkey Power Bowl": {
+                "1800": "4 oz turkey, 2 egg whites + 1 egg, 1/3 c oats, 1 tsp almond butter",
+                "2200": "5 oz turkey, 3 egg whites + 1 egg, 1/2 c oats, 1 Tbsp almond butter",
+                "2600": "6 oz turkey, 4 egg whites + 2 eggs, 3/4 c oats, 1.5 Tbsp almond butter"
+            },
+            "Apple & Protein Snack": {
+                "1800": "1 sm apple, 1 scoop whey, 1 tsp peanut butter",
+                "2200": "1 med apple, 1 scoop whey, 1/2 Tbsp peanut butter",
+                "2600": "1 lg apple, 1.25 scoops whey, 1 Tbsp peanut butter"
+            },
+            "Chicken & Avocado Wrap": {
+                "1800": "4.5 oz chicken, 1 wrap, 2 Tbsp avocado, greens",
+                "2200": "5.5 oz chicken, 1 wrap, 1/4 avocado, greens",
+                "2600": "6.5 oz chicken, 1 lg wrap, 1/3 avocado, greens"
+            },
+            "KROME Recovery Bowl": {
+                "1800": "3/4 c Greek yogurt, 1/3 c berries, 0.25 oz almonds",
+                "2200": "1 c Greek yogurt, 1/2 c berries, 0.5 oz almonds",
+                "2600": "1.25 c Greek yogurt, 3/4 c berries, 0.75 oz almonds"
+            },
+            "Turkey Sweet Potato Bowl": {
+                "1800": "4.5 oz turkey, 1/2 med sweet potato (4 oz), 1 c veggies",
+                "2200": "5.5 oz turkey, 1 med sweet potato (6 oz), 1.5 c veggies",
+                "2600": "6.5 oz turkey, 1 lg sweet potato (8 oz), 2 c veggies"
+            },
+            "Banana Protein Oats": {
+                "1800": "1/3 c dry oats, 1 scoop whey, 1/2 banana",
+                "2200": "1/2 c dry oats, 1 scoop whey, 1 banana",
+                "2600": "3/4 c dry oats, 1.25 scoops whey, 1 banana"
+            },
+            "Chicken Fajita Bowl": {
+                "1800": "4.5 oz chicken, 1/3 c black beans, peppers, 2 Tbsp avocado",
+                "2200": "5.5 oz chicken, 1/2 c black beans, peppers, 1/4 avocado",
+                "2600": "6.5 oz chicken, 3/4 c black beans, peppers, 1/3 avocado"
+            },
+            "Beef Stir Fry": {
+                "1800": "4.5 oz sirloin, 1/2 c rice, 1 c mixed veggies",
+                "2200": "5.5 oz sirloin, 3/4 c rice, 1.5 c mixed veggies",
+                "2600": "6.5 oz sirloin, 1 c rice, 2 c mixed veggies"
+            },
+            "Egg White Omelette": {
+                "1800": "5 egg whites + 1 egg, 1 c spinach/peppers, 0.5 oz cheese",
+                "2200": "6 egg whites + 1 egg, 1.5 c spinach/peppers, 1 oz cheese",
+                "2600": "8 egg whites + 1 egg, 2 c spinach/peppers, 1.25 oz cheese"
+            },
+            "Chicken Power Salad": {
+                "1800": "4.5 oz chicken, 2 c greens, 2 Tbsp avocado, 1 tsp oil",
+                "2200": "5.5 oz chicken, 2.5 c greens, 1/4 avocado, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 3 c greens, 1/3 avocado, 2 tsp oil"
+            },
+            "Cottage Cheese + Berries + Almonds": {
+                "1800": "3/4 c cottage cheese, 1/3 c berries, 0.25 oz almonds",
+                "2200": "1 c cottage cheese, 1/2 c berries, 0.5 oz almonds",
+                "2600": "1.25 c cottage cheese, 3/4 c berries, 0.75 oz almonds"
+            },
+            "Salmon & Greens Bowl": {
+                "1800": "4 oz salmon, 2 c mixed greens, 1 tsp olive oil",
+                "2200": "5 oz salmon, 2.5 c greens, 1.5 tsp olive oil",
+                "2600": "6 oz salmon, 3 c greens, 2 tsp olive oil"
+            },
+            "Protein Waffles": {
+                "1800": "1.5 waffles, 1/2 banana, 1/3 c Greek yogurt, 1 tsp almond butter",
+                "2200": "2 waffles, 1 banana, 1/2 c Greek yogurt, 1 Tbsp almond butter",
+                "2600": "2.5 waffles, 1 banana, 3/4 c Greek yogurt, 1.5 Tbsp almond butter"
+            },
+            "Chicken & Quinoa Power Bowl": {
+                "1800": "4.5 oz chicken, 1/2 c cooked quinoa, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz chicken, 3/4 c cooked quinoa, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 c cooked quinoa, 2 c veggies, 2 tsp oil"
+            },
+            "Chicken & Quinoa Bowl": {
+                "1800": "4.5 oz chicken, 1/2 c cooked quinoa, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz chicken, 3/4 c cooked quinoa, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 c cooked quinoa, 2 c veggies, 2 tsp oil"
+            },
+            "Steak & Sweet Potato Plate": {
+                "1800": "4 oz sirloin, 1/2 med sweet potato (4 oz), 1 c green beans",
+                "2200": "5 oz sirloin, 1 med sweet potato (6 oz), 1.5 c green beans",
+                "2600": "6 oz sirloin, 1 lg sweet potato (8 oz), 2 c green beans"
+            },
+            "Egg & Egg White Scramble": {
+                "1800": "4 egg whites + 1 egg, 1/3 c oats, 1/3 c berries, 1 tsp PB",
+                "2200": "5 egg whites + 2 eggs, 1/2 c oats, 1/2 c berries, 1 Tbsp PB",
+                "2600": "6 egg whites + 2 eggs, 3/4 c oats, 3/4 c berries, 1.5 Tbsp PB"
+            },
+            "Turkey & Rice Meal-Prep Bowl": {
+                "1800": "4.5 oz turkey, 1/2 c cooked rice, 1 c broccoli",
+                "2200": "5.5 oz turkey, 3/4 c cooked rice, 1.5 c broccoli",
+                "2600": "6.5 oz turkey, 1 c cooked rice, 2 c broccoli"
+            },
+            "Protein Balls": {
+                "1800": "2 protein balls (~150k)",
+                "2200": "3 protein balls (~225k)",
+                "2600": "4 protein balls (~300k)"
+            },
+            "Shrimp Quinoa Bowl": {
+                "1800": "5 oz shrimp, 1/2 c quinoa, 1 c spinach & peppers, 1 tsp oil",
+                "2200": "6 oz shrimp, 3/4 c quinoa, 1.5 c spinach & peppers, 1.5 tsp oil",
+                "2600": "7 oz shrimp, 1 c quinoa, 2 c spinach & peppers, 2 tsp oil"
+            },
+            "Chicken & Veggie Scramble": {
+                "1800": "3.5 oz chicken, 3 egg whites + 1 egg, 1 c peppers & spinach",
+                "2200": "4.5 oz chicken, 4 egg whites + 1 egg, 1.5 c peppers & spinach",
+                "2600": "5.5 oz chicken, 5 egg whites + 1 egg, 2 c peppers & spinach"
+            },
+            "Tuna & Sweet Potato Plate": {
+                "1800": "4.5 oz tuna, 1/2 med sweet potato, side green salad",
+                "2200": "5.5 oz tuna, 1 med sweet potato, side green salad",
+                "2600": "6.5 oz tuna, 1 lg sweet potato, side green salad"
+            },
+            "Chicken & Greens Recovery Bowl": {
+                "1800": "4.5 oz chicken, 2 c greens & broccoli, 2 Tbsp avocado",
+                "2200": "5.5 oz chicken, 2.5 c greens & broccoli, 1/4 avocado",
+                "2600": "6.5 oz chicken, 3 c greens & broccoli, 1/3 avocado"
+            },
+            "Tuna Power Wrap": {
+                "1800": "4.5 oz tuna, 1 wrap, 1.5 Tbsp Greek yogurt, cucumber/tomato",
+                "2200": "5.5 oz tuna, 1 wrap, 2 Tbsp Greek yogurt, cucumber/tomato",
+                "2600": "6.5 oz tuna, 1 lg wrap, 3 Tbsp Greek yogurt, cucumber/tomato"
+            },
+            "Egg & Veggie Breakfast Muffins": {
+                "1800": "2 egg muffins + 2 egg whites",
+                "2200": "3 egg muffins + 2 egg whites",
+                "2600": "4 egg muffins + 2 egg whites"
+            },
+            "Egg & Veggie Muffins": {
+                "1800": "2 egg muffins + 2 egg whites",
+                "2200": "3 egg muffins + 2 egg whites",
+                "2600": "4 egg muffins + 2 egg whites"
+            },
+            "Turkey & Veggie Stir Fry": {
+                "1800": "4.5 oz turkey, 1.5 c broccoli & peppers, 1 tsp oil",
+                "2200": "5.5 oz turkey, 2 c broccoli & peppers, 1.5 tsp oil",
+                "2600": "6.5 oz turkey, 2.5 c broccoli & peppers, 2 tsp oil"
+            },
+            "Salmon & Sweet Potato Plate": {
+                "1800": "4 oz salmon, 1/2 med sweet potato, 1 c asparagus",
+                "2200": "5 oz salmon, 1 med sweet potato, 1.5 c asparagus",
+                "2600": "6 oz salmon, 1 lg sweet potato, 2 c asparagus"
+            },
+            "Grilled Chicken Sweet Potato Bowl": {
+                "1800": "4.5 oz chicken, 1/2 med sweet potato, 1 c veggies, 1 tsp oil",
+                "2200": "5.5 oz chicken, 1 med sweet potato, 1.5 c veggies, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 lg sweet potato, 2 c veggies, 2 tsp oil"
+            },
+            "Turkey Taco Bowl": {
+                "1800": "4.5 oz turkey, 1/3 c black beans, 2 Tbsp avocado, greens",
+                "2200": "5.5 oz turkey, 1/2 c black beans, 1/4 avocado, greens",
+                "2600": "6.5 oz turkey, 3/4 c black beans, 1/3 avocado, greens"
+            },
+            "Shrimp Rice Power Bowl": {
+                "1800": "5 oz shrimp, 1/2 c jasmine rice, 1 c broccoli, 1 tsp oil",
+                "2200": "6 oz shrimp, 3/4 c jasmine rice, 1.5 c broccoli, 1 tsp oil",
+                "2600": "7 oz shrimp, 1 c jasmine rice, 2 c broccoli, 1.5 tsp oil"
+            },
+            "Berry Protein Oats": {
+                "1800": "1/3 c dry oats, 1 scoop whey, 1/2 c berries",
+                "2200": "1/2 c dry oats, 1 scoop whey, 1 c berries",
+                "2600": "3/4 c dry oats, 1.25 scoops whey, 1.25 c berries"
+            },
+            "Chicken & Bean Power Bowl": {
+                "1800": "4.5 oz chicken, 1/3 c beans, 2 Tbsp avocado, greens",
+                "2200": "5.5 oz chicken, 1/2 c beans, 1/4 avocado, greens",
+                "2600": "6.5 oz chicken, 3/4 c beans, 1/3 avocado, greens"
+            },
+            "Chicken & Sweet Potato Hash": {
+                "1800": "4.5 oz chicken, 1/2 med sweet potato, peppers, 1 tsp oil",
+                "2200": "5.5 oz chicken, 1 med sweet potato, peppers, 1.5 tsp oil",
+                "2600": "6.5 oz chicken, 1 lg sweet potato, peppers, 2 tsp oil"
+            },
+            "Mug Protein Cake": {
+                "1800": "1 scoop whey, 2 Tbsp oat flour, 1 tsp PB",
+                "2200": "1 scoop whey, 1/4 c oat flour, 1/2 Tbsp PB",
+                "2600": "1.25 scoops whey, 1/3 c oat flour, 1 Tbsp PB"
+            },
+            "Protein Cookies": {
+                "1800": "2 protein cookies",
+                "2200": "3 protein cookies",
+                "2600": "4 protein cookies"
+            }
+        };
+
+        function getMealPortionText(mealStr, lane) {
+            const title = mealStr.replace(/^\d+\.\s*/, '').trim();
+            const entry = MEAL_PORTIONS[title];
+            if (entry) {
+                if (lane === 'all') {
+                    return `<div class="mt-1 extra-small-portion text-secondary font-monospace" style="font-size: 0.74rem; line-height: 1.35;">
+                        <span class="text-warning fw-bold">1800:</span> ${entry["1800"]}<br>
+                        <span class="text-info fw-bold">2200:</span> ${entry["2200"]}<br>
+                        <span class="text-light fw-bold">2600:</span> ${entry["2600"]}
+                    </div>`;
+                }
+                const portion = entry[lane] || entry["1800"];
+                let colorClass = 'text-warning';
+                if (lane === '2200') colorClass = 'text-info';
+                if (lane === '2600') colorClass = 'text-light';
+                return `<div class="mt-1 extra-small-portion ${colorClass} font-monospace" style="font-size: 0.77rem; line-height: 1.35;"><i class="fas fa-balance-scale me-1 opacity-75"></i><strong>Plate Portion:</strong> ${portion}</div>`;
+            }
+            if (lane === '1800') return `<div class="mt-1 extra-small-portion text-warning font-monospace" style="font-size: 0.77rem;"><i class="fas fa-balance-scale me-1"></i><strong>Plate Portion:</strong> ~4.5 oz protein | 1/2 c carbs | 1 tsp fats</div>`;
+            if (lane === '2200') return `<div class="mt-1 extra-small-portion text-info font-monospace" style="font-size: 0.77rem;"><i class="fas fa-balance-scale me-1"></i><strong>Plate Portion:</strong> ~5.5 oz protein | 3/4 c carbs | 1.5 tsp fats</div>`;
+            if (lane === '2600') return `<div class="mt-1 extra-small-portion text-light font-monospace" style="font-size: 0.77rem;"><i class="fas fa-balance-scale me-1"></i><strong>Plate Portion:</strong> ~6.5 oz protein | 1 c carbs | 1 Tbsp fats</div>`;
+            return `<div class="mt-1 extra-small-portion text-secondary font-monospace" style="font-size: 0.74rem;">Portion: 4-6oz protein, 0.5-1c carbs</div>`;
+        }
+
         function renderCalendarView(lane) {
             const container = document.getElementById('calendar-days-container');
             if (!container) return;
@@ -1650,6 +1987,170 @@
             ];
 
             let html = '';
+
+            // Render Dynamic Lane Portion Guide Banner
+            if (lane === '1800') {
+                html += `
+                    <div class="p-3 bg-black rounded-3 border border-warning shadow-sm mb-4">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2 border-bottom border-warning border-opacity-25 pb-2">
+                            <h6 class="text-warning fw-bold mb-0"><i class="fas fa-utensils me-2"></i> 1800 LANE PLATE PORTION BLUEPRINT (Per Meal Target)</h6>
+                            <span class="badge bg-warning text-dark fw-bold">Target: Fat Loss / Shred</span>
+                        </div>
+                        <div class="row g-2 text-center small">
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-warning fw-bold"><i class="fas fa-drumstick-bite me-1"></i> Lean Protein</span>
+                                    <span class="text-light">4.0 – 4.5 oz cooked</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 4 egg whites + 1 egg)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-warning fw-bold"><i class="fas fa-wheat-awn me-1"></i> Complex Carbs</span>
+                                    <span class="text-light">1/2 cup cooked / 4 oz</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(rice, oats, 1/2 sweet potato)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-warning fw-bold"><i class="fas fa-seedling me-1"></i> Healthy Fats</span>
+                                    <span class="text-light">1 tsp oil / 1/4 avocado</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 1 tsp nut butter)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-warning fw-bold"><i class="fas fa-leaf me-1"></i> Veggies / Salad</span>
+                                    <span class="text-light">1 – 2 cups greens</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(broccoli, spinach, cucumber)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lane === '2200') {
+                html += `
+                    <div class="p-3 bg-black rounded-3 border border-info shadow-sm mb-4">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2 border-bottom border-info border-opacity-25 pb-2">
+                            <h6 class="text-info fw-bold mb-0"><i class="fas fa-utensils me-2"></i> 2200 LANE PLATE PORTION BLUEPRINT (Per Meal Target)</h6>
+                            <span class="badge bg-info text-dark fw-bold">Target: Recomp / Moderate</span>
+                        </div>
+                        <div class="row g-2 text-center small">
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-info fw-bold"><i class="fas fa-drumstick-bite me-1"></i> Lean Protein</span>
+                                    <span class="text-light">5.0 – 5.5 oz cooked</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 5 egg whites + 2 eggs)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-info fw-bold"><i class="fas fa-wheat-awn me-1"></i> Complex Carbs</span>
+                                    <span class="text-light">3/4 – 1 cup cooked</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(rice, oats, 1 med sweet potato)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-info fw-bold"><i class="fas fa-seedling me-1"></i> Healthy Fats</span>
+                                    <span class="text-light">1.5 tsp oil / 1/3 avocado</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 1 Tbsp nut butter)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-info fw-bold"><i class="fas fa-leaf me-1"></i> Veggies / Salad</span>
+                                    <span class="text-light">1.5 – 2 cups greens</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(broccoli, spinach, peppers)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (lane === '2600') {
+                html += `
+                    <div class="p-3 bg-black rounded-3 border border-light shadow-sm mb-4">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2 border-bottom border-light border-opacity-25 pb-2">
+                            <h6 class="text-light fw-bold mb-0"><i class="fas fa-utensils me-2"></i> 2600 LANE PLATE PORTION BLUEPRINT (Per Meal Target)</h6>
+                            <span class="badge bg-light text-dark fw-bold">Target: Performance & Growth</span>
+                        </div>
+                        <div class="row g-2 text-center small">
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-light fw-bold"><i class="fas fa-drumstick-bite me-1"></i> Lean Protein</span>
+                                    <span class="text-light">6.0 – 6.5 oz cooked</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 6 egg whites + 2 eggs)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-light fw-bold"><i class="fas fa-wheat-awn me-1"></i> Complex Carbs</span>
+                                    <span class="text-light">1.0 – 1.25 cups cooked</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(rice, oats, 1 lg sweet potato)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-light fw-bold"><i class="fas fa-seedling me-1"></i> Healthy Fats</span>
+                                    <span class="text-light">1 Tbsp oil / 1/2 avocado</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(or 1.5 Tbsp nut butter)</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                    <span class="d-block text-light fw-bold"><i class="fas fa-leaf me-1"></i> Veggies / Salad</span>
+                                    <span class="text-light">2+ cups greens</span>
+                                    <div class="text-secondary extra-small" style="font-size: 0.75rem;">(broccoli, asparagus, greens)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="p-3 bg-black rounded-3 border border-secondary shadow-sm mb-4">
+                        <h6 class="text-warning fw-bold mb-2"><i class="fas fa-balance-scale me-2"></i> MASTER PLATE PORTION MATRIX BY LANE (PER MEAL)</h6>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-sm table-bordered align-middle text-center small mb-0">
+                                <thead>
+                                    <tr class="table-secondary text-dark">
+                                        <th>Nutrient Group</th>
+                                        <th class="table-warning text-dark">1800 Lane</th>
+                                        <th class="table-info text-dark">2200 Lane</th>
+                                        <th class="table-light text-dark">2600 Lane</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold text-warning text-start"><i class="fas fa-drumstick-bite me-1"></i> Lean Protein</td>
+                                        <td>4.0 – 4.5 oz cooked</td>
+                                        <td>5.0 – 5.5 oz cooked</td>
+                                        <td>6.0 – 6.5 oz cooked</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-info text-start"><i class="fas fa-wheat-awn me-1"></i> Complex Carbs</td>
+                                        <td>1/2 cup cooked (4 oz)</td>
+                                        <td>3/4 – 1 cup cooked (6 oz)</td>
+                                        <td>1 – 1.25 cups cooked (8 oz)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-success text-start"><i class="fas fa-seedling me-1"></i> Healthy Fats</td>
+                                        <td>1 tsp oil / 1/4 avocado</td>
+                                        <td>1.5 tsp oil / 1/3 avocado</td>
+                                        <td>1 Tbsp oil / 1/2 avocado</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-light text-start"><i class="fas fa-leaf me-1"></i> Veggies & Salad</td>
+                                        <td>1 – 2 cups greens</td>
+                                        <td>1.5 – 2 cups greens</td>
+                                        <td>2+ cups greens</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
 
             weeks.forEach(week => {
                 html += `<h5 class="text-warning fw-bold mt-4 mb-3"><i class="fas fa-calendar-week me-2"></i> ${week.title}</h5>`;
@@ -1681,20 +2182,28 @@
                     html += `
                         <div class="col-12">
                             <div class="day-card p-3 shadow-sm">
-                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 border-bottom border-secondary border-opacity-25 pb-2">
                                     <div class="d-flex align-items-center gap-2 flex-wrap">
                                         <span class="badge bg-warning text-dark fw-bold fs-6">Day ${d.day}</span>
                                         ${typeBadge}
-                                        <span class="small text-secondary"><i class="fas fa-bullseye me-1"></i> ${d.focus}</span>
+                                        <span class="small text-secondary"><i class="fas fa-bullseye me-1 text-warning"></i> ${d.focus}</span>
                                     </div>
                                     <div class="target-macro-wrapper">
                                         ${macroHTML}
                                     </div>
                                 </div>
                                 <div class="p-2 bg-black rounded-3 border border-secondary border-opacity-25">
-                                    <div class="text-secondary fw-semibold mb-1 small"><i class="fas fa-utensils me-1 text-warning"></i> 5 Daily Meals:</div>
-                                    <div class="d-flex flex-wrap gap-2">
-                                        ${d.meals.map(m => `<span class="badge bg-dark text-light border border-secondary border-opacity-50 fw-normal">${m}</span>`).join('')}
+                                    <div class="text-secondary fw-semibold mb-2 small"><i class="fas fa-utensils me-1 text-warning"></i> 5 Daily Meals & Plate Portions:</div>
+                                    <div class="row g-2">
+                                        ${d.meals.map(m => `
+                                            <div class="col-12 col-md">
+                                                <div class="p-2 bg-dark rounded border border-secondary border-opacity-50 h-100">
+                                                    <span class="badge bg-secondary text-light fw-bold mb-1" style="font-size: 0.72rem;">Meal ${m.split('.')[0]}</span>
+                                                    <div class="fw-semibold text-light small" style="line-height: 1.25;">${m.replace(/^\d+\.\s*/, '')}</div>
+                                                    ${getMealPortionText(m, lane)}
+                                                </div>
+                                            </div>
+                                        `).join('')}
                                     </div>
                                 </div>
                             </div>
@@ -1722,6 +2231,22 @@
             renderMobileHabitDay(1);
         }
 
+        // Back to top button scroll listener
+        window.addEventListener('scroll', function () {
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                if (window.scrollY > 300) {
+                    btt.classList.add('show');
+                } else {
+                    btt.classList.remove('show');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             checkAccess();
             renderRecipes(RECIPES);
@@ -1731,6 +2256,11 @@
             setCalorieHighlight('1800', defaultBtn);
         });
     </script>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 </body>
 
 </html>

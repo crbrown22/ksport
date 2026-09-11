@@ -195,6 +195,34 @@
             border-color: rgba(255, 255, 255, 0.08);
         }
 
+        /* Frameworks Table Column Wrapping & Mobile Responsiveness */
+        .table-frameworks {
+            width: 100% !important;
+            table-layout: auto !important;
+        }
+
+        .table-frameworks th,
+        .table-frameworks td {
+            white-space: normal !important;
+            word-break: normal;
+            overflow-wrap: break-word;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 576px) {
+            .table-frameworks {
+                font-size: 0.78rem !important;
+            }
+            .table-frameworks th,
+            .table-frameworks td {
+                padding: 0.4rem 0.2rem !important;
+            }
+            .table-frameworks th {
+                font-size: 0.72rem !important;
+                letter-spacing: 0px !important;
+            }
+        }
+
         /* Grocery checkbox item */
         .grocery-item {
             cursor: pointer;
@@ -276,6 +304,55 @@
             }
         }
 
+        /* Back to top button styling */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #121212;
+            color: var(--krome-gold);
+            border: 2px solid var(--krome-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 212, 71, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease, background-color 0.2s ease;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--krome-gold);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.5);
+        }
+
+        .back-to-top-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top-btn {
+                width: 42px;
+                height: 42px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 1.8rem;
@@ -323,6 +400,9 @@
                 </div>
             </div>
             <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="shred30_manual.html" class="btn btn-warning rounded-pill btn-sm fw-bold text-dark">
+                    <i class="fas fa-fire me-1"></i> 30-Day Shred Program Manual
+                </a>
                 <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
                     <i class="fas fa-shopping-cart me-1"></i> Purchase Blueprint on Square ($28)
                 </a>
@@ -340,6 +420,9 @@
                 <i class="fas fa-bolt me-2 text-warning"></i> KROME FITNESS &middot; BLUEPRINT
             </a>
             <div class="d-flex flex-wrap align-items-center gap-2">
+                <a href="shred30_manual.html" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-1">
+                    <i class="fas fa-fire me-1"></i> 30-Day Shred Manual
+                </a>
                 <span class="hero-price-badge me-2"><i class="fas fa-book me-1"></i> $28 DIGITAL GUIDE</span>
                 <a href="#sec-6" class="btn-action-gold btn-sm">
                     <i class="fas fa-calculator me-1"></i> Worksheet
@@ -364,6 +447,9 @@
                             <i class="fas fa-book-open me-1"></i> KROME FITNESS E-BOOK
                         </span>
                         <span class="badge bg-info text-dark fw-bold px-3 py-1 rounded-pill">$28 DIGITAL GUIDE</span>
+                        <a href="shred30_manual.html" class="badge bg-success text-white fw-bold px-3 py-1 rounded-pill text-decoration-none">
+                            <i class="fas fa-check-circle me-1"></i> Included with 30-Day Shred
+                        </a>
                     </div>
                     <h1 class="hero-title mb-3">NUTRITION E-BOOK BLUEPRINT</h1>
                     <p class="lead text-light mb-4" style="font-size: 1.15rem;">
@@ -371,6 +457,9 @@
                     </p>
 
                     <div class="d-flex flex-wrap gap-2 mb-4">
+                        <a href="shred30_manual.html" class="badge bg-warning text-dark text-decoration-none px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-fire me-1"></i> 30-Day Shred Manual
+                        </a>
                         <a href="#sec-2" class="badge bg-dark border border-warning text-warning text-decoration-none px-3 py-2 rounded-pill fw-bold">
                             <i class="fas fa-fire me-1"></i> Energy Balance
                         </a>
@@ -395,6 +484,9 @@
                         <h6 class="text-warning fw-bold text-uppercase mb-3 pb-2 border-bottom border-warning border-opacity-25">
                             <i class="fas fa-list-ol me-2"></i> Table of Contents
                         </h6>
+                        <a href="shred30_manual.html" class="btn btn-sm btn-warning text-dark fw-bold w-100 rounded-pill mb-3 py-2 shadow-sm d-flex align-items-center justify-content-center">
+                            <i class="fas fa-fire me-2"></i> Return to 30-Day Shred Manual <i class="fas fa-arrow-right ms-auto"></i>
+                        </a>
                         <ul class="list-unstyled mb-0">
                             <li><a href="#sec-1" class="toc-link"><i class="fas fa-cogs"></i> 1. The System</a></li>
                             <li><a href="#sec-2" class="toc-link"><i class="fas fa-fire"></i> 2. Energy Balance</a></li>
@@ -627,14 +719,14 @@
 
             <!-- Macro Ratio Conversion Reference Table -->
             <div class="table-responsive">
-                <table class="table table-krome align-middle text-center mb-0">
+                <table class="table table-krome table-frameworks align-middle text-center mb-0">
                     <thead>
                         <tr>
-                            <th>Calories</th>
-                            <th>Framework</th>
-                            <th>Carbs (g)</th>
-                            <th>Protein (g)</th>
-                            <th>Fat (g)</th>
+                            <th style="min-width: 65px;">Calories</th>
+                            <th style="min-width: 100px;">Framework</th>
+                            <th style="min-width: 60px;">Carbs (g)</th>
+                            <th style="min-width: 60px;">Protein (g)</th>
+                            <th style="min-width: 55px;">Fat (g)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1214,9 +1306,30 @@
             });
         }
 
+        // Back to top button scroll listener
+        window.addEventListener('scroll', function () {
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                if (window.scrollY > 300) {
+                    btt.classList.add('show');
+                } else {
+                    btt.classList.remove('show');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Initial Calculation on Load
         document.addEventListener('DOMContentLoaded', calculateWorksheet);
     </script>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 </body>
 
 </html>
