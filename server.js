@@ -230,38 +230,12 @@ async function handleAthleteLogin(req, res) {
     if (programAccess.hasNutritionAccess) athlete.hasNutritionAccess = true;
     athlete.hasPortalAccess = true;
 
-    // RECORD LOGIN DIRECTLY IN Athlete_Data SPREADSHEET VIA GOOGLE APPS SCRIPT
+    // RECORD LOGIN IN BACKGROUND ASYNCHRONOUSLY
     if (GOOGLE_APPS_SCRIPT_URL) {
       try {
         const syncUrl = `${GOOGLE_APPS_SCRIPT_URL}?action=athlete_login&tab=${encodeURIComponent('Athlete_Data')}&email=${encodeURIComponent(email)}&username=${encodeURIComponent(email)}&accessKey=${encodeURIComponent(accessKey)}&program=${encodeURIComponent(programAccess.programName)}`;
-        const syncController = new AbortController();
-        const syncTimeout = setTimeout(() => syncController.abort(), 3500);
+        fetch(syncUrl, { method: 'GET', redirect: 'follow' }).catch(() => {});
 
-        const syncRes = await fetch(syncUrl, {
-          method: 'GET',
-          redirect: 'follow',
-          signal: syncController.signal
-        }).catch(err => {
-          console.warn('Athlete_Data login sync GET notice:', err.message);
-          return null;
-        });
-        clearTimeout(syncTimeout);
-
-        if (syncRes && syncRes.ok) {
-          const syncJson = await syncRes.json().catch(() => null);
-          if (syncJson && syncJson.athlete) {
-            if (syncJson.athlete.shredDay) athlete.shredDay = syncJson.athlete.shredDay;
-            if (syncJson.athlete.shredLane) athlete.shredLane = syncJson.athlete.shredLane;
-            if (syncJson.athlete.currentWeight) athlete.currentWeight = syncJson.athlete.currentWeight;
-            if (syncJson.athlete.goalWeight) athlete.goalWeight = syncJson.athlete.goalWeight;
-            if (syncJson.athlete.supplementProtocol) athlete.supplementStack = syncJson.athlete.supplementProtocol;
-            if (syncJson.athlete.nutritionGoals) athlete.nutritionMacros = syncJson.athlete.nutritionGoals;
-            if (syncJson.athlete.athleteMessage) athlete.notes = syncJson.athlete.athleteMessage;
-          }
-          console.log('Successfully recorded login in Athlete_Data spreadsheet for:', email);
-        }
-
-        // Secondary POST broadcast for comprehensive compatibility
         fetch(GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -275,9 +249,7 @@ async function handleAthleteLogin(req, res) {
             loginTimestamp: now
           })
         }).catch(() => {});
-      } catch (scriptErr) {
-        console.warn('Google Apps Script login timestamp recording notice:', scriptErr.message);
-      }
+      } catch (_) {}
     }
 
     if (isFromLeads) {
