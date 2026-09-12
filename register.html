@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Athlete Registration | KROME Sports Performance</title>
+    <meta name="description" content="Register as a new KROME athlete without needing a pre-existing program set up. Create your athlete profile, access baseline assessments, and schedule your consultation with Coach Brown.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/register.html">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #090a0d;
+            --krome-card-bg: #12151b;
+            --krome-card-border: rgba(255, 212, 71, 0.22);
+            --krome-text-main: #f8fafc;
+            --krome-text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portal-nav {
+            background: rgba(15, 18, 24, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.2);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .register-card {
+            background: linear-gradient(180deg, #161a22 0%, #11141a 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 212, 71, 0.08);
+            overflow: hidden;
+        }
+
+        .form-control-custom, .form-select-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-control-custom:focus, .form-select-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 212, 71, 0.2) !important;
+            outline: none;
+        }
+
+        .btn-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            border-radius: 0.65rem;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.35);
+        }
+
+        .step-pill {
+            background: rgba(255, 212, 71, 0.1);
+            border: 1px solid rgba(255, 212, 71, 0.3);
+            color: var(--krome-gold);
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .option-choice-box {
+            background: rgba(20, 24, 32, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-choice-box:hover {
+            border-color: var(--krome-gold);
+            background: rgba(255, 212, 71, 0.05);
+        }
+
+        .option-choice-box.selected {
+            border-color: var(--krome-gold);
+            background: rgba(255, 212, 71, 0.12);
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STICKY TOP HEADER -->
+    <header class="portal-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="brand-logo" id="nav-brand-link">
+                <i class="fas fa-bolt text-warning me-2"></i> KROME SPORTS PERFORMANCE
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="login.html" class="btn btn-sm btn-outline-warning text-warning rounded-pill px-3" id="nav-login-btn">
+                    <i class="fas fa-sign-in-alt me-1"></i> Athlete Login
+                </a>
+                <a href="shop.html" class="btn btn-sm btn-outline-secondary text-light rounded-pill px-3" id="nav-shop-btn">
+                    <i class="fas fa-store me-1"></i> Shop
+                </a>
+                <a href="index.html" class="btn btn-sm btn-outline-secondary text-light rounded-pill px-3 d-none d-md-inline-block" id="nav-home-btn">
+                    <i class="fas fa-home me-1"></i> Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container my-auto py-5" id="register-main-container">
+        <div class="row g-4 justify-content-center">
+            
+            <!-- LEFT COLUMN: VALUE PROPOSITION & ONBOARDING INFO -->
+            <div class="col-lg-5">
+                <div class="d-flex flex-column justify-content-between h-100 p-2">
+                    <div>
+                        <div class="step-pill mb-3">
+                            <i class="fas fa-user-plus"></i> New Athlete Registration
+                        </div>
+                        <h1 class="fw-bold text-white display-6 mb-3" style="letter-spacing: -0.5px;">
+                            Start Your Journey with KROME
+                        </h1>
+                        <p class="text-secondary mb-4">
+                            You do <strong>not</strong> need a program set up already to register. Create your athlete account today to unlock your personal onboarding hub, baseline fitness assessment tools, and schedule your initial coach consultation.
+                        </p>
+
+                        <!-- WHAT YOU GET LIST -->
+                        <div class="d-flex flex-column gap-3 mb-4">
+                            <div class="d-flex align-items-start gap-3 p-3 bg-black bg-opacity-50 rounded-3 border border-secondary border-opacity-25">
+                                <div class="bg-warning text-dark rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white fw-bold mb-1">Personal Athlete Profile</h6>
+                                    <small class="text-secondary">Your metrics, goals, and training data synchronized in real time with the KROME Athlete Data system.</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start gap-3 p-3 bg-black bg-opacity-50 rounded-3 border border-secondary border-opacity-25">
+                                <div class="bg-success text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white fw-bold mb-1">Baseline Assessment & TDEE Calculator</h6>
+                                    <small class="text-secondary">Calculate your exact Mifflin-St Jeor caloric maintenance and target macronutrient breakdown.</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start gap-3 p-3 bg-black bg-opacity-50 rounded-3 border border-secondary border-opacity-25">
+                                <div class="bg-info text-dark rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white fw-bold mb-1">Direct Consultation with Coach Brown</h6>
+                                    <small class="text-secondary">Discuss your athletic background, training history, and receive tailored program recommendations.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FOOTER CALLOUT -->
+                    <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-25 small text-secondary">
+                        <div class="d-flex align-items-center gap-2 text-warning mb-1">
+                            <i class="fas fa-key"></i>
+                            <strong>Already have a Program Access Key?</strong>
+                        </div>
+                        If you already purchased the 30-Day Shred, Nutrition Blueprint, or Supplement Protocol, <a href="login.html" class="text-warning text-decoration-underline fw-bold">click here to log in</a>.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: REGISTRATION FORM -->
+            <div class="col-lg-7">
+                <div class="register-card p-4 p-md-5">
+                    
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div>
+                            <h3 class="fw-bold text-white mb-1">Create Athlete Account</h3>
+                            <p class="text-secondary small mb-0">Fill out your details to begin athlete onboarding</p>
+                        </div>
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-2">
+                            <i class="fas fa-shield-alt me-1"></i> Free Athlete Profile
+                        </span>
+                    </div>
+
+                    <!-- ALERT CONTAINER -->
+                    <div id="register-alert" class="alert d-none mb-4 py-2 px-3 small rounded-3" role="alert"></div>
+
+                    <!-- REGISTRATION FORM -->
+                    <form id="athlete-register-form" onsubmit="handleRegistrationSubmit(event)">
+                        
+                        <!-- PROGRAM STATUS SELECTION (DEFAULT: NO PROGRAM SET UP YET) -->
+                        <div class="mb-4">
+                            <label class="form-label text-light small fw-bold mb-2">
+                                <i class="fas fa-list-check text-warning me-1"></i> Current Program Status:
+                            </label>
+                            
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <div class="option-choice-box selected" id="opt-no-program" onclick="setProgramChoice('no-program')">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="programStatusRadio" id="radioNoProgram" value="No Program Set Up Yet (New Athlete Onboarding & Consultation)" checked style="accent-color: var(--krome-gold);">
+                                            <label class="form-check-label text-white fw-bold small" for="radioNoProgram">
+                                                No program set up yet
+                                            </label>
+                                        </div>
+                                        <small class="text-secondary d-block mt-1 ps-4" style="font-size: 0.78rem;">
+                                            New athlete requesting initial assessment & coach consultation.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="option-choice-box" id="opt-specific-program" onclick="setProgramChoice('specific-program')">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="programStatusRadio" id="radioSpecificProgram" value="Specific Program Setup" style="accent-color: var(--krome-gold);">
+                                            <label class="form-check-label text-white fw-bold small" for="radioSpecificProgram">
+                                                I want a specific program
+                                            </label>
+                                        </div>
+                                        <small class="text-secondary d-block mt-1 ps-4" style="font-size: 0.78rem;">
+                                            Interested in 30-Day Shred, Nutrition Blueprint, or Supplement Protocol.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HIDDEN / EXPANDABLE SPECIFIC PROGRAM SELECTOR -->
+                            <div id="specific-program-dropdown-container" class="mt-3 d-none">
+                                <label for="specific-program-select" class="form-label text-secondary small fw-bold">Select Requested Program Interest:</label>
+                                <select id="specific-program-select" class="form-select form-select-custom">
+                                    <option value="30-Day Shred Challenge Manual">30-Day Shred Challenge Manual</option>
+                                    <option value="Nutrition Blueprint E-Book">Nutrition Blueprint E-Book</option>
+                                    <option value="Athlete Supplement Protocol">Athlete Supplement Protocol</option>
+                                    <option value="All-Access Athlete Bundle (All 3 Programs)">All-Access Athlete Bundle (All 3 Programs)</option>
+                                    <option value="Custom 1-on-1 Performance Coaching">Custom 1-on-1 Performance Coaching</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- ATHLETE NAME & EMAIL -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-fullname" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-user text-warning me-1"></i> Full Name:
+                                </label>
+                                <input type="text" id="reg-fullname" class="form-control form-control-custom" placeholder="e.g. Marcus Vance" required autocomplete="name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-email" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-envelope text-warning me-1"></i> Email Address:
+                                </label>
+                                <input type="email" id="reg-email" class="form-control form-control-custom" placeholder="e.g. athlete@example.com" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <!-- PHONE & PASSWORD -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-phone" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-phone text-warning me-1"></i> Phone Number:
+                                </label>
+                                <input type="tel" id="reg-phone" class="form-control form-control-custom" placeholder="e.g. (555) 000-0000" autocomplete="tel">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-password" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-lock text-warning me-1"></i> Create Password / Passkey:
+                                </label>
+                                <input type="text" id="reg-password" class="form-control form-control-custom" placeholder="e.g. ATHLETE2026 or custom" value="ATHLETE2026" autocomplete="new-password">
+                                <small class="text-secondary" style="font-size: 0.72rem;">Used to log into your Athlete Onboarding Portal.</small>
+                            </div>
+                        </div>
+
+                        <!-- FITNESS GOAL & EXPERIENCE LEVEL -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-fitness-goal" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-bullseye text-warning me-1"></i> Primary Goal:
+                                </label>
+                                <select id="reg-fitness-goal" class="form-select form-select-custom">
+                                    <option value="Fat Loss & Lean Muscle Definition" selected>Fat Loss & Lean Muscle Definition</option>
+                                    <option value="Strength & Power Development">Strength & Power Development</option>
+                                    <option value="Metabolic Conditioning & Endurance">Metabolic Conditioning & Endurance</option>
+                                    <option value="Speed, Agility & Sports Performance">Speed, Agility & Sports Performance</option>
+                                    <option value="Body Recomposition & General Fitness">Body Recomposition & General Fitness</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-athlete-level" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-chart-line text-warning me-1"></i> Experience Level:
+                                </label>
+                                <select id="reg-athlete-level" class="form-select form-select-custom">
+                                    <option value="Beginner (0-1 years consistent training)">Beginner (0-1 years)</option>
+                                    <option value="Intermediate (2-4 years consistent training)" selected>Intermediate (2-4 years)</option>
+                                    <option value="Advanced (5+ years / Competitive Athlete)">Advanced (5+ years / Competitive)</option>
+                                    <option value="Collegiate / Semi-Pro / Professional">Collegiate / Professional Athlete</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- BODY WEIGHT METRICS -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-current-weight" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-weight-scale text-warning me-1"></i> Current Weight (lbs):
+                                </label>
+                                <input type="number" id="reg-current-weight" class="form-control form-control-custom" placeholder="e.g. 185" min="50" max="500">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-goal-weight" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-flag-checkered text-warning me-1"></i> Target Goal Weight (lbs):
+                                </label>
+                                <input type="number" id="reg-goal-weight" class="form-control form-control-custom" placeholder="e.g. 175" min="50" max="500">
+                            </div>
+                        </div>
+
+                        <!-- NOTES / BACKGROUND FOR COACH -->
+                        <div class="mb-4">
+                            <label for="reg-notes" class="form-label text-light small fw-bold">
+                                <i class="fas fa-comment-dots text-warning me-1"></i> Training Background / Notes for Coach Brown:
+                            </label>
+                            <textarea id="reg-notes" class="form-control form-control-custom" rows="3" placeholder="Tell us about your current workout routine, previous injuries, target timeline, or what you hope to achieve..."></textarea>
+                        </div>
+
+                        <!-- SUBMIT BUTTON -->
+                        <button type="submit" id="btn-submit-registration" class="btn btn-gold w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
+                            <span>Register & Launch Athlete Onboarding</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <!-- QUICK LOGIN SWITCHER -->
+                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25 text-center">
+                        <span class="text-secondary small">Already registered or have an access key?</span>
+                        <a href="login.html" class="text-warning text-decoration-none fw-bold ms-1">
+                            Athlete Login <i class="fas fa-sign-in-alt ms-1"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-4 border-top border-secondary border-opacity-25 text-center small text-secondary mt-auto">
+        <div class="container">
+            <p class="mb-1 text-light">
+                &copy; <span id="footer-year">2026</span> KROME Sports Performance. All Rights Reserved.
+            </p>
+            <p class="mb-0" style="font-size: 0.78rem;">
+                New athlete registration synchronizes automatically with the Athlete Data management system.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Check if user is already logged in
+        const existingEmail = localStorage.getItem('krome_athlete_email');
+        if (existingEmail && localStorage.getItem('krome_auth_token')) {
+            const prefillEmail = document.getElementById('reg-email');
+            if (prefillEmail && !prefillEmail.value) prefillEmail.value = existingEmail;
+            const prefillName = document.getElementById('reg-fullname');
+            if (prefillName && !prefillName.value) prefillName.value = localStorage.getItem('krome_athlete_name') || '';
+        }
+
+        function setProgramChoice(choice) {
+            const boxNo = document.getElementById('opt-no-program');
+            const boxSpec = document.getElementById('opt-specific-program');
+            const radioNo = document.getElementById('radioNoProgram');
+            const radioSpec = document.getElementById('radioSpecificProgram');
+            const dropdown = document.getElementById('specific-program-dropdown-container');
+
+            if (choice === 'no-program') {
+                boxNo.classList.add('selected');
+                boxSpec.classList.remove('selected');
+                radioNo.checked = true;
+                dropdown.classList.add('d-none');
+            } else {
+                boxSpec.classList.add('selected');
+                boxNo.classList.remove('selected');
+                radioSpec.checked = true;
+                dropdown.classList.remove('d-none');
+            }
+        }
+
+        function showAlert(message, type = 'danger') {
+            const alertEl = document.getElementById('register-alert');
+            if (!alertEl) return;
+            alertEl.className = `alert alert-${type} py-2 px-3 small rounded-3`;
+            alertEl.innerHTML = `
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            alertEl.classList.remove('d-none');
+        }
+
+        function hideAlert() {
+            const alertEl = document.getElementById('register-alert');
+            if (alertEl) alertEl.classList.add('d-none');
+        }
+
+        async function handleRegistrationSubmit(event) {
+            event.preventDefault();
+            hideAlert();
+
+            const fullName = document.getElementById('reg-fullname').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const phone = document.getElementById('reg-phone').value.trim();
+            const password = document.getElementById('reg-password').value.trim() || 'ATHLETE2026';
+            const fitnessGoal = document.getElementById('reg-fitness-goal').value;
+            const athleteLevel = document.getElementById('reg-athlete-level').value;
+            const currentWeight = document.getElementById('reg-current-weight').value.trim();
+            const goalWeight = document.getElementById('reg-goal-weight').value.trim();
+            const notes = document.getElementById('reg-notes').value.trim();
+
+            const isNoProgram = document.getElementById('radioNoProgram').checked;
+            let programStatus = isNoProgram 
+                ? 'No Program Set Up Yet (New Athlete Onboarding & Consultation)'
+                : document.getElementById('specific-program-select').value;
+
+            if (!fullName || !email) {
+                showAlert('Please enter your full name and email address to register.');
+                return;
+            }
+
+            const btnSubmit = document.getElementById('btn-submit-registration');
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Creating Athlete Profile & Syncing...`;
+
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName: fullName,
+                        email: email,
+                        phone: phone,
+                        password: password,
+                        program: programStatus,
+                        programStatus: programStatus,
+                        fitnessGoal: fitnessGoal,
+                        athleteLevel: athleteLevel,
+                        currentWeight: currentWeight,
+                        goalWeight: goalWeight,
+                        notes: notes
+                    })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    const athlete = data.athlete || {};
+
+                    // Save athlete credentials to localStorage
+                    localStorage.setItem('krome_athlete_email', athlete.email || email);
+                    localStorage.setItem('krome_athlete_name', athlete.fullName || fullName);
+                    localStorage.setItem('krome_access_key', password);
+                    localStorage.setItem('krome_auth_token', data.token || 'registered_athlete');
+                    localStorage.setItem('krome_portal_unlocked', 'true');
+
+                    if (data.isNewAthleteNoProgram) {
+                        localStorage.setItem('krome_athlete_is_new', 'true');
+                        localStorage.removeItem('krome_shred_unlocked');
+                        localStorage.removeItem('krome_blueprint_unlocked');
+                        localStorage.removeItem('krome_protocol_unlocked');
+                        localStorage.removeItem('krome_bundle_unlocked');
+                    }
+
+                    showAlert(`Registration successful! Welcome, ${fullName}. Redirecting to your Athlete Onboarding Portal...`, 'success');
+
+                    setTimeout(() => {
+                        window.location.href = data.targetPage || 'athlete_onboarding.html';
+                    }, 1200);
+                } else {
+                    showAlert(data.error || 'Registration could not be completed. Please try again.', 'danger');
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<span>Register & Launch Athlete Onboarding</span> <i class="fas fa-arrow-right"></i>`;
+                }
+            } catch (err) {
+                showAlert('Network error while registering athlete profile. Please try again.', 'warning');
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = `<span>Register & Launch Athlete Onboarding</span> <i class="fas fa-arrow-right"></i>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

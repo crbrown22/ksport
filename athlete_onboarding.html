@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Onboarding Hub | KROME Sports Performance</title>
+    <meta name="description" content="Welcome to KROME Sports Performance. Complete your baseline assessment, calculate your caloric needs, and schedule your 1-on-1 consultation with Coach Brown.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/athlete_onboarding.html">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #090a0d;
+            --krome-card-bg: #12151b;
+            --krome-card-border: rgba(255, 212, 71, 0.22);
+            --krome-text-main: #f8fafc;
+            --krome-text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portal-nav {
+            background: rgba(15, 18, 24, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.2);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(180deg, #161a22 0%, #11141a 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1.15rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 212, 71, 0.05);
+            overflow: hidden;
+        }
+
+        .btn-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1.35rem;
+            border: none;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.35);
+        }
+
+        .form-control-custom, .form-select-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.65rem 0.95rem;
+            font-size: 0.92rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-control-custom:focus, .form-select-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 212, 71, 0.2) !important;
+            outline: none;
+        }
+
+        .step-badge {
+            background: var(--krome-gold);
+            color: #000;
+            font-weight: 900;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .program-card-option {
+            background: rgba(20, 24, 32, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .program-card-option:hover {
+            border-color: var(--krome-gold);
+            transform: translateY(-2px);
+            background: rgba(25, 30, 40, 0.85);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STICKY TOP HEADER -->
+    <header class="portal-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="brand-logo" id="nav-brand-link">
+                <i class="fas fa-bolt text-warning me-2"></i> KROME SPORTS PERFORMANCE
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="shop.html" class="btn btn-sm btn-outline-warning text-warning rounded-pill px-3" id="nav-shop-btn">
+                    <i class="fas fa-store me-1"></i> Programs Shop
+                </a>
+                <button onclick="handleAthleteLogout()" class="btn btn-sm btn-outline-danger rounded-pill px-3" id="nav-logout-btn">
+                    <i class="fas fa-sign-out-alt me-1"></i> Log Out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN DASHBOARD WRAPPER -->
+    <main class="container my-4 py-3" id="onboarding-main">
+        
+        <!-- TOP ATHLETE BANNER -->
+        <div class="dashboard-card p-4 mb-4">
+            <div class="row align-items-center g-3">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-warning text-dark rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="fas fa-user-ninja fa-2x"></i>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                <h2 class="h3 fw-bold text-white mb-0" id="athlete-welcome-name">Athlete</h2>
+                                <span class="badge bg-warning text-dark fw-bold px-2 py-1" id="athlete-program-badge">
+                                    <i class="fas fa-clipboard-check me-1"></i> Profile Active &middot; Pending Program Setup
+                                </span>
+                            </div>
+                            <p class="text-secondary small mb-0">
+                                Email: <span class="text-white fw-bold" id="athlete-email-display">loading...</span> &middot; 
+                                Registered Athlete Profile &middot; Synced with <strong>Athlete_Data</strong> Spreadsheet
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <div class="d-inline-flex align-items-center gap-2 bg-black bg-opacity-75 border border-secondary border-opacity-50 px-3 py-2 rounded-3 text-start">
+                        <i class="fas fa-satellite-dish text-success"></i>
+                        <div>
+                            <small class="text-secondary d-block" style="font-size: 0.72rem;">STATUS</small>
+                            <span class="text-warning fw-bold small">Onboarding & Assessment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONBOARDING PROGRESS STEPS ROW -->
+        <div class="row g-4 mb-4">
+            
+            <!-- STEP 1: BASELINE ASSESSMENT & CALORIC CALCULATOR -->
+            <div class="col-lg-7">
+                <div class="dashboard-card p-4 h-100">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="step-badge">1</span>
+                        <h4 class="fw-bold text-white mb-0">Baseline Assessment & TDEE Calculator</h4>
+                    </div>
+                    <p class="text-secondary small mb-4">
+                        Calculate your daily Total Daily Energy Expenditure (TDEE) and target macronutrient split using the clinical Mifflin-St Jeor formula to determine your baseline nutrition.
+                    </p>
+
+                    <form id="tdee-calc-form" onsubmit="calculateBaselineMacros(event)">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="calc-weight" class="form-label text-light small fw-bold">Current Weight (lbs):</label>
+                                <input type="number" id="calc-weight" class="form-control form-control-custom" placeholder="e.g. 185" value="180" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="calc-goal-weight" class="form-label text-light small fw-bold">Target Goal Weight (lbs):</label>
+                                <input type="number" id="calc-goal-weight" class="form-control form-control-custom" placeholder="e.g. 170" value="170" required>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4">
+                                <label for="calc-height-ft" class="form-label text-light small fw-bold">Height (Feet):</label>
+                                <input type="number" id="calc-height-ft" class="form-control form-control-custom" value="5" min="4" max="7" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="calc-height-in" class="form-label text-light small fw-bold">Height (Inches):</label>
+                                <input type="number" id="calc-height-in" class="form-control form-control-custom" value="10" min="0" max="11" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="calc-age" class="form-label text-light small fw-bold">Age:</label>
+                                <input type="number" id="calc-age" class="form-control form-control-custom" value="28" min="14" max="85" required>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="calc-gender" class="form-label text-light small fw-bold">Biological Sex:</label>
+                                <select id="calc-gender" class="form-select form-select-custom">
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="calc-activity" class="form-label text-light small fw-bold">Activity Level:</label>
+                                <select id="calc-activity" class="form-select form-select-custom">
+                                    <option value="1.2">Sedentary (Desk job, minimal exercise)</option>
+                                    <option value="1.375">Lightly Active (1-3 training sessions/wk)</option>
+                                    <option value="1.55" selected>Moderately Active (3-5 intense sessions/wk)</option>
+                                    <option value="1.725">Very Active (6-7 intense sessions/wk)</option>
+                                    <option value="1.9">Extremely Active (Athletic doubles / heavy physical labor)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="calc-goal-phase" class="form-label text-light small fw-bold">Primary Nutritional Objective:</label>
+                            <select id="calc-goal-phase" class="form-select form-select-custom">
+                                <option value="fat_loss" selected>Aggressive Fat Loss / Shred (-500 kcal deficit)</option>
+                                <option value="recomp">Body Recomposition / Maintenance (Lean conditioning)</option>
+                                <option value="lean_mass">Athletic Hypertrophy / Muscle Gain (+350 kcal surplus)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold w-100 py-2 fw-bold">
+                            <i class="fas fa-calculator me-1"></i> Calculate Baseline Macros
+                        </button>
+                    </form>
+
+                    <!-- CALCULATOR RESULTS BOX -->
+                    <div id="calc-results-box" class="mt-4 p-3 bg-black rounded-3 border border-warning d-none">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h6 class="text-warning fw-bold mb-0">Your Mifflin-St Jeor Nutritional Targets</h6>
+                            <span class="badge bg-warning text-dark fw-bold" id="res-phase-label">Fat Loss</span>
+                        </div>
+                        <div class="row g-2 text-center my-2">
+                            <div class="col-3">
+                                <div class="p-2 bg-dark rounded border border-secondary">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">CALORIES</small>
+                                    <strong class="text-white fs-6" id="res-cal">2,150</strong>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="p-2 bg-dark rounded border border-secondary">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">PROTEIN</small>
+                                    <strong class="text-warning fs-6" id="res-protein">180g</strong>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="p-2 bg-dark rounded border border-secondary">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">CARBS</small>
+                                    <strong class="text-info fs-6" id="res-carbs">190g</strong>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="p-2 bg-dark rounded border border-secondary">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">FATS</small>
+                                    <strong class="text-success fs-6" id="res-fats">60g</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="saveMacrosToProfile()" id="btn-save-macros" class="btn btn-sm btn-outline-warning w-100 mt-2 fw-bold">
+                            <i class="fas fa-cloud-arrow-up me-1"></i> Save These Target Macros to My Athlete Profile
+                        </button>
+                        <div id="save-macros-alert" class="small text-success mt-1 d-none text-center fw-bold"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- STEP 2: CONSULTATION & COACH DIRECT CONNECT -->
+            <div class="col-lg-5">
+                <div class="dashboard-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="step-badge">2</span>
+                            <h4 class="fw-bold text-white mb-0">Schedule Coach Consultation</h4>
+                        </div>
+                        <p class="text-secondary small mb-3">
+                            Connect with Coach Brown to finalize your custom program setup, review past injuries, or establish your training schedule.
+                        </p>
+
+                        <!-- COACH CARD -->
+                        <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50 mb-3 d-flex align-items-center gap-3">
+                            <div class="bg-warning text-dark rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <i class="fas fa-user-tie fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white fw-bold mb-0">Coach Larry Brown</h6>
+                                <small class="text-warning">Head Performance Coach & Trainer</small>
+                            </div>
+                        </div>
+
+                        <div id="consult-alert" class="alert d-none py-2 px-3 small rounded-3" role="alert"></div>
+
+                        <form id="consult-request-form" onsubmit="submitConsultRequest(event)">
+                            <div class="mb-3">
+                                <label for="consult-pref-contact" class="form-label text-light small fw-bold">Preferred Contact Method:</label>
+                                <select id="consult-pref-contact" class="form-select form-select-custom">
+                                    <option value="Phone Call" selected>Phone Call</option>
+                                    <option value="Text Message / SMS">Text Message / SMS</option>
+                                    <option value="Email">Email</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="consult-time" class="form-label text-light small fw-bold">Best Time of Day:</label>
+                                <select id="consult-time" class="form-select form-select-custom">
+                                    <option value="Mornings (8 AM - 12 PM)" selected>Mornings (8 AM - 12 PM)</option>
+                                    <option value="Afternoons (12 PM - 5 PM)">Afternoons (12 PM - 5 PM)</option>
+                                    <option value="Evenings (5 PM - 8 PM)">Evenings (5 PM - 8 PM)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="consult-message" class="form-label text-light small fw-bold">Questions / Goals for Consultation:</label>
+                                <textarea id="consult-message" class="form-control form-control-custom" rows="3" placeholder="e.g. I want to lose 15 lbs of fat while maintaining bench and squat numbers. Looking for program guidance."></textarea>
+                            </div>
+                            <button type="submit" id="btn-submit-consult" class="btn btn-gold w-100 py-2 fw-bold">
+                                <i class="fas fa-calendar-check me-1"></i> Request 1-on-1 Consultation
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 text-center">
+                        <small class="text-secondary">
+                            Or reach out directly: <a href="contact.html" class="text-warning text-decoration-none fw-bold">Contact Page</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- STEP 3: PROGRAM SETUP & DIRECT ENROLLMENT CATALOG -->
+        <div class="dashboard-card p-4 mb-4">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="step-badge">3</span>
+                    <h4 class="fw-bold text-white mb-0">Browse & Select Your Program</h4>
+                </div>
+                <a href="shop.html" class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-bold">
+                    <i class="fas fa-store me-1"></i> Visit KROME Shop
+                </a>
+            </div>
+            <p class="text-secondary small mb-4">
+                Ready to activate a specific training program? Once enrolled, your passkey unlocks full access to the training manuals, recipe cards, and protocols below.
+            </p>
+
+            <div class="row g-3">
+                
+                <!-- PROGRAM 1: 30-DAY SHRED -->
+                <div class="col-md-4">
+                    <div class="program-card-option">
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                                    <i class="fas fa-fire fa-lg"></i>
+                                </div>
+                                <span class="badge bg-warning text-dark fw-bold">Key: Shred30</span>
+                            </div>
+                            <h5 class="text-white fw-bold mb-1">30-Day Shred Challenge</h5>
+                            <p class="text-secondary small mb-3">
+                                Full 30-day nutrition calendar, 41 recipe cards, metabolic workouts, and lane-based calorie tiers.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="shop.html" class="btn btn-sm btn-outline-warning w-100 fw-bold">
+                                <i class="fas fa-shopping-cart me-1"></i> Enroll in Shred Challenge
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROGRAM 2: NUTRITION BLUEPRINT -->
+                <div class="col-md-4">
+                    <div class="program-card-option">
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="bg-success bg-opacity-10 text-success p-2 rounded-3">
+                                    <i class="fas fa-book-open fa-lg"></i>
+                                </div>
+                                <span class="badge bg-success text-white fw-bold">Key: Blueprint28</span>
+                            </div>
+                            <h5 class="text-white fw-bold mb-1">Nutrition Blueprint E-Book</h5>
+                            <p class="text-secondary small mb-3">
+                                Mifflin-St Jeor TDEE formulas, macronutrient ratios, grocery shopping lists, and meal timing guidelines.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="shop.html" class="btn btn-sm btn-outline-success w-100 fw-bold">
+                                <i class="fas fa-shopping-cart me-1"></i> Get Nutrition Blueprint
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROGRAM 3: SUPPLEMENT PROTOCOL -->
+                <div class="col-md-4">
+                    <div class="program-card-option">
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="bg-info bg-opacity-10 text-info p-2 rounded-3">
+                                    <i class="fas fa-pills fa-lg"></i>
+                                </div>
+                                <span class="badge bg-info text-dark fw-bold">Key: Protocol30</span>
+                            </div>
+                            <h5 class="text-white fw-bold mb-1">Athlete Supplement Protocol</h5>
+                            <p class="text-secondary small mb-3">
+                                Evidence-based ergogenic stacks, timing protocols, recovery aids, and clinical supplement dosages.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="shop.html" class="btn btn-sm btn-outline-info w-100 fw-bold">
+                                <i class="fas fa-shopping-cart me-1"></i> Get Supplement Protocol
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-4 border-top border-secondary border-opacity-25 text-center small text-secondary mt-auto">
+        <div class="container">
+            <p class="mb-1 text-light">
+                &copy; <span id="footer-year">2026</span> KROME Sports Performance. All Rights Reserved.
+            </p>
+            <p class="mb-0" style="font-size: 0.78rem;">
+                Athlete Onboarding & Assessment Hub &middot; Data records synced in real-time with KROME Athlete Data.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Load Athlete Data from localStorage or API
+        const athleteEmail = localStorage.getItem('krome_athlete_email') || 'athlete@kromesp.com';
+        const athleteName = localStorage.getItem('krome_athlete_name') || 'KROME Athlete';
+
+        document.getElementById('athlete-welcome-name').textContent = athleteName;
+        document.getElementById('athlete-email-display').textContent = athleteEmail;
+
+        // Fetch athlete profile from backend
+        async function loadAthleteProfile() {
+            if (!athleteEmail) return;
+            try {
+                const res = await fetch(`/api/athlete/data?email=${encodeURIComponent(athleteEmail)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.athlete) {
+                        const ath = data.athlete;
+                        if (ath.fullName) {
+                            document.getElementById('athlete-welcome-name').textContent = ath.fullName;
+                            localStorage.setItem('krome_athlete_name', ath.fullName);
+                        }
+                        if (ath.currentWeight) {
+                            const wEl = document.getElementById('calc-weight');
+                            if (wEl) wEl.value = ath.currentWeight;
+                        }
+                        if (ath.goalWeight) {
+                            const gwEl = document.getElementById('calc-goal-weight');
+                            if (gwEl) gwEl.value = ath.goalWeight;
+                        }
+                        if (ath.program && !ath.program.toLowerCase().includes('no program')) {
+                            const badge = document.getElementById('athlete-program-badge');
+                            if (badge) {
+                                badge.innerHTML = `<i class="fas fa-check-circle me-1"></i> ${ath.program}`;
+                                badge.className = 'badge bg-success text-white fw-bold px-2 py-1';
+                            }
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('Profile load notice:', err.message);
+            }
+        }
+        loadAthleteProfile();
+
+        // Calculate Baseline Macros using Mifflin-St Jeor
+        let calculatedMacrosString = '';
+
+        function calculateBaselineMacros(event) {
+            event.preventDefault();
+
+            const weightLbs = parseFloat(document.getElementById('calc-weight').value) || 180;
+            const goalWeightLbs = parseFloat(document.getElementById('calc-goal-weight').value) || 170;
+            const heightFt = parseFloat(document.getElementById('calc-height-ft').value) || 5;
+            const heightIn = parseFloat(document.getElementById('calc-height-in').value) || 10;
+            const age = parseFloat(document.getElementById('calc-age').value) || 28;
+            const gender = document.getElementById('calc-gender').value;
+            const activityMult = parseFloat(document.getElementById('calc-activity').value) || 1.55;
+            const goalPhase = document.getElementById('calc-goal-phase').value;
+
+            // Unit Conversions
+            const weightKg = weightLbs * 0.453592;
+            const totalInches = (heightFt * 12) + heightIn;
+            const heightCm = totalInches * 2.54;
+
+            // Mifflin-St Jeor BMR
+            let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+            if (gender === 'male') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
+            }
+
+            // TDEE Maintenance
+            let tdee = Math.round(bmr * activityMult);
+            let targetCalories = tdee;
+
+            let phaseText = 'Maintenance';
+            if (goalPhase === 'fat_loss') {
+                targetCalories = Math.max(1400, tdee - 500);
+                phaseText = 'Fat Loss (-500 kcal)';
+            } else if (goalPhase === 'lean_mass') {
+                targetCalories = tdee + 350;
+                phaseText = 'Hypertrophy (+350 kcal)';
+            }
+
+            // Macros: 1g Protein per lb bodyweight (or 1g per lb goal weight)
+            const proteinGrams = Math.round(weightLbs * 1.0);
+            const proteinCalories = proteinGrams * 4;
+
+            // Fat: 25-30% of total calories
+            const fatCalories = targetCalories * 0.25;
+            const fatGrams = Math.round(fatCalories / 9);
+
+            // Carbs: Remainder calories
+            const carbCalories = Math.max(0, targetCalories - proteinCalories - fatCalories);
+            const carbGrams = Math.round(carbCalories / 4);
+
+            calculatedMacrosString = `TDEE: ${targetCalories} kcal | P: ${proteinGrams}g | C: ${carbGrams}g | F: ${fatGrams}g (${phaseText})`;
+
+            // Render Results
+            document.getElementById('res-phase-label').textContent = phaseText;
+            document.getElementById('res-cal').textContent = targetCalories.toLocaleString() + ' kcal';
+            document.getElementById('res-protein').textContent = proteinGrams + 'g';
+            document.getElementById('res-carbs').textContent = carbGrams + 'g';
+            document.getElementById('res-fats').textContent = fatGrams + 'g';
+
+            document.getElementById('calc-results-box').classList.remove('d-none');
+        }
+
+        // Save calculated macros to Athlete Profile in backend
+        async function saveMacrosToProfile() {
+            const btn = document.getElementById('btn-save-macros');
+            const alertBox = document.getElementById('save-macros-alert');
+            const currentWeight = document.getElementById('calc-weight').value;
+            const goalWeight = document.getElementById('calc-goal-weight').value;
+
+            if (!calculatedMacrosString) return;
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span> Saving...`;
+
+            try {
+                const res = await fetch('/api/athlete/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: athleteEmail,
+                        nutritionMacros: calculatedMacrosString,
+                        currentWeight: currentWeight,
+                        goalWeight: goalWeight,
+                        notes: `Baseline Assessment calculated: ${calculatedMacrosString}`
+                    })
+                });
+
+                if (res.ok) {
+                    alertBox.textContent = '✓ Saved successfully! Target macros synced with your athlete profile.';
+                    alertBox.classList.remove('d-none');
+                } else {
+                    alertBox.textContent = 'Notice: Profile saved locally.';
+                    alertBox.classList.remove('d-none');
+                }
+            } catch (err) {
+                alertBox.textContent = 'Notice: Profile saved locally.';
+                alertBox.classList.remove('d-none');
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fas fa-check me-1"></i> Target Macros Saved!`;
+        }
+
+        // Submit 1-on-1 Consultation Request
+        async function submitConsultRequest(event) {
+            event.preventDefault();
+            const prefContact = document.getElementById('consult-pref-contact').value;
+            const prefTime = document.getElementById('consult-time').value;
+            const message = document.getElementById('consult-message').value.trim();
+            const alertEl = document.getElementById('consult-alert');
+            const btn = document.getElementById('btn-submit-consult');
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span> Sending to Coach...`;
+
+            try {
+                const res = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName: athleteName,
+                        email: athleteEmail,
+                        preferredContact: prefContact,
+                        programInterest: '1-on-1 Consultation & Program Setup',
+                        message: `Consultation Request [Pref: ${prefContact}, Time: ${prefTime}]: ${message}`
+                    })
+                });
+
+                alertEl.className = 'alert alert-success py-2 px-3 small rounded-3';
+                alertEl.innerHTML = `<i class="fas fa-check-circle me-1"></i> Consultation request submitted! Coach Brown will contact you via ${prefContact}.`;
+                alertEl.classList.remove('d-none');
+                btn.innerHTML = `<i class="fas fa-check me-1"></i> Request Sent to Coach!`;
+            } catch (err) {
+                alertEl.className = 'alert alert-warning py-2 px-3 small rounded-3';
+                alertEl.innerHTML = `<i class="fas fa-info-circle me-1"></i> Request received. Coach Brown will be in touch soon.`;
+                alertEl.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-calendar-check me-1"></i> Request 1-on-1 Consultation`;
+            }
+        }
+
+        // Logout
+        async function handleAthleteLogout() {
+            try {
+                await fetch('/api/auth/athlete-logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: athleteEmail })
+                }).catch(() => {});
+            } catch (_) {}
+
+            localStorage.removeItem('krome_athlete_email');
+            localStorage.removeItem('krome_athlete_name');
+            localStorage.removeItem('krome_access_key');
+            localStorage.removeItem('krome_auth_token');
+            localStorage.removeItem('krome_portal_unlocked');
+            localStorage.removeItem('krome_athlete_is_new');
+
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>

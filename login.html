@@ -240,6 +240,25 @@
                         <!-- PROGRAM CARDS LIST WITH SPECIFIC ACCESS KEY CODES -->
                         <div class="d-flex flex-column gap-3 mb-4">
                             
+                            <!-- New Athlete Option: No Program Set Up Yet -->
+                            <div class="program-selector-card border-warning border-opacity-50" id="card-prog-new" onclick="window.location.href='register.html'" style="background: rgba(255, 212, 71, 0.06);">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-warning text-dark p-2 rounded-3">
+                                            <i class="fas fa-user-plus fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <h6 class="text-white fw-bold mb-0">No Program Set Up Yet?</h6>
+                                                <span class="badge bg-warning text-dark fw-bold" style="font-size: 0.72rem;">New Athlete</span>
+                                            </div>
+                                            <small class="text-secondary">Register without a program to access onboarding & assessments</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark key-badge">Register</span>
+                                </div>
+                            </div>
+
                             <!-- Program 1: 30-Day Shred (Key: Shred30) -->
                             <div class="program-selector-card" id="card-prog-shred" onclick="selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
@@ -322,6 +341,16 @@
             <div class="col-lg-6 col-xl-5">
                 <div class="login-card p-4 p-md-5">
                     
+                    <!-- TOP MODE SELECTOR TABS -->
+                    <div class="d-flex bg-black bg-opacity-75 p-1 rounded-pill mb-4 border border-secondary border-opacity-50">
+                        <button type="button" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill flex-grow-1" id="tab-login-btn">
+                            <i class="fas fa-key me-1"></i> Athlete Login
+                        </button>
+                        <a href="register.html" class="btn btn-sm text-secondary fw-bold rounded-pill flex-grow-1 text-center text-decoration-none" id="tab-register-btn">
+                            <i class="fas fa-user-plus me-1"></i> New Athlete Register
+                        </a>
+                    </div>
+
                     <div class="text-center mb-4">
                         <div class="d-inline-flex align-items-center justify-content-center bg-warning bg-opacity-10 text-warning rounded-circle p-3 mb-2" style="width: 60px; height: 60px;">
                             <i class="fas fa-lock-open fa-2x"></i>
@@ -358,7 +387,7 @@
                                 </span>
                             </div>
                             <div class="input-group">
-                                <input type="text" id="login-access-key" class="form-control form-control-custom" placeholder="e.g. Shred30 or Blueprint28" required autocomplete="current-password" oninput="updateKeyIndicator(this.value)">
+                                <input type="text" id="login-access-key" class="form-control form-control-custom" placeholder="e.g. Shred30, Blueprint28 or ATHLETE2026" required autocomplete="current-password" oninput="updateKeyIndicator(this.value)">
                                 <button class="btn key-toggle-btn px-3" type="button" onclick="clearKeyInput()">
                                     <i class="fas fa-times"></i>
                                 </button>
@@ -378,9 +407,9 @@
                                     Remember session
                                 </label>
                             </div>
-                            <span class="text-secondary small">
-                                Need key? <a href="contact.html" class="text-warning text-decoration-none">Contact Coach</a>
-                            </span>
+                            <a href="register.html" class="text-warning text-decoration-none small fw-bold">
+                                No program yet? Register <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
                         </div>
 
                         <button type="submit" id="btn-submit-login" class="btn btn-gold w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
@@ -405,6 +434,9 @@
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('marcus.v@athlete.com', 'Protocol30')">
                                 <span class="text-info fw-bold">marcus</span> &middot; Protocol30
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('new.athlete@kromesp.com', 'ATHLETE2026')">
+                                <span class="text-warning fw-bold">new athlete</span> &middot; Onboarding
                             </button>
                         </div>
                     </div>

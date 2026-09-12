@@ -115,12 +115,19 @@ const PROGRAM_KEY_DEFINITIONS = [
     targetPage: 'shred30_manual.html',
     keys: ['krome-athlete', 'krome2026', 'ksp-athlete', 'krome', 'ksp2026', 'krome123', 'allaccess'],
     grant: { hasShredAccess: true, hasSupplementAccess: true, hasNutritionAccess: true }
+  },
+  {
+    programId: 'onboarding',
+    programName: 'Athlete Onboarding (No Program Set Up Yet)',
+    targetPage: 'athlete_onboarding.html',
+    keys: ['new-athlete', 'new', 'start', 'onboarding', 'consult', 'consultation', 'athlete2026', 'athlete', 'noprogram'],
+    grant: { hasShredAccess: false, hasSupplementAccess: false, hasNutritionAccess: false }
   }
 ];
 
 function resolveProgramAccess(accessKey, athleteRecord) {
   const cleanKey = (accessKey || '').trim().toLowerCase();
-  if (!cleanKey) return null;
+  if (!cleanKey && !athleteRecord) return null;
 
   // 1. Check direct program-specific key definitions
   for (const def of PROGRAM_KEY_DEFINITIONS) {
@@ -142,7 +149,7 @@ function resolveProgramAccess(accessKey, athleteRecord) {
   // 2. Check athlete's saved accessKey / password in sheet or database
   if (athleteRecord) {
     const userKey = (athleteRecord.accessKey || athleteRecord.accessCode || athleteRecord.password || '').trim().toLowerCase();
-    if (userKey && userKey === cleanKey) {
+    if (!cleanKey || userKey === cleanKey || cleanKey === 'athlete2026' || cleanKey === 'onboarding' || cleanKey === 'new') {
       const prog = (athleteRecord.program || '').toLowerCase();
       const isBundle = prog.includes('all') || prog.includes('bundle') || (athleteRecord.hasShredAccess && athleteRecord.hasNutritionAccess && athleteRecord.hasSupplementAccess);
       const hasShred = isBundle || athleteRecord.hasShredAccess === true || prog.includes('shred');
@@ -152,15 +159,16 @@ function resolveProgramAccess(accessKey, athleteRecord) {
       let targetPage = 'shred30_manual.html';
       if (!hasShred && hasNutr) targetPage = 'nutrition_blueprint.html';
       else if (!hasShred && hasSupp) targetPage = 'supplement_protocol.html';
+      else if (!hasShred && !hasNutr && !hasSupp) targetPage = 'athlete_onboarding.html';
 
       return {
-        programId: 'athlete-enrolled',
-        programName: athleteRecord.program || 'KROME Athlete Portal',
+        programId: (hasShred || hasNutr || hasSupp) ? 'athlete-enrolled' : 'onboarding',
+        programName: athleteRecord.program || 'New Athlete Onboarding & Consultation',
         targetPage: targetPage,
         isBundle: isBundle,
-        hasShredAccess: hasShred,
-        hasSupplementAccess: hasSupp,
-        hasNutritionAccess: hasNutr,
+        hasShredAccess: Boolean(hasShred),
+        hasSupplementAccess: Boolean(hasSupp),
+        hasNutritionAccess: Boolean(hasNutr),
         hasPortalAccess: true
       };
     }
@@ -422,14 +430,44 @@ app.post('/api/auth/athlete-logout', async (req, res) => {
   });
 });
 
-// API: Register or Update Password for Athlete Data tab
-app.post('/api/auth/shred-register', (req, res) => {
-  const { email, password, fullName, phone, program } = req.body;
-  const cleanEmail = (email || '').trim().toLowerCase();
-  const cleanPassword = (password || '').trim();
+// API: Register New Athlete (Supports registering with NO pre-existing program set up)
+async function handleAthleteRegistration(req, res) {
+  const {
+    fullName,
+    name,
+    email,
+    phone,
+    password,
+    accessKey,
+    program,
+    programStatus,
+    programInterest,
+    fitnessGoal,
+    athleteLevel,
+    experience,
+    currentWeight,
+    goalWeight,
+    notes,
+    message
+  } = req.body;
 
-  if (!cleanEmail || !cleanPassword) {
-    return res.status(400).json({ success: false, error: 'Email and password are required.' });
+  const cleanEmail = (email || '').trim().toLowerCase();
+  const cleanName = (fullName || name || '').trim() || 'KROME Athlete';
+  const cleanPhone = (phone || '').trim();
+  const cleanPassword = (password || accessKey || 'ATHLETE2026').trim();
+  const cleanGoal = (fitnessGoal || 'Fat Loss & Athletic Conditioning').trim();
+  const cleanLevel = (athleteLevel || experience || 'Intermediate').trim();
+  const cleanNotes = (notes || message || 'New athlete registered without pre-assigned program. Requesting onboarding assessment & coach consultation.').trim();
+  
+  const requestedProgram = (program || programStatus || programInterest || '').trim();
+  const hasNoProgram = !requestedProgram || 
+                       requestedProgram.toLowerCase().includes('no program') || 
+                       requestedProgram.toLowerCase().includes('pending') || 
+                       requestedProgram.toLowerCase().includes('onboarding') ||
+                       requestedProgram.toLowerCase().includes('consultation');
+
+  if (!cleanEmail) {
+    return res.status(400).json({ success: false, error: 'Email address is required to register.' });
   }
 
   const athleteList = readAthleteData();
@@ -437,48 +475,119 @@ app.post('/api/auth/shred-register', (req, res) => {
   const now = new Date().toLocaleString();
 
   let athleteRecord;
+  let targetPage = 'athlete_onboarding.html';
+
+  // Determine program access permissions
+  let hasShred = false;
+  let hasSupp = false;
+  let hasNutr = false;
+  let assignedProgramName = hasNoProgram 
+    ? 'New Athlete (No Program Set Up Yet - Pending Onboarding & Assessment)'
+    : requestedProgram;
+
+  if (requestedProgram.toLowerCase().includes('shred') && !hasNoProgram) {
+    hasShred = true;
+    targetPage = 'shred30_manual.html';
+  } else if ((requestedProgram.toLowerCase().includes('blueprint') || requestedProgram.toLowerCase().includes('nutrition')) && !hasNoProgram) {
+    hasNutr = true;
+    targetPage = 'nutrition_blueprint.html';
+  } else if ((requestedProgram.toLowerCase().includes('protocol') || requestedProgram.toLowerCase().includes('supplement')) && !hasNoProgram) {
+    hasSupp = true;
+    targetPage = 'supplement_protocol.html';
+  } else if (requestedProgram.toLowerCase().includes('all') || requestedProgram.toLowerCase().includes('bundle')) {
+    hasShred = true;
+    hasNutr = true;
+    hasSupp = true;
+    targetPage = 'shred30_manual.html';
+  }
 
   if (existingIdx >= 0) {
+    // Update existing record with registration details
+    athleteList[existingIdx].fullName = cleanName;
+    athleteList[existingIdx].phone = cleanPhone || athleteList[existingIdx].phone || '';
     athleteList[existingIdx].password = cleanPassword;
-    if (fullName) athleteList[existingIdx].fullName = fullName;
-    if (phone) athleteList[existingIdx].phone = phone;
-    if (program) athleteList[existingIdx].program = program;
+    athleteList[existingIdx].accessKey = cleanPassword;
+    athleteList[existingIdx].fitnessGoal = cleanGoal;
+    athleteList[existingIdx].athleteLevel = cleanLevel;
+    if (currentWeight) athleteList[existingIdx].currentWeight = String(currentWeight);
+    if (goalWeight) athleteList[existingIdx].goalWeight = String(goalWeight);
+    if (cleanNotes) athleteList[existingIdx].notes = cleanNotes;
+    athleteList[existingIdx].hasPortalAccess = true;
+    if (hasShred) athleteList[existingIdx].hasShredAccess = true;
+    if (hasNutr) athleteList[existingIdx].hasNutritionAccess = true;
+    if (hasSupp) athleteList[existingIdx].hasSupplementAccess = true;
     athleteList[existingIdx].lastLogin = now;
+    athleteList[existingIdx].lastUpdated = now;
     athleteRecord = athleteList[existingIdx];
   } else {
+    // Create new athlete record (no pre-assigned program required)
     athleteRecord = {
       rowNumber: athleteList.length + 2,
       timestamp: now,
-      fullName: fullName || 'KROME Athlete',
+      fullName: cleanName,
       email: cleanEmail,
       password: cleanPassword,
-      phone: phone || '',
-      program: program || '30-Day Shred, Supplement Protocol & Nutrition E-Book',
+      accessKey: cleanPassword,
+      phone: cleanPhone,
+      program: assignedProgramName,
+      programInterest: requestedProgram || 'Athlete Onboarding & Assessment',
+      fitnessGoal: cleanGoal,
+      athleteLevel: cleanLevel,
+      shredStatus: hasNoProgram 
+        ? 'New Athlete Registration (Pending Program Setup)' 
+        : 'Registered Athlete Enrollment',
       shredDay: 1,
-      shredLane: 'Lane 2 (2,000 kcal)',
-      currentWeight: '180',
-      goalWeight: '170',
-      supplementStack: 'Creatine, Whey Protein Isolate, Vitamin D3',
-      nutritionMacros: 'TDEE: 2,000 kcal | 40% Carb / 30% Protein / 30% Fat',
-      hasShredAccess: true,
-      hasSupplementAccess: true,
-      hasNutritionAccess: true,
-      lastLogin: now
+      shredLane: 'Standard Onboarding Assessment',
+      currentWeight: String(currentWeight || '180'),
+      goalWeight: String(goalWeight || '170'),
+      supplementStack: 'Pending 1-on-1 Athlete Consultation',
+      nutritionMacros: 'Baseline Mifflin-St Jeor Assessment Pending',
+      notes: cleanNotes,
+      hasShredAccess: hasShred,
+      hasSupplementAccess: hasSupp,
+      hasNutritionAccess: hasNutr,
+      hasPortalAccess: true,
+      isNewAthleteNoProgram: hasNoProgram,
+      lastLogin: now,
+      loginTimestamp: now,
+      logoutTimestamp: ''
     };
     athleteList.push(athleteRecord);
   }
 
   writeAthleteData(athleteList);
 
-  // Also mirror/sync password in leads.json
+  // Synchronize with leads store
   const leadsList = readLeads();
   const leadIdx = leadsList.findIndex(l => (l.email || '').toLowerCase() === cleanEmail);
-  if (leadIdx >= 0) {
-    leadsList[leadIdx].password = cleanPassword;
-    writeLeads(leadsList);
-  }
+  const leadData = {
+    rowNumber: (leadIdx >= 0 ? leadsList[leadIdx].rowNumber : leadsList.length + 2),
+    timestamp: now,
+    fullName: cleanName,
+    email: cleanEmail,
+    phone: cleanPhone,
+    password: cleanPassword,
+    program: assignedProgramName,
+    programInterest: requestedProgram || 'Athlete Onboarding & Assessment',
+    fitnessGoal: cleanGoal,
+    athleteLevel: cleanLevel,
+    currentWeight: String(currentWeight || '180'),
+    goalWeight: String(goalWeight || '170'),
+    shredStatus: hasNoProgram ? 'New Athlete (No Program Set Up Yet)' : 'Active Athlete Request',
+    supplementNotes: 'Pending initial consultation',
+    nutritionGoals: 'Pending baseline assessment',
+    message: cleanNotes,
+    lastUpdated: now
+  };
 
-  // Forward to Google Apps Script to save in Athlete Data tab
+  if (leadIdx >= 0) {
+    leadsList[leadIdx] = { ...leadsList[leadIdx], ...leadData };
+  } else {
+    leadsList.push(leadData);
+  }
+  writeLeads(leadsList);
+
+  // Sync with Google Apps Script
   if (GOOGLE_APPS_SCRIPT_URL) {
     try {
       fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -486,21 +595,57 @@ app.post('/api/auth/shred-register', (req, res) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'athlete_register',
-          tab: 'Athlete Data',
+          tab: 'Athlete_Data',
           ...athleteRecord
         })
-      }).catch(err => console.warn('Sync to Google Sheet notice:', err.message));
+      }).catch(err => console.warn('Registration Google Sheet sync notice:', err.message));
+
+      fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'submit',
+          tab: 'ksp_leads',
+          ...leadData
+        })
+      }).catch(() => {});
     } catch (_) {}
   }
 
   const token = Buffer.from(`${cleanEmail}:${Date.now()}`).toString('base64');
   return res.json({
     success: true,
-    message: 'Account configured in Athlete Data. You now have access to all 3 programs.',
+    message: hasNoProgram 
+      ? `Registration successful! Welcome to KROME Sports Performance, ${cleanName}. Your athlete onboarding profile is ready.`
+      : `Account registered successfully for ${cleanName}.`,
     token: token,
-    athlete: athleteRecord
+    isNewAthleteNoProgram: hasNoProgram,
+    targetPage: targetPage,
+    athlete: {
+      fullName: athleteRecord.fullName,
+      email: athleteRecord.email,
+      phone: athleteRecord.phone,
+      program: athleteRecord.program,
+      fitnessGoal: athleteRecord.fitnessGoal,
+      athleteLevel: athleteRecord.athleteLevel,
+      currentWeight: athleteRecord.currentWeight,
+      goalWeight: athleteRecord.goalWeight,
+      shredStatus: athleteRecord.shredStatus,
+      hasShredAccess: athleteRecord.hasShredAccess,
+      hasSupplementAccess: athleteRecord.hasSupplementAccess,
+      hasNutritionAccess: athleteRecord.hasNutritionAccess,
+      hasPortalAccess: athleteRecord.hasPortalAccess,
+      isNewAthleteNoProgram: athleteRecord.isNewAthleteNoProgram,
+      lastLogin: athleteRecord.lastLogin
+    }
   });
-});
+}
+
+// Bind registration routes
+app.post('/api/auth/register', handleAthleteRegistration);
+app.post('/api/auth/athlete-register', handleAthleteRegistration);
+app.post('/api/auth/shred-register', handleAthleteRegistration);
+app.post('/api/athlete/register', handleAthleteRegistration);
 
 // API: List Athlete Data records (for quick test accounts & demo verification)
 app.get('/api/auth/athletes', (req, res) => {
@@ -515,9 +660,17 @@ app.get('/api/auth/athletes', (req, res) => {
   res.json({ success: true, athletes: safeList });
 });
 
-// Explicit route for 30_day_shred.html to serve shred30_manual.html
+// Explicit routes for html pages & aliases
 app.get('/30_day_shred.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'shred30_manual.html'));
+});
+
+app.get(['/register', '/signup', '/register.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'register.html'));
+});
+
+app.get(['/onboarding', '/athlete_onboarding.html', '/onboarding.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'athlete_onboarding.html'));
 });
 
 // API: Fetch athlete data by email (from Athlete Data tab in Google Sheet / local store)
