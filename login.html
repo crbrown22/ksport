@@ -1,15 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=shred_login.html">
-    <title>Redirecting to Athlete Login | KROME Sports Performance</title>
-    <script>
-        window.location.href = "shred_login.html" + window.location.search;
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Program Login | KROME Sports Performance</title>
+    <meta name="description" content="Log in to your specific KROME training program using your athlete email and Program Access Key Code (e.g. Shred30, Blueprint28, Protocol30).">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #090a0d;
+            --krome-card-bg: #12151b;
+            --krome-card-border: rgba(255, 212, 71, 0.22);
+            --krome-text-main: #f8fafc;
+            --krome-text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Header */
+        .portal-nav {
+            background: rgba(15, 18, 24, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.2);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Card & UI Containers */
+        .login-card {
+            background: linear-gradient(180deg, #161a22 0%, #11141a 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 212, 71, 0.08);
+            overflow: hidden;
+        }
+
+        .program-selector-card {
+            background: rgba(20, 24, 32, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.85rem;
+            padding: 1.15rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .program-selector-card:hover {
+            border-color: var(--krome-gold);
+            transform: translateY(-2px);
+            background: rgba(26, 32, 44, 0.85);
+        }
+
+        .program-selector-card.active-selected {
+            border-color: var(--krome-gold);
+            background: rgba(255, 212, 71, 0.08);
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.15);
+        }
+
+        .form-control-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 0 0.25rem rgba(255, 212, 71, 0.2) !important;
+            outline: none;
+        }
+
+        .btn-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            border-radius: 0.65rem;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.92rem;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 212, 71, 0.35);
+        }
+
+        .key-badge {
+            font-family: monospace;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            padding: 0.35rem 0.65rem;
+            border-radius: 0.4rem;
+        }
+
+        .key-toggle-btn {
+            background-color: #0b0d12;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-left: none;
+            color: var(--krome-text-muted);
+            border-radius: 0 0.65rem 0.65rem 0;
+        }
+
+        .key-toggle-btn:hover {
+            color: var(--krome-gold);
+        }
+    </style>
 </head>
-<body style="background:#090a0d; color:#ffd447; font-family:sans-serif; text-align:center; padding:4rem;">
-    <h2>Redirecting to 30-Day Shred & Athlete Program Login...</h2>
-    <p><a href="shred_login.html" style="color:#00ffd1;">Click here if you are not redirected automatically</a></p>
+
+<body>
+
+    <!-- STICKY TOP HEADER -->
+    <header class="portal-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="brand-logo" id="nav-brand-link">
+                <i class="fas fa-bolt text-warning me-2"></i> KROME SPORTS PERFORMANCE
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="shop.html" class="btn btn-sm btn-outline-secondary text-light rounded-pill px-3" id="nav-back-shop">
+                    <i class="fas fa-store me-1"></i> Shop
+                </a>
+                <a href="index.html" class="btn btn-sm btn-outline-warning text-warning rounded-pill px-3" id="nav-back-home">
+                    <i class="fas fa-home me-1"></i> Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="container my-auto py-5" id="main-content-container">
+        
+        <!-- ALREADY LOGGED IN BANNER (DYNAMICALLY SHOWN IF SESSION EXISTS) -->
+        <div id="session-active-card" class="login-card p-4 mb-4 d-none">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-warning text-dark rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                        <i class="fas fa-user-check fa-lg"></i>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center gap-2">
+                            <h4 class="mb-0 fw-bold text-white" id="active-user-name">Athlete</h4>
+                            <span class="badge bg-success text-dark fw-bold px-2 py-1"><i class="fas fa-check-circle me-1"></i> Active Session</span>
+                        </div>
+                        <p class="text-secondary small mb-0 mt-1">
+                            Athlete Email: <span class="text-warning fw-bold" id="active-user-email">athlete@kromesp.com</span> &middot; Synced with <strong>Athlete_Data</strong> spreadsheet
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button onclick="handleLogout()" class="btn btn-sm btn-outline-danger px-3 rounded-pill" id="btn-active-logout">
+                        <i class="fas fa-sign-out-alt me-1"></i> Log Out
+                    </button>
+                </div>
+            </div>
+
+            <hr class="border-secondary my-3 opacity-25">
+
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <a href="shred30_manual.html" class="btn btn-warning w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-shred">
+                        <i class="fas fa-fire fa-lg mb-1"></i>
+                        <span>30-Day Shred Manual</span>
+                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Shred30</code></small>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="nutrition_blueprint.html" class="btn btn-success w-100 py-3 rounded-3 fw-bold text-white d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-blueprint">
+                        <i class="fas fa-book-open fa-lg mb-1"></i>
+                        <span>Nutrition Blueprint E-Book</span>
+                        <small class="fw-normal text-white text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Blueprint28</code></small>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="supplement_protocol.html" class="btn btn-info w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-protocol">
+                        <i class="fas fa-pills fa-lg mb-1"></i>
+                        <span>Supplement Protocol</span>
+                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Protocol30</code></small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN PROGRAM LOGIN INTERFACE -->
+        <div class="row g-4 justify-content-center align-items-stretch" id="login-interface-row">
+            
+            <!-- LEFT COLUMN: SELECT SPECIFIC PROGRAM & ACCESS KEY CODES -->
+            <div class="col-lg-6">
+                <div class="d-flex flex-column justify-content-between h-100 p-2">
+                    <div>
+                        <div class="d-inline-flex align-items-center gap-2 bg-black border border-warning px-3 py-1 rounded-pill mb-3">
+                            <span class="text-warning fw-bold small text-uppercase" style="letter-spacing: 0.5px;">
+                                <i class="fas fa-key me-1"></i> Program Access Key Codes
+                            </span>
+                        </div>
+                        <h1 class="fw-black text-white display-6 fw-bold mb-2" style="letter-spacing: -0.5px;">
+                            Program Login
+                        </h1>
+                        <p class="text-secondary small mb-4">
+                            Select your training program below to load its Access Key Code, or enter your assigned key code directly in the login form.
+                        </p>
+
+                        <!-- PROGRAM CARDS LIST WITH SPECIFIC ACCESS KEY CODES -->
+                        <div class="d-flex flex-column gap-3 mb-4">
+                            
+                            <!-- Program 1: 30-Day Shred (Key: Shred30) -->
+                            <div class="program-selector-card" id="card-prog-shred" onclick="selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                                            <i class="fas fa-fire fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">30-Day Shred Challenge</h6>
+                                            <small class="text-secondary">Meal calendar, 41 recipe cards & metabolic workouts</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark key-badge">Shred30</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 2: Nutrition Blueprint E-Book (Key: Blueprint28) -->
+                            <div class="program-selector-card" id="card-prog-blueprint" onclick="selectProgramKey('Blueprint28', 'Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-success bg-opacity-10 text-success p-2 rounded-3">
+                                            <i class="fas fa-book-open fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">Nutrition Blueprint E-Book</h6>
+                                            <small class="text-secondary">Mifflin-St Jeor TDEE formulas, macro ratios & grocery lists</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success text-white key-badge">Blueprint28</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 3: Supplement Protocol (Key: Protocol30) -->
+                            <div class="program-selector-card" id="card-prog-protocol" onclick="selectProgramKey('Protocol30', 'Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-info bg-opacity-10 text-info p-2 rounded-3">
+                                            <i class="fas fa-pills fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">Athlete Supplement Protocol</h6>
+                                            <small class="text-secondary">Ergogenic stacks, daily timing & recovery aids</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-info text-dark key-badge">Protocol30</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 4: All-Programs Athlete Access (Key: KROME-ATHLETE) -->
+                            <div class="program-selector-card" id="card-prog-all" onclick="selectProgramKey('KROME-ATHLETE', 'All Athlete Programs & Blueprints', 'shred30_manual.html', 'card-prog-all')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-secondary bg-opacity-25 text-warning p-2 rounded-3">
+                                            <i class="fas fa-crown fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">All-Access Athlete Bundle</h6>
+                                            <small class="text-secondary">Unlocks Shred, Nutrition Blueprint & Supplement Protocol</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-secondary text-white key-badge">KROME-ATHLETE</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- GOOGLE SHEETS INFO FOOTER NOTE -->
+                    <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-25 small text-secondary">
+                        <div class="d-flex align-items-center gap-2 text-warning mb-1">
+                            <i class="fas fa-table"></i>
+                            <strong>Real-Time Sync with Athlete_Data Spreadsheet</strong>
+                        </div>
+                        When you log in, your login timestamp and specific program enrollment are automatically updated in the Google Sheet.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: ACCESS KEY LOGIN FORM -->
+            <div class="col-lg-6 col-xl-5">
+                <div class="login-card p-4 p-md-5">
+                    
+                    <div class="text-center mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-warning bg-opacity-10 text-warning rounded-circle p-3 mb-2" style="width: 60px; height: 60px;">
+                            <i class="fas fa-lock-open fa-2x"></i>
+                        </div>
+                        <h3 class="fw-bold text-white mb-1">Enter Program</h3>
+                        <p class="text-secondary small mb-0">Sign in with your email & program access key</p>
+                    </div>
+
+                    <!-- ALERT MESSAGE CONTAINER -->
+                    <div id="auth-alert" class="alert d-none mb-4 py-2 px-3 small rounded-3" role="alert"></div>
+
+                    <!-- LOGIN FORM -->
+                    <form id="athlete-login-form" onsubmit="handleAthleteLogin(event)">
+                        
+                        <!-- EMAIL FIELD -->
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label text-light small fw-bold">
+                                <i class="fas fa-envelope text-warning me-1"></i> Athlete Email Address:
+                            </label>
+                            <input type="email" id="login-email" class="form-control form-control-custom" placeholder="e.g. swolecode@gmail.com" required autocomplete="username">
+                            <div class="form-text text-secondary small" style="font-size: 0.76rem;">
+                                Enter your registered athlete email address.
+                            </div>
+                        </div>
+
+                        <!-- PROGRAM ACCESS KEY CODE FIELD -->
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between mb-1">
+                                <label for="login-access-key" class="form-label text-light small fw-bold mb-0">
+                                    <i class="fas fa-key text-warning me-1"></i> Program Access Key Code:
+                                </label>
+                                <span class="text-warning small fw-bold" id="selected-program-label" style="font-size: 0.78rem;">
+                                    e.g. Shred30, Blueprint28
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="login-access-key" class="form-control form-control-custom" placeholder="e.g. Shred30 or Blueprint28" required autocomplete="current-password" oninput="updateKeyIndicator(this.value)">
+                                <button class="btn key-toggle-btn px-3" type="button" onclick="clearKeyInput()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- DYNAMIC KEY PROGRAM TARGET INDICATOR -->
+                            <div id="key-indicator-box" class="mt-2 p-2 bg-black rounded border border-secondary border-opacity-50 small d-none">
+                                <span class="text-secondary">Program Unlocked:</span>
+                                <strong class="text-warning ms-1" id="key-target-program-name">30-Day Shred</strong>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember-me" checked style="accent-color: var(--krome-gold);">
+                                <label class="form-check-label text-secondary small" for="remember-me">
+                                    Remember session
+                                </label>
+                            </div>
+                            <span class="text-secondary small">
+                                Need key? <a href="contact.html" class="text-warning text-decoration-none">Contact Coach</a>
+                            </span>
+                        </div>
+
+                        <button type="submit" id="btn-submit-login" class="btn btn-gold w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2">
+                            <span>Verify Access Key & Open Program</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <!-- QUICK TEST ATHLETE DEMOS -->
+                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-secondary small fw-bold">
+                                <i class="fas fa-vial text-info me-1"></i> Quick Test Athlete Profiles:
+                            </span>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('swolecode@gmail.com', 'Shred30')">
+                                <span class="text-warning fw-bold">swolecode</span> &middot; Shred30
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('sarah.t@athlete.com', 'Blueprint28')">
+                                <span class="text-success fw-bold">sarah</span> &middot; Blueprint28
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('marcus.v@athlete.com', 'Protocol30')">
+                                <span class="text-info fw-bold">marcus</span> &middot; Protocol30
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FOOTER SHOP LINK -->
+                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25 text-center">
+                        <p class="text-secondary small mb-2">
+                            Explore training packages & workout plans:
+                        </p>
+                        <a href="shop.html" class="btn btn-sm btn-outline-warning rounded-pill px-4 fw-bold">
+                            <i class="fas fa-shopping-cart me-1"></i> Performance Shop
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-4 border-top border-secondary border-opacity-25 text-center small text-secondary mt-auto">
+        <div class="container">
+            <p class="mb-1 text-light">
+                &copy; <span id="footer-year">2026</span> KROME Sports Performance. All Rights Reserved.
+            </p>
+            <p class="mb-0" style="font-size: 0.78rem;">
+                Protected Athlete Resource. Logins and program access timestamps are synced with the Athlete_Data spreadsheet.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+
+    <!-- Page Logic Script -->
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+        // Get redirect parameter from URL if present (e.g. ?redirect=nutrition_blueprint.html)
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectParam = urlParams.get('redirect') || '';
+
+        // Auto-select program if arriving via redirect
+        if (redirectParam.includes('nutrition') || redirectParam.includes('blueprint')) {
+            selectProgramKey('Blueprint28', 'Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint');
+        } else if (redirectParam.includes('supplement') || redirectParam.includes('protocol')) {
+            selectProgramKey('Protocol30', 'Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol');
+        } else {
+            selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred');
+        }
+
+        // Check existing session
+        function checkExistingSession() {
+            const athleteEmail = localStorage.getItem('krome_athlete_email');
+            const athleteName = localStorage.getItem('krome_athlete_name') || 'Athlete';
+            const authToken = localStorage.getItem('krome_auth_token');
+
+            if (athleteEmail && (authToken || localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true')) {
+                const sessionCard = document.getElementById('session-active-card');
+                const activeName = document.getElementById('active-user-name');
+                const activeEmail = document.getElementById('active-user-email');
+
+                if (sessionCard && activeName && activeEmail) {
+                    activeName.textContent = athleteName;
+                    activeEmail.textContent = athleteEmail;
+                    sessionCard.classList.remove('d-none');
+                }
+            }
+        }
+        checkExistingSession();
+
+        // Program Selection Click Handler
+        function selectProgramKey(accessKey, programName, targetUrl, cardId) {
+            const keyInput = document.getElementById('login-access-key');
+            const labelEl = document.getElementById('selected-program-label');
+
+            if (keyInput) {
+                keyInput.value = accessKey;
+                updateKeyIndicator(accessKey);
+            }
+            if (labelEl) {
+                labelEl.textContent = `Selected: ${programName}`;
+            }
+
+            // Update card highlighting
+            document.querySelectorAll('.program-selector-card').forEach(c => c.classList.remove('active-selected'));
+            const activeCard = document.getElementById(cardId);
+            if (activeCard) activeCard.classList.add('active-selected');
+        }
+
+        // Update real-time key indicator as user types
+        function updateKeyIndicator(keyVal) {
+            const clean = (keyVal || '').trim().toLowerCase();
+            const box = document.getElementById('key-indicator-box');
+            const progName = document.getElementById('key-target-program-name');
+
+            if (!clean) {
+                if (box) box.classList.add('d-none');
+                return;
+            }
+
+            if (clean.includes('shred')) {
+                progName.textContent = '30-Day Shred Challenge Manual (shred30_manual.html)';
+                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
+                box.classList.remove('d-none');
+            } else if (clean.includes('blueprint') || clean.includes('nutrition') || clean.includes('macro')) {
+                progName.textContent = 'Nutrition Blueprint E-Book (nutrition_blueprint.html)';
+                box.className = 'mt-2 p-2 bg-black rounded border border-success text-success small';
+                box.classList.remove('d-none');
+            } else if (clean.includes('protocol') || clean.includes('supplement')) {
+                progName.textContent = 'Athlete Supplement Protocol (supplement_protocol.html)';
+                box.className = 'mt-2 p-2 bg-black rounded border border-info text-info small';
+                box.classList.remove('d-none');
+            } else if (clean.includes('krome') || clean.includes('all')) {
+                progName.textContent = 'All-Access Bundle (Shred, Blueprint & Protocol)';
+                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
+                box.classList.remove('d-none');
+            } else {
+                if (box) box.classList.add('d-none');
+            }
+        }
+
+        function clearKeyInput() {
+            const keyInput = document.getElementById('login-access-key');
+            if (keyInput) {
+                keyInput.value = '';
+                updateKeyIndicator('');
+            }
+        }
+
+        function fillTestCredentials(email, key) {
+            const emailInput = document.getElementById('login-email');
+            const keyInput = document.getElementById('login-access-key');
+            if (emailInput) emailInput.value = email;
+            if (keyInput) {
+                keyInput.value = key;
+                updateKeyIndicator(key);
+            }
+            showAlert(`Loaded credentials for ${email} with key "${key}". Click the verify button below!`, 'info');
+        }
+
+        function showAlert(message, type = 'danger') {
+            const alertEl = document.getElementById('auth-alert');
+            if (!alertEl) return;
+            alertEl.className = `alert alert-${type} py-2 px-3 small rounded-3`;
+            alertEl.innerHTML = `
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            alertEl.classList.remove('d-none');
+        }
+
+        function hideAlert() {
+            const alertEl = document.getElementById('auth-alert');
+            if (alertEl) alertEl.classList.add('d-none');
+        }
+
+        // Handle Athlete Login submission with Email & Specific Program Access Key Code
+        async function handleAthleteLogin(event) {
+            event.preventDefault();
+            hideAlert();
+
+            const email = document.getElementById('login-email').value.trim();
+            const accessKey = document.getElementById('login-access-key').value.trim();
+            const btnSubmit = document.getElementById('btn-submit-login');
+
+            if (!email || !accessKey) {
+                showAlert('Please enter both your email address and Program Access Key Code (e.g. Shred30, Blueprint28).');
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Key & Logging to Spreadsheet...`;
+
+            try {
+                const res = await fetch('/api/auth/athlete-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, accessKey: accessKey })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    const athlete = data.athlete || {};
+                    const prog = data.programAccess || {};
+
+                    // Store athlete session
+                    localStorage.setItem('krome_athlete_email', athlete.email || email);
+                    localStorage.setItem('krome_athlete_name', athlete.fullName || 'KROME Athlete');
+                    localStorage.setItem('krome_access_key', accessKey);
+                    localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
+
+                    // Reset all program permissions first to prevent unauthorized access across e-books
+                    localStorage.removeItem('krome_bundle_unlocked');
+                    localStorage.removeItem('krome_shred_unlocked');
+                    localStorage.removeItem('krome_blueprint_unlocked');
+                    localStorage.removeItem('krome_protocol_unlocked');
+
+                    // Set specific program unlock permissions based on whether the key is bundle or single-program
+                    if (prog.isBundle) {
+                        localStorage.setItem('krome_bundle_unlocked', 'true');
+                        localStorage.setItem('krome_shred_unlocked', 'true');
+                        localStorage.setItem('krome_blueprint_unlocked', 'true');
+                        localStorage.setItem('krome_protocol_unlocked', 'true');
+                    } else {
+                        if (prog.hasShredAccess || (athlete.hasShredAccess && prog.programId === 'shred')) {
+                            localStorage.setItem('krome_shred_unlocked', 'true');
+                        }
+                        if (prog.hasNutritionAccess || (athlete.hasNutritionAccess && prog.programId === 'blueprint')) {
+                            localStorage.setItem('krome_blueprint_unlocked', 'true');
+                        }
+                        if (prog.hasSupplementAccess || (athlete.hasSupplementAccess && prog.programId === 'protocol')) {
+                            localStorage.setItem('krome_protocol_unlocked', 'true');
+                        }
+                    }
+                    localStorage.setItem('krome_portal_unlocked', 'true');
+
+                    const destinationUrl = redirectParam || data.targetPage || 'shred30_manual.html';
+
+                    showAlert(`Access Granted! Unlocked: ${prog.programName || 'Training Program'}. Redirecting...`, 'success');
+
+                    setTimeout(() => {
+                        window.location.href = destinationUrl;
+                    }, 1000);
+                } else {
+                    showAlert(data.error || 'Access Denied: Invalid email or Program Access Key Code.', 'danger');
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<span>Verify Access Key & Open Program</span> <i class="fas fa-arrow-right"></i>`;
+                }
+            } catch (err) {
+                showAlert('Network error while contacting authentication server. Please try again.', 'warning');
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = `<span>Verify Access Key & Open Program</span> <i class="fas fa-arrow-right"></i>`;
+            }
+        }
+
+        // Handle Logout
+        async function handleLogout() {
+            const athleteEmail = localStorage.getItem('krome_athlete_email') || '';
+
+            if (athleteEmail) {
+                try {
+                    await fetch('/api/auth/athlete-logout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: athleteEmail })
+                    }).catch(() => {});
+                } catch (_) {}
+            }
+
+            localStorage.removeItem('krome_athlete_email');
+            localStorage.removeItem('krome_athlete_name');
+            localStorage.removeItem('krome_access_key');
+            localStorage.removeItem('krome_auth_token');
+            localStorage.removeItem('krome_bundle_unlocked');
+            localStorage.removeItem('krome_shred_unlocked');
+            localStorage.removeItem('krome_protocol_unlocked');
+            localStorage.removeItem('krome_blueprint_unlocked');
+            localStorage.removeItem('krome_portal_unlocked');
+
+            const sessionCard = document.getElementById('session-active-card');
+            if (sessionCard) sessionCard.classList.add('d-none');
+
+            showAlert('You have logged out. Logout timestamp recorded in Athlete_Data spreadsheet.', 'info');
+        }
+    </script>
 </body>
+
 </html>

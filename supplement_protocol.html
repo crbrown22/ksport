@@ -485,7 +485,7 @@
             </div>
             <h3 class="fw-bold text-warning mb-1">Athlete Supplement Protocol Login</h3>
             <p class="text-light small mb-3">
-                Included with the <strong>30-Day Shred</strong> bundle. Enter your athlete email and password from the <em>Athlete Data</em> tab in <em>KSP Leads</em> to access the complete guide.
+                Unlock the <strong>Athlete Supplement Protocol</strong> using your athlete email address and Program Access Key Code (e.g. <code>Protocol30</code> or <code>KROME-ATHLETE</code>).
             </p>
 
             <!-- Inline Login Form -->
@@ -497,16 +497,19 @@
                     <input type="email" id="supp-gate-email" class="form-control bg-black text-light border-secondary small" placeholder="e.g. yourname@gmail.com" required>
                 </div>
                 <div class="mb-2">
-                    <label for="supp-gate-password" class="form-label text-warning small fw-bold mb-1">
-                        <i class="fas fa-key me-1"></i> Athlete Password:
-                    </label>
-                    <input type="password" id="supp-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter your password" required>
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <label for="supp-gate-password" class="form-label text-warning small fw-bold mb-0">
+                            <i class="fas fa-key me-1"></i> Program Access Key Code:
+                        </label>
+                        <span class="badge bg-info text-dark">Protocol30</span>
+                    </div>
+                    <input type="text" id="supp-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key (e.g. Protocol30)" value="Protocol30" required>
                 </div>
 
                 <div id="supp-gate-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
 
-                <button type="submit" id="btn-supp-gate-submit" class="btn btn-warning fw-bold w-100 py-2 mt-1">
-                    <i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs
+                <button type="submit" id="btn-supp-gate-submit" class="btn btn-info fw-bold w-100 py-2 mt-1 text-dark">
+                    <i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Supplement Protocol
                 </button>
             </form>
 
@@ -1425,16 +1428,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
 
     <script>
-        // ATHLETE AUTHENTICATION & ACCESS VERIFICATION
+        // ATHLETE AUTHENTICATION & ACCESS VERIFICATION (STRICT E-BOOK GATING)
         function checkSuppAccess() {
             const athleteEmail = localStorage.getItem('krome_athlete_email');
-            const protocolUnlocked = localStorage.getItem('krome_protocol_unlocked');
-            const shredUnlocked = localStorage.getItem('krome_shred_unlocked');
+            const isBundleUnlocked = localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const isProtocolUnlocked = localStorage.getItem('krome_protocol_unlocked') === 'true';
 
-            if (athleteEmail && (protocolUnlocked === 'true' || shredUnlocked === 'true' || localStorage.getItem('krome_auth_token'))) {
-                grantSuppAccess(athleteEmail);
-            } else if (protocolUnlocked === 'true') {
-                grantSuppAccess();
+            // Only unlock if bundle passkey KROME-ATHLETE was used OR specific Protocol30 passkey
+            if (isBundleUnlocked || isProtocolUnlocked) {
+                grantSuppAccess(athleteEmail || undefined);
+            } else {
+                const overlay = document.getElementById('private-access-overlay');
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -1447,38 +1453,55 @@
 
             alertBox.classList.add('d-none');
             btn.disabled = true;
-            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Athlete Data...`;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Passkey...`;
 
             try {
-                const res = await fetch('/api/auth/shred-login', {
+                const res = await fetch('/api/auth/athlete-login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, password: password })
+                    body: JSON.stringify({ email: email, accessKey: password, password: password })
                 });
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    localStorage.setItem('krome_athlete_email', data.athlete.email);
-                    localStorage.setItem('krome_athlete_name', data.athlete.fullName || 'KROME Athlete');
-                    localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
+                    const prog = data.programAccess || {};
+                    const athlete = data.athlete || {};
 
-                    // UNLOCK ALL 3 PROGRAMS
-                    localStorage.setItem('krome_shred_unlocked', 'true');
-                    localStorage.setItem('krome_protocol_unlocked', 'true');
-                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    // Verify if key grants Supplement Protocol access
+                    if (prog.isBundle || prog.hasSupplementAccess || athlete.hasSupplementAccess) {
+                        localStorage.setItem('krome_athlete_email', athlete.email || email);
+                        localStorage.setItem('krome_athlete_name', athlete.fullName || 'KROME Athlete');
+                        localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
 
-                    grantSuppAccess(data.athlete.email);
+                        if (prog.isBundle) {
+                            localStorage.setItem('krome_bundle_unlocked', 'true');
+                            localStorage.setItem('krome_shred_unlocked', 'true');
+                            localStorage.setItem('krome_blueprint_unlocked', 'true');
+                            localStorage.setItem('krome_protocol_unlocked', 'true');
+                        } else {
+                            localStorage.setItem('krome_protocol_unlocked', 'true');
+                            localStorage.removeItem('krome_bundle_unlocked');
+                        }
+
+                        grantSuppAccess(athlete.email || email);
+                    } else {
+                        // Key valid for another program but not this one
+                        alertBox.textContent = `Access Denied: The key code "${password}" is for "${prog.programName}". To access this Supplement Protocol, please enter the Protocol30 passkey or the all-access bundle key KROME-ATHLETE.`;
+                        alertBox.classList.remove('d-none');
+                        btn.disabled = false;
+                        btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Supplement Protocol`;
+                    }
                 } else {
-                    alertBox.textContent = data.error || 'Access Denied: Email or password did not match Athlete Data tab.';
+                    alertBox.textContent = data.error || 'Access Denied: Invalid email or passkey code.';
                     alertBox.classList.remove('d-none');
                     btn.disabled = false;
-                    btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+                    btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Supplement Protocol`;
                 }
             } catch (err) {
                 alertBox.textContent = 'Connection error. Please try again.';
                 alertBox.classList.remove('d-none');
                 btn.disabled = false;
-                btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+                btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Supplement Protocol`;
             }
         }
 
@@ -1488,17 +1511,37 @@
         }
 
         function verifyPasscode() {
-            const input = document.getElementById('passcode-input').value.trim();
+            const input = document.getElementById('passcode-input').value.trim().toUpperCase();
             const errorDiv = document.getElementById('passcode-error');
-            if (input.toUpperCase() === 'PROTOCOL28' || input.toUpperCase() === 'SHRED30' || input.length >= 4) {
+
+            const bundleKeys = ['KROME-ATHLETE', 'KROME2026', 'KSP-ATHLETE', 'KROME', 'ALLACCESS', 'KSP2026', 'KROME123'];
+            const protocolKeys = ['PROTOCOL30', 'PROTOCOL', 'PROTOCOL28', 'SUPPLEMENT30', 'SUPPLEMENT', 'SUPPLEMENTSTACK'];
+            const shredKeys = ['SHRED30', 'SHRED', 'SHRED2026', 'SHRED2026!'];
+            const blueprintKeys = ['BLUEPRINT28', 'BLUEPRINT', 'NUTRITION28', 'NUTRITION', 'MACROS28'];
+
+            if (bundleKeys.includes(input)) {
+                localStorage.setItem('krome_bundle_unlocked', 'true');
+                localStorage.setItem('krome_protocol_unlocked', 'true');
                 grantSuppAccess();
+            } else if (protocolKeys.includes(input)) {
+                localStorage.setItem('krome_protocol_unlocked', 'true');
+                grantSuppAccess();
+            } else if (shredKeys.includes(input)) {
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the 30-Day Shred. Enter <strong>Protocol30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Supplement Protocol.`;
+                errorDiv.classList.remove('d-none');
+            } else if (blueprintKeys.includes(input)) {
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Nutrition Blueprint. Enter <strong>Protocol30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Supplement Protocol.`;
+                errorDiv.classList.remove('d-none');
             } else {
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid passkey. Enter <strong>Protocol30</strong> or bundle passkey <strong>KROME-ATHLETE</strong>.`;
                 errorDiv.classList.remove('d-none');
             }
         }
 
         function grantSuppAccess(email) {
-            document.getElementById('private-access-overlay').style.display = 'none';
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
             localStorage.setItem('krome_protocol_unlocked', 'true');
             if (email) localStorage.setItem('krome_athlete_email', email);
             if (typeof window.initAthleteDataSync === 'function') {

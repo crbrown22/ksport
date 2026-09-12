@@ -569,9 +569,11 @@
         localStorage.removeItem('krome_athlete_email');
         localStorage.removeItem('krome_athlete_name');
         localStorage.removeItem('krome_auth_token');
+        localStorage.removeItem('krome_bundle_unlocked');
         localStorage.removeItem('krome_shred_unlocked');
         localStorage.removeItem('krome_protocol_unlocked');
         localStorage.removeItem('krome_blueprint_unlocked');
+        localStorage.removeItem('krome_portal_unlocked');
         localStorage.removeItem('krome_cached_athlete_data');
         localStorage.removeItem('krome_shred30_auth');
         window.location.reload();

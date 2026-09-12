@@ -380,7 +380,7 @@
             </div>
             <h3 class="fw-bold text-warning mb-1">Nutrition E-Book Blueprint Login</h3>
             <p class="text-light small mb-3">
-                Included with the <strong>30-Day Shred</strong> bundle. Enter your athlete email and password from the <em>Athlete Data</em> tab in <em>KSP Leads</em> to access the complete nutrition guide.
+                Unlock the <strong>Nutrition Blueprint E-Book</strong> using your athlete email address and Program Access Key Code (e.g. <code>Blueprint28</code> or <code>KROME-ATHLETE</code>).
             </p>
 
             <!-- Inline Login Form -->
@@ -392,16 +392,19 @@
                     <input type="email" id="blueprint-gate-email" class="form-control bg-black text-light border-secondary small" placeholder="e.g. yourname@gmail.com" required>
                 </div>
                 <div class="mb-2">
-                    <label for="blueprint-gate-password" class="form-label text-warning small fw-bold mb-1">
-                        <i class="fas fa-key me-1"></i> Athlete Password:
-                    </label>
-                    <input type="password" id="blueprint-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter your password" required>
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <label for="blueprint-gate-password" class="form-label text-warning small fw-bold mb-0">
+                            <i class="fas fa-key me-1"></i> Program Access Key Code:
+                        </label>
+                        <span class="badge bg-success text-white">Blueprint28</span>
+                    </div>
+                    <input type="text" id="blueprint-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key (e.g. Blueprint28)" value="Blueprint28" required>
                 </div>
 
                 <div id="blueprint-gate-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
 
-                <button type="submit" id="btn-blueprint-gate-submit" class="btn btn-warning fw-bold w-100 py-2 mt-1">
-                    <i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs
+                <button type="submit" id="btn-blueprint-gate-submit" class="btn btn-success fw-bold w-100 py-2 mt-1 text-white">
+                    <i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Nutrition E-Book
                 </button>
             </form>
 
@@ -1207,16 +1210,19 @@
     <script src="js/navbar.js"></script>
 
     <script>
-        // ATHLETE AUTHENTICATION & ACCESS VERIFICATION
+        // ATHLETE AUTHENTICATION & ACCESS VERIFICATION (STRICT E-BOOK GATING)
         function checkBlueprintAccess() {
             const athleteEmail = localStorage.getItem('krome_athlete_email');
-            const blueprintUnlocked = localStorage.getItem('krome_blueprint_unlocked');
-            const shredUnlocked = localStorage.getItem('krome_shred_unlocked');
+            const isBundleUnlocked = localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const isBlueprintUnlocked = localStorage.getItem('krome_blueprint_unlocked') === 'true';
 
-            if (athleteEmail && (blueprintUnlocked === 'true' || shredUnlocked === 'true' || localStorage.getItem('krome_auth_token'))) {
-                grantBlueprintAccess(athleteEmail);
-            } else if (blueprintUnlocked === 'true') {
-                grantBlueprintAccess();
+            // Only unlock if bundle passkey KROME-ATHLETE was used OR specific Blueprint28 passkey
+            if (isBundleUnlocked || isBlueprintUnlocked) {
+                grantBlueprintAccess(athleteEmail || undefined);
+            } else {
+                const overlay = document.getElementById('private-access-overlay');
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -1229,38 +1235,56 @@
 
             alertBox.classList.add('d-none');
             btn.disabled = true;
-            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Athlete Data...`;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Passkey...`;
 
             try {
-                const res = await fetch('/api/auth/shred-login', {
+                const res = await fetch('/api/auth/athlete-login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, password: password })
+                    body: JSON.stringify({ email: email, accessKey: password, password: password })
                 });
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    localStorage.setItem('krome_athlete_email', data.athlete.email);
-                    localStorage.setItem('krome_athlete_name', data.athlete.fullName || 'KROME Athlete');
-                    localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
+                    const prog = data.programAccess || {};
+                    const athlete = data.athlete || {};
 
-                    // UNLOCK ALL 3 PROGRAMS
-                    localStorage.setItem('krome_shred_unlocked', 'true');
-                    localStorage.setItem('krome_protocol_unlocked', 'true');
-                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    // Verify if key grants Nutrition Blueprint access
+                    if (prog.isBundle || prog.hasNutritionAccess || athlete.hasNutritionAccess) {
+                        localStorage.setItem('krome_athlete_email', athlete.email || email);
+                        localStorage.setItem('krome_athlete_name', athlete.fullName || 'KROME Athlete');
+                        localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
 
-                    grantBlueprintAccess(data.athlete.email);
+                        if (prog.isBundle) {
+                            localStorage.setItem('krome_bundle_unlocked', 'true');
+                            localStorage.setItem('krome_shred_unlocked', 'true');
+                            localStorage.setItem('krome_blueprint_unlocked', 'true');
+                            localStorage.setItem('krome_protocol_unlocked', 'true');
+                        } else {
+                            localStorage.setItem('krome_blueprint_unlocked', 'true');
+                            // Ensure other non-unlocked books remain gated
+                            localStorage.removeItem('krome_bundle_unlocked');
+                        }
+
+                        grantBlueprintAccess(athlete.email || email);
+                    } else {
+                        // Key valid for another program but not this one
+                        alertBox.textContent = `Access Denied: The key code "${password}" is for "${prog.programName}". To access this Nutrition Blueprint, please enter the Blueprint28 passkey or the all-access bundle key KROME-ATHLETE.`;
+                        alertBox.classList.remove('d-none');
+                        btn.disabled = false;
+                        btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Nutrition E-Book`;
+                    }
                 } else {
-                    alertBox.textContent = data.error || 'Access Denied: Email or password did not match Athlete Data records.';
+                    alertBox.textContent = data.error || 'Access Denied: Invalid email or passkey code.';
                     alertBox.classList.remove('d-none');
                     btn.disabled = false;
-                    btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+                    btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Nutrition E-Book`;
                 }
             } catch (err) {
                 alertBox.textContent = 'Connection error. Please try again.';
                 alertBox.classList.remove('d-none');
                 btn.disabled = false;
-                btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+                btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock Nutrition E-Book`;
             }
         }
 
@@ -1270,17 +1294,37 @@
         }
 
         function verifyPasscode() {
-            const input = document.getElementById('passcode-input').value.trim();
+            const input = document.getElementById('passcode-input').value.trim().toUpperCase();
             const err = document.getElementById('passcode-error');
-            if (input.toUpperCase() === 'BLUEPRINT28' || input.toUpperCase() === 'SHRED30' || input.length >= 4) {
+            
+            const bundleKeys = ['KROME-ATHLETE', 'KROME2026', 'KSP-ATHLETE', 'KROME', 'ALLACCESS', 'KSP2026', 'KROME123'];
+            const blueprintKeys = ['BLUEPRINT28', 'BLUEPRINT', 'NUTRITION28', 'NUTRITION', 'MACROS28'];
+            const shredKeys = ['SHRED30', 'SHRED', 'SHRED2026', 'SHRED2026!'];
+            const protocolKeys = ['PROTOCOL30', 'PROTOCOL', 'SUPPLEMENT30', 'SUPPLEMENT'];
+
+            if (bundleKeys.includes(input)) {
+                localStorage.setItem('krome_bundle_unlocked', 'true');
+                localStorage.setItem('krome_blueprint_unlocked', 'true');
                 grantBlueprintAccess();
+            } else if (blueprintKeys.includes(input)) {
+                localStorage.setItem('krome_blueprint_unlocked', 'true');
+                grantBlueprintAccess();
+            } else if (shredKeys.includes(input)) {
+                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the 30-Day Shred. Enter <strong>Blueprint28</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Nutrition Blueprint.`;
+                err.classList.remove('d-none');
+            } else if (protocolKeys.includes(input)) {
+                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Supplement Protocol. Enter <strong>Blueprint28</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Nutrition Blueprint.`;
+                err.classList.remove('d-none');
             } else {
+                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid passkey. Enter <strong>Blueprint28</strong> or bundle passkey <strong>KROME-ATHLETE</strong>.`;
                 err.classList.remove('d-none');
             }
         }
 
         function grantBlueprintAccess(email) {
-            document.getElementById('private-access-overlay').style.display = 'none';
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
             localStorage.setItem('krome_blueprint_unlocked', 'true');
             if (email) localStorage.setItem('krome_athlete_email', email);
             if (typeof window.initAthleteDataSync === 'function') {

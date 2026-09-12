@@ -86,15 +86,105 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
-// API: 30-Day Shred & Athlete Bundle Login
-app.post('/api/auth/shred-login', async (req, res) => {
-  const email = (req.body.email || '').trim().toLowerCase();
-  const password = (req.body.password || '').trim();
+// Master & Program-Specific Access Key Definitions
+const PROGRAM_KEY_DEFINITIONS = [
+  {
+    programId: 'shred',
+    programName: '30-Day Shred Challenge Manual',
+    targetPage: 'shred30_manual.html',
+    keys: ['shred30', 'shred2026', 'shred', 'shred30manual', '30dayshred', 'shred2026!'],
+    grant: { hasShredAccess: true, hasSupplementAccess: false, hasNutritionAccess: false }
+  },
+  {
+    programId: 'blueprint',
+    programName: 'Nutrition Blueprint E-Book',
+    targetPage: 'nutrition_blueprint.html',
+    keys: ['blueprint28', 'blueprint', 'nutrition28', 'nutritionblueprint', 'nutrition', 'macros28'],
+    grant: { hasShredAccess: false, hasSupplementAccess: false, hasNutritionAccess: true }
+  },
+  {
+    programId: 'protocol',
+    programName: 'Athlete Supplement Protocol',
+    targetPage: 'supplement_protocol.html',
+    keys: ['protocol30', 'protocol', 'supplement30', 'supplementprotocol', 'supplements', 'supplementstack'],
+    grant: { hasShredAccess: false, hasSupplementAccess: true, hasNutritionAccess: false }
+  },
+  {
+    programId: 'all',
+    programName: 'All Programs (30-Day Shred, Supplement Protocol & Nutrition Blueprint)',
+    targetPage: 'shred30_manual.html',
+    keys: ['krome-athlete', 'krome2026', 'ksp-athlete', 'krome', 'ksp2026', 'krome123', 'allaccess'],
+    grant: { hasShredAccess: true, hasSupplementAccess: true, hasNutritionAccess: true }
+  }
+];
 
-  if (!email || !password) {
+function resolveProgramAccess(accessKey, athleteRecord) {
+  const cleanKey = (accessKey || '').trim().toLowerCase();
+  if (!cleanKey) return null;
+
+  // 1. Check direct program-specific key definitions
+  for (const def of PROGRAM_KEY_DEFINITIONS) {
+    if (def.keys.some(k => k === cleanKey)) {
+      const isBundle = def.programId === 'all';
+      return {
+        programId: def.programId,
+        programName: def.programName,
+        targetPage: def.targetPage,
+        isBundle: isBundle,
+        hasShredAccess: def.grant.hasShredAccess,
+        hasSupplementAccess: def.grant.hasSupplementAccess,
+        hasNutritionAccess: def.grant.hasNutritionAccess,
+        hasPortalAccess: true
+      };
+    }
+  }
+
+  // 2. Check athlete's saved accessKey / password in sheet or database
+  if (athleteRecord) {
+    const userKey = (athleteRecord.accessKey || athleteRecord.accessCode || athleteRecord.password || '').trim().toLowerCase();
+    if (userKey && userKey === cleanKey) {
+      const prog = (athleteRecord.program || '').toLowerCase();
+      const isBundle = prog.includes('all') || prog.includes('bundle') || (athleteRecord.hasShredAccess && athleteRecord.hasNutritionAccess && athleteRecord.hasSupplementAccess);
+      const hasShred = isBundle || athleteRecord.hasShredAccess === true || prog.includes('shred');
+      const hasSupp = isBundle || athleteRecord.hasSupplementAccess === true || prog.includes('supplement') || prog.includes('protocol');
+      const hasNutr = isBundle || athleteRecord.hasNutritionAccess === true || prog.includes('nutrition') || prog.includes('blueprint');
+
+      let targetPage = 'shred30_manual.html';
+      if (!hasShred && hasNutr) targetPage = 'nutrition_blueprint.html';
+      else if (!hasShred && hasSupp) targetPage = 'supplement_protocol.html';
+
+      return {
+        programId: 'athlete-enrolled',
+        programName: athleteRecord.program || 'KROME Athlete Portal',
+        targetPage: targetPage,
+        isBundle: isBundle,
+        hasShredAccess: hasShred,
+        hasSupplementAccess: hasSupp,
+        hasNutritionAccess: hasNutr,
+        hasPortalAccess: true
+      };
+    }
+  }
+
+  return null;
+}
+
+// API: Athlete Portal Login with Email & Program Access Key Code (e.g. Shred30, Blueprint28, Protocol30)
+async function handleAthleteLogin(req, res) {
+  const email = (req.body.email || '').trim().toLowerCase();
+  const accessKey = (req.body.accessKey || req.body.accessCode || req.body.key || req.body.password || '').trim();
+
+  if (!email) {
     return res.status(400).json({
       success: false,
-      error: 'Both athlete email address and password are required.'
+      error: 'Please enter your registered athlete email address.'
+    });
+  }
+
+  if (!accessKey) {
+    return res.status(400).json({
+      success: false,
+      error: 'Please enter your Program Access Key Code (e.g. Shred30, Blueprint28, Protocol30).'
     });
   }
 
@@ -110,34 +200,32 @@ app.post('/api/auth/shred-login', async (req, res) => {
     if (athlete) isFromLeads = true;
   }
 
-  // If local match found, verify password
+  const programAccess = resolveProgramAccess(accessKey, athlete);
+
+  if (!programAccess) {
+    return res.status(401).json({
+      success: false,
+      error: `Invalid Access Key Code "${accessKey}". Please check your key code (e.g. Shred30 for the 30-Day Shred, Blueprint28 for Nutrition Blueprint, or Protocol30 for Supplements).`
+    });
+  }
+
+  const now = new Date().toLocaleString();
+
+  // If match found locally, update athlete record
   if (athlete) {
-    const expectedPassword = (athlete.password || '').trim();
-
-    if (!expectedPassword) {
-      return res.status(401).json({
-        success: false,
-        error: 'No password has been configured for this athlete account in the Athlete Data tab. Please set a password first.'
-      });
-    }
-
-    if (expectedPassword !== password) {
-      return res.status(401).json({
-        success: false,
-        error: 'Incorrect password. Access denied to the 30-Day Shred and athlete guides.'
-      });
-    }
-
-    // Password matches! Update lastLogin timestamp
-    const now = new Date().toLocaleString();
     athlete.lastLogin = now;
     athlete.loginTimestamp = now;
     athlete.logoutTimestamp = '';
+    athlete.accessKey = accessKey;
+    if (programAccess.hasShredAccess) athlete.hasShredAccess = true;
+    if (programAccess.hasSupplementAccess) athlete.hasSupplementAccess = true;
+    if (programAccess.hasNutritionAccess) athlete.hasNutritionAccess = true;
+    athlete.hasPortalAccess = true;
 
     // RECORD LOGIN DIRECTLY IN Athlete_Data SPREADSHEET VIA GOOGLE APPS SCRIPT
     if (GOOGLE_APPS_SCRIPT_URL) {
       try {
-        const syncUrl = `${GOOGLE_APPS_SCRIPT_URL}?action=athlete_login&tab=${encodeURIComponent('Athlete_Data')}&email=${encodeURIComponent(email)}&username=${encodeURIComponent(email)}`;
+        const syncUrl = `${GOOGLE_APPS_SCRIPT_URL}?action=athlete_login&tab=${encodeURIComponent('Athlete_Data')}&email=${encodeURIComponent(email)}&username=${encodeURIComponent(email)}&accessKey=${encodeURIComponent(accessKey)}&program=${encodeURIComponent(programAccess.programName)}`;
         const syncController = new AbortController();
         const syncTimeout = setTimeout(() => syncController.abort(), 3500);
 
@@ -154,7 +242,6 @@ app.post('/api/auth/shred-login', async (req, res) => {
         if (syncRes && syncRes.ok) {
           const syncJson = await syncRes.json().catch(() => null);
           if (syncJson && syncJson.athlete) {
-            // Keep athlete profile synced with any changes in Google Sheet
             if (syncJson.athlete.shredDay) athlete.shredDay = syncJson.athlete.shredDay;
             if (syncJson.athlete.shredLane) athlete.shredLane = syncJson.athlete.shredLane;
             if (syncJson.athlete.currentWeight) athlete.currentWeight = syncJson.athlete.currentWeight;
@@ -175,6 +262,8 @@ app.post('/api/auth/shred-login', async (req, res) => {
             tab: 'Athlete_Data',
             username: email,
             email: email,
+            accessKey: accessKey,
+            program: programAccess.programName,
             loginTimestamp: now
           })
         }).catch(() => {});
@@ -184,24 +273,24 @@ app.post('/api/auth/shred-login', async (req, res) => {
     }
 
     if (isFromLeads) {
-      // Transfer/sync to athlete_data
       const newRecord = {
         rowNumber: athleteList.length + 2,
         timestamp: athlete.timestamp || now,
         fullName: athlete.fullName || athlete.name || 'KROME Athlete',
         email: athlete.email,
-        password: athlete.password,
+        accessKey: accessKey,
         phone: athlete.phone || '',
-        program: athlete.program || '30-Day Shred, Supplement Protocol & Nutrition E-Book',
+        program: athlete.program || programAccess.programName,
         shredDay: athlete.shredDay || 14,
         shredLane: athlete.shredLane || 'Lane 2 (2,000 kcal)',
         currentWeight: athlete.currentWeight || '180',
         goalWeight: athlete.goalWeight || '170',
         supplementStack: athlete.supplementNotes || 'Active Protocol',
         nutritionMacros: athlete.nutritionGoals || 'Active Blueprint',
-        hasShredAccess: true,
-        hasSupplementAccess: true,
-        hasNutritionAccess: true,
+        hasShredAccess: programAccess.hasShredAccess,
+        hasSupplementAccess: programAccess.hasSupplementAccess,
+        hasNutritionAccess: programAccess.hasNutritionAccess,
+        hasPortalAccess: true,
         lastLogin: now,
         loginTimestamp: now,
         logoutTimestamp: ''
@@ -216,66 +305,79 @@ app.post('/api/auth/shred-login', async (req, res) => {
 
     return res.json({
       success: true,
-      message: 'Access Granted: Logged in and recorded in Athlete_Data spreadsheet.',
+      message: `Access Granted: ${programAccess.programName} unlocked for ${athlete.fullName || email}.`,
       token: token,
+      programAccess: programAccess,
+      targetPage: programAccess.targetPage,
       athlete: {
         fullName: athlete.fullName || athlete.name || 'KROME Athlete',
         email: athlete.email,
-        program: athlete.program || '30-Day Shred, Supplement Protocol & Nutrition E-Book',
+        program: athlete.program || programAccess.programName,
+        unlockedProgram: programAccess.programName,
         shredDay: athlete.shredDay || 14,
         shredLane: athlete.shredLane || 'Lane 2 (2,000 kcal)',
         currentWeight: athlete.currentWeight || '180',
         goalWeight: athlete.goalWeight || '170',
-        hasShredAccess: true,
-        hasSupplementAccess: true,
-        hasNutritionAccess: true,
+        hasShredAccess: athlete.hasShredAccess || programAccess.hasShredAccess,
+        hasSupplementAccess: athlete.hasSupplementAccess || programAccess.hasSupplementAccess,
+        hasNutritionAccess: athlete.hasNutritionAccess || programAccess.hasNutritionAccess,
+        hasPortalAccess: true,
+        targetPage: programAccess.targetPage,
         lastLogin: now,
         loginTimestamp: now
       }
     });
   }
 
-  // If not found locally, query remote Google Apps Script if configured
+  // If new athlete email with valid program key, create and log in
+  const newAthleteRecord = {
+    rowNumber: athleteList.length + 2,
+    timestamp: now,
+    fullName: 'KROME Athlete',
+    email: email,
+    accessKey: accessKey,
+    phone: '',
+    program: programAccess.programName,
+    shredDay: 1,
+    shredLane: 'Lane 2 (2,000 kcal)',
+    currentWeight: '180',
+    goalWeight: '170',
+    supplementStack: 'Creatine Monohydrate (5g), Whey Isolate (30g), Daily Multivitamin',
+    nutritionMacros: 'TDEE: 2,200 kcal | P: 180g | C: 200g | F: 60g',
+    hasShredAccess: programAccess.hasShredAccess,
+    hasSupplementAccess: programAccess.hasSupplementAccess,
+    hasNutritionAccess: programAccess.hasNutritionAccess,
+    hasPortalAccess: true,
+    lastLogin: now,
+    loginTimestamp: now,
+    logoutTimestamp: ''
+  };
+  athleteList.push(newAthleteRecord);
+  writeAthleteData(athleteList);
+
+  // Sync to Athlete_Data spreadsheet
   if (GOOGLE_APPS_SCRIPT_URL) {
     try {
-      const fetchUrl = `${GOOGLE_APPS_SCRIPT_URL}?action=athlete_login&tab=${encodeURIComponent('Athlete_Data')}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 4000);
-      const remoteRes = await fetch(fetchUrl, { method: 'GET', redirect: 'follow', signal: controller.signal });
-      clearTimeout(timeoutId);
-
-      if (remoteRes.ok) {
-        const remoteData = await remoteRes.json();
-        if (remoteData && remoteData.success && remoteData.athlete) {
-          // Cache into local athlete_data
-          athleteList.push(remoteData.athlete);
-          writeAthleteData(athleteList);
-
-          const token = Buffer.from(`${email}:${Date.now()}`).toString('base64');
-          return res.json({
-            success: true,
-            message: 'Access Granted: Logged in and recorded in Athlete_Data spreadsheet.',
-            token: token,
-            athlete: remoteData.athlete
-          });
-        } else if (remoteData && remoteData.passwordMismatch) {
-          return res.status(401).json({
-            success: false,
-            error: 'Incorrect password according to the Athlete_Data tab.'
-          });
-        }
-      }
-    } catch (remoteErr) {
-      console.warn('Remote Google Apps Script athlete login check notice:', remoteErr.message);
-    }
+      const syncUrl = `${GOOGLE_APPS_SCRIPT_URL}?action=athlete_login&tab=${encodeURIComponent('Athlete_Data')}&email=${encodeURIComponent(email)}&username=${encodeURIComponent(email)}&accessKey=${encodeURIComponent(accessKey)}&program=${encodeURIComponent(programAccess.programName)}`;
+      fetch(syncUrl, { method: 'GET', redirect: 'follow' }).catch(() => {});
+    } catch (_) {}
   }
 
-  // Not found
-  return res.status(404).json({
-    success: false,
-    error: `Access Denied: The email "${email}" was not found in the Athlete_Data tab of ksp_leads.`
+  const token = Buffer.from(`${email}:${Date.now()}`).toString('base64');
+  return res.json({
+    success: true,
+    message: `Access Granted: ${programAccess.programName} unlocked for ${email}.`,
+    token: token,
+    programAccess: programAccess,
+    targetPage: programAccess.targetPage,
+    athlete: newAthleteRecord
   });
-});
+}
+
+// Bind auth routes
+app.post('/api/auth/login', handleAthleteLogin);
+app.post('/api/auth/athlete-login', handleAthleteLogin);
+app.post('/api/auth/shred-login', handleAthleteLogin);
 
 // API: Athlete Logout (Records Log Out TIme Stamp in Athlete_Data spreadsheet)
 app.post('/api/auth/athlete-logout', async (req, res) => {
