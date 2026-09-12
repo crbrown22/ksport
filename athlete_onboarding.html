@@ -858,7 +858,7 @@
 
             try {
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         email: athleteEmail || 'athlete@kromesp.com',
                         fullName: athleteName || 'KROME Athlete',
                         phone: athletePhone || '',
@@ -866,7 +866,7 @@
                         goal: `Current Weight: ${currentWeight} lbs, Goal Weight: ${goalWeight} lbs`,
                         message: `Profile Targets Updated: ${calculatedMacrosString}`,
                         action: 'athlete_onboarding_update'
-                    });
+                    }).catch(() => {});
                 }
 
                 alertBox.className = 'alert alert-success small mt-3 text-center fw-bold py-2 px-3 rounded-3';
@@ -896,7 +896,7 @@
 
             try {
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         fullName: athleteName || 'KROME Athlete',
                         email: athleteEmail || 'athlete@kromesp.com',
                         phone: athletePhone || '',
@@ -904,7 +904,7 @@
                         program: '1-on-1 Consultation & Strategy Call',
                         message: `Consultation Request [Pref: ${prefContact}, Time: ${prefTime}]: ${message}`,
                         action: 'consultation_request'
-                    });
+                    }).catch(() => {});
                 }
 
                 alertEl.className = 'alert alert-success py-2 px-3 small rounded-3';

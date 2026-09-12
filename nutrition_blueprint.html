@@ -1262,14 +1262,14 @@
                 }
 
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         email: email,
                         fullName: email.split('@')[0],
                         program: programName,
                         accessKey: password,
                         source: 'Nutrition Blueprint Login Portal',
                         action: 'blueprint_login'
-                    });
+                    }).catch(() => {});
                 }
 
                 grantBlueprintAccess(email);

@@ -1527,14 +1527,14 @@
                 }
 
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         email: email,
                         fullName: email.split('@')[0],
                         program: programName,
                         accessKey: password,
                         source: '30-Day Shred Manual Portal Login',
                         action: 'shred30_manual_login'
-                    });
+                    }).catch(() => {});
                 }
 
                 grantAccess(email);

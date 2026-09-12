@@ -634,14 +634,14 @@
 
                 // Sync directly with Google Sheets database via sendLeadToGoogle (exactly like landing page button)
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         email: email,
                         fullName: email.split('@')[0],
                         program: programName,
                         accessKey: accessKey,
                         source: 'Athlete Login Portal',
                         action: 'athlete_login'
-                    });
+                    }).catch(() => {});
                 }
 
                 const destinationUrl = redirectParam || targetPage;

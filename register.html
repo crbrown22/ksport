@@ -627,7 +627,7 @@
 
                 // Sync directly with Google Sheets database via sendLeadToGoogle (exactly like landing page button)
                 if (typeof window.sendLeadToGoogle === 'function') {
-                    await window.sendLeadToGoogle({
+                    window.sendLeadToGoogle({
                         fullName: fullName,
                         email: email,
                         phone: phone,
@@ -649,7 +649,7 @@
                         notes: notes,
                         source: 'New Athlete Registration Form',
                         action: 'athlete_register'
-                    });
+                    }).catch(() => {});
                 }
 
                 showAlert(`🎉 REGISTRATION COMPLETE! Welcome to KROME Sports Performance, ${fullName}. Your profile has been initialized successfully. Launching your Athlete Profile...`, 'success');
