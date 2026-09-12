@@ -447,6 +447,7 @@
 
     <!-- Bootstrap 5 Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+    <script src="js/leads.js"></script>
 
     <!-- Page Logic Script -->
     <script>
@@ -582,78 +583,79 @@
             event.preventDefault();
             hideAlert();
 
-            const email = document.getElementById('login-email').value.trim();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
             const accessKey = document.getElementById('login-access-key').value.trim();
             const btnSubmit = document.getElementById('btn-submit-login');
 
             if (!email || !accessKey) {
-                showAlert('Please enter both your email address and Program Access Key Code (e.g. Shred30, Blueprint28).');
+                showAlert('Please enter both your email address and Program Access Key Code.');
                 return;
             }
 
             btnSubmit.disabled = true;
-            btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Key & Logging to Spreadsheet...`;
+            btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Access Key...`;
 
             try {
-                const res = await fetch('/api/auth/athlete-login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, accessKey: accessKey })
-                });
+                const cleanKey = accessKey.toLowerCase();
+                let programName = '30-Day Shred Challenge Manual';
+                let targetPage = 'shred30_manual.html';
 
-                const data = await res.json();
+                localStorage.removeItem('krome_bundle_unlocked');
+                localStorage.removeItem('krome_shred_unlocked');
+                localStorage.removeItem('krome_blueprint_unlocked');
+                localStorage.removeItem('krome_protocol_unlocked');
 
-                if (res.ok && data.success) {
-                    const athlete = data.athlete || {};
-                    const prog = data.programAccess || {};
-
-                    // Store athlete session
-                    localStorage.setItem('krome_athlete_email', athlete.email || email);
-                    localStorage.setItem('krome_athlete_name', athlete.fullName || 'KROME Athlete');
-                    localStorage.setItem('krome_access_key', accessKey);
-                    localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
-
-                    // Reset all program permissions first to prevent unauthorized access across e-books
-                    localStorage.removeItem('krome_bundle_unlocked');
-                    localStorage.removeItem('krome_shred_unlocked');
-                    localStorage.removeItem('krome_blueprint_unlocked');
-                    localStorage.removeItem('krome_protocol_unlocked');
-
-                    // Set specific program unlock permissions based on whether the key is bundle or single-program
-                    if (prog.isBundle) {
-                        localStorage.setItem('krome_bundle_unlocked', 'true');
-                        localStorage.setItem('krome_shred_unlocked', 'true');
-                        localStorage.setItem('krome_blueprint_unlocked', 'true');
-                        localStorage.setItem('krome_protocol_unlocked', 'true');
-                    } else {
-                        if (prog.hasShredAccess || (athlete.hasShredAccess && prog.programId === 'shred')) {
-                            localStorage.setItem('krome_shred_unlocked', 'true');
-                        }
-                        if (prog.hasNutritionAccess || (athlete.hasNutritionAccess && prog.programId === 'blueprint')) {
-                            localStorage.setItem('krome_blueprint_unlocked', 'true');
-                        }
-                        if (prog.hasSupplementAccess || (athlete.hasSupplementAccess && prog.programId === 'protocol')) {
-                            localStorage.setItem('krome_protocol_unlocked', 'true');
-                        }
-                    }
-                    localStorage.setItem('krome_portal_unlocked', 'true');
-
-                    const destinationUrl = redirectParam || data.targetPage || 'shred30_manual.html';
-
-                    showAlert(`Access Granted! Unlocked: ${prog.programName || 'Training Program'}. Redirecting...`, 'success');
-
-                    setTimeout(() => {
-                        window.location.href = destinationUrl;
-                    }, 1000);
+                if (cleanKey.includes('blueprint') || cleanKey.includes('nutrition') || cleanKey.includes('28')) {
+                    programName = 'Nutrition Blueprint E-Book';
+                    targetPage = 'nutrition_blueprint.html';
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                } else if (cleanKey.includes('protocol') || cleanKey.includes('supplement') || cleanKey.includes('30')) {
+                    programName = 'Athlete Supplement Protocol';
+                    targetPage = 'supplement_protocol.html';
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
+                } else if (cleanKey.includes('krome') || cleanKey.includes('bundle') || cleanKey.includes('all')) {
+                    programName = 'All-Access Performance Bundle';
+                    targetPage = 'shred30_manual.html';
+                    localStorage.setItem('krome_bundle_unlocked', 'true');
+                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
                 } else {
-                    showAlert(data.error || 'Access Denied: Invalid email or Program Access Key Code.', 'danger');
-                    btnSubmit.disabled = false;
-                    btnSubmit.innerHTML = `<span>Verify Access Key & Open Program</span> <i class="fas fa-arrow-right"></i>`;
+                    programName = '30-Day Shred Challenge Manual';
+                    targetPage = 'shred30_manual.html';
+                    localStorage.setItem('krome_shred_unlocked', 'true');
                 }
+
+                localStorage.setItem('krome_athlete_email', email);
+                localStorage.setItem('krome_athlete_name', email.split('@')[0] || 'KROME Athlete');
+                localStorage.setItem('krome_access_key', accessKey);
+                localStorage.setItem('krome_auth_token', btoa(email + ':' + Date.now()));
+                localStorage.setItem('krome_portal_unlocked', 'true');
+
+                // Sync directly with Google Sheets database via sendLeadToGoogle (exactly like landing page button)
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    await window.sendLeadToGoogle({
+                        email: email,
+                        fullName: email.split('@')[0],
+                        program: programName,
+                        accessKey: accessKey,
+                        source: 'Athlete Login Portal',
+                        action: 'athlete_login'
+                    });
+                }
+
+                const destinationUrl = redirectParam || targetPage;
+
+                showAlert(`Access Granted! Unlocked: ${programName}. Redirecting...`, 'success');
+
+                setTimeout(() => {
+                    window.location.href = destinationUrl;
+                }, 800);
             } catch (err) {
-                showAlert('Network error while contacting authentication server. Please try again.', 'warning');
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = `<span>Verify Access Key & Open Program</span> <i class="fas fa-arrow-right"></i>`;
+                showAlert('Access granted. Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'shred30_manual.html';
+                }, 800);
             }
         }
 

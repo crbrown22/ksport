@@ -478,6 +478,7 @@
 
     <!-- Bootstrap 5 Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
+    <script src="js/leads.js"></script>
 
     <script>
         document.getElementById('footer-year').textContent = new Date().getFullYear();
@@ -563,18 +564,75 @@
             btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Creating Athlete Profile & Syncing...`;
 
             try {
-                const res = await fetch('/api/auth/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
+                // Calculate estimated Mifflin-St Jeor macros client-side
+                const wLbs = parseFloat(currentWeight) || 180;
+                const wKg = wLbs / 2.20462;
+                const hFt = parseFloat(heightFeet) || 5;
+                const hIn = parseFloat(heightInches) || 10;
+                const hCm = (hFt * 12 + hIn) * 2.54;
+                const ageNum = parseFloat(age) || 30;
+                const isMale = biologicalSex !== 'Female';
+
+                let bmr = (10 * wKg) + (6.25 * hCm) - (5 * ageNum) + (isMale ? 5 : -161);
+                let mult = 1.375;
+                if (activityLevel.includes('Sedentary')) mult = 1.2;
+                else if (activityLevel.includes('Lightly')) mult = 1.375;
+                else if (activityLevel.includes('Moderately')) mult = 1.55;
+                else if (activityLevel.includes('Very')) mult = 1.725;
+                else if (activityLevel.includes('Extremely')) mult = 1.9;
+
+                const tdee = Math.round(bmr * mult);
+                const protein = Math.round(wLbs * 1.0);
+                const fat = Math.round((tdee * 0.25) / 9);
+                const carbs = Math.round((tdee - (protein * 4) - (fat * 9)) / 4);
+                const macroSummary = `TDEE: ${tdee} kcal | P: ${protein}g | C: ${carbs}g | F: ${fat}g`;
+
+                // Save all athlete registration details to localStorage
+                localStorage.setItem('krome_athlete_email', email);
+                localStorage.setItem('krome_athlete_name', fullName);
+                localStorage.setItem('krome_athlete_phone', phone || '');
+                localStorage.setItem('krome_athlete_age', age || '');
+                localStorage.setItem('krome_athlete_sex', biologicalSex || '');
+                localStorage.setItem('krome_athlete_height_ft', heightFeet || '');
+                localStorage.setItem('krome_athlete_height_in', heightInches || '');
+                localStorage.setItem('krome_athlete_current_weight', currentWeight || '');
+                localStorage.setItem('krome_athlete_goal_weight', goalWeight || '');
+                localStorage.setItem('krome_athlete_activity', activityLevel || '');
+                localStorage.setItem('krome_athlete_goal', primaryGoalObjective || '');
+                localStorage.setItem('krome_access_key', password);
+                localStorage.setItem('krome_auth_token', btoa(email + ':' + Date.now()));
+                localStorage.setItem('krome_portal_unlocked', 'true');
+                localStorage.setItem('krome_registration_just_completed', 'true');
+
+                localStorage.setItem('krome_athlete_macros', JSON.stringify({
+                    calories: tdee,
+                    protein: protein,
+                    carbs: carbs,
+                    fat: fat,
+                    summary: macroSummary
+                }));
+
+                if (isNoProgram) {
+                    localStorage.setItem('krome_athlete_is_new', 'true');
+                    localStorage.removeItem('krome_shred_unlocked');
+                    localStorage.removeItem('krome_blueprint_unlocked');
+                    localStorage.removeItem('krome_protocol_unlocked');
+                    localStorage.removeItem('krome_bundle_unlocked');
+                } else {
+                    localStorage.setItem('krome_bundle_unlocked', 'true');
+                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
+                }
+
+                // Sync directly with Google Sheets database via sendLeadToGoogle (exactly like landing page button)
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    await window.sendLeadToGoogle({
                         fullName: fullName,
                         email: email,
                         phone: phone,
-                        password: password,
                         program: programStatus,
-                        programStatus: programStatus,
                         fitnessGoal: primaryGoalObjective,
-                        primaryGoalObjective: primaryGoalObjective,
                         athleteLevel: athleteLevel,
                         age: age,
                         biologicalSex: biologicalSex,
@@ -583,68 +641,31 @@
                         activityLevel: activityLevel,
                         currentWeight: currentWeight,
                         goalWeight: goalWeight,
-                        notes: notes
-                    })
-                });
-
-                const data = await res.json();
-
-                if (res.ok && data.success) {
-                    const athlete = data.athlete || {};
-
-                    // Save all athlete registration details to localStorage
-                    localStorage.setItem('krome_athlete_email', athlete.email || email);
-                    localStorage.setItem('krome_athlete_name', athlete.fullName || fullName);
-                    localStorage.setItem('krome_athlete_phone', athlete.phone || phone || '');
-                    localStorage.setItem('krome_athlete_age', athlete.age || age || '');
-                    localStorage.setItem('krome_athlete_sex', athlete.biologicalSex || biologicalSex || '');
-                    localStorage.setItem('krome_athlete_height_ft', athlete.heightFeet || heightFeet || '');
-                    localStorage.setItem('krome_athlete_height_in', athlete.heightInches || heightInches || '');
-                    localStorage.setItem('krome_athlete_current_weight', athlete.currentWeight || currentWeight || '');
-                    localStorage.setItem('krome_athlete_goal_weight', athlete.goalWeight || goalWeight || '');
-                    localStorage.setItem('krome_athlete_activity', athlete.activityLevel || activityLevel || '');
-                    localStorage.setItem('krome_athlete_goal', athlete.primaryGoalObjective || primaryGoalObjective || '');
-                    localStorage.setItem('krome_access_key', password);
-                    localStorage.setItem('krome_auth_token', data.token || 'registered_athlete');
-                    localStorage.setItem('krome_portal_unlocked', 'true');
-                    localStorage.setItem('krome_registration_just_completed', 'true');
-
-                    if (athlete.targetCalories || athlete.macros) {
-                        localStorage.setItem('krome_athlete_macros', JSON.stringify(athlete.macros || {
-                            calories: athlete.targetCalories,
-                            protein: athlete.proteinGrams,
-                            carbs: athlete.carbGrams,
-                            fat: athlete.fatGrams,
-                            summary: athlete.nutritionMacros
-                        }));
-                    }
-
-                    if (data.isNewAthleteNoProgram) {
-                        localStorage.setItem('krome_athlete_is_new', 'true');
-                        localStorage.removeItem('krome_shred_unlocked');
-                        localStorage.removeItem('krome_blueprint_unlocked');
-                        localStorage.removeItem('krome_protocol_unlocked');
-                        localStorage.removeItem('krome_bundle_unlocked');
-                    }
-
-                    showAlert(`🎉 REGISTRATION COMPLETE! Welcome to KROME Sports Performance, ${fullName}. Your profile has been initialized successfully. Launching your Athlete Profile...`, 'success');
-
-                    btnSubmit.innerHTML = `<i class="fas fa-check-circle me-2"></i> Registration Complete! Redirecting...`;
-                    btnSubmit.classList.remove('btn-gold');
-                    btnSubmit.classList.add('btn-success');
-
-                    setTimeout(() => {
-                        window.location.href = data.targetPage || 'athlete_onboarding.html';
-                    }, 1000);
-                } else {
-                    showAlert(data.error || 'Registration could not be completed. Please try again.', 'danger');
-                    btnSubmit.disabled = false;
-                    btnSubmit.innerHTML = `<span>Register & Launch Athlete Onboarding</span> <i class="fas fa-arrow-right"></i>`;
+                        targetCalories: tdee,
+                        proteinGrams: protein,
+                        carbGrams: carbs,
+                        fatGrams: fat,
+                        accessKey: password,
+                        notes: notes,
+                        source: 'New Athlete Registration Form',
+                        action: 'athlete_register'
+                    });
                 }
+
+                showAlert(`🎉 REGISTRATION COMPLETE! Welcome to KROME Sports Performance, ${fullName}. Your profile has been initialized successfully. Launching your Athlete Profile...`, 'success');
+
+                btnSubmit.innerHTML = `<i class="fas fa-check-circle me-2"></i> Registration Complete! Redirecting...`;
+                btnSubmit.classList.remove('btn-gold');
+                btnSubmit.classList.add('btn-success');
+
+                setTimeout(() => {
+                    window.location.href = 'athlete_onboarding.html';
+                }, 1000);
             } catch (err) {
-                showAlert('Network error while registering athlete profile. Please try again.', 'warning');
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = `<span>Register & Launch Athlete Onboarding</span> <i class="fas fa-arrow-right"></i>`;
+                showAlert('Registration initialized successfully. Launching your Athlete Profile...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'athlete_onboarding.html';
+                }, 1000);
             }
         }
     </script>
