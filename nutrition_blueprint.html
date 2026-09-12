@@ -378,9 +378,9 @@
                     <i class="fas fa-lock me-1"></i> Athlete Access Gate
                 </span>
             </div>
-            <h3 class="fw-bold text-warning mb-1">Nutrition E-Book Blueprint Login</h3>
+             <h3 class="fw-bold text-warning mb-1">Nutrition E-Book Blueprint Login</h3>
             <p class="text-light small mb-3">
-                Unlock the <strong>Nutrition Blueprint E-Book</strong> using your athlete email address and Program Access Key Code (e.g. <code>Blueprint28</code> or <code>KROME-ATHLETE</code>).
+                Unlock the <strong>Nutrition Blueprint E-Book</strong> using your registered athlete email address and program access key code.
             </p>
 
             <!-- Inline Login Form -->
@@ -396,9 +396,8 @@
                         <label for="blueprint-gate-password" class="form-label text-warning small fw-bold mb-0">
                             <i class="fas fa-key me-1"></i> Program Access Key Code:
                         </label>
-                        <span class="badge bg-success text-white">Blueprint28</span>
                     </div>
-                    <input type="text" id="blueprint-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key (e.g. Blueprint28)" value="Blueprint28" required>
+                    <input type="text" id="blueprint-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key" required>
                 </div>
 
                 <div id="blueprint-gate-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
@@ -1299,14 +1298,8 @@
             } else if (blueprintKeys.includes(input)) {
                 localStorage.setItem('krome_blueprint_unlocked', 'true');
                 grantBlueprintAccess();
-            } else if (shredKeys.includes(input)) {
-                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the 30-Day Shred. Enter <strong>Blueprint28</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Nutrition Blueprint.`;
-                err.classList.remove('d-none');
-            } else if (protocolKeys.includes(input)) {
-                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Supplement Protocol. Enter <strong>Blueprint28</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Nutrition Blueprint.`;
-                err.classList.remove('d-none');
             } else {
-                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid passkey. Enter <strong>Blueprint28</strong> or bundle passkey <strong>KROME-ATHLETE</strong>.`;
+                err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid access key. Please check your purchase confirmation or contact your coach.`;
                 err.classList.remove('d-none');
             }
         }

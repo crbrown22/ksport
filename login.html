@@ -157,7 +157,7 @@
                 <a href="shop.html" class="btn btn-sm btn-outline-secondary text-light rounded-pill px-3" id="nav-back-shop">
                     <i class="fas fa-store me-1"></i> Shop
                 </a>
-                <a href="index.html" class="btn btn-sm btn-outline-warning text-warning rounded-pill px-3" id="nav-back-home">
+                <a href="ksp_home.html" class="btn btn-sm btn-outline-warning text-warning rounded-pill px-3" id="nav-back-home">
                     <i class="fas fa-home me-1"></i> Home
                 </a>
             </div>
@@ -267,7 +267,7 @@
                             </div>
 
                              <!-- Program 1: 30-Day Shred -->
-                            <div class="program-selector-card" id="card-prog-shred" onclick="selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred')">
+                            <div class="program-selector-card" id="card-prog-shred" onclick="selectProgramKey('30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
@@ -278,12 +278,12 @@
                                             <small class="text-secondary">Meal calendar, 41 recipe cards & metabolic workouts</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-warning text-dark key-badge">Select</span>
+                                    <span class="badge bg-warning text-dark" style="font-size: 0.72rem;">Select</span>
                                 </div>
                             </div>
 
                             <!-- Program 2: Nutrition Blueprint E-Book -->
-                            <div class="program-selector-card" id="card-prog-blueprint" onclick="selectProgramKey('Blueprint28', 'Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint')">
+                            <div class="program-selector-card" id="card-prog-blueprint" onclick="selectProgramKey('Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="bg-success bg-opacity-10 text-success p-2 rounded-3">
@@ -294,12 +294,12 @@
                                             <small class="text-secondary">Mifflin-St Jeor TDEE formulas, macro ratios & grocery lists</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-success text-white key-badge">Select</span>
+                                    <span class="badge bg-success text-white" style="font-size: 0.72rem;">Select</span>
                                 </div>
                             </div>
 
                             <!-- Program 3: Supplement Protocol -->
-                            <div class="program-selector-card" id="card-prog-protocol" onclick="selectProgramKey('Protocol30', 'Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol')">
+                            <div class="program-selector-card" id="card-prog-protocol" onclick="selectProgramKey('Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="bg-info bg-opacity-10 text-info p-2 rounded-3">
@@ -310,12 +310,12 @@
                                             <small class="text-secondary">Ergogenic stacks, daily timing & recovery aids</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-info text-dark key-badge">Select</span>
+                                    <span class="badge bg-info text-dark" style="font-size: 0.72rem;">Select</span>
                                 </div>
                             </div>
 
                             <!-- Program 4: All-Programs Athlete Access -->
-                            <div class="program-selector-card" id="card-prog-all" onclick="selectProgramKey('KROME-ATHLETE', 'All Athlete Programs & Blueprints', 'shred30_manual.html', 'card-prog-all')">
+                            <div class="program-selector-card" id="card-prog-all" onclick="selectProgramKey('All Athlete Programs & Blueprints', 'shred30_manual.html', 'card-prog-all')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="bg-secondary bg-opacity-25 text-warning p-2 rounded-3">
@@ -326,7 +326,7 @@
                                             <small class="text-secondary">Unlocks Shred, Nutrition Blueprint & Supplement Protocol</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-secondary text-white key-badge">Select</span>
+                                    <span class="badge bg-secondary text-white" style="font-size: 0.72rem;">Select</span>
                                 </div>
                             </div>
 
@@ -381,20 +381,14 @@
                                     <i class="fas fa-key text-warning me-1"></i> Program Access Key Code:
                                 </label>
                                 <span class="text-warning small fw-bold" id="selected-program-label" style="font-size: 0.78rem;">
-                                    e.g. Shred30, Blueprint28
+                                    Enter assigned key
                                 </span>
                             </div>
                             <div class="input-group">
-                                <input type="text" id="login-access-key" class="form-control form-control-custom" placeholder="e.g. Shred30, Blueprint28 or ATHLETE2026" required autocomplete="current-password" oninput="updateKeyIndicator(this.value)">
+                                <input type="text" id="login-access-key" class="form-control form-control-custom" placeholder="Enter your program access key" required autocomplete="current-password">
                                 <button class="btn key-toggle-btn px-3" type="button" onclick="clearKeyInput()">
                                     <i class="fas fa-times"></i>
                                 </button>
-                            </div>
-                            
-                            <!-- DYNAMIC KEY PROGRAM TARGET INDICATOR -->
-                            <div id="key-indicator-box" class="mt-2 p-2 bg-black rounded border border-secondary border-opacity-50 small d-none">
-                                <span class="text-secondary">Program Unlocked:</span>
-                                <strong class="text-warning ms-1" id="key-target-program-name">30-Day Shred</strong>
                             </div>
                         </div>
 
@@ -459,11 +453,11 @@
 
         // Auto-select program if arriving via redirect
         if (redirectParam.includes('nutrition') || redirectParam.includes('blueprint')) {
-            selectProgramKey('Blueprint28', 'Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint');
+            selectProgramKey('Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint');
         } else if (redirectParam.includes('supplement') || redirectParam.includes('protocol')) {
-            selectProgramKey('Protocol30', 'Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol');
+            selectProgramKey('Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol');
         } else {
-            selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred');
+            selectProgramKey('30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred');
         }
 
         // Check existing session
@@ -487,14 +481,9 @@
         checkExistingSession();
 
         // Program Selection Click Handler
-        function selectProgramKey(accessKey, programName, targetUrl, cardId) {
-            const keyInput = document.getElementById('login-access-key');
+        function selectProgramKey(programName, targetUrl, cardId) {
             const labelEl = document.getElementById('selected-program-label');
 
-            if (keyInput) {
-                keyInput.value = accessKey;
-                updateKeyIndicator(accessKey);
-            }
             if (labelEl) {
                 labelEl.textContent = `Selected: ${programName}`;
             }
@@ -505,59 +494,11 @@
             if (activeCard) activeCard.classList.add('active-selected');
         }
 
-        // Update real-time key indicator as user types
-        function updateKeyIndicator(keyVal) {
-            const clean = (keyVal || '').trim().toLowerCase();
-            const box = document.getElementById('key-indicator-box');
-            const progName = document.getElementById('key-target-program-name');
-
-            if (!clean) {
-                if (box) box.classList.add('d-none');
-                return;
-            }
-
-            if (clean.includes('shred')) {
-                progName.textContent = '30-Day Shred Challenge Manual (shred30_manual.html)';
-                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
-                box.classList.remove('d-none');
-            } else if (clean.includes('blueprint') || clean.includes('nutrition') || clean.includes('macro')) {
-                progName.textContent = 'Nutrition Blueprint E-Book (nutrition_blueprint.html)';
-                box.className = 'mt-2 p-2 bg-black rounded border border-success text-success small';
-                box.classList.remove('d-none');
-            } else if (clean.includes('protocol') || clean.includes('supplement')) {
-                progName.textContent = 'Athlete Supplement Protocol (supplement_protocol.html)';
-                box.className = 'mt-2 p-2 bg-black rounded border border-info text-info small';
-                box.classList.remove('d-none');
-            } else if (clean.includes('krome') || clean.includes('all')) {
-                progName.textContent = 'All-Access Bundle (Shred, Blueprint & Protocol)';
-                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
-                box.classList.remove('d-none');
-            } else if (clean.includes('athlete') || clean.includes('onboard') || clean.includes('profile')) {
-                progName.textContent = 'Athlete Profile & Performance Hub (athlete_onboarding.html)';
-                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
-                box.classList.remove('d-none');
-            } else {
-                if (box) box.classList.add('d-none');
-            }
-        }
-
         function clearKeyInput() {
             const keyInput = document.getElementById('login-access-key');
             if (keyInput) {
                 keyInput.value = '';
-                updateKeyIndicator('');
             }
-        }
-
-        function fillTestCredentials(email, key) {
-            const emailInput = document.getElementById('login-email');
-            const keyInput = document.getElementById('login-access-key');
-            if (emailInput) emailInput.value = email;
-            if (keyInput) {
-                keyInput.value = key;
-                updateKeyIndicator(key);
-            }
-            showAlert(`Loaded credentials for ${email} with key "${key}". Click the verify button below!`, 'info');
         }
 
         function showAlert(message, type = 'danger') {

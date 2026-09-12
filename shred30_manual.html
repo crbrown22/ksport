@@ -1564,19 +1564,9 @@
             } else if (shredKeys.includes(input)) {
                 localStorage.setItem('krome_shred_unlocked', 'true');
                 grantAccess();
-            } else if (blueprintKeys.includes(input)) {
-                if (err) {
-                    err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Nutrition Blueprint. Enter <strong>Shred30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock the 30-Day Shred Manual.`;
-                    err.classList.remove('d-none');
-                }
-            } else if (protocolKeys.includes(input)) {
-                if (err) {
-                    err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Supplement Protocol. Enter <strong>Shred30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock the 30-Day Shred Manual.`;
-                    err.classList.remove('d-none');
-                }
             } else {
                 if (err) {
-                    err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid passkey. Enter <strong>Shred30</strong> or bundle passkey <strong>KROME-ATHLETE</strong>.`;
+                    err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid access key. Please check your purchase confirmation or contact your coach.`;
                     err.classList.remove('d-none');
                 }
             }

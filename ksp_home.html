@@ -113,6 +113,30 @@
         }
 
         /* ----------------------------------
+           GLOBAL CARD HOVER SCALING
+        ---------------------------------- */
+        .krome-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .krome-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--krome-gold);
+            box-shadow: 0 15px 40px rgba(0, 255, 209, 0.2);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px) scale(1.015);
+            border-color: var(--krome-gold);
+            box-shadow: 0 20px 50px rgba(255, 212, 71, 0.15);
+        }
+
+        /* ----------------------------------
            HERO CAROUSEL SECTION
         ---------------------------------- */
         .hero-carousel-wrapper {
@@ -808,7 +832,7 @@
     <!-- Main Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="ksp_home.html">
+            <a class="navbar-brand" href="index.html">
                 <i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -827,6 +851,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="programsDropdown">
                             <li><a class="dropdown-item" href="#online-training"><i class="fas fa-mobile-alt me-2 text-warning"></i> Online Training</a></li>
+                            <li><a class="dropdown-item" href="#ondemand-programs"><i class="fas fa-bolt me-2 text-warning"></i> On-Demand Programs</a></li>
                             <li><a class="dropdown-item" href="#sports-performance"><i class="fas fa-running me-2 text-info"></i> Sports Performance</a></li>
                             <li><a class="dropdown-item" href="#weight-loss"><i class="fas fa-fire me-2 text-warning"></i> Weight Loss & Shred</a></li>
                             <li><a class="dropdown-item" href="#nutrition"><i class="fas fa-apple-alt me-2 text-info"></i> Nutrition Plans</a></li>
@@ -1121,6 +1146,127 @@
                                     <span><i class="fas fa-tag me-1"></i> $99 / Month</span>
                                 </div>
                                 <a href="program_detail.html?id=online-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- On-Demand Programs & E-Books -->
+            <section class="category-block" id="ondemand-programs">
+                <div class="category-header">
+                    <span class="category-pill"><i class="fas fa-bolt me-1"></i> Instant Digital Access</span>
+                    <h2 class="category-title">On-Demand <span>Programs & E-Books</span></h2>
+                    <p class="category-desc">
+                        Downloadable training guides, nutrition blueprints, and rapid shred protocols designed for instant execution and self-paced athletic mastery.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <!-- 30-Day Shred Challenge -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/clean_eating.jpg" alt="30-Day Shred Challenge">
+                                <span class="card-category-tag">Digital Guide &bull; $59.99</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">30-Day Shred Challenge</h3>
+                                <p class="card-text">High-intensity 30-day metabolic shred blueprint with daily fat-loss circuits, rapid drop nutrition guide, and hydration targets ($59.99).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 30 Days</span>
+                                    <span><i class="fas fa-tag me-1"></i> $59.99 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=shred30" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nutrition Guidelines E-Book -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Salad.jpg" alt="Nutrition Guidelines E-Book">
+                                <span class="card-category-tag">Nutrition Guide &bull; $29.99</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Nutrition Guidelines E-Book</h3>
+                                <p class="card-text">Comprehensive nutritional manual detailing macronutrient science, meal planning, caloric adjustment, and clean eating fundamentals ($29.99).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-book me-1"></i> Instant E-Book</span>
+                                    <span><i class="fas fa-tag me-1"></i> $29.99 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=nutrition-guidelines" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Athlete Supplement Protocol -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/facility_weights.jpg" alt="Athlete Supplement Protocol">
+                                <span class="card-category-tag">Supplement Guide &bull; $28.00</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Athlete Supplement Protocol</h3>
+                                <p class="card-text">Evidence-based supplement stacking guide for explosive power, joint recovery, cognitive focus, and peak physical conditioning ($28.00).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-pills me-1"></i> Protocol Guide</span>
+                                    <span><i class="fas fa-tag me-1"></i> $28.00 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=supplement-protocol" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Custom Macro Blueprint -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/Salmon.jpg" alt="Custom Macro Blueprint">
+                                <span class="card-category-tag">Macro System &bull; $79.99</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Custom Macro & Meal Blueprint</h3>
+                                <p class="card-text">Precision macronutrient calculation system, targeted calorie shifting, and sample meal templates engineered for your specific body composition goals ($79.99).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="fas fa-calculator me-1"></i> Macro Engine</span>
+                                    <span><i class="fas fa-tag me-1"></i> $79.99 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=macro-blueprint" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8-Week Fat Loss & Shred Guide -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/shred_guide.jpg" alt="8-Week Fat Loss & Shred Guide">
+                                <span class="card-category-tag">Express Shred &bull; $99</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">8-Week Fat Loss & Shred Guide</h3>
+                                <p class="card-text">Rapid physical shred blueprint crafted for peak conditioning, healthy gut support, energy maintenance, and defined muscle vascularity ($99).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 8 Weeks</span>
+                                    <span><i class="fas fa-tag me-1"></i> $99 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=weightloss-8" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 12-Week Transformation Blueprint -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="program-card">
+                            <div class="card-img-wrapper">
+                                <img src="media/transformation_body.jpg" alt="12-Week Transformation Blueprint">
+                                <span class="card-category-tag">Transformation &bull; $129.99</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">12-Week Transformation Blueprint</h3>
+                                <p class="card-text">Comprehensive 12-week body recomp guide featuring progressive resistance training phases, refeed schedules, and metabolic pacing ($129.99).</p>
+                                <div class="card-meta-row">
+                                    <span><i class="far fa-calendar-alt me-1"></i> 12 Weeks</span>
+                                    <span><i class="fas fa-tag me-1"></i> $129.99 One-Time</span>
+                                </div>
+                                <a href="program_detail.html?id=transformation-12" class="btn-learn-more">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>

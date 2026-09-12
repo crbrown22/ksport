@@ -485,7 +485,7 @@
             </div>
             <h3 class="fw-bold text-warning mb-1">Athlete Supplement Protocol Login</h3>
             <p class="text-light small mb-3">
-                Unlock the <strong>Athlete Supplement Protocol</strong> using your athlete email address and Program Access Key Code (e.g. <code>Protocol30</code> or <code>KROME-ATHLETE</code>).
+                Unlock the <strong>Athlete Supplement Protocol</strong> using your registered athlete email address and program access key code.
             </p>
 
             <!-- Inline Login Form -->
@@ -501,9 +501,8 @@
                         <label for="supp-gate-password" class="form-label text-warning small fw-bold mb-0">
                             <i class="fas fa-key me-1"></i> Program Access Key Code:
                         </label>
-                        <span class="badge bg-info text-dark">Protocol30</span>
                     </div>
-                    <input type="text" id="supp-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key (e.g. Protocol30)" value="Protocol30" required>
+                    <input type="text" id="supp-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key" required>
                 </div>
 
                 <div id="supp-gate-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
@@ -1517,14 +1516,8 @@
             } else if (protocolKeys.includes(input)) {
                 localStorage.setItem('krome_protocol_unlocked', 'true');
                 grantSuppAccess();
-            } else if (shredKeys.includes(input)) {
-                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the 30-Day Shred. Enter <strong>Protocol30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Supplement Protocol.`;
-                errorDiv.classList.remove('d-none');
-            } else if (blueprintKeys.includes(input)) {
-                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Passkey '<strong>${input}</strong>' is for the Nutrition Blueprint. Enter <strong>Protocol30</strong> or the bundle passkey <strong>KROME-ATHLETE</strong> to unlock this Supplement Protocol.`;
-                errorDiv.classList.remove('d-none');
             } else {
-                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid passkey. Enter <strong>Protocol30</strong> or bundle passkey <strong>KROME-ATHLETE</strong>.`;
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid access key. Please check your purchase confirmation or contact your coach.`;
                 errorDiv.classList.remove('d-none');
             }
         }
