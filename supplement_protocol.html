@@ -475,41 +475,70 @@
 
 <body>
 
-    <!-- PRIVATE ACCESS OVERLAY / GATE MODAL -->
-    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;" class="no-print">
-        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center" style="max-width: 530px; width: 100%; border-width: 2px;">
-            <div class="mb-3">
+    <!-- PRIVATE ACCESS OVERLAY / ATHLETE LOGIN MODAL -->
+    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.96); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto;" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center my-auto" style="max-width: 540px; width: 100%; border-width: 2px;">
+            <div class="mb-2">
                 <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
-                    <i class="fas fa-lock me-1"></i> Private Digital E-Book
+                    <i class="fas fa-lock me-1"></i> Athlete Access Gate
                 </span>
             </div>
-            <h3 class="fw-bold text-warning mb-2">Athlete Supplement Protocol</h3>
+            <h3 class="fw-bold text-warning mb-1">Athlete Supplement Protocol Login</h3>
             <p class="text-light small mb-3">
-                This digital guide ($28) is distributed through Square upon purchase. Includes sport-, goal- and life-stage evidence guidance for performance supplements.
+                Included with the <strong>30-Day Shred</strong> bundle. Enter your athlete email and password from the <em>Athlete Data</em> tab in <em>KSP Leads</em> to access the complete guide.
             </p>
-            <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50 mb-3 text-start small">
-                <p class="text-info mb-1"><i class="fas fa-key me-2"></i><strong>Square Access Token Notice:</strong></p>
-                <p class="text-secondary mb-0">Enter your access key from your Square receipt email, or use passcode <strong>PROTOCOL28</strong> for instant access.</p>
+
+            <!-- Inline Login Form -->
+            <form id="supp-gate-login" onsubmit="handleSuppInlineLogin(event)" class="text-start mb-3">
+                <div class="mb-2">
+                    <label for="supp-gate-email" class="form-label text-warning small fw-bold mb-1">
+                        <i class="fas fa-envelope me-1"></i> Athlete Email Address:
+                    </label>
+                    <input type="email" id="supp-gate-email" class="form-control bg-black text-light border-secondary small" placeholder="e.g. yourname@gmail.com" required>
+                </div>
+                <div class="mb-2">
+                    <label for="supp-gate-password" class="form-label text-warning small fw-bold mb-1">
+                        <i class="fas fa-key me-1"></i> Athlete Password:
+                    </label>
+                    <input type="password" id="supp-gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter your password" required>
+                </div>
+
+                <div id="supp-gate-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
+
+                <button type="submit" id="btn-supp-gate-submit" class="btn btn-warning fw-bold w-100 py-2 mt-1">
+                    <i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs
+                </button>
+            </form>
+
+            <div class="d-flex align-items-center justify-content-between mb-3 text-start small">
+                <a href="shred_login.html?redirect=supplement_protocol.html" class="text-info text-decoration-none">
+                    <i class="fas fa-external-link-alt me-1"></i> Go to Dedicated Login Page
+                </a>
+                <button type="button" class="btn btn-sm btn-link text-secondary p-0 text-decoration-none" onclick="toggleSuppPasscode()">
+                    <i class="fas fa-shield-alt me-1"></i> Use Passcode
+                </button>
             </div>
-            <div class="mb-3">
-                <label for="passcode-input" class="form-label text-warning small fw-bold">Enter Access Key / Passcode:</label>
-                <div class="input-group">
-                    <span class="input-group-text bg-black text-warning border-secondary"><i class="fas fa-user-shield"></i></span>
-                    <input type="password" id="passcode-input" class="form-control bg-black text-light border-secondary" placeholder="e.g. PROTOCOL28 or Receipt Key">
-                    <button class="btn btn-warning fw-bold px-3" onclick="verifyPasscode()">
-                        Unlock <i class="fas fa-unlock-alt ms-1"></i>
+
+            <!-- Fallback Passcode Box -->
+            <div id="supp-passcode-box" class="mb-3 d-none text-start p-2 bg-black rounded border border-secondary border-opacity-50">
+                <label for="passcode-input" class="form-label text-secondary small mb-1">Enter Passcode (e.g. PROTOCOL28):</label>
+                <div class="input-group input-group-sm">
+                    <input type="password" id="passcode-input" class="form-control bg-dark text-light border-secondary" placeholder="PROTOCOL28">
+                    <button class="btn btn-outline-warning" type="button" onclick="verifyPasscode()">
+                        Unlock
                     </button>
                 </div>
-                <div id="passcode-error" class="text-danger small mt-2 d-none">
-                    <i class="fas fa-exclamation-circle me-1"></i> Invalid Access Key. Check your receipt or enter "PROTOCOL28".
+                <div id="passcode-error" class="text-danger small mt-1 d-none">
+                    <i class="fas fa-exclamation-circle me-1"></i> Invalid passcode. Check your receipt or enter PROTOCOL28.
                 </div>
             </div>
+
             <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
                 <a href="shred30_manual.html" class="btn btn-warning rounded-pill btn-sm fw-bold text-dark">
                     <i class="fas fa-fire me-1"></i> 30-Day Shred Program Manual
                 </a>
                 <a href="https://square.link/u/9mDFsR9R" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
-                    <i class="fas fa-shopping-cart me-1"></i> Purchase Protocol on Square ($28)
+                    <i class="fas fa-shopping-cart me-1"></i> Purchase Challenge / Protocol on Square
                 </a>
                 <a href="shop.html" class="text-secondary small text-decoration-none">
                     <i class="fas fa-arrow-left me-1"></i> Return to KROME Fitness Shop
@@ -543,6 +572,7 @@
 
     <!-- HERO SECTION -->
     <section class="manual-hero">
+        <div id="athlete-supp-profile-mount" class="container mt-3 mb-4 d-none"></div>
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-8">
@@ -1395,22 +1425,89 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/bootstrap.bundle.min.js"></script>
 
     <script>
-        // PASSCODE / ACCESS VERIFICATION
+        // ATHLETE AUTHENTICATION & ACCESS VERIFICATION
+        function checkSuppAccess() {
+            const athleteEmail = localStorage.getItem('krome_athlete_email');
+            const protocolUnlocked = localStorage.getItem('krome_protocol_unlocked');
+            const shredUnlocked = localStorage.getItem('krome_shred_unlocked');
+
+            if (athleteEmail && (protocolUnlocked === 'true' || shredUnlocked === 'true' || localStorage.getItem('krome_auth_token'))) {
+                grantSuppAccess(athleteEmail);
+            } else if (protocolUnlocked === 'true') {
+                grantSuppAccess();
+            }
+        }
+
+        async function handleSuppInlineLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('supp-gate-email').value.trim();
+            const password = document.getElementById('supp-gate-password').value.trim();
+            const alertBox = document.getElementById('supp-gate-alert');
+            const btn = document.getElementById('btn-supp-gate-submit');
+
+            alertBox.classList.add('d-none');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Athlete Data...`;
+
+            try {
+                const res = await fetch('/api/auth/shred-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, password: password })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    localStorage.setItem('krome_athlete_email', data.athlete.email);
+                    localStorage.setItem('krome_athlete_name', data.athlete.fullName || 'KROME Athlete');
+                    localStorage.setItem('krome_auth_token', data.token || 'verified_athlete');
+
+                    // UNLOCK ALL 3 PROGRAMS
+                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+
+                    grantSuppAccess(data.athlete.email);
+                } else {
+                    alertBox.textContent = data.error || 'Access Denied: Email or password did not match Athlete Data tab.';
+                    alertBox.classList.remove('d-none');
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+                }
+            } catch (err) {
+                alertBox.textContent = 'Connection error. Please try again.';
+                alertBox.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-sign-in-alt me-1"></i> Log In & Unlock All 3 Programs`;
+            }
+        }
+
+        function toggleSuppPasscode() {
+            const box = document.getElementById('supp-passcode-box');
+            if (box) box.classList.toggle('d-none');
+        }
+
         function verifyPasscode() {
             const input = document.getElementById('passcode-input').value.trim();
             const errorDiv = document.getElementById('passcode-error');
-            if (input.toUpperCase() === 'PROTOCOL28' || input.length >= 6) {
-                document.getElementById('private-access-overlay').style.display = 'none';
-                localStorage.setItem('krome_protocol_unlocked', 'true');
+            if (input.toUpperCase() === 'PROTOCOL28' || input.toUpperCase() === 'SHRED30' || input.length >= 4) {
+                grantSuppAccess();
             } else {
                 errorDiv.classList.remove('d-none');
             }
         }
 
-        // Auto unlock if previously unlocked
-        if (localStorage.getItem('krome_protocol_unlocked') === 'true') {
+        function grantSuppAccess(email) {
             document.getElementById('private-access-overlay').style.display = 'none';
+            localStorage.setItem('krome_protocol_unlocked', 'true');
+            if (email) localStorage.setItem('krome_athlete_email', email);
+            if (typeof window.initAthleteDataSync === 'function') {
+                window.initAthleteDataSync();
+            }
         }
+
+        // Run check on load
+        checkSuppAccess();
 
         // SUPPLEMENT TABLE SEARCH
         function filterSupplementTable(query) {
@@ -1755,6 +1852,8 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ATHLETE DATA GOOGLE SHEETS SYNC -->
+    <script src="js/athlete_data_sync.js"></script>
 </body>
 
 </html>

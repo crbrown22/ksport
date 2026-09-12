@@ -689,7 +689,6 @@
 
     <!-- MANUAL HERO & OVERVIEW -->
     <section class="manual-hero">
-        <div id="athlete-shred-profile-mount" class="container mt-3 mb-4 d-none"></div>
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-8">
@@ -1571,9 +1570,6 @@
                     badge.innerHTML = '<i class="fas fa-shield-alt text-success me-1"></i> Verified Square Member Access';
                 }
             }
-            if (typeof window.initAthleteDataSync === 'function') {
-                window.initAthleteDataSync();
-            }
         }
 
         function athleteLogout() {
@@ -2370,9 +2366,6 @@
     <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
-
-    <!-- ATHLETE DATA GOOGLE SHEETS SYNC -->
-    <script src="js/athlete_data_sync.js"></script>
 </body>
 
 </html>

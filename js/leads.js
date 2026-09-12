@@ -3,7 +3,7 @@
  * Lead Tracker & Google Sheets / Gmail Webhook Integration
  */
 
-const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvJxiPMNYhn4Yo9obWfDaiHtNghefuQ7hXbOiwPMjuZvoPbRrmtTO6qv70TtJDsFH9/exec';
+const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFHMKVprWfXyqV8p6W7Kxqp4BjDi-MV5o9aT3KgJLE5pa-DnepKqygJkMH5p9Ov53z/exec';
 const KROME_CALENDAR_BOOKING_URL = 'https://calendar.app.google/ikECphRQVZif3yUZ8';
 
 /**
@@ -56,14 +56,27 @@ async function sendLeadToGoogle(leadData) {
         }
 
         // Mode 'no-cors' allows sending to Google Apps Script without CORS blocking in the browser
-        await fetch(postUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: JSON.stringify(payload)
-        });
+        try {
+            await fetch(postUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(payload)
+            });
+        } catch (scriptErr) {
+            console.warn('Apps script direct post notice:', scriptErr);
+        }
+
+        // Also sync with local portal server
+        try {
+            await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        } catch (_) {}
 
         return true;
     } catch (err) {
