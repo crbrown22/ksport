@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const DATA_FILE = path.join(__dirname, 'data', 'leads.json');
 const ATHLETE_DATA_FILE = path.join(__dirname, 'data', 'athlete_data.json');
-let GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFHMKVprWfXyqV8p6W7Kxqp4BjDi-MV5o9aT3KgJLE5pa-DnepKqygJkMH5p9Ov53z/exec';
+let GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz804JRqQ8-arqlVk_FVS-KhMWGlca4gaSjAwwp2cx-5pujEKeoQBj7_To3EmmuHDP1/exec';
 if (process.env.GOOGLE_APPS_SCRIPT_URL && 
     !process.env.GOOGLE_APPS_SCRIPT_URL.includes('AKfycbzIAwh0') && 
     !process.env.GOOGLE_APPS_SCRIPT_URL.includes('AKfycbxvJxiP') &&
@@ -430,6 +430,75 @@ app.post('/api/auth/athlete-logout', async (req, res) => {
   });
 });
 
+// Macronutrient and TDEE Calculator Engine
+function calculateAthleteMacros(weightLbs, goalWeightLbs, heightFt, heightIn, age, sex, activityLevelStr, goalObjectiveStr) {
+  const wLbs = parseFloat(weightLbs) || 180;
+  const gWLbs = parseFloat(goalWeightLbs) || wLbs;
+  const hFt = parseFloat(heightFt) || 5;
+  const hIn = parseFloat(heightIn) || 10;
+  const a = parseFloat(age) || 28;
+  const isFemale = String(sex || '').toLowerCase().includes('female') || String(sex || '').toLowerCase() === 'f';
+
+  // Unit conversions
+  const weightKg = wLbs * 0.45359237;
+  const totalInches = (hFt * 12) + hIn;
+  const heightCm = totalInches * 2.54;
+
+  // Mifflin-St Jeor BMR
+  const bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * a) + (isFemale ? -161 : 5);
+
+  // Activity Multiplier
+  let actMult = 1.55;
+  const actStr = String(activityLevelStr || '').toLowerCase();
+  if (actStr.includes('sedentary') || actStr === '1.2') {
+    actMult = 1.2;
+  } else if (actStr.includes('light') || actStr === '1.375') {
+    actMult = 1.375;
+  } else if (actStr.includes('very active') || actStr === '1.725') {
+    actMult = 1.725;
+  } else if (actStr.includes('extreme') || actStr === '1.9') {
+    actMult = 1.9;
+  } else if (actStr.includes('moderate') || actStr === '1.55') {
+    actMult = 1.55;
+  }
+
+  const tdee = Math.round(bmr * actMult);
+  let targetCalories = tdee;
+
+  // Goal adjustments
+  const goalStr = String(goalObjectiveStr || '').toLowerCase();
+  if (goalStr.includes('fat loss') || goalStr.includes('shred') || goalStr.includes('cut') || (gWLbs < wLbs - 2)) {
+    targetCalories = Math.max(1400, tdee - 500); // 500 kcal deficit
+  } else if (goalStr.includes('hypertrophy') || goalStr.includes('muscle') || goalStr.includes('strength') || goalStr.includes('bulk') || (gWLbs > wLbs + 2)) {
+    targetCalories = tdee + 350; // 350 kcal surplus
+  } else {
+    targetCalories = tdee; // Maintenance / Recomposition
+  }
+
+  // Protein: 1.0g per lb of bodyweight (aligned with goal/current weight)
+  let proteinGrams = Math.round(Math.min(wLbs, gWLbs > 0 ? gWLbs : wLbs) * 1.0);
+  if (proteinGrams < 90) proteinGrams = 90;
+  const proteinCalories = proteinGrams * 4;
+
+  // Fat: 25% of target daily calories
+  const fatCalories = targetCalories * 0.25;
+  let fatGrams = Math.round(fatCalories / 9);
+  if (fatGrams < 35) fatGrams = 35;
+  const actualFatCalories = fatGrams * 9;
+
+  // Carbs: Remaining calories
+  const remainingCalories = Math.max(200, targetCalories - proteinCalories - actualFatCalories);
+  const carbGrams = Math.round(remainingCalories / 4);
+
+  return {
+    calories: targetCalories,
+    protein: proteinGrams,
+    carbs: carbGrams,
+    fat: fatGrams,
+    summary: `${targetCalories} kcal | ${proteinGrams}g P / ${carbGrams}g C / ${fatGrams}g F`
+  };
+}
+
 // API: Register New Athlete (Supports registering with NO pre-existing program set up)
 async function handleAthleteRegistration(req, res) {
   const {
@@ -443,10 +512,23 @@ async function handleAthleteRegistration(req, res) {
     programStatus,
     programInterest,
     fitnessGoal,
+    primaryGoalObjective,
     athleteLevel,
     experience,
+    age,
+    biologicalSex,
+    gender,
+    sex,
+    heightFeet,
+    height_feet,
+    heightFt,
+    heightInches,
+    height_inches,
+    heightIn,
     currentWeight,
     goalWeight,
+    activityLevel,
+    activity,
     notes,
     message
   } = req.body;
@@ -455,8 +537,13 @@ async function handleAthleteRegistration(req, res) {
   const cleanName = (fullName || name || '').trim() || 'KROME Athlete';
   const cleanPhone = (phone || '').trim();
   const cleanPassword = (password || accessKey || 'ATHLETE2026').trim();
-  const cleanGoal = (fitnessGoal || 'Fat Loss & Athletic Conditioning').trim();
-  const cleanLevel = (athleteLevel || experience || 'Intermediate').trim();
+  const cleanGoal = (primaryGoalObjective || fitnessGoal || 'Fat Loss & Muscular Definition').trim();
+  const cleanLevel = (athleteLevel || experience || 'Intermediate (2-4 years)').trim();
+  const cleanAge = age ? String(age).trim() : '';
+  const cleanSex = (biologicalSex || gender || sex || '').trim();
+  const cleanHeightFeet = String(heightFeet || height_feet || heightFt || '').trim();
+  const cleanHeightInches = String(heightInches !== undefined ? heightInches : (height_inches !== undefined ? height_inches : (heightIn !== undefined ? heightIn : ''))).trim();
+  const cleanActivityLevel = (activityLevel || activity || 'Moderately Active (3-5 days/wk)').trim();
   const cleanNotes = (notes || message || 'New athlete registered without pre-assigned program. Requesting onboarding assessment & coach consultation.').trim();
   
   const requestedProgram = (program || programStatus || programInterest || '').trim();
@@ -501,6 +588,23 @@ async function handleAthleteRegistration(req, res) {
     targetPage = 'shred30_manual.html';
   }
 
+  // Compute personalized macronutrients using Mifflin-St Jeor TDEE
+  const athleteMacros = calculateAthleteMacros(
+    currentWeight,
+    goalWeight,
+    cleanHeightFeet,
+    cleanHeightInches,
+    cleanAge,
+    cleanSex,
+    cleanActivityLevel,
+    cleanGoal
+  );
+
+  const targetCalories = req.body.targetCalories || req.body.calories || athleteMacros.calories;
+  const proteinGrams = req.body.proteinGrams || req.body.protein || athleteMacros.protein;
+  const carbGrams = req.body.carbGrams || req.body.carbs || athleteMacros.carbs;
+  const fatGrams = req.body.fatGrams || req.body.fat || athleteMacros.fat;
+
   if (existingIdx >= 0) {
     // Update existing record with registration details
     athleteList[existingIdx].fullName = cleanName;
@@ -508,9 +612,20 @@ async function handleAthleteRegistration(req, res) {
     athleteList[existingIdx].password = cleanPassword;
     athleteList[existingIdx].accessKey = cleanPassword;
     athleteList[existingIdx].fitnessGoal = cleanGoal;
+    athleteList[existingIdx].primaryGoalObjective = cleanGoal;
     athleteList[existingIdx].athleteLevel = cleanLevel;
+    if (cleanAge) athleteList[existingIdx].age = cleanAge;
+    if (cleanSex) athleteList[existingIdx].biologicalSex = cleanSex;
+    if (cleanHeightFeet) athleteList[existingIdx].heightFeet = cleanHeightFeet;
+    if (cleanHeightInches !== '') athleteList[existingIdx].heightInches = cleanHeightInches;
+    if (cleanActivityLevel) athleteList[existingIdx].activityLevel = cleanActivityLevel;
     if (currentWeight) athleteList[existingIdx].currentWeight = String(currentWeight);
     if (goalWeight) athleteList[existingIdx].goalWeight = String(goalWeight);
+    athleteList[existingIdx].targetCalories = targetCalories;
+    athleteList[existingIdx].proteinGrams = proteinGrams;
+    athleteList[existingIdx].carbGrams = carbGrams;
+    athleteList[existingIdx].fatGrams = fatGrams;
+    athleteList[existingIdx].nutritionMacros = athleteMacros.summary;
     if (cleanNotes) athleteList[existingIdx].notes = cleanNotes;
     athleteList[existingIdx].hasPortalAccess = true;
     if (hasShred) athleteList[existingIdx].hasShredAccess = true;
@@ -532,7 +647,17 @@ async function handleAthleteRegistration(req, res) {
       program: assignedProgramName,
       programInterest: requestedProgram || 'Athlete Onboarding & Assessment',
       fitnessGoal: cleanGoal,
+      primaryGoalObjective: cleanGoal,
       athleteLevel: cleanLevel,
+      age: cleanAge,
+      biologicalSex: cleanSex,
+      heightFeet: cleanHeightFeet,
+      heightInches: cleanHeightInches,
+      activityLevel: cleanActivityLevel,
+      targetCalories: targetCalories,
+      proteinGrams: proteinGrams,
+      carbGrams: carbGrams,
+      fatGrams: fatGrams,
       shredStatus: hasNoProgram 
         ? 'New Athlete Registration (Pending Program Setup)' 
         : 'Registered Athlete Enrollment',
@@ -541,7 +666,7 @@ async function handleAthleteRegistration(req, res) {
       currentWeight: String(currentWeight || '180'),
       goalWeight: String(goalWeight || '170'),
       supplementStack: 'Pending 1-on-1 Athlete Consultation',
-      nutritionMacros: 'Baseline Mifflin-St Jeor Assessment Pending',
+      nutritionMacros: athleteMacros.summary,
       notes: cleanNotes,
       hasShredAccess: hasShred,
       hasSupplementAccess: hasSupp,
@@ -570,12 +695,22 @@ async function handleAthleteRegistration(req, res) {
     program: assignedProgramName,
     programInterest: requestedProgram || 'Athlete Onboarding & Assessment',
     fitnessGoal: cleanGoal,
+    primaryGoalObjective: cleanGoal,
     athleteLevel: cleanLevel,
+    age: cleanAge,
+    biologicalSex: cleanSex,
+    heightFeet: cleanHeightFeet,
+    heightInches: cleanHeightInches,
+    activityLevel: cleanActivityLevel,
+    targetCalories: targetCalories,
+    proteinGrams: proteinGrams,
+    carbGrams: carbGrams,
+    fatGrams: fatGrams,
     currentWeight: String(currentWeight || '180'),
     goalWeight: String(goalWeight || '170'),
     shredStatus: hasNoProgram ? 'New Athlete (No Program Set Up Yet)' : 'Active Athlete Request',
     supplementNotes: 'Pending initial consultation',
-    nutritionGoals: 'Pending baseline assessment',
+    nutritionGoals: athleteMacros.summary,
     message: cleanNotes,
     lastUpdated: now
   };
@@ -587,7 +722,7 @@ async function handleAthleteRegistration(req, res) {
   }
   writeLeads(leadsList);
 
-  // Sync with Google Apps Script
+  // Sync with Google Apps Script (Saves to athlete_registration tab)
   if (GOOGLE_APPS_SCRIPT_URL) {
     try {
       fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -595,7 +730,32 @@ async function handleAthleteRegistration(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'athlete_register',
-          tab: 'Athlete_Data',
+          tab: 'athlete_registration',
+          timestamp: now,
+          fullName: cleanName,
+          email: cleanEmail,
+          phone: cleanPhone,
+          program: assignedProgramName,
+          programStatus: assignedProgramName,
+          fitnessGoal: cleanGoal,
+          primaryGoalObjective: cleanGoal,
+          athleteLevel: cleanLevel,
+          age: cleanAge,
+          biologicalSex: cleanSex,
+          heightFeet: cleanHeightFeet,
+          heightInches: cleanHeightInches,
+          activityLevel: cleanActivityLevel,
+          currentWeight: String(currentWeight || ''),
+          goalWeight: String(goalWeight || ''),
+          targetCalories: targetCalories,
+          proteinGrams: proteinGrams,
+          carbGrams: carbGrams,
+          fatGrams: fatGrams,
+          accessKey: cleanPassword,
+          password: cleanPassword,
+          notes: cleanNotes,
+          status: hasNoProgram ? 'New Registered - Pending Onboarding & Strategy Call' : 'Active Athlete - Enrolled',
+          isNoProgram: hasNoProgram,
           ...athleteRecord
         })
       }).catch(err => console.warn('Registration Google Sheet sync notice:', err.message));
@@ -627,7 +787,13 @@ async function handleAthleteRegistration(req, res) {
       phone: athleteRecord.phone,
       program: athleteRecord.program,
       fitnessGoal: athleteRecord.fitnessGoal,
+      primaryGoalObjective: athleteRecord.primaryGoalObjective,
       athleteLevel: athleteRecord.athleteLevel,
+      age: athleteRecord.age,
+      biologicalSex: athleteRecord.biologicalSex,
+      heightFeet: athleteRecord.heightFeet,
+      heightInches: athleteRecord.heightInches,
+      activityLevel: athleteRecord.activityLevel,
       currentWeight: athleteRecord.currentWeight,
       goalWeight: athleteRecord.goalWeight,
       shredStatus: athleteRecord.shredStatus,
@@ -636,6 +802,18 @@ async function handleAthleteRegistration(req, res) {
       hasNutritionAccess: athleteRecord.hasNutritionAccess,
       hasPortalAccess: athleteRecord.hasPortalAccess,
       isNewAthleteNoProgram: athleteRecord.isNewAthleteNoProgram,
+      targetCalories: athleteRecord.targetCalories,
+      proteinGrams: athleteRecord.proteinGrams,
+      carbGrams: athleteRecord.carbGrams,
+      fatGrams: athleteRecord.fatGrams,
+      nutritionMacros: athleteRecord.nutritionMacros,
+      macros: {
+        calories: athleteRecord.targetCalories,
+        protein: athleteRecord.proteinGrams,
+        carbs: athleteRecord.carbGrams,
+        fat: athleteRecord.fatGrams,
+        summary: athleteRecord.nutritionMacros
+      },
       lastLogin: athleteRecord.lastLogin
     }
   });
@@ -669,7 +847,7 @@ app.get(['/register', '/signup', '/register.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'register.html'));
 });
 
-app.get(['/onboarding', '/athlete_onboarding.html', '/onboarding.html'], (req, res) => {
+app.get(['/onboarding', '/athlete_onboarding.html', '/onboarding.html', '/profile', '/athlete_profile', '/athlete_profile.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'athlete_onboarding.html'));
 });
 

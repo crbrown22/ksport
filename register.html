@@ -321,18 +321,19 @@
                             </div>
                         </div>
 
-                        <!-- FITNESS GOAL & EXPERIENCE LEVEL -->
+                        <!-- PRIMARY GOAL OBJECTIVE & EXPERIENCE LEVEL -->
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="reg-fitness-goal" class="form-label text-light small fw-bold">
-                                    <i class="fas fa-bullseye text-warning me-1"></i> Primary Goal:
+                                    <i class="fas fa-bullseye text-warning me-1"></i> Primary Goal Objective:
                                 </label>
                                 <select id="reg-fitness-goal" class="form-select form-select-custom">
-                                    <option value="Fat Loss & Lean Muscle Definition" selected>Fat Loss & Lean Muscle Definition</option>
-                                    <option value="Strength & Power Development">Strength & Power Development</option>
-                                    <option value="Metabolic Conditioning & Endurance">Metabolic Conditioning & Endurance</option>
-                                    <option value="Speed, Agility & Sports Performance">Speed, Agility & Sports Performance</option>
+                                    <option value="Fat Loss & Muscular Definition" selected>Fat Loss & Muscular Definition</option>
+                                    <option value="Hypertrophy & Muscle Growth">Hypertrophy & Muscle Growth</option>
+                                    <option value="Maximum Strength & Power Development">Maximum Strength & Power Development</option>
+                                    <option value="Speed, Agility & Athletic Conditioning">Speed, Agility & Athletic Conditioning</option>
                                     <option value="Body Recomposition & General Fitness">Body Recomposition & General Fitness</option>
+                                    <option value="Endurance & Cardiovascular Stamina">Endurance & Cardiovascular Stamina</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -344,6 +345,62 @@
                                     <option value="Intermediate (2-4 years consistent training)" selected>Intermediate (2-4 years)</option>
                                     <option value="Advanced (5+ years / Competitive Athlete)">Advanced (5+ years / Competitive)</option>
                                     <option value="Collegiate / Semi-Pro / Professional">Collegiate / Professional Athlete</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- DEMOGRAPHICS: AGE & BIOLOGICAL SEX -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-age" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-calendar-day text-warning me-1"></i> Age:
+                                </label>
+                                <input type="number" id="reg-age" class="form-control form-control-custom" placeholder="e.g. 26" min="12" max="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-biological-sex" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-venus-mars text-warning me-1"></i> Biological Sex:
+                                </label>
+                                <select id="reg-biological-sex" class="form-select form-select-custom">
+                                    <option value="" selected disabled>Select Sex...</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- HEIGHT METRICS: FEET & INCHES -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="reg-height-feet" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-ruler-vertical text-warning me-1"></i> Height (Feet):
+                                </label>
+                                <select id="reg-height-feet" class="form-select form-select-custom">
+                                    <option value="" selected disabled>Feet...</option>
+                                    <option value="4">4 ft</option>
+                                    <option value="5">5 ft</option>
+                                    <option value="6">6 ft</option>
+                                    <option value="7">7 ft</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-height-inches" class="form-label text-light small fw-bold">
+                                    <i class="fas fa-ruler-combined text-warning me-1"></i> Height (Inches):
+                                </label>
+                                <select id="reg-height-inches" class="form-select form-select-custom">
+                                    <option value="0">0 in</option>
+                                    <option value="1">1 in</option>
+                                    <option value="2">2 in</option>
+                                    <option value="3">3 in</option>
+                                    <option value="4">4 in</option>
+                                    <option value="5">5 in</option>
+                                    <option value="6">6 in</option>
+                                    <option value="7">7 in</option>
+                                    <option value="8">8 in</option>
+                                    <option value="9">9 in</option>
+                                    <option value="10" selected>10 in</option>
+                                    <option value="11">11 in</option>
                                 </select>
                             </div>
                         </div>
@@ -362,6 +419,20 @@
                                 </label>
                                 <input type="number" id="reg-goal-weight" class="form-control form-control-custom" placeholder="e.g. 175" min="50" max="500">
                             </div>
+                        </div>
+
+                        <!-- ACTIVITY LEVEL -->
+                        <div class="mb-3">
+                            <label for="reg-activity-level" class="form-label text-light small fw-bold">
+                                <i class="fas fa-gauge-high text-warning me-1"></i> Activity Level:
+                            </label>
+                            <select id="reg-activity-level" class="form-select form-select-custom">
+                                <option value="Sedentary (Little or no regular exercise, desk job)">Sedentary (Little to no exercise / desk job)</option>
+                                <option value="Lightly Active (Light exercise / sports 1-3 days/week)">Lightly Active (Exercise 1-3 days/wk)</option>
+                                <option value="Moderately Active (Moderate exercise / sports 3-5 days/week)" selected>Moderately Active (Moderate exercise 3-5 days/wk)</option>
+                                <option value="Very Active (Hard exercise / sports 6-7 days/week)">Very Active (Intense training 6-7 days/wk)</option>
+                                <option value="Extremely Active (Competitive Athlete / 2x daily training)">Extremely Active (Competitive Athlete / 2x daily training)</option>
+                            </select>
                         </div>
 
                         <!-- NOTES / BACKGROUND FOR COACH -->
@@ -466,10 +537,15 @@
             const email = document.getElementById('reg-email').value.trim();
             const phone = document.getElementById('reg-phone').value.trim();
             const password = document.getElementById('reg-password').value.trim() || 'ATHLETE2026';
-            const fitnessGoal = document.getElementById('reg-fitness-goal').value;
+            const primaryGoalObjective = document.getElementById('reg-fitness-goal').value;
             const athleteLevel = document.getElementById('reg-athlete-level').value;
+            const age = document.getElementById('reg-age') ? document.getElementById('reg-age').value.trim() : '';
+            const biologicalSex = document.getElementById('reg-biological-sex') ? document.getElementById('reg-biological-sex').value : '';
+            const heightFeet = document.getElementById('reg-height-feet') ? document.getElementById('reg-height-feet').value : '';
+            const heightInches = document.getElementById('reg-height-inches') ? document.getElementById('reg-height-inches').value : '';
             const currentWeight = document.getElementById('reg-current-weight').value.trim();
             const goalWeight = document.getElementById('reg-goal-weight').value.trim();
+            const activityLevel = document.getElementById('reg-activity-level') ? document.getElementById('reg-activity-level').value : '';
             const notes = document.getElementById('reg-notes').value.trim();
 
             const isNoProgram = document.getElementById('radioNoProgram').checked;
@@ -497,8 +573,14 @@
                         password: password,
                         program: programStatus,
                         programStatus: programStatus,
-                        fitnessGoal: fitnessGoal,
+                        fitnessGoal: primaryGoalObjective,
+                        primaryGoalObjective: primaryGoalObjective,
                         athleteLevel: athleteLevel,
+                        age: age,
+                        biologicalSex: biologicalSex,
+                        heightFeet: heightFeet,
+                        heightInches: heightInches,
+                        activityLevel: activityLevel,
                         currentWeight: currentWeight,
                         goalWeight: goalWeight,
                         notes: notes
@@ -510,12 +592,32 @@
                 if (res.ok && data.success) {
                     const athlete = data.athlete || {};
 
-                    // Save athlete credentials to localStorage
+                    // Save all athlete registration details to localStorage
                     localStorage.setItem('krome_athlete_email', athlete.email || email);
                     localStorage.setItem('krome_athlete_name', athlete.fullName || fullName);
+                    localStorage.setItem('krome_athlete_phone', athlete.phone || phone || '');
+                    localStorage.setItem('krome_athlete_age', athlete.age || age || '');
+                    localStorage.setItem('krome_athlete_sex', athlete.biologicalSex || biologicalSex || '');
+                    localStorage.setItem('krome_athlete_height_ft', athlete.heightFeet || heightFeet || '');
+                    localStorage.setItem('krome_athlete_height_in', athlete.heightInches || heightInches || '');
+                    localStorage.setItem('krome_athlete_current_weight', athlete.currentWeight || currentWeight || '');
+                    localStorage.setItem('krome_athlete_goal_weight', athlete.goalWeight || goalWeight || '');
+                    localStorage.setItem('krome_athlete_activity', athlete.activityLevel || activityLevel || '');
+                    localStorage.setItem('krome_athlete_goal', athlete.primaryGoalObjective || primaryGoalObjective || '');
                     localStorage.setItem('krome_access_key', password);
                     localStorage.setItem('krome_auth_token', data.token || 'registered_athlete');
                     localStorage.setItem('krome_portal_unlocked', 'true');
+                    localStorage.setItem('krome_registration_just_completed', 'true');
+
+                    if (athlete.targetCalories || athlete.macros) {
+                        localStorage.setItem('krome_athlete_macros', JSON.stringify(athlete.macros || {
+                            calories: athlete.targetCalories,
+                            protein: athlete.proteinGrams,
+                            carbs: athlete.carbGrams,
+                            fat: athlete.fatGrams,
+                            summary: athlete.nutritionMacros
+                        }));
+                    }
 
                     if (data.isNewAthleteNoProgram) {
                         localStorage.setItem('krome_athlete_is_new', 'true');
@@ -525,11 +627,15 @@
                         localStorage.removeItem('krome_bundle_unlocked');
                     }
 
-                    showAlert(`Registration successful! Welcome, ${fullName}. Redirecting to your Athlete Onboarding Portal...`, 'success');
+                    showAlert(`🎉 REGISTRATION COMPLETE! Welcome to KROME Sports Performance, ${fullName}. Your profile has been initialized successfully. Launching your Athlete Profile...`, 'success');
+
+                    btnSubmit.innerHTML = `<i class="fas fa-check-circle me-2"></i> Registration Complete! Redirecting...`;
+                    btnSubmit.classList.remove('btn-gold');
+                    btnSubmit.classList.add('btn-success');
 
                     setTimeout(() => {
                         window.location.href = data.targetPage || 'athlete_onboarding.html';
-                    }, 1200);
+                    }, 1000);
                 } else {
                     showAlert(data.error || 'Registration could not be completed. Please try again.', 'danger');
                     btnSubmit.disabled = false;

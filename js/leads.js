@@ -3,7 +3,7 @@
  * Lead Tracker & Google Sheets / Gmail Webhook Integration
  */
 
-const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFHMKVprWfXyqV8p6W7Kxqp4BjDi-MV5o9aT3KgJLE5pa-DnepKqygJkMH5p9Ov53z/exec';
+const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzONtx1se0MRzDPcDnMk1aVyWiobrwf42zpJFpcbAK2x85MtB7BHzQSQirbWCoUI7w/exec';
 const KROME_CALENDAR_BOOKING_URL = 'https://calendar.app.google/ikECphRQVZif3yUZ8';
 
 /**

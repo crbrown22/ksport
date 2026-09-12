@@ -180,7 +180,7 @@
                             <span class="badge bg-success text-dark fw-bold px-2 py-1"><i class="fas fa-check-circle me-1"></i> Active Session</span>
                         </div>
                         <p class="text-secondary small mb-0 mt-1">
-                            Athlete Email: <span class="text-warning fw-bold" id="active-user-email">athlete@kromesp.com</span> &middot; Synced with <strong>Athlete_Data</strong> spreadsheet
+                            Athlete Email: <span class="text-warning fw-bold" id="active-user-email">athlete@kromesp.com</span>
                         </p>
                     </div>
                 </div>
@@ -194,25 +194,32 @@
             <hr class="border-secondary my-3 opacity-25">
 
             <div class="row g-3 mt-1">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <a href="athlete_onboarding.html" class="btn btn-outline-warning w-100 py-3 rounded-3 fw-bold text-warning d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-profile">
+                        <i class="fas fa-id-card fa-lg mb-1"></i>
+                        <span>Athlete Profile</span>
+                        <small class="fw-normal text-secondary" style="font-size: 0.75rem;">Biometrics & Macros</small>
+                    </a>
+                </div>
+                <div class="col-md-3">
                     <a href="shred30_manual.html" class="btn btn-warning w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-shred">
                         <i class="fas fa-fire fa-lg mb-1"></i>
-                        <span>30-Day Shred Manual</span>
-                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Shred30</code></small>
+                        <span>30-Day Shred</span>
+                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Training Manual</small>
                     </a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <a href="nutrition_blueprint.html" class="btn btn-success w-100 py-3 rounded-3 fw-bold text-white d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-blueprint">
                         <i class="fas fa-book-open fa-lg mb-1"></i>
-                        <span>Nutrition Blueprint E-Book</span>
-                        <small class="fw-normal text-white text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Blueprint28</code></small>
+                        <span>Nutrition Blueprint</span>
+                        <small class="fw-normal text-white text-opacity-75" style="font-size: 0.75rem;">E-Book & Guide</small>
                     </a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <a href="supplement_protocol.html" class="btn btn-info w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-protocol">
                         <i class="fas fa-pills fa-lg mb-1"></i>
                         <span>Supplement Protocol</span>
-                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Access Key: <code>Protocol30</code></small>
+                        <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Supplement Stack</small>
                     </a>
                 </div>
             </div>
@@ -259,7 +266,7 @@
                                 </div>
                             </div>
 
-                            <!-- Program 1: 30-Day Shred (Key: Shred30) -->
+                             <!-- Program 1: 30-Day Shred -->
                             <div class="program-selector-card" id="card-prog-shred" onclick="selectProgramKey('Shred30', '30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
@@ -271,11 +278,11 @@
                                             <small class="text-secondary">Meal calendar, 41 recipe cards & metabolic workouts</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-warning text-dark key-badge">Shred30</span>
+                                    <span class="badge bg-warning text-dark key-badge">Select</span>
                                 </div>
                             </div>
 
-                            <!-- Program 2: Nutrition Blueprint E-Book (Key: Blueprint28) -->
+                            <!-- Program 2: Nutrition Blueprint E-Book -->
                             <div class="program-selector-card" id="card-prog-blueprint" onclick="selectProgramKey('Blueprint28', 'Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
@@ -287,11 +294,11 @@
                                             <small class="text-secondary">Mifflin-St Jeor TDEE formulas, macro ratios & grocery lists</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-success text-white key-badge">Blueprint28</span>
+                                    <span class="badge bg-success text-white key-badge">Select</span>
                                 </div>
                             </div>
 
-                            <!-- Program 3: Supplement Protocol (Key: Protocol30) -->
+                            <!-- Program 3: Supplement Protocol -->
                             <div class="program-selector-card" id="card-prog-protocol" onclick="selectProgramKey('Protocol30', 'Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
@@ -303,11 +310,11 @@
                                             <small class="text-secondary">Ergogenic stacks, daily timing & recovery aids</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-info text-dark key-badge">Protocol30</span>
+                                    <span class="badge bg-info text-dark key-badge">Select</span>
                                 </div>
                             </div>
 
-                            <!-- Program 4: All-Programs Athlete Access (Key: KROME-ATHLETE) -->
+                            <!-- Program 4: All-Programs Athlete Access -->
                             <div class="program-selector-card" id="card-prog-all" onclick="selectProgramKey('KROME-ATHLETE', 'All Athlete Programs & Blueprints', 'shred30_manual.html', 'card-prog-all')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
@@ -319,20 +326,11 @@
                                             <small class="text-secondary">Unlocks Shred, Nutrition Blueprint & Supplement Protocol</small>
                                         </div>
                                     </div>
-                                    <span class="badge bg-secondary text-white key-badge">KROME-ATHLETE</span>
+                                    <span class="badge bg-secondary text-white key-badge">Select</span>
                                 </div>
                             </div>
 
                         </div>
-                    </div>
-
-                    <!-- GOOGLE SHEETS INFO FOOTER NOTE -->
-                    <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-25 small text-secondary">
-                        <div class="d-flex align-items-center gap-2 text-warning mb-1">
-                            <i class="fas fa-table"></i>
-                            <strong>Real-Time Sync with Athlete_Data Spreadsheet</strong>
-                        </div>
-                        When you log in, your login timestamp and specific program enrollment are automatically updated in the Google Sheet.
                     </div>
                 </div>
             </div>
@@ -417,29 +415,6 @@
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </form>
-
-                    <!-- QUICK TEST ATHLETE DEMOS -->
-                    <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="text-secondary small fw-bold">
-                                <i class="fas fa-vial text-info me-1"></i> Quick Test Athlete Profiles:
-                            </span>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('swolecode@gmail.com', 'Shred30')">
-                                <span class="text-warning fw-bold">swolecode</span> &middot; Shred30
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('sarah.t@athlete.com', 'Blueprint28')">
-                                <span class="text-success fw-bold">sarah</span> &middot; Blueprint28
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('marcus.v@athlete.com', 'Protocol30')">
-                                <span class="text-info fw-bold">marcus</span> &middot; Protocol30
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary text-light py-1 px-2 rounded-pill small" onclick="fillTestCredentials('new.athlete@kromesp.com', 'ATHLETE2026')">
-                                <span class="text-warning fw-bold">new athlete</span> &middot; Onboarding
-                            </button>
-                        </div>
-                    </div>
 
                     <!-- FOOTER SHOP LINK -->
                     <div class="mt-4 pt-3 border-top border-secondary border-opacity-25 text-center">
@@ -554,6 +529,10 @@
                 box.classList.remove('d-none');
             } else if (clean.includes('krome') || clean.includes('all')) {
                 progName.textContent = 'All-Access Bundle (Shred, Blueprint & Protocol)';
+                box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
+                box.classList.remove('d-none');
+            } else if (clean.includes('athlete') || clean.includes('onboard') || clean.includes('profile')) {
+                progName.textContent = 'Athlete Profile & Performance Hub (athlete_onboarding.html)';
                 box.className = 'mt-2 p-2 bg-black rounded border border-warning text-warning small';
                 box.classList.remove('d-none');
             } else {
