@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Confirmed & Access Unlocked | KROME Flexibility & Mobility</title>
+    <meta name="description" content="Thank you for purchasing the KROME Flexibility & Mobility program! Access your joint decompression portal instantly, claim your athlete key code, and begin your bulletproofing journey today.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+         ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ----------------------------------
+           SUCCESS PAGE CARDS & LAYOUT
+         ---------------------------------- */
+        .success-hero {
+            background: radial-gradient(circle at center, rgba(255, 212, 71, 0.12) 0%, rgba(11, 11, 11, 0) 70%);
+            padding: 4rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .congratulations-card {
+            background: linear-gradient(180deg, #161a22 0%, #11141a 100%);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 212, 71, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .animated-badge {
+            font-size: 4rem;
+            color: var(--krome-gold);
+            text-shadow: 0 0 20px rgba(255, 212, 71, 0.4);
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(255, 212, 71, 0.3);
+            }
+            to {
+                transform: scale(1.05);
+                text-shadow: 0 0 35px rgba(255, 212, 71, 0.6);
+            }
+        }
+
+        .access-code-box {
+            background-color: #08090c;
+            border: 2px dashed rgba(255, 212, 71, 0.35);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 450px;
+            margin: 1.5rem auto;
+            transition: border-color 0.2s;
+        }
+
+        .access-code-box:hover {
+            border-color: var(--krome-gold);
+        }
+
+        .code-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--krome-gold);
+            margin: 0;
+        }
+
+        .btn-copy-code {
+            background-color: rgba(255, 212, 71, 0.1);
+            color: var(--krome-gold);
+            border: 1px solid rgba(255, 212, 71, 0.35);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy-code:hover {
+            background-color: var(--krome-gold);
+            color: #000;
+            border-color: var(--krome-gold);
+        }
+
+        .launch-action-card {
+            background-color: #1a1e26;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn-launch-primary {
+            background-color: var(--krome-gold);
+            color: #000000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.15rem;
+            border-radius: 50rem;
+            padding: 1rem 2.5rem;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 5px 20px rgba(255, 212, 71, 0.35);
+            border: none;
+            width: 100%;
+        }
+
+        .btn-launch-primary:hover {
+            background-color: var(--krome-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 212, 71, 0.5);
+            color: #000000;
+        }
+
+        .btn-launch-primary:active {
+            transform: translateY(1px);
+        }
+
+        .form-control-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 10px rgba(255, 212, 71, 0.25) !important;
+            outline: none;
+        }
+
+        .feature-icon-box {
+            font-size: 1.8rem;
+            color: var(--krome-gold);
+            background: rgba(255, 212, 71, 0.08);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 212, 71, 0.18);
+        }
+
+        .program-feature-column {
+            background-color: rgba(20, 24, 32, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: border-color 0.2s;
+        }
+
+        .program-feature-column:hover {
+            border-color: rgba(255, 212, 71, 0.2);
+        }
+
+        /* ----------------------------------
+           FOOTER
+         ---------------------------------- */
+        footer {
+            background-color: #0e0e0e;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(0, 255, 209, 0.15);
+            margin-top: auto;
+        }
+
+        footer h5 {
+            color: var(--krome-gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--krome-cyan);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="manual-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="manual-brand">
+                <i class="fas fa-bolt me-2"></i> KROME Sports Performance
+            </a>
+            <div class="d-none d-sm-block">
+                <a href="index.html" class="btn btn-sm btn-outline-secondary text-light border-secondary rounded-pill px-3">
+                    <i class="fas fa-chevron-left me-1"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+
+                <!-- Congratulations Main Card -->
+                <div class="congratulations-card text-center" id="main-success-card">
+                    <div class="mb-3">
+                        <i class="fas fa-compress-arrows-alt animated-badge"></i>
+                    </div>
+                    
+                    <h1 class="fw-black text-warning uppercase-spacing mb-2" style="font-size: 2.2rem; font-weight: 900;">
+                        FLEXIBILITY & MOBILITY UNLOCKED!
+                    </h1>
+                    <p class="text-light fs-5 mx-auto mb-4" style="max-width: 680px;">
+                        Thank you for your purchase. You have successfully unlocked lifetime athlete access to the 
+                        <strong class="text-warning">KROME Flexibility & Mobility Training Blueprint</strong>.
+                    </p>
+
+                    <hr class="border-secondary opacity-25 my-4">
+
+                    <!-- ACCESS KEY SECTION -->
+                    <div class="my-4">
+                        <p class="text-light small fw-bold mb-1 uppercase-spacing text-secondary">
+                            <i class="fas fa-key me-1 text-warning"></i> Your Program Access Key Code
+                        </p>
+                        <p class="text-muted small mx-auto mb-3" style="max-width: 500px;">
+                            Save this access key to open your Flexibility & Mobility guide on any device. 
+                            You can always find it in your email receipt.
+                        </p>
+
+                        <div class="access-code-box">
+                            <span class="code-text" id="access-code">MOBILITY8</span>
+                            <button class="btn btn-copy-code" id="btn-copy" onclick="copyCode()">
+                                <i class="far fa-copy me-1"></i> Copy Key
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="border-secondary opacity-25 my-4">
+
+                    <!-- LAUNCH ZONE -->
+                    <div class="launch-action-card my-4 text-start">
+                        <h4 class="fw-bold text-light mb-3 text-center">
+                            <i class="fas fa-rocket text-warning me-2"></i> Launch Mobility Manual
+                        </h4>
+                        <p class="text-secondary small text-center mb-4">
+                            We've pre-authorized your device! Enter your email below to bind your tracking data and start your joint decompression protocols immediately without needing to type the key code.
+                        </p>
+
+                        <form id="launch-form" onsubmit="unlockAndLaunch(event)">
+                            <div class="mb-4">
+                                <label for="athlete-email" class="form-label text-warning small fw-bold mb-1">
+                                    <i class="fas fa-envelope me-1"></i> Athlete Email Address (Highly Recommended)
+                                </label>
+                                <input type="email" id="athlete-email" class="form-control form-control-custom" 
+                                       placeholder="e.g. athlete@gmail.com" required>
+                                <div class="form-text text-muted small mt-1">
+                                    Used to automatically sync and save your daily mobility routines, stretching logs, and tissue recovery parameters.
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-launch-primary">
+                                <i class="fas fa-compress-arrows-alt me-2"></i> Launch Mobility Portal
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Program Highlights -->
+                <div class="row g-4 mt-2">
+                    <div class="col-12 text-center mb-2">
+                        <h3 class="fw-bold text-light"><i class="fas fa-star text-warning me-2"></i>What's Included In Your Program</h3>
+                        <p class="text-secondary small">Your comprehensive joint wellness guide features:</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="program-feature-column">
+                            <div class="feature-icon-box">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <h5 class="fw-bold text-light mb-2">Myofascial Decompression</h5>
+                            <p class="text-secondary small mb-0">
+                                Guided schedules for foam rolling, lacrosse ball compression, and deep tissue mobilization.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="program-feature-column">
+                            <div class="feature-icon-box">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5 class="fw-bold text-light mb-2">Injury Pre-Hab Routines</h5>
+                            <p class="text-secondary small mb-0">
+                                Specific joint strengthening exercises designed to stabilize hips, shoulders, knees, and ankles under load.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="program-feature-column">
+                            <div class="feature-icon-box">
+                                <i class="fas fa-feather-alt"></i>
+                            </div>
+                            <h5 class="fw-bold text-light mb-2">Active Recovery Flows</h5>
+                            <p class="text-secondary small mb-0">
+                                15-minute dynamic flow routines to reset your central nervous system (CNS) and expand range of motion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Helpful Instructions Box -->
+                <div class="alert alert-dark mt-5 border border-secondary p-4 rounded-3 text-start">
+                    <h5 class="fw-bold text-warning mb-2">
+                        <i class="fas fa-info-circle me-1"></i> Pro-Tip for Fast Access
+                    </h5>
+                    <p class="small text-light mb-2">
+                        We recommend bookmarking your training protocol on your phone home screen!
+                    </p>
+                    <ol class="small text-secondary mb-0 ps-3">
+                        <li class="mb-1">Click the button above to launch the program.</li>
+                        <li class="mb-1">On Safari (iPhone): Tap the <strong>Share</strong> icon at the bottom, then choose <strong>"Add to Home Screen"</strong>.</li>
+                        <li>On Chrome (Android): Tap the <strong>Menu icon (3 dots)</strong> on top-right, then choose <strong>"Install App"</strong> or <strong>"Add to Home Screen"</strong>.</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Brand Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2"><i class="fas fa-bolt me-2 text-warning"></i>KROME Sports Performance</h5>
+                    <p class="small text-light mb-0" style="max-width: 480px; line-height: 1.6;">
+                        High-performance training, scientific nutrition blueprints, and progressive strength development.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="index.html" class="text-secondary me-3">Home</a>
+                    <a href="shop.html" class="text-secondary me-3">Shop</a>
+                    <a href="contact.html" class="text-secondary">Contact Support</a>
+                </div>
+            </div>
+            <div class="border-top border-secondary opacity-10 pt-3 text-center">
+                <p class="small text-secondary mb-0">&copy; 2026 KROME Sports Performance. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Clipboard & Pre-Authorization Scripts -->
+    <script>
+        // Copy access code function
+        function copyCode() {
+            const codeText = document.getElementById('access-code').innerText;
+            const btn = document.getElementById('btn-copy');
+
+            navigator.clipboard.writeText(codeText).then(() => {
+                btn.innerHTML = `<i class="fas fa-check text-success me-1"></i> Copied!`;
+                btn.classList.add('btn-outline-success');
+                btn.classList.remove('btn-copy-code');
+                
+                setTimeout(() => {
+                    btn.innerHTML = `<i class="far fa-copy me-1"></i> Copy Key`;
+                    btn.classList.remove('btn-outline-success');
+                    btn.classList.add('btn-copy-code');
+                }, 2000);
+            }).catch(err => {
+                // Fallback for older browsers
+                const tempInput = document.createElement('input');
+                tempInput.value = codeText;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+
+                btn.innerHTML = `<i class="fas fa-check text-success me-1"></i> Copied!`;
+                setTimeout(() => {
+                    btn.innerHTML = `<i class="far fa-copy me-1"></i> Copy Key`;
+                }, 2000);
+            });
+        }
+
+        // Unlock states and redirect
+        function unlockAndLaunch(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('athlete-email').value.trim();
+            
+            if (emailInput) {
+                // Store athlete credentials so sync recognizes them
+                localStorage.setItem('krome_athlete_email', emailInput.toLowerCase());
+                
+                // Set name based on prefix of email address
+                const namePart = emailInput.split('@')[0] || 'KROME Athlete';
+                localStorage.setItem('krome_athlete_name', namePart.charAt(0).toUpperCase() + namePart.slice(1));
+            }
+
+            // Grant pre-authorized access
+            localStorage.setItem('krome_flexmob_unlocked', 'true');
+            
+            // Redirect with the 'square=true' bypass parameter
+            window.location.href = "flexmob_manual.html?square=true";
+        }
+
+        // On page load, if we already have the email, pre-fill it for convenience
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedEmail = localStorage.getItem('krome_athlete_email');
+            if (savedEmail) {
+                document.getElementById('athlete-email').value = savedEmail;
+            }
+        });
+    </script>
+</body>
+
+</html>

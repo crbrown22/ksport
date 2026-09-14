@@ -193,33 +193,40 @@
 
             <hr class="border-secondary my-3 opacity-25">
 
-            <div class="row g-3 mt-1">
-                <div class="col-md-3">
-                    <a href="athlete_onboarding.html" class="btn btn-outline-warning w-100 py-3 rounded-3 fw-bold text-warning d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-profile">
+            <div class="row g-3 mt-1 row-cols-1 row-cols-sm-2 row-cols-lg-5">
+                <div class="col">
+                    <a href="athlete_onboarding.html" class="btn btn-outline-warning w-100 h-100 py-3 rounded-3 fw-bold text-warning d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-profile">
                         <i class="fas fa-id-card fa-lg mb-1"></i>
                         <span>Athlete Profile</span>
                         <small class="fw-normal text-secondary" style="font-size: 0.75rem;">Biometrics & Macros</small>
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="shred30_manual.html" class="btn btn-warning w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-shred">
+                <div class="col">
+                    <a href="shred30_manual.html" class="btn btn-warning w-100 h-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-shred">
                         <i class="fas fa-fire fa-lg mb-1"></i>
                         <span>30-Day Shred</span>
                         <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Training Manual</small>
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="nutrition_blueprint.html" class="btn btn-success w-100 py-3 rounded-3 fw-bold text-white d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-blueprint">
+                <div class="col">
+                    <a href="nutrition_blueprint.html" class="btn btn-success w-100 h-100 py-3 rounded-3 fw-bold text-white d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-blueprint">
                         <i class="fas fa-book-open fa-lg mb-1"></i>
                         <span>Nutrition Blueprint</span>
                         <small class="fw-normal text-white text-opacity-75" style="font-size: 0.75rem;">E-Book & Guide</small>
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="supplement_protocol.html" class="btn btn-info w-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-protocol">
+                <div class="col">
+                    <a href="supplement_protocol.html" class="btn btn-info w-100 h-100 py-3 rounded-3 fw-bold text-dark d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-protocol">
                         <i class="fas fa-pills fa-lg mb-1"></i>
                         <span>Supplement Protocol</span>
                         <small class="fw-normal text-dark text-opacity-75" style="font-size: 0.75rem;">Supplement Stack</small>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="jumpstart21_manual.html" class="btn btn-outline-info w-100 h-100 py-3 rounded-3 fw-bold text-info d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-jumpstart" style="border-color: rgba(0, 255, 209, 0.4);">
+                        <i class="fas fa-running fa-lg mb-1" style="color: var(--krome-cyan);"></i>
+                        <span style="color: #fff;">21-Day Jumpstart</span>
+                        <small class="fw-normal text-opacity-75" style="font-size: 0.75rem; color: var(--krome-cyan);">Bodyweight Challenge</small>
                     </a>
                 </div>
             </div>
@@ -314,7 +321,23 @@
                                 </div>
                             </div>
 
-                            <!-- Program 4: All-Programs Athlete Access -->
+                            <!-- Program 4: 21-Day Jumpstart -->
+                            <div class="program-selector-card" id="card-prog-jumpstart" onclick="selectProgramKey('21-Day Bodyweight Jumpstart', 'jumpstart21_manual.html', 'card-prog-jumpstart')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-info bg-opacity-10 p-2 rounded-3" style="color: var(--krome-cyan); background-color: rgba(0, 255, 209, 0.1);">
+                                            <i class="fas fa-running fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">21-Day Bodyweight Jumpstart</h6>
+                                            <small class="text-secondary">Full home workouts, progress logging & mobility flow</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge text-dark" style="font-size: 0.72rem; background-color: var(--krome-cyan);">Select</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 5: All-Programs Athlete Access -->
                             <div class="program-selector-card" id="card-prog-all" onclick="selectProgramKey('All Athlete Programs & Blueprints', 'shred30_manual.html', 'card-prog-all')">
                                 <div class="d-flex align-items-start justify-content-between gap-2">
                                     <div class="d-flex align-items-center gap-3">
@@ -323,7 +346,7 @@
                                         </div>
                                         <div>
                                             <h6 class="text-white fw-bold mb-0">All-Access Athlete Bundle</h6>
-                                            <small class="text-secondary">Unlocks Shred, Nutrition Blueprint & Supplement Protocol</small>
+                                            <small class="text-secondary">Unlocks Shred, Nutrition Blueprint, Supplement Protocol & Jumpstart</small>
                                         </div>
                                     </div>
                                     <span class="badge bg-secondary text-white" style="font-size: 0.72rem;">Select</span>
@@ -434,7 +457,7 @@
                 &copy; <span id="footer-year">2026</span> KROME Sports Performance. All Rights Reserved.
             </p>
             <p class="mb-0" style="font-size: 0.78rem;">
-                Protected Athlete Resource. Logins and program access timestamps are synced with the Athlete_Data spreadsheet.
+                Protected Athlete Resource. Athlete credentials and session security are active.
             </p>
         </div>
     </footer>
@@ -456,6 +479,8 @@
             selectProgramKey('Nutrition Blueprint E-Book', 'nutrition_blueprint.html', 'card-prog-blueprint');
         } else if (redirectParam.includes('supplement') || redirectParam.includes('protocol')) {
             selectProgramKey('Athlete Supplement Protocol', 'supplement_protocol.html', 'card-prog-protocol');
+        } else if (redirectParam.includes('jumpstart') || redirectParam.includes('21')) {
+            selectProgramKey('21-Day Bodyweight Jumpstart', 'jumpstart21_manual.html', 'card-prog-jumpstart');
         } else {
             selectProgramKey('30-Day Shred Challenge Manual', 'shred30_manual.html', 'card-prog-shred');
         }
@@ -466,7 +491,7 @@
             const athleteName = localStorage.getItem('krome_athlete_name') || 'Athlete';
             const authToken = localStorage.getItem('krome_auth_token');
 
-            if (athleteEmail && (authToken || localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true')) {
+            if (athleteEmail && (authToken || localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_jumpstart_unlocked') === 'true')) {
                 const sessionCard = document.getElementById('session-active-card');
                 const activeName = document.getElementById('active-user-name');
                 const activeEmail = document.getElementById('active-user-email');
@@ -545,6 +570,7 @@
                 localStorage.removeItem('krome_shred_unlocked');
                 localStorage.removeItem('krome_blueprint_unlocked');
                 localStorage.removeItem('krome_protocol_unlocked');
+                localStorage.removeItem('krome_jumpstart_unlocked');
 
                 if (cleanKey.includes('blueprint') || cleanKey.includes('nutrition') || cleanKey.includes('28')) {
                     programName = 'Nutrition Blueprint E-Book';
@@ -554,6 +580,10 @@
                     programName = 'Athlete Supplement Protocol';
                     targetPage = 'supplement_protocol.html';
                     localStorage.setItem('krome_protocol_unlocked', 'true');
+                } else if (cleanKey.includes('jumpstart') || cleanKey.includes('21') || cleanKey.includes('transformation')) {
+                    programName = '21-Day Bodyweight Jumpstart';
+                    targetPage = 'jumpstart21_manual.html';
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
                 } else if (cleanKey.includes('krome') || cleanKey.includes('bundle') || cleanKey.includes('all')) {
                     programName = 'All-Access Performance Bundle';
                     targetPage = 'shred30_manual.html';
@@ -561,6 +591,7 @@
                     localStorage.setItem('krome_shred_unlocked', 'true');
                     localStorage.setItem('krome_blueprint_unlocked', 'true');
                     localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
                 } else {
                     programName = '30-Day Shred Challenge Manual';
                     targetPage = 'shred30_manual.html';
@@ -622,12 +653,13 @@
             localStorage.removeItem('krome_shred_unlocked');
             localStorage.removeItem('krome_protocol_unlocked');
             localStorage.removeItem('krome_blueprint_unlocked');
+            localStorage.removeItem('krome_jumpstart_unlocked');
             localStorage.removeItem('krome_portal_unlocked');
 
             const sessionCard = document.getElementById('session-active-card');
             if (sessionCard) sessionCard.classList.add('d-none');
 
-            showAlert('You have logged out. Logout timestamp recorded in Athlete_Data spreadsheet.', 'info');
+            showAlert('You have successfully logged out of your session.', 'info');
         }
     </script>
 </body>

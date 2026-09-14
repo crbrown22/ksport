@@ -32,6 +32,7 @@
 var ATHLETE_TAB_NAME = 'Athlete_Data';
 var REGISTRATION_TAB_NAME = 'athlete_registration';
 var LEADS_TAB_NAME = 'ksp_leads';
+var JUMPSTART_21_TAB_NAME = '21_day';
 
 /**
  * Intelligent sheet getter: finds either 'Athlete_Data' or 'Athlete Data'
@@ -236,7 +237,8 @@ function setupAllSheets() {
   setupAthleteRegistrationSheet();
   setupAthleteDataSheet();
   setupLeadsSheet();
-  Logger.log('All KROME Google Sheets (athlete_registration, Athlete_Data, ksp_leads) configured successfully!');
+  setup21DaySheet();
+  Logger.log('All KROME Google Sheets (athlete_registration, Athlete_Data, ksp_leads, 21_day) configured successfully!');
 }
 
 /**
@@ -412,6 +414,88 @@ function setupLeadsSheet() {
 }
 
 /**
+ * Intelligent sheet getter: finds or creates '21_day' tab on ksp_leads sheet
+ */
+function get21DaySheet(ss, autoCreate) {
+  if (!ss) ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('21_day') || 
+              ss.getSheetByName('21-day') || 
+              ss.getSheetByName('21Day') || 
+              ss.getSheetByName('21_Day') ||
+              ss.getSheetByName('21 Day') ||
+              ss.getSheetByName(JUMPSTART_21_TAB_NAME);
+
+  if (!sheet) {
+    var allSheets = ss.getSheets();
+    for (var i = 0; i < allSheets.length; i++) {
+      var sName = allSheets[i].getName().toLowerCase().replace(/[\s_-]/g, '');
+      if (sName === '21day' || sName === '21days' || sName === 'jumpstart21') {
+        sheet = allSheets[i];
+        break;
+      }
+    }
+  }
+
+  if (!sheet && autoCreate) {
+    sheet = ss.insertSheet(JUMPSTART_21_TAB_NAME);
+  }
+  return sheet;
+}
+
+/**
+ * Configures the "21_day" sheet tab on ksp_leads with dark gold styling
+ */
+function setup21DaySheet() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = get21DaySheet(ss, true);
+
+  var headers = [
+    'Timestamp',
+    'Full Name',
+    'Email',
+    'Phone',
+    'Log Type',
+    'Current Day',
+    'Day 1 Weight',
+    'Day 8 Weight',
+    'Day 15 Weight',
+    'Day 21 Weight',
+    'Weight Change',
+    'Day 1 Waist',
+    'Day 8 Waist',
+    'Day 15 Waist',
+    'Day 21 Waist',
+    'Day 1 Hips',
+    'Day 21 Hips',
+    'Day 1 Chest',
+    'Day 21 Chest',
+    'Energy (1-10)',
+    'Sleep (1-10)',
+    'Workout Completion %',
+    'Total Habits Checked',
+    'Habit Adherence %',
+    'Workout / Movement',
+    'Protein Focus',
+    'Water Target',
+    'Sleep Goal',
+    'Athlete Notes',
+    'Full Habits JSON',
+    'Last Updated'
+  ];
+
+  var headerRange = sheet.getRange(1, 1, 1, headers.length);
+  headerRange.setValues([headers]);
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#111827');
+  headerRange.setFontColor('#ffd447');
+  sheet.setFrozenRows(1);
+  for (var col = 1; col <= headers.length; col++) {
+    sheet.autoResizeColumn(col);
+  }
+  Logger.log('21_day sheet tab setup complete with 31 columns!');
+}
+
+/**
  * Dynamically resolves column indexes from Row 1 headers to guarantee
  * compatibility even if columns are slightly shifted or case-modified.
  */
@@ -538,6 +622,11 @@ function doGet(e) {
       return jsonResponse({ success: true, message: 'All KROME Google Sheets configured successfully.' }, callback);
     }
 
+    if (action === 'setup_21_day' || action === 'setup_21day') {
+      setup21DaySheet();
+      return jsonResponse({ success: true, message: '21_day sheet tab configured successfully on ksp_leads sheet.' }, callback);
+    }
+
     if (action === 'setup_athlete_registration' || action === 'setup_registration') {
       setupAthleteRegistrationSheet();
       return jsonResponse({ success: true, message: 'athlete_registration sheet configured with 13 columns.' }, callback);
@@ -546,6 +635,10 @@ function doGet(e) {
     if (action === 'setup' || action === 'setup_athlete_data') {
       setupAthleteDataSheet();
       return jsonResponse({ success: true, message: 'Athlete Data sheet configured with 8 columns.' }, callback);
+    }
+
+    if (action === 'get_21_day' || action === 'fetch_21_day' || action === 'get_jumpstart') {
+      return jsonResponse(get21DayRecords(user), callback);
     }
 
     if (!user) {
@@ -598,6 +691,12 @@ function doPost(e) {
 
     var action = (payload.action || 'submit').toLowerCase();
     var user = (payload.username || payload.email || '').trim().toLowerCase();
+
+    // 0. RECORD 21-DAY JUMPSTART HABIT TRACKER & MEASUREMENTS TO '21_day' TAB ON ksp_leads
+    if (action === 'log_21_day' || action === '21_day' || action === '21_day_tracker' || action === 'save_21_day' || 
+        payload.tab === '21_day' || payload.sheetName === '21_day' || payload.program === '21_day') {
+      return jsonResponse(log21DayTracker(payload));
+    }
 
     // 1. RECORD ATHLETE LOGIN TIMESTAMP
     if (action === 'athlete_login' || action === 'login') {
@@ -1399,6 +1498,166 @@ function appendLead(payload) {
     rowNumber: sheet.getLastRow(),
     calendarEventCreated: calendarEventCreated,
     calendarNote: calendarNote
+  };
+}
+
+/**
+ * Logs 21-Day Jumpstart habit tracker answers and progress measurements
+ * into the dedicated '21_day' tab on the ksp_leads Google Sheet.
+ */
+function log21DayTracker(payload) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = get21DaySheet(ss, true);
+  if (sheet.getLastRow() === 0) {
+    setup21DaySheet();
+  }
+
+  var now = new Date().toLocaleString();
+  var name = payload.name || payload.fullName || payloadFullName(payload.email || '');
+  var email = (payload.email || payload.username || '').trim().toLowerCase();
+  var phone = (payload.phone || '').trim();
+  var logType = payload.logType || 'Full Habit & Measurement Sync';
+  var currentDay = payload.currentDay || payload.day || 'Day 1-21';
+
+  var m = payload.measurements || {};
+  var d1Weight = m.d1Weight || payload.d1Weight || '';
+  var d8Weight = m.d8Weight || payload.d8Weight || '';
+  var d15Weight = m.d15Weight || payload.d15Weight || '';
+  var d21Weight = m.d21Weight || payload.d21Weight || '';
+  var weightChange = payload.weightChange || '';
+  if (!weightChange && d1Weight && d21Weight) {
+    var diff = parseFloat(d21Weight) - parseFloat(d1Weight);
+    if (!isNaN(diff)) {
+      weightChange = (diff > 0 ? '+' : '') + diff.toFixed(1) + ' lbs';
+    }
+  }
+
+  var d1Waist = m.d1Waist || payload.d1Waist || '';
+  var d8Waist = m.d8Waist || payload.d8Waist || '';
+  var d15Waist = m.d15Waist || payload.d15Waist || '';
+  var d21Waist = m.d21Waist || payload.d21Waist || '';
+
+  var d1Hips = m.d1Hips || payload.d1Hips || '';
+  var d21Hips = m.d21Hips || payload.d21Hips || '';
+
+  var d1Chest = m.d1Chest || payload.d1Chest || '';
+  var d21Chest = m.d21Chest || payload.d21Chest || '';
+
+  var energy = m.energy || payload.energy || '';
+  var sleep = m.sleep || payload.sleep || '';
+  var workoutPct = m.workoutPct || payload.workoutPct || '';
+
+  var totalHabits = payload.totalHabitsChecked !== undefined ? payload.totalHabitsChecked : (payload.completedHabits || 0);
+  var adherencePct = payload.adherencePct || payload.completionRate || '0%';
+
+  var habits = payload.todayHabits || payload.habits || {};
+  var habitWorkout = habits.workout ? 'Done' : (payload.workoutStatus || '');
+  var habitProtein = habits.protein ? 'Hit' : (payload.proteinStatus || '');
+  var habitWater = habits.water ? 'Hit' : (payload.waterStatus || '');
+  var habitSleep = habits.sleep ? 'Hit' : (payload.sleepStatus || '');
+  var notes = payload.notes || payload.message || habits.notes || '';
+
+  var rawJSON = typeof payload.rawHabitState === 'string' ? payload.rawHabitState : 
+                (payload.rawHabitState ? JSON.stringify(payload.rawHabitState) : 
+                (typeof payload.habits === 'object' ? JSON.stringify(payload.habits) : ''));
+
+  var newRow = [
+    now,
+    name,
+    email,
+    phone,
+    logType,
+    currentDay,
+    d1Weight,
+    d8Weight,
+    d15Weight,
+    d21Weight,
+    weightChange,
+    d1Waist,
+    d8Waist,
+    d15Waist,
+    d21Waist,
+    d1Hips,
+    d21Hips,
+    d1Chest,
+    d21Chest,
+    energy,
+    sleep,
+    workoutPct,
+    totalHabits,
+    adherencePct,
+    habitWorkout,
+    habitProtein,
+    habitWater,
+    habitSleep,
+    notes,
+    rawJSON,
+    now
+  ];
+
+  sheet.appendRow(newRow);
+
+  return {
+    status: 'success',
+    success: true,
+    tab: '21_day',
+    rowNumber: sheet.getLastRow(),
+    message: '21-Day Habit Tracker & Progress Measurements logged to 21_day tab on ksp_leads sheet successfully!',
+    timestamp: now
+  };
+}
+
+/**
+ * Retrieves logged 21-Day Jumpstart progress entries from '21_day' tab
+ */
+function get21DayRecords(user) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = get21DaySheet(ss, false);
+  if (!sheet || sheet.getLastRow() < 2) {
+    return { success: false, records: [], error: 'No records found in 21_day tab yet.' };
+  }
+
+  var data = sheet.getDataRange().getValues();
+  var records = [];
+  var emailCol = 2; // Col C: Email
+
+  var query = (user || '').trim().toLowerCase();
+
+  for (var i = data.length - 1; i >= 1; i--) {
+    var row = data[i];
+    var rowEmail = (row[emailCol] || '').toString().trim().toLowerCase();
+    if (!query || rowEmail === query || rowEmail.indexOf(query) !== -1) {
+      records.push({
+        timestamp: row[0],
+        name: row[1],
+        email: row[2],
+        phone: row[3],
+        logType: row[4],
+        currentDay: row[5],
+        d1Weight: row[6],
+        d8Weight: row[7],
+        d15Weight: row[8],
+        d21Weight: row[9],
+        weightChange: row[10],
+        d1Waist: row[11],
+        d21Waist: row[14],
+        energy: row[19],
+        sleep: row[20],
+        workoutPct: row[21],
+        totalHabits: row[22],
+        adherencePct: row[23],
+        notes: row[28],
+        rawJSON: row[29]
+      });
+      if (records.length >= 25) break;
+    }
+  }
+
+  return {
+    status: 'success',
+    success: true,
+    tab: '21_day',
+    records: records
   };
 }
 

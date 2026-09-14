@@ -96,12 +96,12 @@
                             <i class="fas fa-id-badge me-1"></i> ATHLETE DASHBOARD
                         </span>
                         <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
-                            <i class="fas fa-check-circle me-1"></i> Google Sheets 'Athlete Data' Synced
+                            <i class="fas fa-check-circle me-1"></i> Athlete Profile Synced
                         </span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <span class="small text-secondary">Logged in as: <strong class="text-light">${athlete.email}</strong></span>
-                        <button id="btn-refresh-sheet" class="btn btn-sm btn-outline-light rounded-pill px-2 py-1" style="font-size: 0.75rem;" title="Refresh Data from Google Sheet">
+                        <button id="btn-refresh-sheet" class="btn btn-sm btn-outline-light rounded-pill px-2 py-1" style="font-size: 0.75rem;" title="Refresh Profile Data">
                             <i class="fas fa-sync-alt me-1"></i> Refresh
                         </button>
                     </div>
@@ -320,13 +320,13 @@
                             <i class="fas fa-pills me-1"></i> ATHLETE SUPPLEMENT REGIMEN
                         </span>
                         <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
-                            <i class="fas fa-check-circle me-1"></i> Google Sheets 'Athlete Data' Connected
+                            <i class="fas fa-check-circle me-1"></i> Coach Protocol Active
                         </span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <span class="small text-secondary">Athlete: <strong class="text-light">${athlete.email}</strong></span>
                         <button id="btn-supp-refresh" class="btn btn-sm btn-outline-info rounded-pill px-2 py-1" style="font-size: 0.75rem;">
-                            <i class="fas fa-sync-alt me-1"></i> Refresh Sheet
+                            <i class="fas fa-sync-alt me-1"></i> Refresh Protocol
                         </button>
                     </div>
                 </div>
@@ -433,13 +433,13 @@
                             <i class="fas fa-apple-alt me-1"></i> ATHLETE NUTRITION PROFILE
                         </span>
                         <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
-                            <i class="fas fa-check-circle me-1"></i> Google Sheets 'Athlete Data' Connected
+                            <i class="fas fa-check-circle me-1"></i> Coach Targets Active
                         </span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <span class="small text-secondary">Athlete: <strong class="text-light">${athlete.email}</strong></span>
                         <button id="btn-blueprint-refresh" class="btn btn-sm btn-outline-success rounded-pill px-2 py-1" style="font-size: 0.75rem;">
-                            <i class="fas fa-sync-alt me-1"></i> Refresh Sheet
+                            <i class="fas fa-sync-alt me-1"></i> Refresh Targets
                         </button>
                     </div>
                 </div>
@@ -530,6 +530,127 @@
     }
 
     // =========================================================================
+    // RENDERER 4: 21-DAY JUMPSTART MANUAL (jumpstart21_manual.html)
+    // =========================================================================
+    function renderJumpstartProfile(athlete) {
+        const container = document.getElementById('athlete-jumpstart-profile-mount');
+        if (!container) return;
+
+        container.classList.remove('d-none');
+        container.innerHTML = `
+            <div class="card bg-dark border border-warning shadow-lg text-light rounded-4 overflow-hidden mb-4 no-print" style="background: linear-gradient(135deg, #0b0f19 0%, #171d2b 100%);">
+                <div class="card-header bg-black bg-opacity-50 border-bottom border-warning border-opacity-25 py-3 px-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold" style="font-size: 0.82rem;">
+                            <i class="fas fa-running me-1"></i> 21-DAY JUMPSTART ATHLETE
+                        </span>
+                        <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
+                            <i class="fas fa-cloud-check me-1"></i> Cloud Progress Synced
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary">Logged in: <strong class="text-light">${athlete.email}</strong></span>
+                        <button id="btn-jumpstart-refresh" class="btn btn-sm btn-outline-warning rounded-pill px-2 py-1" style="font-size: 0.75rem;" title="Refresh Progress Data">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7 border-lg-end border-secondary border-opacity-25 pe-lg-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <h4 class="fw-bold text-white mb-0">${athlete.fullName || 'KROME Athlete'}</h4>
+                                    <span class="small text-warning"><i class="fas fa-bolt me-1"></i> 21-Day Bodyweight Jumpstart Program</span>
+                                </div>
+                                <span class="badge bg-dark border border-warning text-warning fs-6 px-3 py-2 rounded-pill">
+                                    Active Athlete
+                                </span>
+                            </div>
+                            <p class="small text-light opacity-75 mb-3">
+                                Your habit tracker answers, weekly body measurements, and athletic metrics synchronize securely with your KROME Coach Portal.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="#sec-trackers" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-1">
+                                    <i class="fas fa-tasks me-1"></i> Jump to 21-Day Habit Tracker
+                                </a>
+                                <button id="btn-mount-sync-trigger" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-cloud-arrow-up me-1"></i> Quick Sync Progress
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Companion Ebook Cross-Reference -->
+                        <div class="col-lg-5">
+                            <div class="bg-black bg-opacity-40 p-3 rounded-3 border border-warning border-opacity-25">
+                                <span class="small text-warning text-uppercase fw-bold d-block mb-2">
+                                    <i class="fas fa-layer-group me-1"></i> Synchronized Ebook Ecosystem
+                                </span>
+                                <div class="row g-2 text-center">
+                                    <div class="col-4">
+                                        <a href="shred30_manual.html" class="text-decoration-none d-block p-2 rounded bg-dark border border-secondary border-opacity-50 text-warning hover-glow">
+                                            <i class="fas fa-fire fa-lg d-block mb-1"></i>
+                                            <span style="font-size: 0.7rem;" class="fw-bold d-block text-truncate">30-Day Shred</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="supplement_protocol.html" class="text-decoration-none d-block p-2 rounded bg-dark border border-secondary border-opacity-50 text-info hover-glow">
+                                            <i class="fas fa-pills fa-lg d-block mb-1"></i>
+                                            <span style="font-size: 0.7rem;" class="fw-bold d-block text-truncate">Supplements</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="nutrition_blueprint.html" class="text-decoration-none d-block p-2 rounded bg-dark border border-secondary border-opacity-50 text-success hover-glow">
+                                            <i class="fas fa-book-open fa-lg d-block mb-1"></i>
+                                            <span style="font-size: 0.7rem;" class="fw-bold d-block text-truncate">Nutrition</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Bind refresh button
+        const refreshBtn = document.getElementById('btn-jumpstart-refresh');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', async () => {
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Refreshing...';
+                const fresh = await fetchAthleteData(athlete.email);
+                if (fresh) renderJumpstartProfile(fresh);
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt me-1"></i> Refresh';
+            });
+        }
+
+        // Bind quick sync trigger
+        const triggerBtn = document.getElementById('btn-mount-sync-trigger');
+        if (triggerBtn) {
+            triggerBtn.addEventListener('click', () => {
+                const sheetSyncBtn = document.getElementById('btn-sync-21day-sheet');
+                if (sheetSyncBtn) {
+                    sheetSyncBtn.click();
+                } else {
+                    const sec = document.getElementById('sec-trackers');
+                    if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        // Pre-fill email and name in Section 13 tracker inputs if present
+        const trackerEmailInput = document.getElementById('tracker-athlete-email');
+        if (trackerEmailInput && !trackerEmailInput.value && athlete.email) {
+            trackerEmailInput.value = athlete.email;
+        }
+        const trackerNameInput = document.getElementById('tracker-athlete-name');
+        if (trackerNameInput && !trackerNameInput.value && athlete.fullName) {
+            trackerNameInput.value = athlete.fullName;
+        }
+    }
+
+    // =========================================================================
     // INITIALIZATION DISPATCHER
     // =========================================================================
     async function initAthleteDataSync() {
@@ -551,6 +672,9 @@
         }
         if (path.includes('nutrition')) {
             renderBlueprintProfile(athlete);
+        }
+        if (path.includes('jumpstart') || path.includes('21_day')) {
+            renderJumpstartProfile(athlete);
         }
     }
 

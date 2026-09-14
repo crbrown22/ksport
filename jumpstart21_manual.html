@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME 21-Day Bodyweight Challenge & Athlete Jumpstart Manual</title>
+    <meta name="description" content="Official KROME FITNESS 21-Day Bodyweight Challenge & Athlete Jumpstart Digital Manual. No equipment conditioning, beginner & advanced tracks, progressive workouts, exercise library, habit trackers, and maintenance plan.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-light: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* NAVBAR / STICKY HEADER */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.15rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn-action-outline {
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            background-color: rgba(0, 255, 209, 0.15);
+            color: #fff;
+        }
+
+        /* HERO & TOC */
+        .manual-hero {
+            background: linear-gradient(135deg, rgba(18,18,18,0.95) 0%, rgba(10,10,10,0.98) 100%), url('media/21day_transformation.jpg') center/cover no-repeat;
+            border-bottom: 1px solid rgba(255, 212, 71, 0.2);
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .hero-title {
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .hero-title span {
+            color: var(--krome-gold);
+        }
+
+        .hero-price-badge {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.82rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50rem;
+            text-transform: uppercase;
+        }
+
+        .toc-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .toc-link {
+            color: var(--krome-text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.35rem;
+            font-size: 0.8rem;
+            transition: all 0.15s ease;
+        }
+
+        .toc-link:hover {
+            background-color: rgba(255, 212, 71, 0.1);
+            color: var(--krome-gold);
+            transform: translateX(3px);
+        }
+
+        .toc-link i {
+            width: 20px;
+            color: var(--krome-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* CONTENT SECTIONS */
+        .manual-section {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .section-kicker {
+            color: var(--krome-cyan);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-heading {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--krome-gold);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 212, 71, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* TABLES */
+        .table-krome {
+            color: #f8f9fa;
+            background-color: #121212;
+            border-color: rgba(255, 212, 71, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .table-krome th {
+            background-color: #1a1a1a;
+            color: var(--krome-gold);
+            border-color: rgba(255, 212, 71, 0.3);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table-krome td {
+            border-color: rgba(255, 255, 255, 0.08);
+            vertical-align: middle;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 212, 71, 0.2);
+            margin: 1.25rem 0;
+        }
+
+        /* CHECK LISTS */
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--krome-text-light);
+        }
+
+        .check-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--krome-cyan);
+            font-size: 0.85rem;
+        }
+
+        /* TRACKER INTERACTIVE STYLES */
+        .krome-checkbox-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            width: 26px;
+            height: 26px;
+            margin: 0 auto;
+        }
+
+        .krome-checkbox-wrap input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .krome-checkbox-wrap .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 26px;
+            width: 26px;
+            background-color: #1a1a1a;
+            border: 2px solid rgba(255, 212, 71, 0.4);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .krome-checkbox-wrap:hover input ~ .checkmark {
+            border-color: var(--krome-gold);
+            background-color: #222;
+        }
+
+        .krome-checkbox-wrap input:checked ~ .checkmark {
+            background-color: var(--krome-gold);
+            border-color: var(--krome-gold);
+        }
+
+        .krome-checkbox-wrap .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 8px;
+            top: 4px;
+            width: 7px;
+            height: 12px;
+            border: solid #000;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+        }
+
+        .krome-checkbox-wrap input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .table-row-completed {
+            background-color: rgba(40, 167, 69, 0.08) !important;
+        }
+
+        .table-row-active {
+            box-shadow: inset 3px 0 0 var(--krome-gold);
+            background-color: rgba(255, 212, 71, 0.04) !important;
+        }
+
+        .tracker-input {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 212, 71, 0.3) !important;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.88rem;
+            padding: 0.35rem 0.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .tracker-input:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 0 0.2rem rgba(255, 212, 71, 0.25) !important;
+            outline: none;
+        }
+
+        .tracker-scorecard {
+            background: linear-gradient(145deg, #111827 0%, #171d2b 100%);
+            border: 1px solid rgba(255, 212, 71, 0.25);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tracker-scorecard:hover {
+            transform: translateY(-2px);
+            border-color: var(--krome-gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* BACK TO TOP */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--krome-gold);
+            color: #000;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 212, 71, 0.4);
+            border: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .back-to-top-btn.show {
+            opacity: 1;
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--krome-gold-hover);
+            transform: translateY(-3px);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #fff !important; color: #000 !important; }
+            .manual-section { background: #fff !important; border: 1px solid #ccc !important; color: #000 !important; box-shadow: none !important; }
+            .section-heading { color: #b45309 !important; border-bottom-color: #b45309 !important; }
+            .table-krome { background: #fff !important; color: #000 !important; }
+            .table-krome th { background: #f3f4f6 !important; color: #111 !important; }
+            .toc-card { display: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIVATE ACCESS OVERLAY / ATHLETE LOGIN MODAL -->
+    <div id="private-access-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 5, 0.96); backdrop-filter: blur(14px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto;" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center my-auto" style="max-width: 540px; width: 100%; border-width: 2px;">
+            <div class="mb-2">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Athlete Access Gate
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-1">21-Day Athlete Jumpstart Login</h3>
+            <p class="text-light small mb-3">
+                Unlock the <strong>21-Day Bodyweight Challenge & Athlete Jumpstart Manual</strong> using your athlete email address and Program Access Key Code (e.g. <code>jumpstart21</code> or <code>KROME-ATHLETE</code>).
+            </p>
+
+            <!-- Inline Login Form -->
+            <form id="inline-jumpstart-login" onsubmit="handleInlineJumpstartLogin(event)" class="text-start mb-3">
+                <div class="mb-2">
+                    <label for="gate-email" class="form-label text-warning small fw-bold mb-1">
+                        <i class="fas fa-envelope me-1"></i> Athlete Email Address:
+                    </label>
+                    <input type="email" id="gate-email" class="form-control bg-black text-light border-secondary small" placeholder="e.g. yourname@gmail.com" required>
+                </div>
+                <div class="mb-2">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <label for="gate-password" class="form-label text-warning small fw-bold mb-0">
+                            <i class="fas fa-key me-1"></i> Program Access Key Code:
+                        </label>
+                    </div>
+                    <input type="text" id="gate-password" class="form-control bg-black text-light border-secondary small" placeholder="Enter Access Key" required>
+                </div>
+
+                <div id="gate-login-alert" class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-2"></div>
+
+                <button type="submit" id="btn-gate-submit" class="btn btn-warning fw-bold w-100 py-2 mt-1">
+                    <i class="fas fa-sign-in-alt me-1"></i> Verify Key & Unlock 21-Day Jumpstart
+                </button>
+            </form>
+
+            <div class="d-flex align-items-center justify-content-between mb-3 text-start small">
+                <a href="login.html?redirect=jumpstart21_manual.html" class="text-info text-decoration-none">
+                    <i class="fas fa-external-link-alt me-1"></i> Go to Dedicated Login Page
+                </a>
+                <button type="button" class="btn btn-sm btn-link text-light p-0 text-decoration-none" onclick="togglePasscodeFallback()">
+                    <i class="fas fa-shield-alt me-1"></i> Use Access Key / Passcode
+                </button>
+            </div>
+
+            <!-- Fallback Passcode Box (Collapsed by default) -->
+            <div id="fallback-passcode-box" class="mb-3 d-none text-start p-2 bg-black rounded border border-secondary border-opacity-50">
+                <label for="passcode-input" class="form-label text-light small mb-1">Or Enter Access Passcode (e.g. JUMPSTART21):</label>
+                <div class="input-group input-group-sm">
+                    <input type="password" id="passcode-input" class="form-control bg-dark text-light border-secondary" placeholder="JUMPSTART21">
+                    <button class="btn btn-outline-warning" type="button" onclick="verifyPasscode()">
+                        Unlock
+                    </button>
+                </div>
+                <div id="passcode-error" class="text-danger small mt-1 d-none">
+                    <i class="fas fa-exclamation-circle me-1"></i> Invalid passcode.
+                </div>
+            </div>
+
+            <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-2">
+                <a href="https://square.link/u/M3pP8BsV" target="_blank" class="btn btn-outline-warning rounded-pill btn-sm fw-bold">
+                    <i class="fas fa-shopping-cart me-1"></i> Haven't purchased yet? Buy on Square ($9.99)
+                </a>
+                <a href="shop.html" class="text-light small text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i> Return to KROME Fitness Shop
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY TOP MANUAL HEADER -->
+    <header class="manual-nav no-print">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <a href="shop.html" class="manual-brand">
+                <i class="fas fa-bolt me-2 text-warning"></i> KROME FITNESS &middot; 21-DAY JUMPSTART
+            </a>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <span id="auth-status-badge" class="badge bg-dark text-warning border border-warning px-3 py-2 rounded-pill me-1" style="font-size: 0.78rem;">
+                    <i class="fas fa-lock me-1"></i> Private Member Area
+                </span>
+                <a href="program_detail.html?id=transformation-21" class="btn-action-outline">
+                    <i class="fas fa-arrow-left me-1"></i> Program Overview
+                </a>
+                <button onclick="window.print()" class="btn-action-gold">
+                    <i class="fas fa-file-pdf me-1"></i> Print / Save as PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE QUICK-JUMP SECTION BAR -->
+    <div class="d-lg-none bg-black border-bottom border-warning p-2 no-print shadow" style="z-index: 1020; position: relative;">
+        <div class="container-fluid px-1">
+            <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="small text-warning fw-bold"><i class="fas fa-compass me-1"></i> Quick Jump Navigation:</span>
+                <span class="badge bg-warning text-dark" style="font-size: 0.7rem;"><i class="fas fa-fire me-1"></i> 21 Days to Momentum</span>
+            </div>
+            <div class="d-flex flex-wrap gap-1 align-items-center justify-content-start">
+                <a href="#sec-overview" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">1. Overview</a>
+                <a href="#sec-calendar" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">4. Calendar</a>
+                <a href="#sec-week1" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">5. Week 1</a>
+                <a href="#sec-week2" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">6. Week 2</a>
+                <a href="#sec-week3" class="btn btn-sm btn-outline-info rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">7. Week 3</a>
+                <a href="#sec-library" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">10. Library</a>
+                <a href="#sec-trackers" class="btn btn-sm btn-outline-success rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">13. Trackers</a>
+                <a href="#sec-maintenance" class="btn btn-sm btn-outline-light rounded-pill py-1 px-2 flex-fill text-center" style="font-size: 0.75rem;">15. Maintenance</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANUAL HERO & OVERVIEW -->
+    <section class="manual-hero">
+        <div id="athlete-jumpstart-profile-mount" class="container mt-3 mb-4 d-none"></div>
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <div class="mb-2">
+                        <span class="hero-price-badge me-2">$9.99 DIGITAL ATHLETE JUMPSTART</span>
+                        <span class="badge bg-dark text-info border border-info" style="font-size: 0.8rem;">BODYWEIGHT CONDITIONING</span>
+                    </div>
+                    <h1 class="hero-title mb-2">KROME 21-DAY ATHLETE JUMPSTART</h1>
+                    <h2 class="h4 text-warning fw-bold mb-3">No Equipment. Progressive Conditioning. Built for Consistency.</h2>
+                    <p class="text-light fs-5 lh-base mb-4">
+                        21 days of structured bodyweight resistance training, work intervals, and habit accountability designed to build workout momentum and accelerate fat-loss without requiring a gym.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2 text-light small fw-bold">
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-calendar-alt text-warning me-1"></i> 21-Day Calendar</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-dumbbell text-info me-1"></i> Beginner & Advanced Tracks</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-running text-warning me-1"></i> 65 Exercise Library</span>
+                        <span class="bg-dark px-3 py-2 rounded-pill border border-secondary"><i class="fas fa-check-double text-info me-1"></i> Habit Scorecard</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 no-print">
+                    <div class="toc-card">
+                        <h5 class="text-warning fw-bold mb-2"><i class="fas fa-list-ol me-2"></i> Table of Contents</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#sec-notice" class="toc-link"><i class="fas fa-exclamation-triangle"></i> Training Notice</a></li>
+                            <li><a href="#sec-contents" class="toc-link"><i class="fas fa-list"></i> Contents Index</a></li>
+                            <li><a href="#sec-overview" class="toc-link"><i class="fas fa-bullseye"></i> 1. Challenge Overview</a></li>
+                            <li><a href="#sec-how" class="toc-link"><i class="fas fa-cogs"></i> 2. How the Program Works</a></li>
+                            <li><a href="#sec-tracks" class="toc-link"><i class="fas fa-sliders-h"></i> 3. Beginner & Advanced Tracks</a></li>
+                            <li><a href="#sec-calendar" class="toc-link"><i class="fas fa-calendar-alt"></i> 4. 21-Day Calendar</a></li>
+                            <li><a href="#sec-week1" class="toc-link"><i class="fas fa-play"></i> 5. Week 1 - Foundation</a></li>
+                            <li><a href="#sec-week2" class="toc-link"><i class="fas fa-forward"></i> 6. Week 2 - Progression</a></li>
+                            <li><a href="#sec-week3" class="toc-link"><i class="fas fa-flag-checkered"></i> 7. Week 3 - Finish Strong</a></li>
+                            <li><a href="#sec-finishers" class="toc-link"><i class="fas fa-bolt"></i> 8. Advanced Finishers</a></li>
+                            <li><a href="#sec-cardio" class="toc-link"><i class="fas fa-heartbeat"></i> 9. Cardio & Daily Movement</a></li>
+                            <li><a href="#sec-library" class="toc-link"><i class="fas fa-book-open"></i> 10. Exercise Library</a></li>
+                            <li><a href="#sec-warmup" class="toc-link"><i class="fas fa-child"></i> 11. Warm-Up & Recovery</a></li>
+                            <li><a href="#sec-nutrition" class="toc-link"><i class="fas fa-utensils"></i> 12. Nutrition Connection</a></li>
+                            <li><a href="#sec-trackers" class="toc-link"><i class="fas fa-tasks"></i> 13. Progress Trackers</a></li>
+                            <li><a href="#sec-assessment" class="toc-link"><i class="fas fa-clipboard-check"></i> 14. Day 21 Assessment</a></li>
+                            <li><a href="#sec-maintenance" class="toc-link"><i class="fas fa-sync-alt"></i> 15. Post-Challenge Maintenance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN MANUAL CONTENT -->
+    <main class="container my-5">
+        <article class="manual-section">
+            <div class="table-wrap">
+                <table class="table table-krome mb-0 text-center fw-bold">
+                    <tr><td>KROME FITNESS &middot; 21-DAY BODYWEIGHT CHALLENGE & JUMPSTART<br>No Equipment. Progressive Conditioning. Built for Consistency.<br>21 DAYS. ONE STANDARD. FINISH STRONGER.</td></tr>
+                </table>
+            </div>
+        </article>
+
+        <!-- IMPORTANT TRAINING NOTICE -->
+        <article class="manual-section" id="sec-notice">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-exclamation-triangle"></i> Important Training Notice</h2>
+            <p class="text-light">This program is general fitness education, not individualized medical care. Exercise tolerance varies. Stop and seek appropriate medical attention for chest pain, fainting, severe shortness of breath, or other concerning symptoms.</p>
+            <p class="text-light">If you are pregnant, recovering from surgery or injury, have cardiovascular or metabolic disease, uncontrolled blood pressure, significant joint pain, or another condition affecting exercise safety, obtain individualized guidance before beginning.</p>
+            <p class="text-light mb-0">This challenge is designed to increase physical activity, conditioning and muscular endurance and can support fat-loss goals when paired with appropriate nutrition and energy balance. It does not promise to permanently 'boost' or 'reset' metabolism.</p>
+        </article>
+
+        <!-- CONTENTS -->
+        <article class="manual-section" id="sec-contents">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-list"></i> Contents</h2>
+            <div class="row g-2 text-light">
+                <div class="col-md-6">1. Challenge Overview</div>
+                <div class="col-md-6">9. Cardio & Daily Movement</div>
+                <div class="col-md-6">2. How the Program Works</div>
+                <div class="col-md-6">10. Exercise Library</div>
+                <div class="col-md-6">3. Beginner & Advanced Tracks</div>
+                <div class="col-md-6">11. Warm-Up & Recovery</div>
+                <div class="col-md-6">4. 21-Day Calendar</div>
+                <div class="col-md-6">12. Nutrition Connection</div>
+                <div class="col-md-6">5. Week 1 - Foundation</div>
+                <div class="col-md-6">13. Progress Trackers</div>
+                <div class="col-md-6">6. Week 2 - Progression</div>
+                <div class="col-md-6">14. Day 21 Assessment</div>
+                <div class="col-md-6">7. Week 3 - Finish Strong</div>
+                <div class="col-md-6">15. Post-Challenge Maintenance</div>
+                <div class="col-md-6">8. Advanced Finishers</div>
+            </div>
+        </article>
+
+        <!-- 1. CHALLENGE OVERVIEW -->
+        <article class="manual-section" id="sec-overview">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-bullseye"></i> 1. Challenge Overview</h2>
+            <p class="text-light">The KROME 21-Day Bodyweight Challenge is a three-week training system built around bodyweight resistance, progressive work intervals, conditioning and consistency. The core workouts require no gym equipment.</p>
+            <ul class="check-list">
+                <li>Four structured training days each week.</li>
+                <li>Monday/Wednesday: lower body + core emphasis.</li>
+                <li>Tuesday/Thursday: upper body + core/conditioning emphasis.</li>
+                <li>Friday and Saturday: active recovery or optional conditioning.</li>
+                <li>Sunday: reset, mobility and weekly check-in.</li>
+                <li>Beginner and advanced tracks use the same movement library with different work-to-rest demands.</li>
+            </ul>
+            <h4 class="text-warning fw-bold mt-4 mb-2">The Goal</h4>
+            <p class="text-light mb-0">Build a repeatable exercise habit, improve muscular endurance and conditioning, increase total movement, and support a calorie-controlled fat-loss plan without requiring a gym.</p>
+        </article>
+
+        <!-- 2. HOW THE PROGRAM WORKS -->
+        <article class="manual-section" id="sec-how">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-cogs"></i> 2. How the Program Works</h2>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead>
+                        <tr><th>Day</th><th>Focus</th><th>Purpose</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Monday</td><td>Lower Body + Core</td><td>Strength-endurance and lower-body conditioning</td></tr>
+                        <tr><td>Tuesday</td><td>Upper Body + Core</td><td>Push strength, plank control and conditioning</td></tr>
+                        <tr><td>Wednesday</td><td>Lower Body + Core</td><td>Repeat with better execution; optional advanced finisher</td></tr>
+                        <tr><td>Thursday</td><td>Upper Body + Core</td><td>Repeat with better execution; optional advanced finisher</td></tr>
+                        <tr><td>Friday</td><td>Active Recovery</td><td>Easy walking + mobility</td></tr>
+                        <tr><td>Saturday</td><td>Movement / Cardio</td><td>Optional sustainable conditioning</td></tr>
+                        <tr><td>Sunday</td><td>Reset</td><td>Recovery, mobility and weekly check-in</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Circuit Method</h4>
+            <p class="text-light">Complete each exercise for the prescribed work interval. Rest as needed between exercises. After one full pass through the list, rest 1-2 minutes before beginning the next set/round.</p>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Quality Standard</h4>
+            <p class="text-light mb-0">Progress only when you can maintain technique, breathing control and joint comfort. A participant may stay on the beginner track for all 21 days and still complete the challenge successfully.</p>
+        </article>
+
+        <!-- 3. BEGINNER & ADVANCED TRACKS -->
+        <article class="manual-section" id="sec-tracks">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-sliders-h"></i> 3. Beginner & Advanced Tracks</h2>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead>
+                        <tr><th>Track</th><th>Sets</th><th>Work</th><th>Rest</th><th>Use</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Beginner</td><td>2-3</td><td>20-30 sec</td><td>30-60 sec</td><td>New/returning exercisers or anyone prioritizing lower impact</td></tr>
+                        <tr><td>Advanced</td><td>3</td><td>45 sec</td><td>15-30 sec</td><td>Experienced exercisers with good movement control</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Modification Ladder</h4>
+            <ul class="check-list">
+                <li>Reduce the work interval before removing an exercise entirely.</li>
+                <li>Increase rest before sacrificing technique.</li>
+                <li>Use wall, countertop or knee-supported pushup variations.</li>
+                <li>Step instead of jump on burpees, jumping jacks and skaters.</li>
+                <li>Reduce squat/lunge depth when needed for comfort and control.</li>
+                <li>Raise the legs during low-leg core work if the low back loses control.</li>
+                <li>Skip the advanced finisher when recovery or technique is declining.</li>
+            </ul>
+        </article>
+
+        <!-- 4. 21-DAY CALENDAR -->
+        <article class="manual-section" id="sec-calendar">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-calendar-alt"></i> 4. 21-Day Calendar</h2>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead>
+                        <tr><th>Day</th><th>Schedule</th><th>Assignment</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Day 1</td><td>Monday</td><td>Week 1 Lower + Core</td></tr>
+                        <tr><td>Day 2</td><td>Tuesday</td><td>Week 1 Upper + Core</td></tr>
+                        <tr><td>Day 3</td><td>Wednesday</td><td>Week 1 Lower + Core + optional finisher</td></tr>
+                        <tr><td>Day 4</td><td>Thursday</td><td>Week 1 Upper + Core + optional finisher</td></tr>
+                        <tr><td>Day 5</td><td>Friday</td><td>Active Recovery: 20-40 min easy walk + mobility</td></tr>
+                        <tr><td>Day 6</td><td>Saturday</td><td>Optional Cardio / Daily Movement</td></tr>
+                        <tr><td>Day 7</td><td>Sunday</td><td>Reset + Weekly Check-In</td></tr>
+                        <tr><td>Day 8</td><td>Monday</td><td>Week 2 Lower + Core</td></tr>
+                        <tr><td>Day 9</td><td>Tuesday</td><td>Week 2 Upper + Core</td></tr>
+                        <tr><td>Day 10</td><td>Wednesday</td><td>Week 2 Lower + Core + optional finisher</td></tr>
+                        <tr><td>Day 11</td><td>Thursday</td><td>Week 2 Upper + Core + optional finisher</td></tr>
+                        <tr><td>Day 12</td><td>Friday</td><td>Active Recovery: 20-40 min easy walk + mobility</td></tr>
+                        <tr><td>Day 13</td><td>Saturday</td><td>Optional Cardio / Daily Movement</td></tr>
+                        <tr><td>Day 14</td><td>Sunday</td><td>Reset + Weekly Check-In</td></tr>
+                        <tr><td>Day 15</td><td>Monday</td><td>Week 3 Lower + Core</td></tr>
+                        <tr><td>Day 16</td><td>Tuesday</td><td>Week 3 Upper + Core</td></tr>
+                        <tr><td>Day 17</td><td>Wednesday</td><td>Week 3 Lower + Core + optional finisher</td></tr>
+                        <tr><td>Day 18</td><td>Thursday</td><td>Week 3 Upper + Core + optional finisher</td></tr>
+                        <tr><td>Day 19</td><td>Friday</td><td>Active Recovery: 20-40 min easy walk + mobility</td></tr>
+                        <tr><td>Day 20</td><td>Saturday</td><td>Optional Cardio / Daily Movement</td></tr>
+                        <tr><td>Day 21</td><td>Sunday</td><td>Reset + Weekly Check-In</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- 5. WEEK 1 - FOUNDATION -->
+        <article class="manual-section" id="sec-week1">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-play"></i> 5. Week 1 - Foundation <span class="fs-6 text-light ms-2">(Click any exercise for video demo)</span></h2>
+            <p class="text-light">Beginner: 2-3 sets x 20-30 seconds, 30-60 seconds rest. Advanced: 3 sets x 45 seconds, 15-30 seconds rest.</p>
+            
+            <h4 class="text-warning fw-bold mt-4 mb-2">Monday / Wednesday - Lower Body + Core</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=giOeuU1DRxc" target="_blank" class="text-warning text-decoration-none fw-semibold">Squats <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=m9Tf8PoDsh0" target="_blank" class="text-warning text-decoration-none fw-semibold">Lunges <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="text-warning text-decoration-none fw-semibold">Squat Jumps <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=KYAYoaLUPsw" target="_blank" class="text-warning text-decoration-none fw-semibold">Sumo Squat / Calf Raises <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=f2CTZC85eaY" target="_blank" class="text-warning text-decoration-none fw-semibold">Squat Front Kick <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-warning text-decoration-none fw-semibold">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=Qb9aM-ewLh4" target="_blank" class="text-warning text-decoration-none fw-semibold">Kick Backs <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=nEOvqZDBmVA" target="_blank" class="text-warning text-decoration-none fw-semibold">Crunches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=ovBpyInCWzg" target="_blank" class="text-warning text-decoration-none fw-semibold">Leg Lifts <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=ND4z3jwg8LI" target="_blank" class="text-warning text-decoration-none fw-semibold">Trunk Rotations <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>11</td><td><a href="https://www.youtube.com/watch?v=F4l1ng2YbZE" target="_blank" class="text-warning text-decoration-none fw-semibold">Bicycles <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Tuesday / Thursday - Upper Body + Core / Conditioning</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=YHl4R0iZsLs" target="_blank" class="text-warning text-decoration-none fw-semibold">Pushups / Modified Pushups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-warning text-decoration-none fw-semibold">Burpees / Modified Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=vE4nO56NekY" target="_blank" class="text-warning text-decoration-none fw-semibold">Seated Dips <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=dNWip9dgiDc" target="_blank" class="text-warning text-decoration-none fw-semibold">Push Up Row / Modified Push Up Row <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=sQKLmZiWQqk" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Ups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=tuFkn0Xac8Y" target="_blank" class="text-warning text-decoration-none fw-semibold">Wall Push Ups / Modified Wall Push Up <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=p8fCXTTXEe4" target="_blank" class="text-warning text-decoration-none fw-semibold">Push Up Burpee / Modified Push Up Burpee <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=Zv-3KFi-uc0" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Up & Over <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=C6pxHdJDTzA" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Rotations <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=MRSVbkcMk44" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Shift <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Advanced Finisher</h4>
+            <p class="text-light">Optional. Use only when movement quality remains high. Complete the listed movements as an additional conditioning set.</p>
+            <ul class="check-list">
+                <li><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-light text-decoration-none">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-light text-decoration-none">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-light text-decoration-none">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-light text-decoration-none">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+            </ul>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Optional Cardio</h4>
+            <p class="text-light mb-0">Original program target: treadmill, bike or elliptical for 30-45 minutes around 60%-70% heart-rate effort. A brisk walk or other sustainable cardio may be substituted.</p>
+        </article>
+
+        <!-- 6. WEEK 2 - PROGRESSION -->
+        <article class="manual-section" id="sec-week2">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-forward"></i> 6. Week 2 - Progression <span class="fs-6 text-light ms-2">(Click any exercise for video demo)</span></h2>
+            <p class="text-light">Beginner: 2-3 sets x 20-30 seconds, 30-60 seconds rest. Advanced: 3 sets x 45 seconds, 15-30 seconds rest.</p>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Monday / Wednesday - Lower Body + Core</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=edwM7TCaAAk" target="_blank" class="text-warning text-decoration-none fw-semibold">Lunge High Knee <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=07x5q1A1wpw" target="_blank" class="text-warning text-decoration-none fw-semibold">Split Squat Pulse <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=Qb9aM-ewLh4" target="_blank" class="text-warning text-decoration-none fw-semibold">Kickbacks <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=xcBM2ERKmoM" target="_blank" class="text-warning text-decoration-none fw-semibold">Fire Hydrants <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=edhwNxkS_Ok" target="_blank" class="text-warning text-decoration-none fw-semibold">Pulse Squat <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=ZNoROhGjQA8" target="_blank" class="text-warning text-decoration-none fw-semibold">Isolation Squats <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=dtEzoLEo2ZU" target="_blank" class="text-warning text-decoration-none fw-semibold">Isolation RDL <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="text-warning text-decoration-none fw-semibold">Squat Jump <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=nEOvqZDBmVA" target="_blank" class="text-warning text-decoration-none fw-semibold">Arm Extension Crunches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=Cmz58xFCFkw" target="_blank" class="text-warning text-decoration-none fw-semibold">Alternating V-Ups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>11</td><td><a href="https://www.youtube.com/watch?v=hsgprrd6aTE" target="_blank" class="text-warning text-decoration-none fw-semibold">Side Crunches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>12</td><td><a href="https://www.youtube.com/watch?v=OEJQmExKUEg" target="_blank" class="text-warning text-decoration-none fw-semibold">6 Inch Kicks <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Tuesday / Thursday - Upper Body + Core / Conditioning</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=JS-8sMWjnQ0" target="_blank" class="text-warning text-decoration-none fw-semibold">Pushup Rotations <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=8bLY3DrYcoQ" target="_blank" class="text-warning text-decoration-none fw-semibold">Inch Worms <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-warning text-decoration-none fw-semibold">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=KBtcTXa-Omk" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Lateral Hand Walks <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=KBtcTXa-Omk" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Shoulder Taps <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=39YfA75ZsRQ" target="_blank" class="text-warning text-decoration-none fw-semibold">Close Push Ups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=tuFkn0Xac8Y" target="_blank" class="text-warning text-decoration-none fw-semibold">Wall Push Ups / Modified Wall Push Up <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=QEcZLdxpp4Y" target="_blank" class="text-warning text-decoration-none fw-semibold">ISO Push Up <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=IENdZkcB0Y8" target="_blank" class="text-warning text-decoration-none fw-semibold">Plank Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=UzzkA5YkfzY" target="_blank" class="text-warning text-decoration-none fw-semibold">Boats <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>11</td><td><a href="https://www.youtube.com/watch?v=ZII65WME-cM" target="_blank" class="text-warning text-decoration-none fw-semibold">6 Inches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>12</td><td><a href="https://www.youtube.com/watch?v=xZZlg5L2qFA" target="_blank" class="text-warning text-decoration-none fw-semibold">Knee Slams <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Advanced Finisher</h4>
+            <p class="text-light">Optional. Use only when movement quality remains high. Complete the listed movements as an additional conditioning set.</p>
+            <ul class="check-list">
+                <li><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-light text-decoration-none">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-light text-decoration-none">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-light text-decoration-none">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-light text-decoration-none">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="text-light text-decoration-none">Squat Jumps <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+            </ul>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Optional Cardio</h4>
+            <p class="text-light mb-0">Original program target: treadmill, bike or elliptical for 30-45 minutes around 65%-75% heart-rate effort. Keep intensity sustainable and conversational-to-moderate.</p>
+        </article>
+
+        <!-- 7. WEEK 3 - FINISH STRONG -->
+        <article class="manual-section" id="sec-week3">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-flag-checkered"></i> 7. Week 3 - Finish Strong <span class="fs-6 text-light ms-2">(Click any exercise for video demo)</span></h2>
+            <p class="text-light">Beginner: 2-3 sets x 20-30 seconds, 30-60 seconds rest. Advanced: 3 sets x 45 seconds, 15-30 seconds rest.</p>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Monday / Wednesday - Lower Body + Core</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=fC87NFdP4as" target="_blank" class="text-warning text-decoration-none fw-semibold">Lateral Lunge <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="text-warning text-decoration-none fw-semibold">Squat Jumps <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=oug1saZN98Y" target="_blank" class="text-warning text-decoration-none fw-semibold">Bear Position Holds <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=y76EG1JKc54" target="_blank" class="text-warning text-decoration-none fw-semibold">Single Leg RDLs <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=edhwNxkS_Ok" target="_blank" class="text-warning text-decoration-none fw-semibold">Pulse Squat <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=VIAHT7Ery8s" target="_blank" class="text-warning text-decoration-none fw-semibold">Reverse Lunge <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=i1QuXUJWJPE" target="_blank" class="text-warning text-decoration-none fw-semibold">Half Burpee <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=Qb9aM-ewLh4" target="_blank" class="text-warning text-decoration-none fw-semibold">Kick Backs <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=xKIdviDOoAs" target="_blank" class="text-warning text-decoration-none fw-semibold">Glute Bridges <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=0gKGg33pLE0" target="_blank" class="text-warning text-decoration-none fw-semibold">Froggers <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>11</td><td><a href="https://www.youtube.com/watch?v=p-INKVA-maw" target="_blank" class="text-warning text-decoration-none fw-semibold">Side Planks <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>12</td><td><a href="https://www.youtube.com/watch?v=xcBM2ERKmoM" target="_blank" class="text-warning text-decoration-none fw-semibold">Rainbows <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Tuesday / Thursday - Upper Body + Core / Conditioning</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>#</th><th>Exercise</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=YHl4R0iZsLs" target="_blank" class="text-warning text-decoration-none fw-semibold">Pushups / Modified Pushups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=JO99Vgup1sI" target="_blank" class="text-warning text-decoration-none fw-semibold">Hip Taps <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=775dUBnVXm0" target="_blank" class="text-warning text-decoration-none fw-semibold">Diamond Pushups <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=92XMQUb-X_I" target="_blank" class="text-warning text-decoration-none fw-semibold">3-Point Plank <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=6e8N2vlG_wU" target="_blank" class="text-warning text-decoration-none fw-semibold">Crab Position Glute Bridge <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=_7XIF0aO8lw" target="_blank" class="text-warning text-decoration-none fw-semibold">Isolated Seated Dips <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=tuFkn0Xac8Y" target="_blank" class="text-warning text-decoration-none fw-semibold">Wall Push Ups / Modified Wall Push Up <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=HV_UgWFOLhs" target="_blank" class="text-warning text-decoration-none fw-semibold">Skaters <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=rqkU0J_AD2g" target="_blank" class="text-warning text-decoration-none fw-semibold">Crab Heel Touches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>10</td><td><a href="https://www.youtube.com/watch?v=aH6aDiXS1xQ" target="_blank" class="text-warning text-decoration-none fw-semibold">Leg Lowers <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>11</td><td><a href="https://www.youtube.com/watch?v=J6w5CpqwSao" target="_blank" class="text-warning text-decoration-none fw-semibold">Side Plank Crunches <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                        <tr><td>12</td><td><a href="https://www.youtube.com/watch?v=Ep7lO_Cxlo4" target="_blank" class="text-warning text-decoration-none fw-semibold">Push Up Rotations / Heel Tap <i class="fab fa-youtube text-danger ms-1"></i></a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Advanced Finisher</h4>
+            <p class="text-light">Optional. Use only when movement quality remains high. Complete the listed movements as an additional conditioning set.</p>
+            <ul class="check-list">
+                <li><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-light text-decoration-none">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-light text-decoration-none">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-light text-decoration-none">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-light text-decoration-none">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+                <li><a href="https://www.youtube.com/watch?v=i1QuXUJWJPE" target="_blank" class="text-light text-decoration-none">Half Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></li>
+            </ul>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Optional Cardio</h4>
+            <p class="text-light mb-0">Original program target: treadmill, bike or elliptical for 45-60 minutes around 70% heart-rate effort. Longer duration is optional, not required to complete the challenge.</p>
+        </article>
+
+        <!-- 8. ADVANCED FINISHERS -->
+        <article class="manual-section" id="sec-finishers">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-bolt"></i> 8. Advanced Finishers <span class="fs-6 text-light ms-2">(Click movement for video demo)</span></h2>
+            <p class="text-light">The advanced set is an optional conditioning layer, not a punishment for missing a workout. Add it after the main circuit only if technique and recovery remain strong.</p>
+
+            <h4 class="text-warning fw-bold mt-3 mb-2">Week 1 Finisher</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>Movement</th><th>Suggested Format</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-warning text-decoration-none fw-semibold">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-warning text-decoration-none fw-semibold">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-warning text-decoration-none fw-semibold">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-warning text-decoration-none fw-semibold">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Week 2 Finisher</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>Movement</th><th>Suggested Format</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-warning text-decoration-none fw-semibold">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-warning text-decoration-none fw-semibold">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-warning text-decoration-none fw-semibold">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-warning text-decoration-none fw-semibold">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="text-warning text-decoration-none fw-semibold">Squat Jumps <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-warning fw-bold mt-4 mb-2">Week 3 Finisher</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>Movement</th><th>Suggested Format</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="text-warning text-decoration-none fw-semibold">Jumping Jacks <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="text-warning text-decoration-none fw-semibold">Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="text-warning text-decoration-none fw-semibold">High Knees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="text-warning text-decoration-none fw-semibold">Mountain Climbers <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                        <tr><td><a href="https://www.youtube.com/watch?v=i1QuXUJWJPE" target="_blank" class="text-warning text-decoration-none fw-semibold">Half Burpees <i class="fab fa-youtube text-danger ms-1"></i></a></td><td>20-30 sec; transition under control</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-light small mt-3 mb-0">Week 1 source note: the original program specifically calls for the advanced set on Wednesday and Thursday for participants using the advanced option.</p>
+        </article>
+
+        <!-- 9. CARDIO & DAILY MOVEMENT -->
+        <article class="manual-section" id="sec-cardio">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-heartbeat"></i> 9. Cardio & Daily Movement</h2>
+            <p class="text-light">Cardio is optional because the core product is bodyweight-only. Walking is the default no-equipment option.</p>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>Week</th><th>Original Optional Cardio</th><th>No-Equipment Alternative</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>30-45 min, ~60%-70% HR effort</td><td>20-40 min brisk walk</td></tr>
+                        <tr><td>2</td><td>30-45 min, ~65%-75% HR effort</td><td>25-45 min brisk walk / walk-jog</td></tr>
+                        <tr><td>3</td><td>45-60 min, ~70% HR effort</td><td>30-60 min brisk walk / sustainable conditioning</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Effort Guide</h4>
+            <ul class="check-list">
+                <li>Easy: breathing elevated slightly; full conversation is comfortable.</li>
+                <li>Moderate: breathing clearly elevated; short sentences are comfortable.</li>
+                <li>Hard: reserved for brief advanced work; do not turn every session into an all-out test.</li>
+            </ul>
+            <p class="text-light small mb-0">Heart-rate percentages are approximate. Medication, fitness level, heat, stress and individual physiology can change heart-rate response.</p>
+        </article>
+
+        <!-- 10. EXERCISE LIBRARY -->
+        <article class="manual-section" id="sec-library">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-book-open"></i> 10. Exercise Library <span class="fs-6 text-light ms-2">(Click "Watch Demo" for YouTube video)</span></h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>1. Squats</span>
+                            <a href="https://www.youtube.com/watch?v=giOeuU1DRxc" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Sit hips down and back, keep the whole foot grounded, then stand tall.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>2. Lunges</span>
+                            <a href="https://www.youtube.com/watch?v=m9Tf8PoDsh0" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Step into a split stance, lower under control, and drive through the front foot.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>3. Squat Jumps</span>
+                            <a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Squat, jump vertically, land softly, and reset. Low-impact option: step the movement or remove the jump while preserving the pattern.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>4. Sumo Squat / Calf Raises</span>
+                            <a href="https://www.youtube.com/watch?v=KYAYoaLUPsw" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Use a wider stance; squat, stand, then rise onto the balls of the feet.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>5. Squat Front Kick</span>
+                            <a href="https://www.youtube.com/watch?v=f2CTZC85eaY" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Stand from the squat and add one controlled front kick; alternate sides.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>6. Mountain Climbers</span>
+                            <a href="https://www.youtube.com/watch?v=4gigVeKvLuE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hold a strong plank and alternate knee drives without letting the hips bounce excessively.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>7. Kick Backs</span>
+                            <a href="https://www.youtube.com/watch?v=Qb9aM-ewLh4" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From hands and knees, extend one leg using the glute while keeping the trunk stable.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>8. Crunches</span>
+                            <a href="https://www.youtube.com/watch?v=nEOvqZDBmVA" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Brace the trunk and lift the shoulder blades slightly without pulling on the neck.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>9. Leg Lifts</span>
+                            <a href="https://www.youtube.com/watch?v=ovBpyInCWzg" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Lower and lift the legs only through a range that lets you control the low back.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>10. Trunk Rotations</span>
+                            <a href="https://www.youtube.com/watch?v=ND4z3jwg8LI" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Rotate smoothly through the torso without forcing range.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>11. Bicycles</span>
+                            <a href="https://www.youtube.com/watch?v=F4l1ng2YbZE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Alternate elbow toward opposite knee while controlling the trunk.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>12. Pushups / Modified Pushups</span>
+                            <a href="https://www.youtube.com/watch?v=YHl4R0iZsLs" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Keep the body aligned; lower the chest under control and press away. Use knees or elevation to modify.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>13. Burpees / Modified Burpees</span>
+                            <a href="https://www.youtube.com/watch?v=FPocRyw0Ivs" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Move between standing and plank. Step instead of jump to reduce impact.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>14. Seated Dips</span>
+                            <a href="https://www.youtube.com/watch?v=vE4nO56NekY" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Use a stable surface and a comfortable shoulder range; bend and extend the elbows under control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>15. Push Up Row / Modified Push Up Row</span>
+                            <a href="https://www.youtube.com/watch?v=dNWip9dgiDc" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Perform a pushup, then row one arm toward the ribs while resisting rotation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>16. Plank Ups</span>
+                            <a href="https://www.youtube.com/watch?v=sQKLmZiWQqk" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Move between forearms and hands while keeping the hips controlled.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>17. Wall Push Ups / Modified Wall Push Up</span>
+                            <a href="https://www.youtube.com/watch?v=tuFkn0Xac8Y" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Keep the body straight, lower toward the wall, and press away.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>18. Push Up Burpee / Modified Push Up Burpee</span>
+                            <a href="https://www.youtube.com/watch?v=p8fCXTTXEe4" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Combine a burpee pattern with one pushup; step and/or elevate to modify.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>19. Plank Up & Over</span>
+                            <a href="https://www.youtube.com/watch?v=Zv-3KFi-uc0" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Travel laterally in plank with small controlled hand and foot steps.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>20. Plank Rotations</span>
+                            <a href="https://www.youtube.com/watch?v=C6pxHdJDTzA" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Rotate from plank into a controlled side-plank position and alternate.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>21. Plank Shift</span>
+                            <a href="https://www.youtube.com/watch?v=MRSVbkcMk44" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Shift the body slightly forward and back while maintaining plank position.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>22. Lunge High Knee</span>
+                            <a href="https://www.youtube.com/watch?v=edwM7TCaAAk" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Drive from a lunge into a balanced high-knee position.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>23. Split Squat Pulse</span>
+                            <a href="https://www.youtube.com/watch?v=07x5q1A1wpw" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hold a split stance and perform short controlled pulses.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>24. Kickbacks</span>
+                            <a href="https://www.youtube.com/watch?v=Qb9aM-ewLh4" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Perform the movement through a comfortable, controlled range. Prioritize posture, joint comfort and steady breathing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>25. Fire Hydrants</span>
+                            <a href="https://www.youtube.com/watch?v=xcBM2ERKmoM" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From hands and knees, lift one knee laterally while keeping the pelvis controlled.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>26. Pulse Squat</span>
+                            <a href="https://www.youtube.com/watch?v=edhwNxkS_Ok" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hold the lower squat range and perform short controlled pulses.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>27. Isolation Squats</span>
+                            <a href="https://www.youtube.com/watch?v=ZNoROhGjQA8" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Maintain tension in a controlled squat position or short range.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>28. Isolation RDL</span>
+                            <a href="https://www.youtube.com/watch?v=dtEzoLEo2ZU" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hinge at the hips with a long spine and soft knees, then squeeze the glutes to stand.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>29. Squat Jump</span>
+                            <a href="https://www.youtube.com/watch?v=dF6Y585l3VI" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Squat, jump, land softly, and reset. Low-impact option: step the movement or remove the jump.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>30. Arm Extension Crunches</span>
+                            <a href="https://www.youtube.com/watch?v=nEOvqZDBmVA" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Reach the arms while performing a controlled crunch.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>31. Alternating V-Ups</span>
+                            <a href="https://www.youtube.com/watch?v=Cmz58xFCFkw" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Reach opposite hand toward opposite foot while lifting torso and leg together.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>32. Side Crunches</span>
+                            <a href="https://www.youtube.com/watch?v=hsgprrd6aTE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Shorten the side of the trunk under control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>33. 6 Inch Kicks</span>
+                            <a href="https://www.youtube.com/watch?v=OEJQmExKUEg" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Keep legs low and alternate small kicks; raise the legs if the low back loses contact/control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>34. Pushup Rotations</span>
+                            <a href="https://www.youtube.com/watch?v=JS-8sMWjnQ0" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Perform a pushup, then rotate into side plank; alternate.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>35. Inch Worms</span>
+                            <a href="https://www.youtube.com/watch?v=8bLY3DrYcoQ" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hinge to the floor, walk hands to plank, then walk back and stand.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>36. High Knees</span>
+                            <a href="https://www.youtube.com/watch?v=cMGdU5L5eOU" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Run or march in place with active arm drive.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>37. Plank Lateral Hand Walks</span>
+                            <a href="https://www.youtube.com/watch?v=KBtcTXa-Omk" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Take small lateral plank steps while resisting hip rotation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>38. Plank Shoulder Taps</span>
+                            <a href="https://www.youtube.com/watch?v=KBtcTXa-Omk" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Tap the opposite shoulder from plank while keeping the hips stable.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>39. Close Push Ups</span>
+                            <a href="https://www.youtube.com/watch?v=39YfA75ZsRQ" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Use a narrower hand position and controlled elbows; modify as needed.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>40. ISO Push Up</span>
+                            <a href="https://www.youtube.com/watch?v=QEcZLdxpp4Y" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hold a stable pushup position at a controllable depth.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>41. Plank Jacks</span>
+                            <a href="https://www.youtube.com/watch?v=IENdZkcB0Y8" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Step or hop the feet out and in while maintaining plank control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>42. Boats</span>
+                            <a href="https://www.youtube.com/watch?v=UzzkA5YkfzY" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Balance on the sit bones with the trunk braced and legs lifted to a manageable height.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>43. 6 Inches</span>
+                            <a href="https://www.youtube.com/watch?v=ZII65WME-cM" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hold the legs low only while the low back remains controlled.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>44. Knee Slams</span>
+                            <a href="https://www.youtube.com/watch?v=xZZlg5L2qFA" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Drive one knee upward as the arms pull down; alternate sides.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>45. Lateral Lunge</span>
+                            <a href="https://www.youtube.com/watch?v=fC87NFdP4as" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Step sideways, sit into one hip, then push back to center.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>46. Bear Position Holds</span>
+                            <a href="https://www.youtube.com/watch?v=oug1saZN98Y" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Hover the knees just above the floor with hands and feet grounded and trunk braced.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>47. Single Leg RDLs</span>
+                            <a href="https://www.youtube.com/watch?v=y76EG1JKc54" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Balance on one leg, hinge at the hip, keep hips square, and return tall.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>48. Reverse Lunge</span>
+                            <a href="https://www.youtube.com/watch?v=VIAHT7Ery8s" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Step backward, lower under control, and drive through the front foot.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>49. Half Burpee</span>
+                            <a href="https://www.youtube.com/watch?v=i1QuXUJWJPE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From plank, bring the feet toward the hands and return to plank without standing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>50. Glute Bridges</span>
+                            <a href="https://www.youtube.com/watch?v=xKIdviDOoAs" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Drive through the feet and squeeze the glutes to lift the hips.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>51. Froggers</span>
+                            <a href="https://www.youtube.com/watch?v=0gKGg33pLE0" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From plank, bring the feet toward the outside of the hands and return.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>52. Side Planks</span>
+                            <a href="https://www.youtube.com/watch?v=p-INKVA-maw" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Support on the forearm or hand and keep the hips lifted.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>53. Rainbows</span>
+                            <a href="https://www.youtube.com/watch?v=xcBM2ERKmoM" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Move an extended leg in a controlled arc while keeping the pelvis stable.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>54. Hip Taps</span>
+                            <a href="https://www.youtube.com/watch?v=JO99Vgup1sI" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From forearm plank, rotate the pelvis gently side to side.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>55. Diamond Pushups</span>
+                            <a href="https://www.youtube.com/watch?v=775dUBnVXm0" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Use a close hand position under the chest; modify from knees or elevation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>56. 3-Point Plank</span>
+                            <a href="https://www.youtube.com/watch?v=92XMQUb-X_I" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Maintain plank while one limb is unloaded or lifted; resist rotation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>57. Crab Position Glute Bridge</span>
+                            <a href="https://www.youtube.com/watch?v=6e8N2vlG_wU" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From reverse tabletop/crab position, drive the hips upward with the glutes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>58. Isolated Seated Dips</span>
+                            <a href="https://www.youtube.com/watch?v=_7XIF0aO8lw" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Use a stable surface and controlled dip range or hold.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>59. Skaters</span>
+                            <a href="https://www.youtube.com/watch?v=HV_UgWFOLhs" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Push laterally from leg to leg; step side to side for low impact.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>60. Crab Heel Touches</span>
+                            <a href="https://www.youtube.com/watch?v=rqkU0J_AD2g" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From reverse tabletop, reach toward the opposite heel while controlling the hips.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>61. Leg Lowers</span>
+                            <a href="https://www.youtube.com/watch?v=aH6aDiXS1xQ" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Lower the legs only as far as trunk control allows.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>62. Side Plank Crunches</span>
+                            <a href="https://www.youtube.com/watch?v=J6w5CpqwSao" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From side plank, bring elbow and knee toward one another under control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>63. Push Up Rotations / Heel Tap</span>
+                            <a href="https://www.youtube.com/watch?v=Ep7lO_Cxlo4" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Perform a pushup, rotate, and reach toward the opposite heel as mobility allows.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>64. Jumping Jacks</span>
+                            <a href="https://www.youtube.com/watch?v=qGUql-IVkVA" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">Jump or step the feet apart while the arms travel overhead, then return.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-black rounded border border-secondary border-opacity-50 h-100">
+                        <h5 class="text-warning fw-bold d-flex align-items-center justify-content-between">
+                            <span>65. Half Burpees</span>
+                            <a href="https://www.youtube.com/watch?v=i1QuXUJWJPE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a>
+                        </h5>
+                        <p class="text-light small mb-0">From plank, bring the feet toward the hands and return to plank without standing.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 11. WARM-UP & RECOVERY -->
+        <article class="manual-section" id="sec-warmup">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-child"></i> 11. Warm-Up & Recovery <span class="fs-6 text-light ms-2">(Click "Watch Demo" for YouTube video)</span></h2>
+            <h4 class="text-warning fw-bold mb-3">5-Minute Dynamic Warm-Up</h4>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead>
+                        <tr>
+                            <th>Movement</th>
+                            <th>Equipment</th>
+                            <th>Category</th>
+                            <th>Demo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://www.youtube.com/watch?v=bjDUyF7CW6M" target="_blank" class="text-warning text-decoration-none fw-semibold">Knee Pulls <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://www.youtube.com/watch?v=bjDUyF7CW6M" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/cdVRq2ISB9Q?si=O2s3p34xIjHyBZ1Z" target="_blank" class="text-warning text-decoration-none fw-semibold">Quad Pulls <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/cdVRq2ISB9Q?si=O2s3p34xIjHyBZ1Z" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/vza2w1R16II?si=5yQEuNILCx4ekjPE" target="_blank" class="text-warning text-decoration-none fw-semibold">Toe Swoops <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/vza2w1R16II?si=5yQEuNILCx4ekjPE" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.youtube.com/watch?v=P_mC3jjHm7Q" target="_blank" class="text-warning text-decoration-none fw-semibold">Ankle Tugs <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://www.youtube.com/watch?v=P_mC3jjHm7Q" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/-AelmZqFkpg?si=7mFYEQufGVWOgCMK" target="_blank" class="text-warning text-decoration-none fw-semibold">Heismans <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/-AelmZqFkpg?si=7mFYEQufGVWOgCMK" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/KGe6u04kUVM?si=ZHjyWk8PUXvWwAi_" target="_blank" class="text-warning text-decoration-none fw-semibold">Frankensteins <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/KGe6u04kUVM?si=ZHjyWk8PUXvWwAi_" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/gdUXCRo5CGs?si=7csd5UGXlIzhUdNp" target="_blank" class="text-warning text-decoration-none fw-semibold">Lateral Lunges <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/gdUXCRo5CGs?si=7csd5UGXlIzhUdNp" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/1m8OF2BcPkc?si=x5X8cwUqFbSdS0Fs" target="_blank" class="text-warning text-decoration-none fw-semibold">Walking Squats <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/1m8OF2BcPkc?si=x5X8cwUqFbSdS0Fs" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://youtu.be/hG8wFpPcRdM?si=PwXa8Qj1ZG--gSSe" target="_blank" class="text-warning text-decoration-none fw-semibold">Walking RDL's <i class="fab fa-youtube text-danger ms-1"></i></a></td>
+                            <td>Bodyweight</td>
+                            <td>Mobility</td>
+                            <td><a href="https://youtu.be/hG8wFpPcRdM?si=PwXa8Qj1ZG--gSSe" target="_blank" class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;"><i class="fab fa-youtube me-1"></i> Watch Demo</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Post-Workout Reset</h4>
+            <ul class="check-list">
+                <li>Walk slowly for 2-5 minutes to bring breathing down.</li>
+                <li>Use gentle mobility for hips, calves, chest and upper back.</li>
+                <li>Rehydrate and resume normal meals.</li>
+                <li>Prioritize sleep and do not add extra high-intensity work simply to 'burn more.'</li>
+            </ul>
+        </article>
+
+        <!-- 12. NUTRITION CONNECTION -->
+        <article class="manual-section" id="sec-nutrition">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-utensils"></i> 12. Nutrition Connection</h2>
+            <p class="text-light">Training creates the exercise stimulus; nutrition determines whether the overall plan supports fat loss, maintenance or gain. For a 21-day fat-loss challenge, the objective is a sustainable calorie deficit with adequate protein and mostly nutrient-dense foods.</p>
+            <ul class="check-list">
+                <li>Build meals around a protein source.</li>
+                <li>Include fruit and vegetables daily.</li>
+                <li>Use carbohydrate portions to support training and overall calorie needs.</li>
+                <li>Measure calorie-dense fats rather than eliminating them.</li>
+                <li>Choose water as the default beverage.</li>
+                <li>Do not 'earn' binge meals with workouts.</li>
+                <li>If you miss a meal target, return to the plan at the next meal.</li>
+            </ul>
+            <h4 class="text-warning fw-bold mt-4 mb-2">KROME Rule</h4>
+            <p class="text-light mb-3">Consistency beats compensation. Do not respond to one imperfect meal with starvation or excessive cardio.</p>
+
+            <!-- PERSUASIVE UPGRADE & ADD-ON SUGGESTIONS -->
+            <div class="p-4 rounded-4 mt-4" style="background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(30,25,10,0.95)); border: 1px solid var(--krome-gold);">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="fs-3 text-warning me-3"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 class="text-warning fw-bold mb-1">Accelerate Your Results: Recommended Add-Ons & Upgrades</h4>
+                        <p class="text-light small mb-0">Maximize your 21-day transformation and unlock lifetime physique control with our advanced companion guides and programs.</p>
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <!-- Nutrition Blueprint E-Book -->
+                    <div class="col-md-4">
+                        <div class="p-3 rounded-3 h-100 d-flex flex-column justify-content-between" style="background: #1a1a1a; border: 1px solid rgba(255,212,71,0.3);">
+                            <div>
+                                <span class="badge bg-warning text-dark mb-2 fw-bold" style="font-size: 0.7rem;">ESSENTIAL UPGRADE</span>
+                                <h5 class="text-white fw-bold mb-2">Nutrition Blueprint E-Book</h5>
+                                <p class="text-light small mb-3">Master exact macro math, energy balance, smart grocery shopping systems, and strategic meal timing to bulletproof your nutrition.</p>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="program_detail.html?id=macro-blueprint" class="btn btn-sm btn-action-gold w-100 justify-content-center py-2">
+                                    <i class="fas fa-info-circle me-1"></i> Program Details & Purchase
+                                </a>
+                                <a href="shred_login.html?redirect=nutrition_blueprint.html" class="btn btn-sm btn-action-outline w-100 justify-content-center py-2">
+                                    <i class="fas fa-user-lock me-1"></i> Companion Manual Login
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supplement Protocol E-Book -->
+                    <div class="col-md-4">
+                        <div class="p-3 rounded-3 h-100 d-flex flex-column justify-content-between" style="background: #1a1a1a; border: 1px solid rgba(0,255,209,0.3);">
+                            <div>
+                                <span class="badge bg-info text-dark mb-2 fw-bold" style="font-size: 0.7rem; background-color: var(--krome-cyan) !important;">PERFORMANCE</span>
+                                <h5 class="text-white fw-bold mb-2">Supplement Protocol E-Book</h5>
+                                <p class="text-light small mb-3">Discover the evidence-based supplement stack—from protein and creatine to micronutrients and recovery aids—to supercharge your stamina.</p>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="program_detail.html?id=supplement-protocol" class="btn btn-sm btn-action-outline w-100 justify-content-center py-2" style="border-color: var(--krome-cyan); color: var(--krome-cyan);">
+                                    <i class="fas fa-info-circle me-1"></i> Program Details & Purchase
+                                </a>
+                                <a href="shred_login.html?redirect=supplement_protocol.html" class="btn btn-sm btn-action-outline w-100 justify-content-center py-2" style="border-color: rgba(0,255,209,0.5); color: #fff;">
+                                    <i class="fas fa-user-lock me-1"></i> Companion Manual Login
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 30 Day Shred -->
+                    <div class="col-md-4">
+                        <div class="p-3 rounded-3 h-100 d-flex flex-column justify-content-between" style="background: #1a1a1a; border: 1px solid rgba(255,212,71,0.3);">
+                            <div>
+                                <span class="badge bg-warning text-dark mb-2 fw-bold" style="font-size: 0.7rem;">NEXT LEVEL</span>
+                                <h5 class="text-white fw-bold mb-2">The 30-Day Shred Program</h5>
+                                <p class="text-light small mb-3">Finished the 21-day challenge? Level up with our comprehensive 30-day accelerated fat loss and muscle definition blueprint.</p>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <a href="program_detail.html?id=shred30" class="btn btn-sm btn-action-gold w-100 justify-content-center py-2">
+                                    <i class="fas fa-info-circle me-1"></i> Program Details & Purchase
+                                </a>
+                                <a href="shred_login.html?redirect=shred30_manual.html" class="btn btn-sm btn-action-outline w-100 justify-content-center py-2">
+                                    <i class="fas fa-user-lock me-1"></i> Companion Manual Login
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 13. PROGRESS TRACKERS & 21-DAY HABIT TRACKER -->
+        <article class="manual-section" id="sec-trackers">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                <p class="section-kicker mb-0">KROME 21-DAY CHALLENGE &middot; ATHLETE PROGRESS TRACKER</p>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold" style="font-size: 0.8rem;">
+                        <i class="fas fa-cloud-check me-1"></i> Coach Portal Sync Connected
+                    </span>
+                    <span id="tracker-last-synced-time" class="small text-light opacity-75"></span>
+                </div>
+            </div>
+
+            <h2 class="section-heading mb-3"><i class="fas fa-tasks"></i> 13. Progress Trackers & 21-Day Habit Tracker</h2>
+            <p class="text-light mb-4">
+                Track your weekly biometric measurements and log daily habits. All inputs auto-save locally to your device and synchronize securely with your coach's portal for review and progression feedback.
+            </p>
+
+            <!-- ATHLETE SYNC & CONTROLS CARD -->
+            <div class="card bg-black bg-opacity-60 border border-warning rounded-4 p-3 p-md-4 mb-4 shadow">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                        <label for="tracker-athlete-name" class="form-label text-warning small fw-bold mb-1">
+                            <i class="fas fa-user me-1"></i> Athlete Full Name:
+                        </label>
+                        <input type="text" id="tracker-athlete-name" class="form-control bg-dark text-light border-secondary" placeholder="Enter Full Name">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="tracker-athlete-email" class="form-label text-warning small fw-bold mb-1">
+                            <i class="fas fa-envelope me-1"></i> Athlete Account Email:
+                        </label>
+                        <input type="email" id="tracker-athlete-email" class="form-control bg-dark text-light border-secondary" placeholder="athlete@example.com">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="tracker-athlete-phone" class="form-label text-warning small fw-bold mb-1">
+                            <i class="fas fa-phone me-1"></i> Phone (Optional):
+                        </label>
+                        <input type="tel" id="tracker-athlete-phone" class="form-control bg-dark text-light border-secondary" placeholder="(555) 000-0000">
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mt-3 pt-3 border-top border-secondary border-opacity-25">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button id="btn-sync-21day-sheet" class="btn btn-warning text-dark fw-bold rounded-pill px-4 py-2 shadow-sm" type="button">
+                            <i class="fas fa-cloud-arrow-up me-1"></i> Sync & Save Progress
+                        </button>
+                        <button id="btn-review-sheet-logs" class="btn btn-outline-info text-info rounded-pill px-3 py-2" type="button">
+                            <i class="fas fa-history me-1"></i> Review Progress History
+                        </button>
+                    </div>
+                    <button id="btn-reset-tracker-data" class="btn btn-sm btn-outline-danger rounded-pill px-3 py-1" type="button" title="Reset local tracker inputs">
+                        <i class="fas fa-rotate-right me-1"></i> Reset Local Data
+                    </button>
+                </div>
+
+                <!-- Real-time Sync Alert -->
+                <div id="sync-feedback-alert" class="d-none mt-3 mb-0"></div>
+            </div>
+
+            <!-- 4 LIVE SCORECARDS -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-lg-3">
+                    <div class="tracker-scorecard h-100">
+                        <div class="small text-warning text-uppercase fw-bold mb-1"><i class="fas fa-check-double me-1"></i> Total Habits</div>
+                        <div id="stat-habits-count" class="h3 fw-bold text-light mb-1">0 / 84</div>
+                        <div class="progress bg-black rounded-pill" style="height: 6px;">
+                            <div id="stat-habits-bar" class="progress-bar bg-warning" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="tracker-scorecard h-100">
+                        <div class="small text-info text-uppercase fw-bold mb-1"><i class="fas fa-chart-line me-1"></i> Adherence Rate</div>
+                        <div id="stat-adherence-pct" class="h3 fw-bold text-info mb-1">0%</div>
+                        <span class="small text-light opacity-75">Target: 80%+ Adherence</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="tracker-scorecard h-100">
+                        <div class="small text-success text-uppercase fw-bold mb-1"><i class="fas fa-weight-scale me-1"></i> Weight Delta</div>
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span id="stat-weight-change" class="badge bg-secondary text-light px-2 py-1 rounded-pill fs-6">--</span>
+                        </div>
+                        <span class="small text-light opacity-75">Day 1 to Latest Log</span>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="tracker-scorecard h-100">
+                        <div class="small text-warning text-uppercase fw-bold mb-1"><i class="fas fa-dumbbell me-1"></i> Workouts Done</div>
+                        <div id="stat-workouts-count" class="h3 fw-bold text-light mb-1">0 / 21 Days</div>
+                        <span class="small text-light opacity-75">Resistance & Conditioning</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 1: STARTING & PROGRESS MEASUREMENTS TABLE -->
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <h4 class="text-warning fw-bold mb-0"><i class="fas fa-ruler-combined me-2"></i> Starting & Weekly Measurements Tracker</h4>
+                <span class="badge bg-dark border border-secondary text-light small px-2 py-1">Auto-Saves to Device</span>
+            </div>
+            <p class="text-light small mb-3">Record scale weight and circumference metrics at each weekly milestone. Changes update dynamically:</p>
+
+            <div class="table-wrap mb-4">
+                <table class="table table-krome mb-0">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 170px;">Metric</th>
+                            <th class="text-center">Day 1 (Baseline)</th>
+                            <th class="text-center">Day 8</th>
+                            <th class="text-center">Day 15</th>
+                            <th class="text-center">Day 21 (Final)</th>
+                            <th class="text-center">Net Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-weight-scale text-warning me-2"></i> Body Weight (lbs)</td>
+                            <td><input type="number" step="0.1" id="m-d1Weight" class="form-control form-control-sm tracker-input" placeholder="e.g. 195.0"></td>
+                            <td><input type="number" step="0.1" id="m-d8Weight" class="form-control form-control-sm tracker-input" placeholder="e.g. 193.2"></td>
+                            <td><input type="number" step="0.1" id="m-d15Weight" class="form-control form-control-sm tracker-input" placeholder="e.g. 191.8"></td>
+                            <td><input type="number" step="0.1" id="m-d21Weight" class="form-control form-control-sm tracker-input" placeholder="e.g. 190.0"></td>
+                            <td class="text-center"><span id="badge-weight-change-table" class="badge bg-secondary text-light">--</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-circle-notch text-info me-2"></i> Waist (inches)</td>
+                            <td><input type="number" step="0.1" id="m-d1Waist" class="form-control form-control-sm tracker-input" placeholder="e.g. 34.5"></td>
+                            <td><input type="number" step="0.1" id="m-d8Waist" class="form-control form-control-sm tracker-input" placeholder="e.g. 34.0"></td>
+                            <td><input type="number" step="0.1" id="m-d15Waist" class="form-control form-control-sm tracker-input" placeholder="e.g. 33.7"></td>
+                            <td><input type="number" step="0.1" id="m-d21Waist" class="form-control form-control-sm tracker-input" placeholder="e.g. 33.2"></td>
+                            <td class="text-center"><span id="badge-waist-change" class="badge bg-secondary text-light">--</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-arrows-left-right text-warning me-2"></i> Hips (inches)</td>
+                            <td><input type="number" step="0.1" id="m-d1Hips" class="form-control form-control-sm tracker-input" placeholder="e.g. 40.0"></td>
+                            <td><input type="number" step="0.1" id="m-d8Hips" class="form-control form-control-sm tracker-input" placeholder="e.g. 39.8"></td>
+                            <td><input type="number" step="0.1" id="m-d15Hips" class="form-control form-control-sm tracker-input" placeholder="e.g. 39.5"></td>
+                            <td><input type="number" step="0.1" id="m-d21Hips" class="form-control form-control-sm tracker-input" placeholder="e.g. 39.0"></td>
+                            <td class="text-center text-light small">Recorded in Sync</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-shield text-info me-2"></i> Chest (inches)</td>
+                            <td><input type="number" step="0.1" id="m-d1Chest" class="form-control form-control-sm tracker-input" placeholder="e.g. 42.0"></td>
+                            <td><input type="number" step="0.1" id="m-d8Chest" class="form-control form-control-sm tracker-input" placeholder="e.g. 42.0"></td>
+                            <td><input type="number" step="0.1" id="m-d15Chest" class="form-control form-control-sm tracker-input" placeholder="e.g. 42.2"></td>
+                            <td><input type="number" step="0.1" id="m-d21Chest" class="form-control form-control-sm tracker-input" placeholder="e.g. 42.5"></td>
+                            <td class="text-center text-light small">Recorded in Sync</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-bolt text-warning me-2"></i> Energy (1-10)</td>
+                            <td><input type="number" min="1" max="10" id="m-d1Energy" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d8Energy" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d15Energy" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d21Energy" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td class="text-center text-light small">Vitality Trend</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-bed text-info me-2"></i> Sleep (1-10)</td>
+                            <td><input type="number" min="1" max="10" id="m-d1Sleep" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d8Sleep" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d15Sleep" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td><input type="number" min="1" max="10" id="m-d21Sleep" class="form-control form-control-sm tracker-input" placeholder="1-10"></td>
+                            <td class="text-center text-light small">Recovery Trend</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-light"><i class="fas fa-person-running text-success me-2"></i> Workout Completion %</td>
+                            <td><input type="text" id="m-d1Workout" class="form-control form-control-sm tracker-input" placeholder="100%"></td>
+                            <td><input type="text" id="m-d8Workout" class="form-control form-control-sm tracker-input" placeholder="100%"></td>
+                            <td><input type="text" id="m-d15Workout" class="form-control form-control-sm tracker-input" placeholder="100%"></td>
+                            <td><input type="text" id="m-d21Workout" class="form-control form-control-sm tracker-input" placeholder="100%"></td>
+                            <td class="text-center text-light small">Adherence</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PART 2: 21-DAY HABIT TRACKER (DAILY FOCUS CARD & FULL 21-DAY GRID) -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-5 mb-3">
+                <div>
+                    <h4 class="text-warning fw-bold mb-0"><i class="fas fa-calendar-check me-2"></i> 21-Day Daily Habit Tracker</h4>
+                    <p class="text-light small mb-0">Track all 4 core athletic habits across Days 1–21. Check off days either in the focused card below or directly in the grid:</p>
+                </div>
+            </div>
+
+            <!-- FOCUSED DAY LOGGING CARD -->
+            <div class="card bg-black bg-opacity-75 border border-warning rounded-4 p-4 mb-4 shadow-lg">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pb-3 mb-3 border-bottom border-secondary border-opacity-25">
+                    <div class="d-flex align-items-center gap-2">
+                        <button id="btn-prev-day" class="btn btn-sm btn-outline-secondary rounded-pill px-3 text-light" type="button">
+                            <i class="fas fa-chevron-left me-1"></i> Prev Day
+                        </button>
+                        <select id="focus-day-select" class="form-select form-select-sm bg-dark text-warning border-warning fw-bold rounded-pill px-3" style="width: auto; min-width: 150px;">
+                            <!-- Populated dynamically -->
+                        </select>
+                        <button id="btn-next-day" class="btn btn-sm btn-outline-secondary rounded-pill px-3 text-light" type="button">
+                            Next Day <i class="fas fa-chevron-right ms-1"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span id="focus-day-status-badge" class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">
+                            0 of 4 Habits Complete
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-50 h-100">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="focus-toggle-workout" style="cursor: pointer;">
+                                <label class="form-check-label fw-bold text-warning" for="focus-toggle-workout" style="cursor: pointer;">
+                                    <i class="fas fa-dumbbell me-1"></i> Workout / Movement
+                                </label>
+                            </div>
+                            <p class="small text-light mb-0">Complete prescribed track circuit, HIIT intervals, or active recovery walk.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-50 h-100">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="focus-toggle-protein" style="cursor: pointer;">
+                                <label class="form-check-label fw-bold text-warning" for="focus-toggle-protein" style="cursor: pointer;">
+                                    <i class="fas fa-drumstick-bite me-1"></i> Protein Focus
+                                </label>
+                            </div>
+                            <p class="small text-light mb-0">Hit daily protein target (0.8–1g per lb of target bodyweight).</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-50 h-100">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="focus-toggle-water" style="cursor: pointer;">
+                                <label class="form-check-label fw-bold text-warning" for="focus-toggle-water" style="cursor: pointer;">
+                                    <i class="fas fa-tint me-1"></i> Water Target
+                                </label>
+                            </div>
+                            <p class="small text-light mb-0">Consume 1 Gallon (or 3-4 Liters) of clean fluids throughout the day.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-50 h-100">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="focus-toggle-sleep" style="cursor: pointer;">
+                                <label class="form-check-label fw-bold text-warning" for="focus-toggle-sleep" style="cursor: pointer;">
+                                    <i class="fas fa-moon me-1"></i> Sleep Goal
+                                </label>
+                            </div>
+                            <p class="small text-light mb-0">Achieve 7–8 hours of quality restorative sleep for optimal recovery.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <label for="focus-notes-input" class="form-label text-warning small fw-bold mb-1">
+                        <i class="fas fa-pencil me-1"></i> Daily Reflection &amp; Workout Intensity Notes:
+                    </label>
+                    <div class="input-group">
+                        <input type="text" id="focus-notes-input" class="form-control bg-dark text-light border-secondary" placeholder="Record workout completion, circuit rounds, joint readiness, or mental focus...">
+                        <button id="btn-focus-quick-sync" class="btn btn-warning text-dark fw-bold px-4" type="button">
+                            <i class="fas fa-save me-1"></i> Save &amp; Sync Day
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FULL 21-DAY INTERACTIVE GRID TABLE -->
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-light small fw-semibold"><i class="fas fa-table-cells me-1 text-warning"></i> Complete 21-Day Habit Ledger (Click any checkbox to toggle):</span>
+                <span class="badge bg-dark border border-warning text-warning small px-2 py-1">21 Days &middot; 4 Habits / Day</span>
+            </div>
+
+            <div class="table-wrap mb-4">
+                <table class="table table-krome mb-0" id="habits-master-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Day</th>
+                            <th class="text-center" style="width: 120px;">Workout</th>
+                            <th class="text-center" style="width: 120px;">Protein</th>
+                            <th class="text-center" style="width: 120px;">Water (1 Gal)</th>
+                            <th class="text-center" style="width: 120px;">Sleep (7-8h)</th>
+                            <th>Daily Notes &amp; Reflection</th>
+                            <th class="text-center" style="width: 110px;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="habits-table-body">
+                        <!-- Populated dynamically by js/jumpstart_tracker.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card bg-black bg-opacity-50 border border-secondary border-opacity-25 rounded-3 p-3 text-center">
+                <p class="text-light small mb-2">
+                    <i class="fas fa-cloud-arrow-up text-warning me-1"></i>
+                    All checkmarks and measurements update locally in real-time. Click <strong>Sync &amp; Save Progress</strong> above to push your progress into your athlete record.
+                </p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-4" onclick="document.getElementById('btn-sync-21day-sheet').click()">
+                        <i class="fas fa-cloud-arrow-up me-1"></i> Sync &amp; Save Now
+                    </button>
+                    <button class="btn btn-sm btn-outline-light rounded-pill px-3" onclick="document.getElementById('btn-review-sheet-logs').click()">
+                        <i class="fas fa-history me-1"></i> Review Progress History
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <!-- 14. DAY 21 ASSESSMENT -->
+        <article class="manual-section" id="sec-assessment">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-clipboard-check"></i> 14. Day 21 Assessment</h2>
+            <ul class="check-list">
+                <li>Complete final measurements under similar conditions to Day 1.</li>
+                <li>Take optional progress photos using similar lighting, distance and posture.</li>
+                <li>Record how many workouts were completed.</li>
+                <li>Compare beginner/advanced interval tolerance from Day 1 to Day 21.</li>
+                <li>Rate energy, sleep, confidence and movement quality.</li>
+                <li>Identify the three habits that produced the biggest improvement.</li>
+            </ul>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Success Is More Than Scale Weight</h4>
+            <p class="text-light mb-0">A successful challenge can include improved workout tolerance, more consistent movement, better exercise technique, increased confidence, improved routine adherence, and changes in measurements or body weight.</p>
+        </article>
+
+        <!-- 15. POST-CHALLENGE MAINTENANCE -->
+        <article class="manual-section" id="sec-maintenance">
+            <p class="section-kicker">KROME 21-DAY CHALLENGE</p>
+            <h2 class="section-heading"><i class="fas fa-sync-alt"></i> 15. Post-Challenge Maintenance</h2>
+            <p class="text-light">Day 21 should transition into a sustainable routine rather than a crash-and-rebound cycle.</p>
+            <div class="table-wrap">
+                <table class="table table-krome mb-0">
+                    <thead><tr><th>Next Step</th><th>Recommendation</th></tr></thead>
+                    <tbody>
+                        <tr><td>Strength / bodyweight training</td><td>Continue 3-4 structured sessions per week.</td></tr>
+                        <tr><td>Cardio</td><td>Use 2-4 sustainable sessions or regular brisk walking according to goals.</td></tr>
+                        <tr><td>Progression</td><td>Increase movement quality, range, interval duration or exercise difficulty one variable at a time.</td></tr>
+                        <tr><td>Nutrition</td><td>Move from 'challenge mode' to a repeatable calorie and meal structure.</td></tr>
+                        <tr><td>Recovery</td><td>Keep at least one lower-load day each week and prioritize sleep.</td></tr>
+                        <tr><td>Reassessment</td><td>Review weight/measurements, performance and adherence every 2-4 weeks.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="text-warning fw-bold mt-4 mb-2">Your Next 7 Days</h4>
+            <p class="text-light">Day 1: Full-body bodyweight session<br>Day 2: Easy walk + mobility<br>Day 3: Upper/lower mixed circuit<br>Day 4: Recovery<br>Day 5: Full-body circuit<br>Day 6: Optional cardio / recreation<br>Day 7: Reset + plan</p>
+            <div class="table-wrap mt-3">
+                <table class="table table-krome mb-0 text-center fw-bold">
+                    <tr><td>KROME FITNESS &middot; 21 DAYS COMPLETE<br>CONSISTENCY BUILDS THE RESULT.<br>Move with purpose. Recover. Fuel the work. Keep going.</td></tr>
+                </table>
+            </div>
+        </article>
+
+        <!-- CLOSING PANEL -->
+        <section class="text-center my-5 no-print">
+            <p class="text-warning fw-bold small text-uppercase">21 DAYS COMPLETE</p>
+            <h3 class="fw-bold text-light mb-3">Consistency Builds the Result.</h3>
+            <p class="text-light mb-4">Move with purpose. Recover. Fuel the work. Keep going.</p>
+            <button class="btn btn-warning fw-bold px-4 py-2 rounded-pill" onclick="scrollToTop()">
+                <i class="fas fa-chevron-up me-1"></i> Back to Top
+            </button>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-center text-light py-4 border-top border-secondary border-opacity-25 no-print">
+        <p class="mb-1"><strong>KROME Fitness</strong> &middot; 21-Day Bodyweight Challenge & Athlete Jumpstart</p>
+        <p class="small mb-0">General fitness education only. Individual exercise tolerance and medical needs vary.</p>
+    </footer>
+
+    <!-- 21-DAY PROGRESS REVIEW MODAL -->
+    <div class="modal fade" id="reviewSheetModal" tabindex="-1" aria-labelledby="reviewSheetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light border border-warning rounded-4 shadow-lg" style="background: linear-gradient(135deg, #0b0f19 0%, #151c2a 100%);">
+                <div class="modal-header bg-black bg-opacity-60 border-bottom border-warning border-opacity-25 px-4 py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">
+                            <i class="fas fa-chart-line me-1"></i> PROGRESS HISTORY
+                        </span>
+                        <h5 class="modal-title text-white fw-bold mb-0" id="reviewSheetModalLabel">
+                            21-Day Jumpstart Progress Ledger
+                        </h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 mb-3">
+                        <div>
+                            <span class="text-secondary small d-block">Sync Status:</span>
+                            <span class="badge bg-success text-white px-3 py-1 rounded-pill fw-bold">
+                                <i class="fas fa-check-circle me-1"></i> Coach Cloud Sync Active
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-secondary small d-block">Reviewing Athlete:</span>
+                            <strong id="review-modal-athlete-email" class="text-warning">athlete@example.com</strong>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-1" onclick="window.sync21DayToGoogleSheet()">
+                                <i class="fas fa-cloud-arrow-up me-1"></i> Sync Fresh Entry Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="small text-light opacity-75 mb-3">
+                        Review your historical checkpoints and progress logs. Every time you click "Sync & Save", your weekly measurements, habit completion rate, and notes are securely archived for coaching analysis.
+                    </p>
+
+                    <div class="table-wrap">
+                        <table class="table table-krome mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Day Logged</th>
+                                    <th class="text-center">Habits (Count)</th>
+                                    <th class="text-center">Adherence %</th>
+                                    <th class="text-center">Weight Delta</th>
+                                    <th>Daily Notes</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="review-modal-table-body">
+                                <tr>
+                                    <td colspan="7" class="text-center py-4 text-light">Loading logged entries...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer bg-black bg-opacity-60 border-top border-secondary border-opacity-25 px-4 py-3 d-flex justify-content-between">
+                    <span class="small text-secondary">KROME Sports Performance &middot; 21-Day Jumpstart</span>
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="back-to-top" class="back-to-top-btn no-print" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- BOOTSTRAP 5 BUNDLE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- LEADS & GOOGLE APPS SCRIPT WEBHOOK BRIDGE -->
+    <script src="js/leads.js"></script>
+
+    <!-- ATHLETE DATA GOOGLE SHEETS SYNC -->
+    <script src="js/athlete_data_sync.js"></script>
+
+    <!-- 21-DAY INTERACTIVE TRACKER LOGIC -->
+    <script src="js/jumpstart_tracker.js"></script>
+
+    <!-- JAVASCRIPT LOGIC & ACCESS GATE -->
+    <script>
+        function checkJumpstartAccess() {
+            const unlocked = localStorage.getItem('krome_jumpstart_unlocked') === 'true';
+            const bundleUnlocked = localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasBypass = urlParams.has('square') || urlParams.has('token') || urlParams.has('key');
+            const overlay = document.getElementById('private-access-overlay');
+            const badge = document.getElementById('auth-status-badge');
+
+            if (unlocked || bundleUnlocked || hasBypass) {
+                if (hasBypass) {
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                }
+                if (overlay) overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                if (badge) {
+                    badge.className = 'badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-1';
+                    badge.innerHTML = '<i class="fas fa-check-circle me-1"></i> Jumpstart Unlocked';
+                }
+            } else {
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function togglePasscodeFallback() {
+            const box = document.getElementById('fallback-passcode-box');
+            if (box) box.classList.toggle('d-none');
+        }
+
+        function verifyPasscode() {
+            const input = document.getElementById('passcode-input').value.trim().toUpperCase();
+            const err = document.getElementById('passcode-error');
+            
+            const bundleKeys = ['KROME-ATHLETE', 'KROME2026', 'KSP-ATHLETE', 'KROME', 'ALLACCESS', 'KSP2026', 'KROME123'];
+            const jumpstartKeys = ['JUMPSTART21', 'JUMPSTART', 'TRANSFORMATION21', 'JUMPSTART2026', 'CHALLENGE21'];
+
+            if (bundleKeys.includes(input)) {
+                localStorage.setItem('krome_bundle_unlocked', 'true');
+                localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                grantJumpstartAccess();
+            } else if (jumpstartKeys.includes(input)) {
+                localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                grantJumpstartAccess();
+            } else {
+                if (err) {
+                    err.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i> Invalid access key. Please check your purchase confirmation or contact your coach.`;
+                    err.classList.remove('d-none');
+                }
+            }
+        }
+
+        function handleInlineJumpstartLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('gate-email').value.trim();
+            const password = document.getElementById('gate-password').value.trim().toUpperCase();
+            const alertBox = document.getElementById('gate-login-alert');
+
+            const bundleKeys = ['KROME-ATHLETE', 'KROME2026', 'KSP-ATHLETE', 'KROME', 'ALLACCESS', 'KSP2026', 'KROME123'];
+            const jumpstartKeys = ['JUMPSTART21', 'JUMPSTART', 'TRANSFORMATION21', 'JUMPSTART2026', 'CHALLENGE21'];
+
+            if (!email || !email.includes('@')) {
+                if (alertBox) {
+                    alertBox.textContent = 'Please enter a valid email address.';
+                    alertBox.classList.remove('d-none');
+                }
+                return;
+            }
+
+            if (bundleKeys.includes(password) || jumpstartKeys.includes(password)) {
+                localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                if (bundleKeys.includes(password)) {
+                    localStorage.setItem('krome_bundle_unlocked', 'true');
+                }
+                grantJumpstartAccess(email);
+            } else {
+                if (alertBox) {
+                    alertBox.textContent = 'Invalid Program Access Key Code. Please check your purchase receipt.';
+                    alertBox.classList.remove('d-none');
+                }
+            }
+        }
+
+        function grantJumpstartAccess(email) {
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            localStorage.setItem('krome_jumpstart_unlocked', 'true');
+            if (email) localStorage.setItem('krome_athlete_email', email);
+            if (typeof window.initAthleteDataSync === 'function') {
+                window.initAthleteDataSync();
+            }
+        }
+
+        // Scroll listener for back-to-top
+        window.addEventListener('scroll', function () {
+            const btt = document.getElementById('back-to-top');
+            if (btt) {
+                if (window.scrollY > 300) {
+                    btt.classList.add('show');
+                } else {
+                    btt.classList.remove('show');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkJumpstartAccess();
+        });
+    </script>
+</body>
+
+</html>

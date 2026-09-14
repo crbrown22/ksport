@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Flexibility & Mobility Athlete Portal | Interactive Manual</title>
+    <meta name="description" content="Official KROME Flexibility & Mobility 8-Week Interactive Training Manual. Master joint decompression, end-range stabilization, and neuromuscular recovery.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        /* ----------------------------------
+           DASHBOARD & INTERACTIVE COMPONENTS
+        ---------------------------------- */
+        .dashboard-header {
+            background: linear-gradient(180deg, #181c24 0%, #0c0d10 100%);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.15);
+            padding: 3rem 0;
+        }
+
+        .dashboard-card {
+            background: #12151c;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+        }
+
+        .accent-border-gold {
+            border-left: 4px solid var(--krome-gold) !important;
+        }
+
+        .breath-pacer {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,209,0.2) 0%, rgba(11,11,11,0) 70%);
+            border: 3px solid var(--krome-cyan);
+            margin: 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--krome-cyan);
+            transition: all 1s ease-in-out;
+            box-shadow: 0 0 20px rgba(0,255,209,0.3);
+        }
+
+        .breath-pacer.inhale {
+            transform: scale(1.25);
+            border-color: var(--krome-gold);
+            color: var(--krome-gold);
+            box-shadow: 0 0 35px rgba(255,212,71,0.5);
+        }
+
+        .breath-pacer.hold {
+            transform: scale(1.25);
+            border-color: #ff5e5e;
+            color: #ff5e5e;
+            box-shadow: 0 0 35px rgba(255,94,94,0.5);
+        }
+
+        .workout-week-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .workout-week-btn:hover, .workout-week-btn.active {
+            background-color: var(--krome-gold);
+            color: #000;
+            border-color: var(--krome-gold);
+            font-weight: 700;
+        }
+
+        /* ----------------------------------
+           PRIVATE ACCESS OVERLAY
+        ---------------------------------- */
+        #private-access-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.96);
+            backdrop-filter: blur(14px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .form-control-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 10px rgba(255, 212, 71, 0.25) !important;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;">
+
+    <!-- PRIVATE ACCESS OVERLAY / ATHLETE LOGIN MODAL -->
+    <div id="private-access-overlay" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center my-auto" style="max-width: 540px; width: 100%; border-width: 2px;">
+            <div class="mb-2">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Athlete Access Gate
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-1">Mobility Portal Login</h3>
+            <p class="text-light small mb-3">
+                Unlock the <strong>Flexibility & Mobility Blueprint</strong> using your athlete email address and Program Access Key Code (e.g. <code>MOBILITY8</code> or <code>KROME-ATHLETE</code>).
+            </p>
+
+            <form id="inline-login-form" onsubmit="handleInlineFlexmobLogin(event)">
+                <div class="mb-3 text-start">
+                    <label for="gate-email" class="form-label text-warning small fw-bold mb-1">Athlete Email</label>
+                    <input type="email" id="gate-email" class="form-control form-control-custom" placeholder="e.g. competitor@gmail.com" required>
+                </div>
+                <div class="mb-3 text-start">
+                    <label for="gate-password" class="form-label text-warning small fw-bold mb-1">Program Access Key Code</label>
+                    <input type="password" id="gate-password" class="form-control form-control-custom" placeholder="Enter key code" required>
+                </div>
+
+                <div class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-3" id="gate-login-alert"></div>
+
+                <button type="submit" class="btn btn-warning w-full py-2.5 fw-bold text-dark rounded-pill" id="btn-gate-submit">
+                    <i class="fas fa-unlock-alt me-1"></i> Verify Access Credentials
+                </button>
+            </form>
+
+            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                <p class="small text-muted mb-0">
+                    Need help or haven't purchased yet? <br>
+                    <a href="program_detail.html?id=sports-flexmob" class="text-warning fw-bold text-decoration-none">Enroll in Flexibility & Mobility ($99)</a> or <a href="contact.html" class="text-info text-decoration-none">Contact Support</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PORTAL WRAPPER (Visible after validation) -->
+    <header class="manual-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="manual-brand">
+                <i class="fas fa-bolt me-2"></i> KROME Sports Performance
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-2 d-none d-md-inline" id="auth-status-badge">
+                    <i class="fas fa-user-check me-1"></i> Athlete Active
+                </span>
+                <a href="login.html" class="btn btn-action-gold">
+                    <i class="fas fa-sign-out-alt me-1"></i> Portal Exit
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 0.5px;">
+                    Joint Decompression & ROM
+                </span>
+                <h1 class="fw-black mt-2 mb-3" style="font-size: 2.5rem; font-weight: 900;">FLEXIBILITY & MOBILITY</h1>
+                <p class="text-secondary mx-auto" style="max-width: 700px;">
+                    Expand active range of motion, trigger parasympathetic down-regulation, and bulletproof soft structural tissues under heavy dynamic loading.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Side: Parasympathetic Breath Pacer -->
+            <div class="col-lg-4">
+                <div class="dashboard-card text-center accent-border-gold">
+                    <h4 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-wind me-1"></i> Parasympathetic Pacer
+                    </h4>
+                    <p class="text-secondary small mb-4">
+                        Use this 4-4-8 respiratory loop to trigger neurological down-regulation, signaling soft tissue networks to completely relax during deeper stretch poses.
+                    </p>
+
+                    <div class="mb-4">
+                        <div class="breath-pacer" id="pacer-circle">READY</div>
+                        <div class="text-warning small fw-bold mt-2" id="pacer-phase">TAP START TO BEGIN LOOP</div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-success w-100 rounded-pill btn-sm py-2" id="btn-pacer-toggle" onclick="togglePacer()">
+                            <i class="fas fa-play me-1"></i> Start Pacer
+                        </button>
+                        <button class="btn btn-outline-warning w-100 rounded-pill btn-sm py-2" onclick="resetPacer()">
+                            <i class="fas fa-redo-alt me-1"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program Drill Phases -->
+                <div class="dashboard-card">
+                    <h5 class="fw-bold text-light mb-3">Training Phases</h5>
+                    <div class="d-flex flex-column gap-1">
+                        <button class="workout-week-btn active" id="btn-block1" onclick="showBlock(1)">
+                            <i class="fas fa-compress-arrows-alt me-2"></i> Phase 1 (Spinal & Hip)
+                        </button>
+                        <button class="workout-week-btn" id="btn-block2" onclick="showBlock(2)">
+                            <i class="fas fa-shield-alt me-2"></i> Phase 2 (End-Range Strength)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Interactive Workout Logs & Phases -->
+            <div class="col-lg-8">
+                <!-- PHASE 1 -->
+                <div class="dashboard-card text-start block-content-section" id="block1-section">
+                    <h3 class="fw-bold text-warning mb-2">Phase 1: Spinal & Hip Decompression</h3>
+                    <p class="text-secondary small mb-4">
+                        Focus: Relieve localized tension in lower pelvis, lengthen over-tight quads/psoas, and restore multi-directional hip rotation.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
+                            <thead>
+                                <tr class="text-warning">
+                                    <th>Routine Pose</th>
+                                    <th>Hold Duration</th>
+                                    <th>Decompression Focus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-light">90-90 Hip Rotations</span></td>
+                                    <td>2 mins per side</td>
+                                    <td>Keep spine completely tall, lean torso forward slowly over front knee.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Couch Quad Stretch</span></td>
+                                    <td>90 seconds per side</td>
+                                    <td>Place back knee flush against wall, squeeze glute to drive hip forward.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Spinal Decompression Hang</span></td>
+                                    <td>60 seconds</td>
+                                    <td>Relax tailbone down, breathe deeply into lower rib cage.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Thoracic Spine Openers</span></td>
+                                    <td>15 repetitions</td>
+                                    <td>On hands and knees, rotate elbow up toward the sky smoothly.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Pigeon Pose</span></td>
+                                    <td>3 minutes per side</td>
+                                    <td>Allow pelvis to sink into ground, keep front shin at 45-degree angle.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PHASE 2 -->
+                <div class="dashboard-card text-start block-content-section d-none" id="block2-section">
+                    <h3 class="fw-bold text-warning mb-2">Phase 2: Active End-Range Joint Strengthening</h3>
+                    <p class="text-secondary small mb-4">
+                        Focus: Developing true neural control at maximal joint extension to prevent pulls and athletic tears.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
+                            <thead>
+                                <tr class="text-warning">
+                                    <th>Routine Pose</th>
+                                    <th>Sets x Reps</th>
+                                    <th>Tension Focus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Hip PAILs / RAILs</span></td>
+                                    <td>3 Cycles per side</td>
+                                    <td>Isometrically press knee down into floor, then attempt to lift foot.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Ankle Dorsiflexion Isometrics</span></td>
+                                    <td>3 sets x 30 seconds</td>
+                                    <td>Drive knee far forward over toes, keeping heel flat to ground.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Prone Shoulder Swimmers</span></td>
+                                    <td>3 Sets x 8 reps</td>
+                                    <td>Lying on stomach, rotate arms from lower back to overhead without touching floor.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Jefferson Curl Progressions</span></td>
+                                    <td>3 Sets x 10 reps</td>
+                                    <td>Slowly roll vertebra by vertebra holding light kettlebell or plate.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Cossack Side Squats</span></td>
+                                    <td>3 Sets x 8 per side</td>
+                                    <td>Sink deep onto one leg, keeping opposite heel down with toe pointed up.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tissue Decompression Guide -->
+                <div class="dashboard-card">
+                    <h4 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-heartbeat me-1"></i> Soft Tissue Recovery Rules
+                    </h4>
+                    <p class="text-light small">
+                        Maximize tissue lengthening by strictly complying with these clinical guidelines:
+                    </p>
+                    <ul class="text-secondary small ps-3">
+                        <li class="mb-2"><strong>Never Stretch into Sharp Pain:</strong> Target a deep, intense dull pull (approx. 7/10 threshold). Back off immediately if any sharp pinching occurs.</li>
+                        <li class="mb-2"><strong>Release Jaw Clenching:</strong> Clenching your teeth sends defensive signals to your CNS, contracting muscles. Keep your lips parted slightly.</li>
+                        <li class="mb-2"><strong>Hydrate Prior to Sessions:</strong> Fascial tissue requires extreme hydration levels to slide and decompress efficiently.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS Logic -->
+    <script>
+        // Respiratory Pacer Logic
+        let pacerInterval = null;
+        let pacerSeconds = 4;
+        let pacerState = 'inhale'; // inhale, hold, exhale
+
+        function togglePacer() {
+            const btn = document.getElementById('btn-pacer-toggle');
+            if (pacerInterval) {
+                clearInterval(pacerInterval);
+                pacerInterval = null;
+                btn.innerHTML = `<i class="fas fa-play me-1"></i> Start Pacer`;
+                document.getElementById('pacer-circle').innerText = 'PAUSED';
+            } else {
+                btn.innerHTML = `<i class="fas fa-pause me-1"></i> Pause Pacer`;
+                runPacerLoop();
+            }
+        }
+
+        function runPacerLoop() {
+            pacerInterval = setInterval(() => {
+                if (pacerSeconds > 1) {
+                    pacerSeconds--;
+                    document.getElementById('pacer-circle').innerText = pacerSeconds;
+                } else {
+                    // State Transitions
+                    if (pacerState === 'inhale') {
+                        pacerState = 'hold';
+                        pacerSeconds = 4;
+                        document.getElementById('pacer-circle').innerText = '4';
+                        document.getElementById('pacer-circle').className = 'breath-pacer hold';
+                        document.getElementById('pacer-phase').innerText = 'HOLD BREATH IN';
+                    } else if (pacerState === 'hold') {
+                        pacerState = 'exhale';
+                        pacerSeconds = 8;
+                        document.getElementById('pacer-circle').innerText = '8';
+                        document.getElementById('pacer-circle').className = 'breath-pacer';
+                        document.getElementById('pacer-phase').innerText = 'SLOW PARASYMPATHETIC EXHALE';
+                    } else {
+                        pacerState = 'inhale';
+                        pacerSeconds = 4;
+                        document.getElementById('pacer-circle').innerText = '4';
+                        document.getElementById('pacer-circle').className = 'breath-pacer inhale';
+                        document.getElementById('pacer-phase').innerText = 'DEEP NASAL INHALE';
+                    }
+                }
+            }, 1000);
+        }
+
+        function resetPacer() {
+            if (pacerInterval) {
+                clearInterval(pacerInterval);
+                pacerInterval = null;
+            }
+            pacerState = 'inhale';
+            pacerSeconds = 4;
+            document.getElementById('btn-pacer-toggle').innerHTML = `<i class="fas fa-play me-1"></i> Start Pacer`;
+            document.getElementById('pacer-circle').innerText = 'READY';
+            document.getElementById('pacer-circle').className = 'breath-pacer';
+            document.getElementById('pacer-phase').innerText = 'TAP START TO BEGIN LOOP';
+        }
+
+        // Access Logic
+        function checkAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token') || urlParams.get('key') || urlParams.get('access');
+            const athleteEmail = localStorage.getItem('krome_athlete_email');
+            const isBundleUnlocked = localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const isFlexmobUnlocked = localStorage.getItem('krome_flexmob_unlocked') === 'true';
+
+            if (isBundleUnlocked || isFlexmobUnlocked || token || urlParams.has('square')) {
+                grantAccess(athleteEmail || undefined);
+            } else {
+                const overlay = document.getElementById('private-access-overlay');
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        async function handleInlineFlexmobLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('gate-email').value.trim().toLowerCase();
+            const password = document.getElementById('gate-password').value.trim();
+            const alertBox = document.getElementById('gate-login-alert');
+            const btn = document.getElementById('btn-gate-submit');
+
+            if (!email || !password) {
+                alertBox.textContent = 'Please enter both your email address and Program Access Key Code.';
+                alertBox.classList.remove('d-none');
+                return;
+            }
+
+            alertBox.classList.add('d-none');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Access Key...`;
+
+            try {
+                const cleanKey = password.toLowerCase();
+                let programName = 'Flexibility & Mobility Blueprint';
+
+                localStorage.setItem('krome_athlete_email', email);
+                localStorage.setItem('krome_athlete_name', email.split('@')[0] || 'KROME Athlete');
+                localStorage.setItem('krome_access_key', password);
+                localStorage.setItem('krome_auth_token', btoa(email + ':' + Date.now()));
+                localStorage.setItem('krome_flexmob_unlocked', 'true');
+
+                if (cleanKey.includes('bundle') || cleanKey.includes('krome') || cleanKey.includes('all')) {
+                    programName = 'All-Access Performance Bundle';
+                    localStorage.setItem('krome_bundle_unlocked', 'true');
+                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                }
+
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    window.sendLeadToGoogle({
+                        email: email,
+                        fullName: email.split('@')[0],
+                        program: programName,
+                        accessKey: password,
+                        source: 'Mobility Portal Login',
+                        action: 'mobility_portal_login'
+                    }).catch(() => {});
+                }
+
+                grantAccess(email);
+            } catch (err) {
+                alertBox.textContent = 'Invalid Program Access Key Code. Please check your purchase receipt.';
+                alertBox.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-unlock-alt me-1"></i> Verify Access Credentials`;
+            }
+        }
+
+        function grantAccess(email) {
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            localStorage.setItem('krome_flexmob_unlocked', 'true');
+            if (email) localStorage.setItem('krome_athlete_email', email);
+        }
+
+        function showBlock(blockNum) {
+            document.querySelectorAll('.block-content-section').forEach(sec => sec.classList.add('d-none'));
+            document.querySelectorAll('.workout-week-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(`block${blockNum}-section`).classList.remove('d-none');
+            
+            if (blockNum === 1) document.getElementById('btn-block1').classList.add('active');
+            if (blockNum === 2) document.getElementById('btn-block2').classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAccess();
+        });
+    </script>
+
+</body>
+</html>

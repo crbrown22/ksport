@@ -330,6 +330,54 @@
                                 </div>
                             </div>
 
+                            <!-- Program 5: Strength & Power Program Manual -->
+                            <div class="program-selector-card" id="card-prog-strength" onclick="selectProgramKey('Strength & Power Program Manual', 'strength_manual.html', 'card-prog-strength')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                                            <i class="fas fa-dumbbell fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">Strength & Power Program Manual</h6>
+                                            <small class="text-secondary">Compound wave loads, 1RM calculators & lifting logs</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark" style="font-size: 0.72rem;">Select</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 6: Speed, Agility & Conditioning -->
+                            <div class="program-selector-card" id="card-prog-conditioning" onclick="selectProgramKey('Speed, Agility & Conditioning Manual', 'conditioning_manual.html', 'card-prog-conditioning')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                                            <i class="fas fa-bolt fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">Speed, Agility & Conditioning</h6>
+                                            <small class="text-secondary">Sprint mechanics, shuttle matrices & interval timers</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark" style="font-size: 0.72rem;">Select</span>
+                                </div>
+                            </div>
+
+                            <!-- Program 7: Flexibility & Mobility -->
+                            <div class="program-selector-card" id="card-prog-flexmob" onclick="selectProgramKey('Flexibility & Mobility Blueprint', 'flexmob_manual.html', 'card-prog-flexmob')">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3">
+                                            <i class="fas fa-compress-arrows-alt fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-white fw-bold mb-0">Flexibility & Mobility Blueprint</h6>
+                                            <small class="text-secondary">Joint decompression flows, pre-hab, and respiratory pacing</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning text-dark" style="font-size: 0.72rem;">Select</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -434,7 +482,7 @@
                 &copy; <span id="footer-year">2026</span> KROME Sports Performance. All Rights Reserved.
             </p>
             <p class="mb-0" style="font-size: 0.78rem;">
-                Protected Athlete Resource. Logins and program access timestamps are synced with the Athlete_Data spreadsheet.
+                Protected Athlete Resource. Athlete credentials and session security are active.
             </p>
         </div>
     </footer>
@@ -480,9 +528,14 @@
         }
         checkExistingSession();
 
+        let selectedTargetPage = '';
+        let selectedProgramName = '';
+
         // Program Selection Click Handler
         function selectProgramKey(programName, targetUrl, cardId) {
             const labelEl = document.getElementById('selected-program-label');
+            selectedTargetPage = targetUrl;
+            selectedProgramName = programName;
 
             if (labelEl) {
                 labelEl.textContent = `Selected: ${programName}`;
@@ -545,6 +598,9 @@
                 localStorage.removeItem('krome_shred_unlocked');
                 localStorage.removeItem('krome_blueprint_unlocked');
                 localStorage.removeItem('krome_protocol_unlocked');
+                localStorage.removeItem('krome_strength_unlocked');
+                localStorage.removeItem('krome_conditioning_unlocked');
+                localStorage.removeItem('krome_flexmob_unlocked');
 
                 if (cleanKey.includes('blueprint') || cleanKey.includes('nutrition') || cleanKey.includes('28')) {
                     programName = 'Nutrition Blueprint E-Book';
@@ -554,17 +610,43 @@
                     programName = 'Athlete Supplement Protocol';
                     targetPage = 'supplement_protocol.html';
                     localStorage.setItem('krome_protocol_unlocked', 'true');
+                } else if (cleanKey.includes('strength') || cleanKey.includes('power') || cleanKey.includes('12')) {
+                    programName = 'Strength & Power Program Manual';
+                    targetPage = 'strength_manual.html';
+                    localStorage.setItem('krome_strength_unlocked', 'true');
+                } else if (cleanKey.includes('conditioning') || cleanKey.includes('speed') || cleanKey.includes('agility')) {
+                    programName = 'Speed, Agility & Conditioning Manual';
+                    targetPage = 'conditioning_manual.html';
+                    localStorage.setItem('krome_conditioning_unlocked', 'true');
+                } else if (cleanKey.includes('flex') || cleanKey.includes('mobility') || cleanKey.includes('8')) {
+                    programName = 'Flexibility & Mobility Blueprint';
+                    targetPage = 'flexmob_manual.html';
+                    localStorage.setItem('krome_flexmob_unlocked', 'true');
                 } else if (cleanKey.includes('krome') || cleanKey.includes('bundle') || cleanKey.includes('all')) {
                     programName = 'All-Access Performance Bundle';
-                    targetPage = 'shred30_manual.html';
+                    targetPage = selectedTargetPage || 'shred30_manual.html';
                     localStorage.setItem('krome_bundle_unlocked', 'true');
                     localStorage.setItem('krome_shred_unlocked', 'true');
                     localStorage.setItem('krome_blueprint_unlocked', 'true');
                     localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_strength_unlocked', 'true');
+                    localStorage.setItem('krome_conditioning_unlocked', 'true');
+                    localStorage.setItem('krome_flexmob_unlocked', 'true');
                 } else {
-                    programName = '30-Day Shred Challenge Manual';
-                    targetPage = 'shred30_manual.html';
-                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    if (selectedTargetPage && selectedProgramName) {
+                        programName = selectedProgramName;
+                        targetPage = selectedTargetPage;
+                        if (targetPage.includes('strength')) localStorage.setItem('krome_strength_unlocked', 'true');
+                        else if (targetPage.includes('conditioning')) localStorage.setItem('krome_conditioning_unlocked', 'true');
+                        else if (targetPage.includes('flexmob')) localStorage.setItem('krome_flexmob_unlocked', 'true');
+                        else if (targetPage.includes('blueprint')) localStorage.setItem('krome_blueprint_unlocked', 'true');
+                        else if (targetPage.includes('protocol')) localStorage.setItem('krome_protocol_unlocked', 'true');
+                        else localStorage.setItem('krome_shred_unlocked', 'true');
+                    } else {
+                        programName = '30-Day Shred Challenge Manual';
+                        targetPage = 'shred30_manual.html';
+                        localStorage.setItem('krome_shred_unlocked', 'true');
+                    }
                 }
 
                 localStorage.setItem('krome_athlete_email', email);
@@ -622,12 +704,15 @@
             localStorage.removeItem('krome_shred_unlocked');
             localStorage.removeItem('krome_protocol_unlocked');
             localStorage.removeItem('krome_blueprint_unlocked');
+            localStorage.removeItem('krome_strength_unlocked');
+            localStorage.removeItem('krome_conditioning_unlocked');
+            localStorage.removeItem('krome_flexmob_unlocked');
             localStorage.removeItem('krome_portal_unlocked');
 
             const sessionCard = document.getElementById('session-active-card');
             if (sessionCard) sessionCard.classList.add('d-none');
 
-            showAlert('You have logged out. Logout timestamp recorded in Athlete_Data spreadsheet.', 'info');
+            showAlert('You have successfully logged out of your session.', 'info');
         }
     </script>
 </body>

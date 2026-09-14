@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME Strength & Power Athlete Portal | Interactive Manual</title>
+    <meta name="description" content="Official KROME Strength & Power 12-Week Interactive Training Manual. Master heavy compound wave loading, rate of force development, and CNS recovery logs.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        /* ----------------------------------
+           DASHBOARD & INTERACTIVE COMPONENTS
+        ---------------------------------- */
+        .dashboard-header {
+            background: linear-gradient(180deg, #181c24 0%, #0c0d10 100%);
+            border-bottom: 1px solid rgba(255, 212, 71, 0.15);
+            padding: 3rem 0;
+        }
+
+        .dashboard-card {
+            background: #12151c;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+        }
+
+        .accent-border-gold {
+            border-left: 4px solid var(--krome-gold) !important;
+        }
+
+        .calculator-input {
+            background: #090a0d !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: #fff !important;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .calculator-input:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 10px rgba(255,212,71,0.25) !important;
+        }
+
+        .workout-week-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .workout-week-btn:hover, .workout-week-btn.active {
+            background-color: var(--krome-gold);
+            color: #000;
+            border-color: var(--krome-gold);
+            font-weight: 700;
+        }
+
+        /* ----------------------------------
+           PRIVATE ACCESS OVERLAY
+        ---------------------------------- */
+        #private-access-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.96);
+            backdrop-filter: blur(14px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .form-control-custom {
+            background-color: #0b0d12 !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+            border-radius: 0.65rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--krome-gold) !important;
+            box-shadow: 0 0 10px rgba(255, 212, 71, 0.25) !important;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;">
+
+    <!-- PRIVATE ACCESS OVERLAY / ATHLETE LOGIN MODAL -->
+    <div id="private-access-overlay" class="no-print">
+        <div class="card bg-dark border-warning text-light p-4 rounded-4 shadow-lg text-center my-auto" style="max-width: 540px; width: 100%; border-width: 2px;">
+            <div class="mb-2">
+                <span class="bg-warning text-dark px-3 py-1 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 1px;">
+                    <i class="fas fa-lock me-1"></i> Athlete Access Gate
+                </span>
+            </div>
+            <h3 class="fw-bold text-warning mb-1">Strength & Power Portal Login</h3>
+            <p class="text-light small mb-3">
+                Unlock the <strong>12-Week Strength & Power Training Manual</strong> using your athlete email address and Program Access Key Code (e.g. <code>STRENGTH12</code> or <code>KROME-ATHLETE</code>).
+            </p>
+
+            <form id="inline-login-form" onsubmit="handleInlineStrengthLogin(event)">
+                <div class="mb-3 text-start">
+                    <label for="gate-email" class="form-label text-warning small fw-bold mb-1">Athlete Email</label>
+                    <input type="email" id="gate-email" class="form-control form-control-custom" placeholder="e.g. competitor@gmail.com" required>
+                </div>
+                <div class="mb-3 text-start">
+                    <label for="gate-password" class="form-label text-warning small fw-bold mb-1">Program Access Key Code</label>
+                    <input type="password" id="gate-password" class="form-control form-control-custom" placeholder="Enter key code" required>
+                </div>
+
+                <div class="alert alert-danger py-2 px-3 small rounded-3 d-none mb-3" id="gate-login-alert"></div>
+
+                <button type="submit" class="btn btn-warning w-full py-2.5 fw-bold text-dark rounded-pill" id="btn-gate-submit">
+                    <i class="fas fa-unlock-alt me-1"></i> Verify Access Credentials
+                </button>
+            </form>
+
+            <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
+                <p class="small text-muted mb-0">
+                    Need help or haven't purchased yet? <br>
+                    <a href="program_detail.html?id=sports-strength" class="text-warning fw-bold text-decoration-none">Enroll in Strength & Power ($99)</a> or <a href="contact.html" class="text-info text-decoration-none">Contact Support</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PORTAL WRAPPER (Visible after validation) -->
+    <header class="manual-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="manual-brand">
+                <i class="fas fa-bolt me-2"></i> KROME Sports Performance
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-2 d-none d-md-inline" id="auth-status-badge">
+                    <i class="fas fa-user-check me-1"></i> Athlete Active
+                </span>
+                <a href="login.html" class="btn btn-action-gold">
+                    <i class="fas fa-sign-out-alt me-1"></i> Portal Exit
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 0.5px;">
+                    12-Week Elite Strength Curriculum
+                </span>
+                <h1 class="fw-black mt-2 mb-3" style="font-size: 2.5rem; font-weight: 900;">STRENGTH & POWER MANUAL</h1>
+                <p class="text-secondary mx-auto" style="max-width: 700px;">
+                    Welcome to your private performance blueprint. Master compound mechanical efficiency, neurologically chain power, and systematically shatter your 1-Rep Max.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Side: Interactive 1RM Calculator -->
+            <div class="col-lg-4">
+                <div class="dashboard-card accent-border-gold">
+                    <h4 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-calculator me-1"></i> 1-Rep Max Calculator
+                    </h4>
+                    <p class="text-secondary small mb-4">
+                        Enter your baseline 1-Rep Maxes. The lifting percentage tables in the program blocks below will automatically update to your precise training weights!
+                    </p>
+
+                    <div class="mb-3">
+                        <label class="form-label text-light small fw-bold">Back Squat (lbs)</label>
+                        <input type="number" id="rm-squat" class="form-control calculator-input" value="315" oninput="calculateWeights()">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-light small fw-bold">Bench Press (lbs)</label>
+                        <input type="number" id="rm-bench" class="form-control calculator-input" value="225" oninput="calculateWeights()">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-light small fw-bold">Deadlift (lbs)</label>
+                        <input type="number" id="rm-deadlift" class="form-control calculator-input" value="405" oninput="calculateWeights()">
+                    </div>
+
+                    <button class="btn btn-outline-warning w-100 btn-sm rounded-pill py-2" onclick="resetCalculators()">
+                        <i class="fas fa-undo-alt me-1"></i> Reset Baseline Estimators
+                    </button>
+                </div>
+
+                <!-- Navigation Sidebar for Weeks -->
+                <div class="dashboard-card">
+                    <h5 class="fw-bold text-light mb-3">Training Wave Blocks</h5>
+                    <div class="d-flex flex-column gap-1">
+                        <button class="workout-week-btn active" id="btn-block1" onclick="showBlock(1)">
+                            <i class="fas fa-dumbbell me-2"></i> Block 1 (Weeks 1-4)
+                        </button>
+                        <button class="workout-week-btn" id="btn-block2" onclick="showBlock(2)">
+                            <i class="fas fa-fire me-2"></i> Block 2 (Weeks 5-8)
+                        </button>
+                        <button class="workout-week-btn" id="btn-block3" onclick="showBlock(3)">
+                            <i class="fas fa-star me-2"></i> Block 3 (Weeks 9-12)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Interactive Workout Logs & Phases -->
+            <div class="col-lg-8">
+                <!-- BLOCK 1 (Active) -->
+                <div class="dashboard-card text-start block-content-section" id="block1-section">
+                    <h3 class="fw-bold text-warning mb-2">Block 1: Submaximal Volume & Joint Balance</h3>
+                    <p class="text-secondary small mb-4">
+                        Focus: High mechanical consistency, neuromuscular stabilization, and tissue strengthening.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
+                            <thead>
+                                <tr class="text-warning">
+                                    <th>Exercise</th>
+                                    <th>Target Sets x Reps</th>
+                                    <th>Intensity (%)</th>
+                                    <th>Your Weight (lbs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Back Squat</span></td>
+                                    <td>4 Sets x 8 Reps</td>
+                                    <td>70% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="sq-b1-wt">220 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Bench Press</span></td>
+                                    <td>4 Sets x 8 Reps</td>
+                                    <td>70% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="bp-b1-wt">158 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Deadlift</span></td>
+                                    <td>3 Sets x 6 Reps</td>
+                                    <td>72% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="dl-b1-wt">292 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Bulgarian Split Squat</span></td>
+                                    <td>3 Sets x 10/side</td>
+                                    <td>RPE 8</td>
+                                    <td><span class="text-muted">Load Match</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Plyometric Box Jumps</span></td>
+                                    <td>4 Sets x 5 reps</td>
+                                    <td>Max Velocity</td>
+                                    <td><span class="text-muted">Bodyweight</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- BLOCK 2 -->
+                <div class="dashboard-card text-start block-content-section d-none" id="block2-section">
+                    <h3 class="fw-bold text-warning mb-2">Block 2: Progressive Wave Overload</h3>
+                    <p class="text-secondary small mb-4">
+                        Focus: Neurological drive amplification and maximal tension accumulation.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
+                            <thead>
+                                <tr class="text-warning">
+                                    <th>Exercise</th>
+                                    <th>Target Sets x Reps</th>
+                                    <th>Intensity (%)</th>
+                                    <th>Your Weight (lbs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Back Squat</span></td>
+                                    <td>5 Sets x 5 Reps</td>
+                                    <td>82% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="sq-b2-wt">258 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Bench Press</span></td>
+                                    <td>5 Sets x 5 Reps</td>
+                                    <td>82% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="bp-b2-wt">185 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Deadlift</span></td>
+                                    <td>4 Sets x 4 Reps</td>
+                                    <td>84% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="dl-b2-wt">340 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Snatch-Grip High Pull</span></td>
+                                    <td>4 Sets x 5 Reps</td>
+                                    <td>RPE 9</td>
+                                    <td><span class="text-muted">Load Match</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Weighted Trap Bar Jumps</span></td>
+                                    <td>3 Sets x 5 reps</td>
+                                    <td>30% squat max</td>
+                                    <td><span class="text-muted">Dynamic Load</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- BLOCK 3 -->
+                <div class="dashboard-card text-start block-content-section d-none" id="block3-section">
+                    <h3 class="fw-bold text-warning mb-2">Block 3: Peak Force & CNS Intensification</h3>
+                    <p class="text-secondary small mb-4">
+                        Focus: Maximal velocity transfer, neural taper, and personal record (PR) benchmarking.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
+                            <thead>
+                                <tr class="text-warning">
+                                    <th>Exercise</th>
+                                    <th>Target Sets x Reps</th>
+                                    <th>Intensity (%)</th>
+                                    <th>Your Weight (lbs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Back Squat</span></td>
+                                    <td>3 Sets x 2 Reps</td>
+                                    <td>92% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="sq-b3-wt">290 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Bench Press</span></td>
+                                    <td>3 Sets x 2 Reps</td>
+                                    <td>92% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="bp-b3-wt">207 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-light">Deadlift</span></td>
+                                    <td>2 Sets x 2 Reps</td>
+                                    <td>95% 1RM</td>
+                                    <td><span class="fw-bold text-info" id="dl-b3-wt">385 lbs</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Olympic Power Clean</span></td>
+                                    <td>3 Sets x 2 Reps</td>
+                                    <td>RPE 9.5</td>
+                                    <td><span class="text-muted">High Speed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-secondary">Max Height Medicine Ball Throws</span></td>
+                                    <td>4 Sets x 4 Reps</td>
+                                    <td>Explosive Burst</td>
+                                    <td><span class="text-muted">Maximum Effort</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- CNS Recovery & Bulletproofing Guide -->
+                <div class="dashboard-card">
+                    <h4 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-heartbeat me-1"></i> CNS Warmup & Recovery Guidelines
+                    </h4>
+                    <p class="text-light small">
+                        Perform these steps prior to initiating any heavy lifting wave to prime kinetic chains and prevent strain:
+                    </p>
+                    <ul class="text-secondary small ps-3">
+                        <li class="mb-2"><strong>90-90 Hip Decompression:</strong> Reset hip socket positioning and pelvic load transfer (2 minutes per side).</li>
+                        <li class="mb-2"><strong>Thoracic Spine Rotations:</strong> Optimize rotation for upper trunk overhead and rotation mechanics (15 repetitions per side).</li>
+                        <li class="mb-2"><strong>Ankle Mobilization:</strong> Prime dorsiflexion mobility for deep knee squats and power clean foot catch (20 reps).</li>
+                        <li class="mb-2"><strong>Kettlebell Hip Swings:</strong> Wake up posterior glutes and hamstrings to fire instantly on lifts (2 sets of 15 reps).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS Logic -->
+    <script>
+        function checkAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token') || urlParams.get('key') || urlParams.get('access');
+            const athleteEmail = localStorage.getItem('krome_athlete_email');
+            const isBundleUnlocked = localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const isStrengthUnlocked = localStorage.getItem('krome_strength_unlocked') === 'true';
+
+            if (isBundleUnlocked || isStrengthUnlocked || token || urlParams.has('square')) {
+                grantAccess(athleteEmail || undefined);
+            } else {
+                const overlay = document.getElementById('private-access-overlay');
+                if (overlay) overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        async function handleInlineStrengthLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('gate-email').value.trim().toLowerCase();
+            const password = document.getElementById('gate-password').value.trim();
+            const alertBox = document.getElementById('gate-login-alert');
+            const btn = document.getElementById('btn-gate-submit');
+
+            if (!email || !password) {
+                alertBox.textContent = 'Please enter both your email address and Program Access Key Code.';
+                alertBox.classList.remove('d-none');
+                return;
+            }
+
+            alertBox.classList.add('d-none');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Verifying Access Key...`;
+
+            try {
+                const cleanKey = password.toLowerCase();
+                let programName = 'Strength & Power Program Manual';
+
+                localStorage.setItem('krome_athlete_email', email);
+                localStorage.setItem('krome_athlete_name', email.split('@')[0] || 'KROME Athlete');
+                localStorage.setItem('krome_access_key', password);
+                localStorage.setItem('krome_auth_token', btoa(email + ':' + Date.now()));
+                localStorage.setItem('krome_strength_unlocked', 'true');
+
+                if (cleanKey.includes('bundle') || cleanKey.includes('krome') || cleanKey.includes('all')) {
+                    programName = 'All-Access Performance Bundle';
+                    localStorage.setItem('krome_bundle_unlocked', 'true');
+                    localStorage.setItem('krome_shred_unlocked', 'true');
+                    localStorage.setItem('krome_blueprint_unlocked', 'true');
+                    localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                }
+
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    window.sendLeadToGoogle({
+                        email: email,
+                        fullName: email.split('@')[0],
+                        program: programName,
+                        accessKey: password,
+                        source: 'Strength Portal Login',
+                        action: 'strength_portal_login'
+                    }).catch(() => {});
+                }
+
+                grantAccess(email);
+            } catch (err) {
+                alertBox.textContent = 'Invalid Program Access Key Code. Please check your purchase receipt.';
+                alertBox.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-unlock-alt me-1"></i> Verify Access Credentials`;
+            }
+        }
+
+        function grantAccess(email) {
+            const overlay = document.getElementById('private-access-overlay');
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            localStorage.setItem('krome_strength_unlocked', 'true');
+            if (email) localStorage.setItem('krome_athlete_email', email);
+            calculateWeights();
+        }
+
+        function calculateWeights() {
+            const squat = parseFloat(document.getElementById('rm-squat').value) || 0;
+            const bench = parseFloat(document.getElementById('rm-bench').value) || 0;
+            const deadlift = parseFloat(document.getElementById('rm-deadlift').value) || 0;
+
+            // Block 1 Calculation
+            document.getElementById('sq-b1-wt').innerText = `${Math.round(squat * 0.70)} lbs`;
+            document.getElementById('bp-b1-wt').innerText = `${Math.round(bench * 0.70)} lbs`;
+            document.getElementById('dl-b1-wt').innerText = `${Math.round(deadlift * 0.72)} lbs`;
+
+            // Block 2 Calculation
+            document.getElementById('sq-b2-wt').innerText = `${Math.round(squat * 0.82)} lbs`;
+            document.getElementById('bp-b2-wt').innerText = `${Math.round(bench * 0.82)} lbs`;
+            document.getElementById('dl-b2-wt').innerText = `${Math.round(deadlift * 0.84)} lbs`;
+
+            // Block 3 Calculation
+            document.getElementById('sq-b3-wt').innerText = `${Math.round(squat * 0.92)} lbs`;
+            document.getElementById('bp-b3-wt').innerText = `${Math.round(bench * 0.92)} lbs`;
+            document.getElementById('dl-b3-wt').innerText = `${Math.round(deadlift * 0.95)} lbs`;
+        }
+
+        function resetCalculators() {
+            document.getElementById('rm-squat').value = 315;
+            document.getElementById('rm-bench').value = 225;
+            document.getElementById('rm-deadlift').value = 405;
+            calculateWeights();
+        }
+
+        function showBlock(blockNum) {
+            document.querySelectorAll('.block-content-section').forEach(sec => sec.classList.add('d-none'));
+            document.querySelectorAll('.workout-week-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(`block${blockNum}-section`).classList.remove('d-none');
+            
+            if (blockNum === 1) document.getElementById('btn-block1').classList.add('active');
+            if (blockNum === 2) document.getElementById('btn-block2').classList.add('active');
+            if (blockNum === 3) document.getElementById('btn-block3').classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAccess();
+            calculateWeights();
+        });
+    </script>
+
+</body>
+</html>
