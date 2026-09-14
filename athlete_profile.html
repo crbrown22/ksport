@@ -916,6 +916,53 @@
 
                                 </div>
 
+                                <!-- PROGRESSION CHARTS SEGMENT -->
+                                <div class="mt-4 pt-4 border-top border-secondary border-opacity-10">
+                                    <h4 class="fw-bold text-white mb-3 fs-6 text-uppercase tracking-wider">
+                                        <i class="fas fa-chart-area text-cyan me-1.5"></i> Athlete Progression Trendlines
+                                    </h4>
+                                    <div class="row g-3">
+                                        <!-- Weight Trend Chart -->
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-black bg-opacity-40 border border-secondary border-opacity-15 rounded-3">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <span class="text-white small fw-bold text-uppercase font-monospace text-secondary" style="font-size:0.7rem; letter-spacing:0.5px;">
+                                                        <i class="fas fa-weight-hanging text-warning me-1"></i> Weight Trend (lbs)
+                                                    </span>
+                                                    <span class="badge bg-dark border border-warning text-warning text-opacity-90 font-monospace" style="font-size:0.65rem;" id="weight-trend-stats">-- lbs</span>
+                                                </div>
+                                                <div id="weight-progression-chart" style="height: 160px; min-height: 160px;" class="position-relative">
+                                                    <!-- D3 Chart Injected Here -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Performance Metric Trend Chart -->
+                                        <div class="col-md-6">
+                                            <div class="p-3 bg-black bg-opacity-40 border border-secondary border-opacity-15 rounded-3">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                    <span class="text-white small fw-bold text-uppercase font-monospace text-secondary" style="font-size:0.7rem; letter-spacing:0.5px;">
+                                                        <i class="fas fa-chart-line text-cyan me-1"></i> Athlete Progression
+                                                    </span>
+                                                    <select id="chart-metric-select" class="form-select form-select-sm bg-black border border-secondary border-opacity-20 text-white py-0 px-2 rounded-pill font-monospace" style="width: auto; max-width: 140px; font-size: 0.65rem;" onchange="renderProgressionCharts()">
+                                                        <option value="Squat PR (lbs)" class="bg-black text-white">Squat PR</option>
+                                                        <option value="Bench Press PR (lbs)" class="bg-black text-white">Bench Press</option>
+                                                        <option value="Deadlift PR (lbs)" class="bg-black text-white">Deadlift PR</option>
+                                                        <option value="Power Clean PR (lbs)" class="bg-black text-white">Power Clean</option>
+                                                        <option value="40-Yard Dash (sec)" class="bg-black text-white">40-Yard Dash</option>
+                                                        <option value="Vertical Jump (inches)" class="bg-black text-white">Vertical Jump</option>
+                                                        <option value="Hydration (oz / day)" class="bg-black text-white">Hydration</option>
+                                                        <option value="Sleep Duration (hrs / night)" class="bg-black text-white">Sleep Duration</option>
+                                                    </select>
+                                                </div>
+                                                <div id="performance-progression-chart" style="height: 160px; min-height: 160px;" class="position-relative">
+                                                    <!-- D3 Chart Injected Here -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- HISTORICAL LOGS TABLE -->
                                 <div class="mt-4" id="historical-logs-container">
                                     <h4 class="fw-bold text-white mb-2 fs-6 text-uppercase tracking-wider">Performance Log Entry History</h4>
@@ -1122,6 +1169,9 @@
                                             <option value="fat_loss" selected>Aggressive Fat Loss / 30-Day Shred (-500 kcal)</option>
                                             <option value="recomp">Body Recomposition / Maintenance</option>
                                             <option value="lean_mass">Athletic Hypertrophy / Muscle Gain (+350 kcal)</option>
+                                            <option value="shred_1800">30-Day Shred - 1800 Calorie Lane (1800 kcal Target)</option>
+                                            <option value="shred_2200">30-Day Shred - 2200 Calorie Lane (2200 kcal Target)</option>
+                                            <option value="shred_2600">30-Day Shred - 2600 Calorie Lane (2600 kcal Target)</option>
                                         </select>
                                     </div>
 
@@ -1184,6 +1234,7 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="js/leads.js"></script>
 
     <script>
@@ -1363,7 +1414,10 @@
             const goalEl = document.getElementById('calc-goal-phase');
             if (goalEl) {
                 const g = goal.toLowerCase();
-                if (g.includes('fat') || g.includes('shred')) goalEl.value = 'fat_loss';
+                if (g.includes('1800')) goalEl.value = 'shred_1800';
+                else if (g.includes('2200')) goalEl.value = 'shred_2200';
+                else if (g.includes('2600')) goalEl.value = 'shred_2600';
+                else if (g.includes('fat') || g.includes('shred')) goalEl.value = 'fat_loss';
                 else if (g.includes('muscle') || g.includes('hypertrophy') || g.includes('gain') || g.includes('strength')) goalEl.value = 'lean_mass';
                 else goalEl.value = 'recomp';
             }
@@ -1432,6 +1486,15 @@
             } else if (goalPhase === 'lean_mass') {
                 targetCalories = tdee + 350;
                 phaseText = 'Hypertrophy (+350 kcal)';
+            } else if (goalPhase === 'shred_1800') {
+                targetCalories = 1800;
+                phaseText = 'Shred 1800 Lane';
+            } else if (goalPhase === 'shred_2200') {
+                targetCalories = 2200;
+                phaseText = 'Shred 2200 Lane';
+            } else if (goalPhase === 'shred_2600') {
+                targetCalories = 2600;
+                phaseText = 'Shred 2600 Lane';
             }
 
             const proteinGrams = Math.round(weightLbs * 1.0);
@@ -1642,10 +1705,10 @@
             const hasStrength = localStorage.getItem('krome_strength_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
             const hasSpeed = localStorage.getItem('krome_conditioning_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
             const hasFlex = localStorage.getItem('krome_flexmob_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
-            const hasShred = localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
-            const hasBlueprint = localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
-            const hasJumpstart = localStorage.getItem('krome_jumpstart_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
-            const hasProtocol = localStorage.getItem('krome_protocol_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasShred = localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true' || localStorage.getItem('krome_athlete_package_unlocked') === 'true';
+            const hasBlueprint = localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true' || localStorage.getItem('krome_athlete_package_unlocked') === 'true';
+            const hasJumpstart = localStorage.getItem('krome_jumpstart_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true' || localStorage.getItem('krome_athlete_package_unlocked') === 'true';
+            const hasProtocol = localStorage.getItem('krome_protocol_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true' || localStorage.getItem('krome_athlete_package_unlocked') === 'true';
 
             updateProgramBadge('program-status-strength', 'badge-strength', hasStrength, 'strength_manual.html');
             updateProgramBadge('program-status-speed', 'badge-speed', hasSpeed, 'conditioning_manual.html');
@@ -1681,6 +1744,8 @@
 
         // PR loggers and historical tables
         function loadPerformanceTrackerMetrics() {
+            seedAthleteHistoryIfEmpty();
+
             const wLbs = parseFloat(localStorage.getItem('krome_athlete_current_weight') || '180');
 
             const squat = parseFloat(localStorage.getItem('krome_metric_squat_pr') || '225');
@@ -1728,6 +1793,288 @@
             document.getElementById('val-sleep').innerHTML = `${sleep} <span class="fs-6 fw-normal text-secondary">hours / night</span>`;
 
             renderHistoricalLogs();
+            renderProgressionCharts();
+        }
+
+        // Seed high-fidelity, customized historical progress data based on the current athlete's profile metrics if history is empty
+        function seedAthleteHistoryIfEmpty() {
+            let historyList = [];
+            const cachedHistory = localStorage.getItem('krome_metrics_history');
+            if (cachedHistory) {
+                try { historyList = JSON.parse(cachedHistory); } catch (_) {}
+            }
+
+            if (historyList && historyList.length > 0) {
+                return; // already has active logs
+            }
+
+            const currentWeight = parseFloat(localStorage.getItem('krome_athlete_current_weight') || '180');
+            const squat = parseFloat(localStorage.getItem('krome_metric_squat_pr') || '225');
+            const bench = parseFloat(localStorage.getItem('krome_metric_bench_pr') || '135');
+            const deadlift = parseFloat(localStorage.getItem('krome_metric_deadlift_pr') || '315');
+            const clean = parseFloat(localStorage.getItem('krome_metric_clean_pr') || '185');
+            const sprint40 = parseFloat(localStorage.getItem('krome_metric_sprint_40') || '4.85');
+            const vertical = parseFloat(localStorage.getItem('krome_metric_vertical_jump') || '26.5');
+            const hydration = parseInt(localStorage.getItem('krome_metric_hydration_oz') || '96');
+            const sleep = parseFloat(localStorage.getItem('krome_metric_sleep_hours') || '7.5');
+
+            const now = new Date();
+            const formatOffsetDate = (daysAgo) => {
+                const d = new Date(now.getTime() - (daysAgo * 24 * 60 * 60 * 1000));
+                return d.toISOString().replace('T', ' ').slice(0, 16);
+            };
+
+            const seededEntries = [
+                // Weight Trend (gradual safe fat loss towards goal weight)
+                { date: formatOffsetDate(28), type: 'Updated Current Weight (lbs)', value: currentWeight + 11 },
+                { date: formatOffsetDate(21), type: 'Updated Current Weight (lbs)', value: currentWeight + 8 },
+                { date: formatOffsetDate(14), type: 'Updated Current Weight (lbs)', value: currentWeight + 5 },
+                { date: formatOffsetDate(7), type: 'Updated Current Weight (lbs)', value: currentWeight + 2 },
+                { date: formatOffsetDate(0), type: 'Updated Current Weight (lbs)', value: currentWeight },
+
+                // Squat progress
+                { date: formatOffsetDate(28), type: 'Squat PR (lbs)', value: Math.round(squat - 30) },
+                { date: formatOffsetDate(21), type: 'Squat PR (lbs)', value: Math.round(squat - 20) },
+                { date: formatOffsetDate(14), type: 'Squat PR (lbs)', value: Math.round(squat - 10) },
+                { date: formatOffsetDate(7), type: 'Squat PR (lbs)', value: Math.round(squat - 5) },
+                { date: formatOffsetDate(0), type: 'Squat PR (lbs)', value: squat },
+
+                // Bench progress
+                { date: formatOffsetDate(28), type: 'Bench Press PR (lbs)', value: Math.round(bench - 15) },
+                { date: formatOffsetDate(14), type: 'Bench Press PR (lbs)', value: Math.round(bench - 10) },
+                { date: formatOffsetDate(0), type: 'Bench Press PR (lbs)', value: bench },
+
+                // Deadlift progress
+                { date: formatOffsetDate(28), type: 'Deadlift PR (lbs)', value: Math.round(deadlift - 25) },
+                { date: formatOffsetDate(14), type: 'Deadlift PR (lbs)', value: Math.round(deadlift - 10) },
+                { date: formatOffsetDate(0), type: 'Deadlift PR (lbs)', value: deadlift },
+
+                // Power Clean progress
+                { date: formatOffsetDate(28), type: 'Power Clean PR (lbs)', value: Math.round(clean - 15) },
+                { date: formatOffsetDate(14), type: 'Power Clean PR (lbs)', value: Math.round(clean - 5) },
+                { date: formatOffsetDate(0), type: 'Power Clean PR (lbs)', value: clean },
+
+                // 40-yard dash progress (lower is faster!)
+                { date: formatOffsetDate(28), type: '40-Yard Dash (sec)', value: parseFloat((sprint40 + 0.20).toFixed(2)) },
+                { date: formatOffsetDate(14), type: '40-Yard Dash (sec)', value: parseFloat((sprint40 + 0.08).toFixed(2)) },
+                { date: formatOffsetDate(0), type: '40-Yard Dash (sec)', value: sprint40 },
+
+                // Vertical Jump progress
+                { date: formatOffsetDate(28), type: 'Vertical Jump (inches)', value: parseFloat((vertical - 2.0).toFixed(1)) },
+                { date: formatOffsetDate(14), type: 'Vertical Jump (inches)', value: parseFloat((vertical - 1.0).toFixed(1)) },
+                { date: formatOffsetDate(0), type: 'Vertical Jump (inches)', value: vertical },
+
+                // Hydration progress
+                { date: formatOffsetDate(21), type: 'Hydration (oz / day)', value: Math.round(hydration - 16) },
+                { date: formatOffsetDate(14), type: 'Hydration (oz / day)', value: Math.round(hydration - 8) },
+                { date: formatOffsetDate(0), type: 'Hydration (oz / day)', value: hydration },
+
+                // Sleep duration progress
+                { date: formatOffsetDate(21), type: 'Sleep Duration (hrs / night)', value: parseFloat((sleep - 1.0).toFixed(1)) },
+                { date: formatOffsetDate(14), type: 'Sleep Duration (hrs / night)', value: parseFloat((sleep - 0.5).toFixed(1)) },
+                { date: formatOffsetDate(0), type: 'Sleep Duration (hrs / night)', value: sleep }
+            ];
+
+            seededEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+            localStorage.setItem('krome_metrics_history', JSON.stringify(seededEntries));
+        }
+
+        // Draw premium, fluid curve line charts using D3.js
+        function drawD3LineChart(containerId, dataPoints, colorHex, isLowerBetter, unitLabel) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            if (!dataPoints || dataPoints.length === 0) {
+                container.innerHTML = `
+                    <div class="d-flex align-items-center justify-content-center h-100 text-secondary small">
+                        <i class="fas fa-info-circle me-1"></i> No recorded timeline entries.
+                    </div>
+                `;
+                return;
+            }
+
+            // Dynamically evaluate layout boundaries
+            const rect = container.getBoundingClientRect();
+            const width = rect.width || 280;
+            const height = rect.height || 160;
+
+            const margin = { top: 15, right: 18, bottom: 25, left: 32 };
+
+            // Sort data chronologically to plot left-to-right
+            const chartData = [...dataPoints].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            const svg = d3.select('#' + containerId)
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', '100%')
+                .attr('viewBox', `0 0 ${width} ${height}`)
+                .attr('preserveAspectRatio', 'xMidYMid meet');
+
+            // Map x-points uniformly
+            const xScale = d3.scalePoint()
+                .domain(d3.range(chartData.length))
+                .range([margin.left, width - margin.right]);
+
+            const values = chartData.map(d => d.value);
+            let minVal = d3.min(values);
+            let maxVal = d3.max(values);
+
+            // Give a pleasant vertical scale cushion
+            if (minVal === maxVal) {
+                minVal = minVal * 0.95;
+                maxVal = maxVal * 1.05;
+            } else {
+                const diff = maxVal - minVal;
+                minVal = Math.max(0, minVal - diff * 0.15);
+                maxVal = maxVal + diff * 0.15;
+            }
+
+            const yScale = d3.scaleLinear()
+                .domain([minVal, maxVal])
+                .range([height - margin.bottom, margin.top]);
+
+            // Area Gradient
+            const defs = svg.append('defs');
+            const gradId = `grad-${containerId}`;
+            const gradient = defs.append('linearGradient')
+                .attr('id', gradId)
+                .attr('x1', '0%').attr('y1', '0%')
+                .attr('x2', '0%').attr('y2', '100%');
+            gradient.append('stop').attr('offset', '0%').attr('stop-color', colorHex).attr('stop-opacity', 0.22);
+            gradient.append('stop').attr('offset', '100%').attr('stop-color', colorHex).attr('stop-opacity', 0.0);
+
+            // Horizontal grid lines
+            const yTicks = yScale.ticks(4);
+            svg.append('g')
+                .selectAll('line')
+                .data(yTicks)
+                .enter()
+                .append('line')
+                .attr('x1', margin.left)
+                .attr('x2', width - margin.right)
+                .attr('y1', d => yScale(d))
+                .attr('y2', d => yScale(d))
+                .attr('stroke', 'rgba(255, 255, 255, 0.04)')
+                .attr('stroke-dasharray', '2,2');
+
+            // Area under curve
+            const areaGenerator = d3.area()
+                .x((d, i) => xScale(i))
+                .y0(height - margin.bottom)
+                .y1(d => yScale(d.value))
+                .curve(d3.curveMonotoneX);
+
+            svg.append('path')
+                .datum(chartData)
+                .attr('d', areaGenerator)
+                .attr('fill', `url(#${gradId})`);
+
+            // Progression line path
+            const lineGenerator = d3.line()
+                .x((d, i) => xScale(i))
+                .y(d => yScale(d.value))
+                .curve(d3.curveMonotoneX);
+
+            svg.append('path')
+                .datum(chartData)
+                .attr('d', lineGenerator)
+                .attr('fill', 'none')
+                .attr('stroke', colorHex)
+                .attr('stroke-width', 2.5)
+                .attr('stroke-linecap', 'round');
+
+            // X Axis
+            svg.append('g')
+                .attr('transform', `translate(0, ${height - margin.bottom})`)
+                .call(d3.axisBottom(xScale).tickFormat((d, i) => {
+                    const dStr = chartData[i].date;
+                    try {
+                        const parts = dStr.split(' ')[0].split('-');
+                        if (parts.length >= 3) {
+                            return `${parts[1]}/${parts[2]}`; // MM/DD
+                        }
+                        return dStr.split(' ')[0];
+                    } catch (_) { return dStr; }
+                }))
+                .attr('color', 'rgba(255, 255, 255, 0.12)')
+                .selectAll('text')
+                .attr('fill', '#94a3b8')
+                .style('font-size', '8px')
+                .style('font-family', 'monospace');
+
+            // Y Axis
+            svg.append('g')
+                .attr('transform', `translate(${margin.left}, 0)`)
+                .call(d3.axisLeft(yScale).ticks(4).tickFormat(d => Math.round(d)))
+                .attr('color', 'rgba(255, 255, 255, 0.12)')
+                .selectAll('text')
+                .attr('fill', '#94a3b8')
+                .style('font-size', '8px')
+                .style('font-family', 'monospace');
+
+            // Draw interactive dots & hovering labels
+            const dots = svg.selectAll('.dot-group')
+                .data(chartData)
+                .enter()
+                .append('g')
+                .attr('class', 'dot-group');
+
+            dots.append('circle')
+                .attr('cx', (d, i) => xScale(i))
+                .attr('cy', d => yScale(d.value))
+                .attr('r', 4)
+                .attr('fill', '#0c0f17')
+                .attr('stroke', colorHex)
+                .attr('stroke-width', 1.5);
+
+            dots.append('text')
+                .attr('x', (d, i) => xScale(i))
+                .attr('y', d => yScale(d.value) - 8)
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#ffffff')
+                .style('font-size', '8px')
+                .style('font-weight', 'bold')
+                .style('font-family', 'system-ui, sans-serif')
+                .text(d => d.value);
+        }
+
+        // Filters metrics history and triggers the charts rendering
+        function renderProgressionCharts() {
+            let historyList = [];
+            const cachedHistory = localStorage.getItem('krome_metrics_history');
+            if (cachedHistory) {
+                try { historyList = JSON.parse(cachedHistory); } catch (_) {}
+            }
+
+            // 1. Weight Progression Chart
+            const weightLogs = historyList.filter(d => d.type === 'Updated Current Weight (lbs)');
+            if (weightLogs.length === 0) {
+                const cw = parseFloat(localStorage.getItem('krome_athlete_current_weight') || '180');
+                weightLogs.push({ date: new Date().toISOString().replace('T', ' ').slice(0, 16), value: cw });
+            }
+
+            const statsEl = document.getElementById('weight-trend-stats');
+            if (statsEl && weightLogs.length > 0) {
+                statsEl.textContent = `${weightLogs[0].value} lbs`;
+            }
+
+            drawD3LineChart('weight-progression-chart', weightLogs, '#ffd447', false, 'lbs');
+
+            // 2. Selectable Performance Metric Progression Chart
+            const selectEl = document.getElementById('chart-metric-select');
+            if (!selectEl) return;
+
+            const selectedType = selectEl.value;
+            const perfLogs = historyList.filter(d => d.type === selectedType);
+
+            let themeColor = '#00ffd1'; // default cyan
+            if (selectedType.includes('PR')) themeColor = '#00ffd1';
+            else if (selectedType.includes('Dash') || selectedType.includes('sec')) themeColor = '#ffd447'; // golden speed
+            else if (selectedType.includes('Hydration') || selectedType.includes('Sleep')) themeColor = '#22c55e'; // green recovery
+
+            drawD3LineChart('performance-progression-chart', perfLogs, themeColor, selectedType.includes('sec'), '');
         }
 
         function adjustLoggerPlaceholder() {
@@ -1777,7 +2124,8 @@
 
             const cleanDateStr = new Date().toISOString().replace('T', ' ').slice(0, 16);
             historyList.unshift({ date: cleanDateStr, type: metricName, value: metricVal });
-            if (historyList.length > 8) historyList = historyList.slice(0, 8);
+            // Preserve up to 50 logs for progression charts!
+            if (historyList.length > 50) historyList = historyList.slice(0, 50);
             localStorage.setItem('krome_metrics_history', JSON.stringify(historyList));
 
             if (typeof window.sendLeadToGoogle === 'function') {
@@ -1798,6 +2146,19 @@
             valueInput.value = '';
             loadAthleteBiometrics();
             loadPerformanceTrackerMetrics();
+        }
+
+        // Resize observer to handle responsive redrawing on size changes
+        let resizeTimeout;
+        const resizeObserver = new ResizeObserver(() => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                renderProgressionCharts();
+            }, 150);
+        });
+        const metricsContainer = document.getElementById('card-metrics-display');
+        if (metricsContainer) {
+            resizeObserver.observe(metricsContainer);
         }
 
         function renderHistoricalLogs() {

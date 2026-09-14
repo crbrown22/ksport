@@ -282,7 +282,7 @@
                                     <option value="30-Day Shred Challenge Manual">30-Day Shred Challenge Manual</option>
                                     <option value="Nutrition Blueprint E-Book">Nutrition Blueprint E-Book</option>
                                     <option value="Athlete Supplement Protocol">Athlete Supplement Protocol</option>
-                                    <option value="All-Access Athlete Bundle (All 3 Programs)">All-Access Athlete Bundle (All 3 Programs)</option>
+                                    <option value="All-Access Athlete Bundle (All Programs)">All-Access Athlete Bundle (All Programs)</option>
                                     <option value="Custom 1-on-1 Performance Coaching">Custom 1-on-1 Performance Coaching</option>
                                 </select>
                             </div>
@@ -853,11 +853,15 @@
                     localStorage.removeItem('krome_blueprint_unlocked');
                     localStorage.removeItem('krome_protocol_unlocked');
                     localStorage.removeItem('krome_bundle_unlocked');
+                    localStorage.removeItem('krome_jumpstart_unlocked');
+                    localStorage.removeItem('krome_athlete_package_unlocked');
                 } else {
                     localStorage.setItem('krome_bundle_unlocked', 'true');
                     localStorage.setItem('krome_shred_unlocked', 'true');
                     localStorage.setItem('krome_blueprint_unlocked', 'true');
                     localStorage.setItem('krome_protocol_unlocked', 'true');
+                    localStorage.setItem('krome_jumpstart_unlocked', 'true');
+                    localStorage.setItem('krome_athlete_package_unlocked', 'true');
                 }
 
                 // Sync directly with Google Sheets database via sendLeadToGoogle (exactly like landing page button)
