@@ -1,13 +1,1862 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=athlete_onboarding.html">
-    <title>Redirecting to Athlete Profile | KROME Sports Performance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Performance & Onboarding Hub | KROME Sports</title>
+    <meta name="description" content="Access your KROME Sports Performance dashboard, baselines, Mifflin-St Jeor nutritional macros, unlocked programs, and performance trackers.">
+    <link rel="canonical" href="https://ais-dev-cs73mlfcrcwib4xm3p4s3q-105142573305.us-west1.run.app/athlete_profile.html">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #080a0e;
+            --krome-card-bg: #11141b;
+            --krome-card-border: rgba(255, 212, 71, 0.2);
+            --krome-text-main: #f8fafc;
+            --krome-text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #0b0d12 !important;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            color: var(--krome-gold) !important;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d1d5db !important;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--krome-cyan) !important;
+        }
+
+        .profile-hero {
+            background: linear-gradient(135deg, rgba(8, 10, 14, 0.96), rgba(18, 21, 28, 0.93)), url('media/ksp.jpg') center/cover no-repeat;
+            border-bottom: 1px solid var(--krome-card-border);
+            padding: 3rem 1rem;
+        }
+
+        .dashboard-card {
+            background: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            padding: 24px;
+            height: 100%;
+            transition: all 0.22s ease;
+        }
+
+        .dashboard-card:hover {
+            border-color: rgba(255, 212, 71, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 212, 71, 0.3);
+        }
+
+        .btn-outline-cyan {
+            background-color: transparent;
+            color: var(--krome-cyan);
+            border: 1px solid rgba(0, 255, 209, 0.3);
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-cyan:hover {
+            background-color: rgba(0, 255, 209, 0.1);
+            border-color: var(--krome-cyan);
+            color: var(--krome-cyan);
+        }
+
+        .form-control-custom, .form-select-custom {
+            background-color: #080a0e;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .form-control-custom:focus, .form-select-custom:focus {
+            background-color: #0a0d13;
+            border-color: var(--krome-gold);
+            color: #fff;
+            box-shadow: 0 0 0 0.25rem rgba(255, 212, 71, 0.15);
+            outline: none;
+        }
+
+        .metric-badge {
+            background: rgba(0, 255, 209, 0.08);
+            border: 1px solid rgba(0, 255, 209, 0.25);
+            color: var(--krome-cyan);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .metric-badge.locked {
+            background: rgba(148, 163, 184, 0.08);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: var(--krome-text-muted);
+        }
+
+        .step-badge {
+            background: var(--krome-gold);
+            color: #000;
+            font-weight: 900;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .program-card-option {
+            background: rgba(20, 24, 32, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .program-card-option:hover {
+            border-color: var(--krome-gold);
+            transform: translateY(-2px);
+            background: rgba(25, 30, 40, 0.85);
+        }
+
+        .macro-stat-box {
+            background: rgba(11, 13, 18, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .macro-stat-box:hover {
+            transform: translateY(-2px);
+            border-color: var(--krome-gold);
+        }
+
+        .profile-pill {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+        }
+
+        footer {
+            background-color: #0b0d12;
+            border-top: 1px solid rgba(255, 212, 71, 0.15);
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="ksp_home.html">
+                <i class="fas fa-bolt me-2"></i> KROME Sports
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="ksp_home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="coaches_bio.html">Coaches</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="athlete_profile.html" id="nav-dashboard-link" onclick="switchPageTab('performance'); return false;"><i class="fas fa-user-circle me-1"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="athlete_profile.html#onboarding" id="nav-onboarding-link" onclick="switchPageTab('onboarding'); return false;"><i class="fas fa-tasks me-1"></i> Onboarding</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button onclick="handleDashboardLogout()" class="btn btn-sm btn-outline-danger px-3 py-1.5 rounded-pill fw-bold">
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow-1">
+
+        <!-- PROFILE HERO HERO -->
+        <section class="profile-hero">
+            <div class="container">
+                <!-- Registration completion celebratory banner -->
+                <div id="reg-complete-banner" class="alert alert-success border-success border-2 p-4 mb-4 rounded-3 d-none shadow-lg position-relative" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(6, 78, 59, 0.35) 100%);">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-success text-white rounded-circle p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <i class="fas fa-check-double"></i>
+                            </div>
+                            <div>
+                                <h5 class="alert-heading text-white fw-bold mb-0">🎉 Registration Complete & Profile Active!</h5>
+                                <p class="text-light mb-0 small">Welcome, <span id="banner-athlete-name" class="text-warning fw-bold">Athlete</span>! Your clinical Mifflin-St Jeor nutrition targets have been initialized.</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white" onclick="dismissBanner()"></button>
+                    </div>
+                </div>
+
+                <div id="no-session-alert" class="alert alert-danger d-none py-3 px-4 mb-4" role="alert">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-exclamation-triangle fa-lg"></i>
+                            <span>You must be logged in as an authorized athlete to access this page.</span>
+                        </div>
+                        <a href="login.html" class="btn btn-sm btn-warning fw-bold text-dark px-3 py-1.5">Go to Login</a>
+                    </div>
+                </div>
+
+                <div class="row align-items-center g-4" id="athlete-welcome-block">
+                    <div class="col-md-7">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge bg-success text-white fw-bold px-2.5 py-1">KROME Authorized Athlete</span>
+                            <span class="badge fw-bold px-2.5 py-1" id="athlete-onboarding-badge">Retrieving Status...</span>
+                        </div>
+                        <h1 class="display-6 fw-black text-white mb-1" id="welcome-fullname-header">ATHLETE PORTAL</h1>
+                        <p class="text-secondary mb-0 small" id="welcome-subtext">Retrieving real-time performance records and biometric metrics...</p>
+                    </div>
+                    <div class="col-md-5 text-md-end">
+                        <div class="d-flex flex-row justify-content-md-end gap-2">
+                            <a href="register.html" class="btn btn-sm btn-outline-cyan">
+                                <i class="fas fa-user-edit me-1"></i> Edit Account
+                            </a>
+                            <button onclick="switchPageTab('onboarding')" class="btn btn-sm btn-gold">
+                                <i class="fas fa-calculator me-1"></i> TDEE & Coaching
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE TAB SELECTOR ROW -->
+        <section class="bg-black py-3 border-bottom border-secondary border-opacity-10 sticky-top" style="top: 0; z-index: 1020;">
+            <div class="container text-center">
+                <div class="d-inline-flex p-1 rounded-pill bg-dark border border-secondary border-opacity-20 flex-wrap justify-content-center gap-1" style="box-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+                    <button class="btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition" id="page-tab-dashboard" onclick="switchPageTab('dashboard')">
+                        <i class="fas fa-th-large me-1.5 text-cyan"></i>Dashboard
+                    </button>
+                    <button class="btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition text-secondary" id="page-tab-programs" onclick="switchPageTab('programs')">
+                        <i class="fas fa-layer-group me-1.5 text-warning"></i>My Programs
+                    </button>
+                    <button class="btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition text-secondary" id="page-tab-nutrition" onclick="switchPageTab('nutrition')">
+                        <i class="fas fa-apple-alt me-1.5 text-success"></i>Nutrition
+                    </button>
+                    <button class="btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition text-secondary" id="page-tab-performance-logs" onclick="switchPageTab('performance-logs')">
+                        <i class="fas fa-chart-line me-1.5 text-info"></i>Performance Logs
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN GRID CONTENT -->
+        <section class="py-5" id="profile-grid-section">
+            <div class="container">
+
+                <!-- TAB 1: ACTIVE PERFORMANCE DASHBOARD CONTAINER -->
+                <div id="page-container-dashboard">
+                    
+                    <div id="onboarding-nag-banner" class="alert alert-warning py-3 px-4 mb-4 rounded-3 d-none border border-warning border-opacity-20" style="background: rgba(255, 212, 71, 0.05);">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-clipboard-list text-warning"></i>
+                                <span class="text-light small">Complete your KROME onboarding! Calculate macros & schedule call to finalize setup.</span>
+                            </div>
+                            <button onclick="switchPageTab('nutrition')" class="btn btn-sm btn-warning fw-bold text-dark px-3 py-1">Go to Nutrition Setup</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: ONBOARDING COMPLETION CARD -->
+                    <div class="dashboard-card p-4 mb-4" id="onboarding-completion-section" style="background: rgba(255, 212, 71, 0.04); border: 1px solid rgba(255, 212, 71, 0.25);">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div id="onboarding-status-icon" class="bg-warning text-dark rounded-circle p-2.5 d-flex align-items-center justify-content-center shadow" style="width: 44px; height: 44px;">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div>
+                                    <div class="d-flex flex-wrap align-items-center gap-2">
+                                        <h4 class="mb-0 fw-bold text-white fs-5" id="onboarding-status-title">Onboarding & Setup Checklist</h4>
+                                        <span id="onboarding-status-badge" class="badge bg-warning text-dark fw-bold px-2 py-0.5" style="font-size: 0.7rem;">In Progress</span>
+                                    </div>
+                                    <p class="text-secondary small mb-0 mt-0.5" id="onboarding-status-desc">
+                                        Review macros under the Nutrition tab, request coaching call, and hit finalize to activate.
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="btn-complete-onboarding" onclick="completeOnboardingFlow()" class="btn btn-gold px-4 py-2 fw-bold text-dark">
+                                    <i class="fas fa-check-circle me-1"></i> Finalize Setup & Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BIOMETRICS SUMMARY BAR -->
+                    <div class="row g-3 mb-4" id="biometrics-bar-row">
+                        <div class="col-6 col-lg-3">
+                            <div class="dashboard-card p-3 text-center">
+                                <span class="text-secondary small text-uppercase fw-bold d-block mb-1">Weight Target</span>
+                                <h4 class="text-white fw-bold mb-1" id="bio-weight-display">-- lbs</h4>
+                                <span class="small text-warning" id="bio-goalweight-sub">Goal: -- lbs</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="dashboard-card p-3 text-center">
+                                <span class="text-secondary small text-uppercase fw-bold d-block mb-1">Primary Objective</span>
+                                <h4 class="text-white fw-bold mb-1 text-truncate" id="bio-goal-display" style="font-size: 1rem;">--</h4>
+                                <span class="small text-success" id="bio-level-sub">Level: --</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="dashboard-card p-3 text-center">
+                                <span class="text-secondary small text-uppercase fw-bold d-block mb-1">Daily Calories</span>
+                                <h4 class="text-cyan fw-bold mb-1" id="bio-calories-display">-- kcal</h4>
+                                <span class="small text-secondary" id="bio-activity-sub">--</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <div class="dashboard-card p-3 text-center">
+                                <span class="text-secondary small text-uppercase fw-bold d-block mb-1">Daily Protein</span>
+                                <h4 class="text-warning fw-bold mb-1" id="bio-protein-display">-- g</h4>
+                                <span class="small text-secondary" id="bio-macros-sub">Macros Split Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TWO COLUMN ROW: BIOMETRICS SNAPSHOT & STRATEGY CALL -->
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <!-- REGISTERED BIOMETRICS SNAPSHOT -->
+                            <div class="dashboard-card p-4 h-100" style="height: auto !important;">
+                                <h4 class="fw-bold text-white mb-2 fs-5"><i class="fas fa-id-card text-warning me-2"></i> Registered Biometrics</h4>
+                                <p class="text-secondary small mb-4">Baseline values provided during onboarding or updated via your performance log.</p>
+                                
+                                <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-30">
+                                    <div class="row g-2 text-secondary small">
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-light fw-bold fs-5" id="snap-weight-display">-- lbs</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Current Weight</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-warning fw-bold fs-5" id="snap-goal-weight-display">-- lbs</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Target Weight</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-light fw-bold fs-5" id="snap-height-display">--</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Height (Ft/In)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-light fw-bold fs-5" id="snap-age-sex-display">--</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Age & Sex</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top border-secondary border-opacity-25 my-3"></div>
+
+                                    <h6 class="text-white-50 fw-bold mb-2 small text-uppercase font-monospace" style="font-size:0.68rem; letter-spacing:0.5px;">Clinical Targets</h6>
+                                    <div class="row g-2 text-secondary small">
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-cyan fw-bold fs-5" id="snap-calories-display">-- kcal</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Target Calories</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10 mb-2">
+                                                <span class="d-block text-warning fw-bold fs-5" id="snap-protein-display">-- g</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Target Protein</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                                <span class="d-block text-info fw-bold fs-5" id="snap-carbs-display">-- g</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Target Carbs</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                                <span class="d-block text-success fw-bold fs-5" id="snap-fats-display">-- g</span>
+                                                <span class="text-secondary" style="font-size: 0.7rem;">Target Fats</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <!-- COACH STRATEGY CALL -->
+                            <div class="dashboard-card p-4 h-100" style="height: auto !important;">
+                                <h4 class="fw-bold text-white mb-2 fs-5"><i class="fas fa-calendar-check text-cyan me-2"></i> Coach Strategy Consultation</h4>
+                                <p class="text-secondary small mb-3">Schedule your setup and strategy call with Head Performance Coach Larry Brown.</p>
+
+                                <div class="p-2.5 bg-black rounded-3 border border-secondary border-opacity-30 mb-3 d-flex align-items-center gap-2">
+                                    <div class="bg-warning text-dark rounded-circle p-1.5 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-white fw-bold mb-0" style="font-size:0.85rem;">Coach Larry Brown</h6>
+                                        <small class="text-warning" style="font-size:0.7rem;">Head Coach &bull; KROME Sports</small>
+                                    </div>
+                                </div>
+
+                                <div id="consult-alert" class="alert d-none py-1.5 px-3 small rounded" role="alert"></div>
+
+                                <form id="consult-request-form" onsubmit="submitConsultRequest(event)">
+                                    <div class="mb-2">
+                                        <label class="form-label text-light small fw-bold" for="consult-pref-contact">Preferred Contact:</label>
+                                        <select id="consult-pref-contact" class="form-select form-select-custom py-1.5 fs-7">
+                                            <option value="Phone Call" selected>Phone Call</option>
+                                            <option value="Text Message / SMS">Text Message / SMS</option>
+                                            <option value="Email">Email</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label text-light small fw-bold" for="consult-time">Best Time of Day:</label>
+                                        <select id="consult-time" class="form-select form-select-custom py-1.5 fs-7">
+                                            <option value="Mornings (8 AM - 12 PM)" selected>Mornings (8 AM - 12 PM)</option>
+                                            <option value="Afternoons (12 PM - 5 PM)">Afternoons (12 PM - 5 PM)</option>
+                                            <option value="Evenings (5 PM - 8 PM)">Evenings (5 PM - 8 PM)</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label text-light small fw-bold" for="consult-message">Your Objectives:</label>
+                                        <textarea id="consult-message" class="form-control form-control-custom py-1.5 fs-7" rows="2" placeholder="e.g. Lose fat and improve sprint times."></textarea>
+                                    </div>
+                                    <button type="submit" id="btn-submit-consult" class="btn btn-gold w-100 py-1.5 fw-bold text-dark fs-7">
+                                        <i class="fas fa-calendar-check me-1"></i> Request Call
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: MY PROGRAMS CONTAINER -->
+                <div id="page-container-programs" class="d-none">
+                    <div class="row g-4">
+                        <!-- LEFT COLUMN: UNLOCKED MANUALS -->
+                        <div class="col-lg-4">
+                            
+                            <!-- PROGRAM MANUALS STATUS -->
+                            <div class="dashboard-card mb-4" id="card-unlocked-manuals" style="height: auto !important;">
+                                <h4 class="fw-bold text-white mb-2 fs-5"><i class="fas fa-layer-group text-warning me-2"></i> Your Training Manuals</h4>
+                                <p class="small text-secondary mb-3">Click on any unlocked manual below to access periodization guides.</p>
+                                
+                                <div class="d-flex flex-column gap-2" id="manuals-unlocked-list">
+                                    <!-- Strength Program -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-strength">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-dumbbell"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Strength & Power</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">12-Week Periodization</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-strength" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- Speed & Conditioning -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-speed">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-cyan bg-opacity-10 text-cyan d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-running"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Speed & Conditioning</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">Agility & Sprint Manual</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-speed" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- Flexibility & Mobility -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-flex">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-spa"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Joint Longevity</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">Flexibility & Mobility</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-flex" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- Shred & Nutrition -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-shred">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-danger bg-opacity-10 text-danger d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-fire"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Nutrition & Shred</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">30-Day Shred Challenge</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-shred" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- Nutrition Blueprint -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-blueprint">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-book-open"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Nutrition Blueprint</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">Clinical Guidelines</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-blueprint" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- 21-Day Kickstart -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-jumpstart">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-bolt"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">21-Day Kickstart</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">Transformation Manual</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-jumpstart" class="metric-badge locked">Locked</span>
+                                    </div>
+
+                                    <!-- Supplement Protocol -->
+                                    <div class="d-flex align-items-center justify-content-between p-2.5 rounded bg-dark border border-secondary border-opacity-10" id="program-status-protocol">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fas fa-pills"></i></div>
+                                            <div>
+                                                <span class="d-block text-white small fw-bold" style="font-size:0.8rem;">Supplement Protocol</span>
+                                                <small class="text-secondary" style="font-size: 0.68rem;">Athletic Optimization</small>
+                                            </div>
+                                        </div>
+                                        <span id="badge-protocol" class="metric-badge locked">Locked</span>
+                                    </div>
+                                </div>
+
+                                <a href="shop.html" class="btn btn-gold w-100 mt-3 py-2 fs-7 text-center d-block">
+                                    <i class="fas fa-shopping-cart me-1"></i> Unlock Programs in Shop
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT COLUMN: ACTIVE TRAINING GUIDEBOOKS -->
+                        <div class="col-lg-8">
+                            <div class="dashboard-card p-4">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                    <h4 class="fw-bold text-white mb-0 fs-5"><i class="fas fa-book-open text-warning me-2"></i> Active Training Guidebooks</h4>
+                                    <a href="shop.html" class="btn btn-sm btn-outline-cyan px-3">
+                                        <i class="fas fa-store me-1"></i> Visit KROME Shop
+                                    </a>
+                                </div>
+                                <p class="text-secondary small mb-3">Open your unlocked periodization protocols directly or consult descriptions below.</p>
+
+                                <div class="row g-3">
+                                    <!-- Program 1: Shred -->
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="program-card-option h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-3 d-inline-block mb-2">
+                                                    <i class="fas fa-fire fa-lg"></i>
+                                                </div>
+                                                <h5 class="text-white fw-bold mb-1 fs-6">30-Day Shred Challenge</h5>
+                                                <p class="text-secondary small mb-3">Full 30-day nutrition calendar, recipe cards, workouts, and lane-based diets.</p>
+                                            </div>
+                                            <a href="shred30_manual.html" class="btn btn-sm btn-warning w-100 fw-bold text-dark mt-auto">
+                                                <i class="fas fa-book-open me-1"></i> Open Shred Guide
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Program 2: Blueprint -->
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="program-card-option h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="bg-success bg-opacity-10 text-success p-2 rounded-3 d-inline-block mb-2">
+                                                    <i class="fas fa-book-open fa-lg"></i>
+                                                </div>
+                                                <h5 class="text-white fw-bold mb-1 fs-6">Nutrition Blueprint</h5>
+                                                <p class="text-secondary small mb-3">Clinical calculations, grocery shopping parameters, macros ratios, and nutrient timing.</p>
+                                            </div>
+                                            <a href="nutrition_blueprint.html" class="btn btn-sm btn-success w-100 fw-bold text-white mt-auto">
+                                                <i class="fas fa-book-open me-1"></i> Open Blueprint
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Program 3: Supplement -->
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="program-card-option h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="bg-info bg-opacity-10 text-info p-2 rounded-3 d-inline-block mb-2">
+                                                    <i class="fas fa-pills fa-lg"></i>
+                                                </div>
+                                                <h5 class="text-white fw-bold mb-1 fs-6">Supplement Protocol</h5>
+                                                <p class="text-secondary small mb-3">Dosages, evidence-based ergogenic stacks, safety notes, and sports performance aids.</p>
+                                            </div>
+                                            <a href="supplement_protocol.html" class="btn btn-sm btn-info w-100 fw-bold text-dark mt-auto">
+                                                <i class="fas fa-book-open me-1"></i> Open Protocol
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: PERFORMANCE LOGS CONTAINER -->
+                <div id="page-container-performance-logs" class="d-none">
+                    <div class="row g-4">
+                        <!-- LEFT COLUMN: PERFORMANCE PR LOGGER -->
+                        <div class="col-lg-4">
+                            <!-- METRIC INPUT LOGGER -->
+                            <div class="dashboard-card mb-4" id="card-metric-logger" style="height: auto !important;">
+                                <h4 class="fw-bold text-white mb-2 fs-5"><i class="fas fa-pen-nib text-cyan me-2"></i> Log Performance PR</h4>
+                                <p class="small text-secondary mb-3">Record biometric and physical maxes instantly.</p>
+
+                                <form id="metrics-log-form" onsubmit="saveCustomPerformanceMetric(event)">
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold" for="log-metric-type">Select Tracker:</label>
+                                        <select class="form-select form-control-custom" id="log-metric-type" onchange="adjustLoggerPlaceholder()">
+                                            <optgroup label="Strength & Power">
+                                                <option value="squat_pr">Squat PR (lbs)</option>
+                                                <option value="bench_pr">Bench Press PR (lbs)</option>
+                                                <option value="deadlift_pr">Deadlift PR (lbs)</option>
+                                                <option value="clean_pr">Power Clean PR (lbs)</option>
+                                            </optgroup>
+                                            <optgroup label="Speed & Conditioning">
+                                                <option value="sprint_10">10-Yard Dash (sec)</option>
+                                                <option value="sprint_40">40-Yard Dash (sec)</option>
+                                                <option value="agility_shuttle">Pro Agility 5-10-5 (sec)</option>
+                                                <option value="vertical_jump">Vertical Jump (inches)</option>
+                                            </optgroup>
+                                            <optgroup label="Flexibility & Biometrics">
+                                                <option value="stretch_streak">Active Daily Stretch Streak (days)</option>
+                                                <option value="hydration_oz">Hydration (oz / day)</option>
+                                                <option value="sleep_hours">Sleep Duration (hrs / night)</option>
+                                                <option value="current_weight">Updated Current Weight (lbs)</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-secondary small fw-bold" for="log-metric-value" id="log-value-label">Metric Value:</label>
+                                        <input type="number" step="0.01" class="form-control form-control-custom" id="log-metric-value" placeholder="e.g. 225" required>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-gold w-100 py-2 fw-bold">
+                                        <i class="fas fa-save me-1"></i> Log Metric Progress
+                                    </button>
+                                </form>
+                                <div class="alert alert-success d-none mt-3 py-1.5 px-2 text-center small rounded" id="metric-success-alert">✓ Recorded successfully!</div>
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT COLUMN: EXPANDED TRACKED METRICS DASHBOARD -->
+                        <div class="col-lg-8">
+
+                            <div class="dashboard-card h-100" id="card-metrics-display">
+                                <h3 class="fw-bold text-white mb-3 fs-5 d-flex align-items-center justify-content-between">
+                                    <span><i class="fas fa-chart-line text-cyan me-2"></i> Performance Trackers & Ratios</span>
+                                    <span class="badge bg-dark border border-secondary text-secondary small" style="font-size: 0.7rem;" id="metrics-sync-date">Last Synced: Just Now</span>
+                                </h3>
+
+                                <!-- TAB CONTROLS -->
+                                <ul class="nav nav-pills gap-1.5 mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active bg-dark text-white border border-secondary border-opacity-10 py-1 px-2.5 rounded-pill btn-sm" id="tab-strength" data-bs-toggle="pill" data-bs-target="#panel-strength" type="button" role="tab"><i class="fas fa-dumbbell text-warning me-1"></i> Strength</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link bg-dark text-white border border-secondary border-opacity-10 py-1 px-2.5 rounded-pill btn-sm" id="tab-speed" data-bs-toggle="pill" data-bs-target="#panel-speed" type="button" role="tab"><i class="fas fa-running text-cyan me-1"></i> Speed</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link bg-dark text-white border border-secondary border-opacity-10 py-1 px-2.5 rounded-pill btn-sm" id="tab-flex" data-bs-toggle="pill" data-bs-target="#panel-flex" type="button" role="tab"><i class="fas fa-spa text-success me-1"></i> Mobility</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link bg-dark text-white border border-secondary border-opacity-10 py-1 px-2.5 rounded-pill btn-sm" id="tab-nutrition" data-bs-toggle="pill" data-bs-target="#panel-nutrition" type="button" role="tab"><i class="fas fa-apple-alt text-danger me-1"></i> Nutrition Fuel</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    
+                                    <!-- PANEL 1: STRENGTH -->
+                                    <div class="tab-pane fade show active" id="panel-strength" role="tabpanel">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Back Squat Max</span>
+                                                    <h3 class="text-warning fw-black mb-0" id="val-squat">225 <span class="fs-6 fw-normal text-secondary">lbs</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;" id="ratio-squat">Relative: --x bodyweight</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Bench Press Max</span>
+                                                    <h3 class="text-warning fw-black mb-0" id="val-bench">135 <span class="fs-6 fw-normal text-secondary">lbs</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;" id="ratio-bench">Relative: --x bodyweight</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Deadlift Max</span>
+                                                    <h3 class="text-warning fw-black mb-0" id="val-deadlift">315 <span class="fs-6 fw-normal text-secondary">lbs</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;" id="ratio-deadlift">Relative: --x bodyweight</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Power Clean Max</span>
+                                                    <h3 class="text-warning fw-black mb-0" id="val-clean">185 <span class="fs-6 fw-normal text-secondary">lbs</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;" id="ratio-clean">Explosive Power Metric</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 p-3 rounded" style="background-color: rgba(255, 212, 71, 0.03); border: 1px solid rgba(255, 212, 71, 0.12);">
+                                            <h5 class="text-white fw-bold mb-1.5 text-uppercase font-monospace" style="font-size: 0.7rem;">Strength-to-Weight Evaluation</h5>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                                <div>
+                                                    <small class="text-secondary d-block" style="font-size:0.75rem;">Three-Lift Total:</small>
+                                                    <span class="fs-5 fw-bold text-white" id="val-strength-total">675 lbs</span>
+                                                </div>
+                                                <div>
+                                                    <small class="text-secondary d-block" style="font-size:0.75rem;">Cumulative Ratio:</small>
+                                                    <span class="fs-5 fw-bold text-warning" id="val-strength-ratio">--x</span>
+                                                </div>
+                                                <div>
+                                                    <span class="badge bg-dark border border-warning text-warning fw-bold px-2 py-1" style="font-size:0.72rem;" id="val-strength-class">Classification: Varsity</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PANEL 2: SPEED -->
+                                    <div class="tab-pane fade" id="panel-speed" role="tabpanel">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">10-Yard Acceleration</span>
+                                                    <h3 class="text-cyan fw-black mb-0" id="val-sprint10">1.68 <span class="fs-6 fw-normal text-secondary">sec</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;">First-Step Velocity</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">40-Yard Sprint</span>
+                                                    <h3 class="text-cyan fw-black mb-0" id="val-sprint40">4.85 <span class="fs-6 fw-normal text-secondary">sec</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;">Top Linear Speed</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Pro Agility Shuttle</span>
+                                                    <h3 class="text-cyan fw-black mb-0" id="val-agility">4.45 <span class="fs-6 fw-normal text-secondary">sec</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;">Change of Direction</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-semibold d-block mb-0.5" style="font-size:0.75rem;">Vertical Jump</span>
+                                                    <h3 class="text-cyan fw-black mb-0" id="val-jump">26.5 <span class="fs-6 fw-normal text-secondary">in</span></h3>
+                                                    <small class="text-secondary text-opacity-75" style="font-size:0.7rem;">Explosive Force Index</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PANEL 3: MOBILITY -->
+                                    <div class="tab-pane fade" id="panel-flex" role="tabpanel">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-10 d-flex align-items-center justify-content-between">
+                                                    <span class="text-secondary small text-uppercase fw-bold" style="font-size:0.75rem;">Spine Rom</span>
+                                                    <span class="badge bg-success">Optimal ROM</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-10 d-flex align-items-center justify-content-between">
+                                                    <span class="text-secondary small text-uppercase fw-bold" style="font-size:0.75rem;">Hip Rotation</span>
+                                                    <span class="badge bg-warning text-dark">Functional</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-10 d-flex align-items-center justify-content-between">
+                                                    <span class="text-secondary small text-uppercase fw-bold" style="font-size:0.75rem;">Ankle Dorsiflexion</span>
+                                                    <span class="badge bg-success">Optimal ROM</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-3 rounded bg-dark border border-secondary border-opacity-10 d-flex align-items-center justify-content-between">
+                                                    <span class="text-secondary small text-uppercase fw-bold" style="font-size:0.75rem;">Stretch Habit</span>
+                                                    <span class="badge bg-info" id="val-stretch-days">Streak: 4 Days</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PANEL 4: FUEL & RECOVERY -->
+                                    <div class="tab-pane fade" id="panel-nutrition" role="tabpanel">
+                                        <div class="row g-2">
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-bold d-block mb-1" style="font-size:0.75rem;">Hydration Level</span>
+                                                    <h3 class="text-white fw-bold mb-0" id="val-hydration">96 <span class="fs-6 fw-normal text-secondary">oz / day</span></h3>
+                                                    <small class="text-secondary">Target: 120 oz</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="p-2.5 rounded bg-dark border border-secondary border-opacity-10 text-center">
+                                                    <span class="text-secondary small text-uppercase fw-bold d-block mb-1" style="font-size:0.75rem;">Sleep Rest</span>
+                                                    <h3 class="text-white fw-bold mb-0" id="val-sleep">7.5 <span class="fs-6 fw-normal text-secondary">hours / night</span></h3>
+                                                    <small class="text-secondary">CNS Restoration</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                            <h6 class="text-white fw-bold mb-2 small text-uppercase font-monospace" style="font-size: 0.72rem;">Precision Macronutrient Target Splits</h6>
+                                            <div class="row g-2 text-center">
+                                                <div class="col-4">
+                                                    <div class="p-2 rounded bg-black">
+                                                        <span class="text-secondary d-block" style="font-size: 0.7rem;">Protein</span>
+                                                        <span class="fw-bold text-warning small" id="lbl-protein-gram">--g</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="p-2 rounded bg-black">
+                                                        <span class="text-secondary d-block" style="font-size: 0.7rem;">Carbs</span>
+                                                        <span class="fw-bold text-cyan small" id="lbl-carbs-gram">--g</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="p-2 rounded bg-black">
+                                                        <span class="text-secondary d-block" style="font-size: 0.7rem;">Fats</span>
+                                                        <span class="fw-bold text-white small" id="lbl-fat-gram">--g</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- HISTORICAL LOGS TABLE -->
+                                <div class="mt-4" id="historical-logs-container">
+                                    <h4 class="fw-bold text-white mb-2 fs-6 text-uppercase tracking-wider">Performance Log Entry History</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark table-hover table-striped border border-secondary border-opacity-10 mb-0 rounded" style="font-size: 0.8rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Date Logged</th>
+                                                    <th scope="col">Metric Type</th>
+                                                    <th scope="col" class="text-end">Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="athlete-history-table-body">
+                                                <tr>
+                                                    <td class="text-secondary">Just Now</td>
+                                                    <td>Standard Profile Active</td>
+                                                    <td class="text-end text-cyan fw-bold">Active</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: ONBOARDING & COACHING CONTAINER -->
+                <div id="page-container-nutrition" class="d-none">
+
+                    <!-- CLINICAL MIFFLIN-ST JEOR ENGINE PREVIEW -->
+                    <div class="dashboard-card p-4 mb-4">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                            <div>
+                                <div class="d-inline-flex align-items-center gap-1.5 text-warning small fw-bold text-uppercase mb-1">
+                                    <i class="fas fa-chart-pie"></i> Clinical Mifflin-St Jeor Engine
+                                </div>
+                                <h3 class="fw-bold text-white mb-0">Your Daily Nutritional Intake Targets</h3>
+                            </div>
+                            <span class="badge bg-black border border-warning text-warning px-3 py-1.5 fw-bold" id="macro-phase-badge">
+                                <i class="fas fa-bullseye me-1"></i> Calculated Live
+                            </span>
+                        </div>
+                        <p class="text-secondary small mb-3">Recalculated dynamically from your height, weight, activity multipliers, and primary targets.</p>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6 col-md-3">
+                                <div class="macro-stat-box border-warning">
+                                    <small class="text-secondary fw-bold d-block mb-1" style="font-size: 0.72rem;">DAILY CALORIES</small>
+                                    <div class="fs-4 fw-black text-white" id="display-calories">-- kcal</div>
+                                    <small class="text-warning fw-semibold" style="font-size:0.7rem;" id="display-calories-label">Intake Target</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="macro-stat-box border-warning">
+                                    <small class="text-secondary fw-bold d-block mb-1" style="font-size: 0.72rem;">DAILY PROTEIN</small>
+                                    <div class="fs-4 fw-black text-warning" id="display-protein">-- g</div>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">1.0g per lb weight</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="macro-stat-box border-info">
+                                    <small class="text-secondary fw-bold d-block mb-1" style="font-size: 0.72rem;">DAILY CARBS</small>
+                                    <div class="fs-4 fw-black text-info" id="display-carbs">-- g</div>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">Performance Fuel</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="macro-stat-box border-success">
+                                    <small class="text-secondary fw-bold d-block mb-1" style="font-size: 0.72rem;">DAILY FATS</small>
+                                    <div class="fs-4 fw-black text-success" id="display-fats">-- g</div>
+                                    <small class="text-secondary" style="font-size: 0.7rem;">Healthy Lipids</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SNAPSHOT -->
+                        <div class="p-3 bg-black rounded-3 border border-secondary border-opacity-50">
+                            <h6 class="text-white fw-bold mb-2 small text-uppercase" style="letter-spacing: 0.5px; font-size:0.75rem;">
+                                <i class="fas fa-id-card text-warning me-1"></i> Registered Biometrics Snapshot
+                            </h6>
+                            <div class="row g-2 text-secondary small">
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-light fw-bold fs-5" id="snap-weight-display-nut">-- lbs</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Current Weight</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-warning fw-bold fs-5" id="snap-goal-weight-display-nut">-- lbs</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Target Weight</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-light fw-bold fs-5" id="snap-height-display-nut">--</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Height (Ft/In)</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-light fw-bold fs-5" id="snap-age-sex-display-nut">--</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Age & Sex</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-top border-secondary border-opacity-25 my-3"></div>
+
+                            <h6 class="text-white-50 fw-bold mb-2 small text-uppercase font-monospace" style="font-size:0.68rem; letter-spacing:0.5px;">Clinical Targets</h6>
+                            <div class="row g-2 text-secondary small">
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-cyan fw-bold fs-5" id="snap-calories-display-nut">-- kcal</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Target Calories</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-warning fw-bold fs-5" id="snap-protein-display-nut">-- g</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Target Protein</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-info fw-bold fs-5" id="snap-carbs-display-nut">-- g</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Target Carbs</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="profile-pill p-3 rounded bg-dark border border-secondary border-opacity-10">
+                                        <span class="d-block text-success fw-bold fs-5" id="snap-fats-display-nut">-- g</span>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Target Fats</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- CENTERED COLUMN: TDEE ENGINE FORM -->
+                        <div class="col-lg-8 mx-auto">
+                            <div class="dashboard-card">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="step-badge">1</span>
+                                    <h4 class="fw-bold text-white mb-0 fs-5">TDEE & Macro Recalculator</h4>
+                                </div>
+                                <p class="text-secondary small mb-3">Adjust your metrics below to recalculate baseline clinical targets and sync with your coach.</p>
+
+                                <form id="tdee-calc-form" onsubmit="calculateBaselineMacros(event)">
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <label class="form-label text-light small fw-bold" for="calc-weight">Weight (lbs):</label>
+                                            <input type="number" id="calc-weight" class="form-control form-control-custom" value="180" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label text-light small fw-bold" for="calc-goal-weight">Goal Weight (lbs):</label>
+                                            <input type="number" id="calc-goal-weight" class="form-control form-control-custom" value="170" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-4">
+                                            <label class="form-label text-light small fw-bold" for="calc-height-ft">Height (Ft):</label>
+                                            <input type="number" id="calc-height-ft" class="form-control form-control-custom" value="5" min="4" max="7" required>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="form-label text-light small fw-bold" for="calc-height-in">Height (In):</label>
+                                            <input type="number" id="calc-height-in" class="form-control form-control-custom" value="10" min="0" max="11" required>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="form-label text-light small fw-bold" for="calc-age">Age:</label>
+                                            <input type="number" id="calc-age" class="form-control form-control-custom" value="28" min="14" max="85" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <label class="form-label text-light small fw-bold" for="calc-gender">Biological Sex:</label>
+                                            <select id="calc-gender" class="form-select form-select-custom">
+                                                <option value="male" selected>Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label text-light small fw-bold" for="calc-activity">Activity Level:</label>
+                                            <select id="calc-activity" class="form-select form-select-custom">
+                                                <option value="1.2">Sedentary (Desk Job)</option>
+                                                <option value="1.375">Lightly Active (1-3x/wk)</option>
+                                                <option value="1.55" selected>Moderately Active (3-5x/wk)</option>
+                                                <option value="1.725">Very Active (6-7x/wk)</option>
+                                                <option value="1.9">Extremely Active (Doubles)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-light small fw-bold" for="calc-goal-phase">Nutritional Objective:</label>
+                                        <select id="calc-goal-phase" class="form-select form-select-custom">
+                                            <option value="fat_loss" selected>Aggressive Fat Loss / 30-Day Shred (-500 kcal)</option>
+                                            <option value="recomp">Body Recomposition / Maintenance</option>
+                                            <option value="lean_mass">Athletic Hypertrophy / Muscle Gain (+350 kcal)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="d-flex gap-2">
+                                        <button type="submit" class="btn btn-gold flex-grow-1 py-2 fw-bold text-dark">
+                                            <i class="fas fa-calculator me-1"></i> Calculate Macros
+                                        </button>
+                                        <button type="button" onclick="saveMacrosToProfile()" id="btn-save-macros" class="btn btn-outline-cyan py-2 px-3 fw-bold">
+                                            <i class="fas fa-cloud-arrow-up me-1"></i> Save Target
+                                        </button>
+                                    </div>
+                                </form>
+                                <div id="save-macros-alert" class="small mt-3 d-none text-center fw-bold py-2 px-3 rounded-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 align-items-center mb-4 text-start">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="mb-2 text-warning"><i class="fas fa-bolt me-2"></i>KROME Sports Performance</h5>
+                    <p class="small text-secondary mb-0" style="max-width: 480px; line-height: 1.6;">
+                        Olympic Strength Mechanics, Sports Nutrition Periodization & Private personal athletic coaching.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-inline-flex flex-column align-items-center align-items-md-end gap-2">
+                        <a href="https://calendar.app.google/ikECphRQVZif3yUZ8" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm rounded-pill px-3 py-1.5 fw-bold text-dark">
+                            <i class="fas fa-calendar-check me-1"></i> Book on Google Calendar
+                        </a>
+                        <a href="contact.html" class="small fw-bold text-cyan text-decoration-none">
+                            <i class="fas fa-clipboard-check me-1"></i> Consultation Intake Form
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 212, 71, 0.2);" class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    &copy; 2026 KROME Sports Performance. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small mt-2 mt-md-0">
+                    <a href="ksp_home.html" class="text-secondary me-3 text-decoration-none">Programs</a>
+                    <a href="coaches_bio.html" class="text-secondary me-3 text-decoration-none">Coaches</a>
+                    <a href="about.html" class="text-secondary me-3 text-decoration-none">About</a>
+                    <a href="shop.html" class="text-secondary text-decoration-none">Shop</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/leads.js"></script>
+
     <script>
-        window.location.href = "athlete_onboarding.html";
+        const athleteEmail = localStorage.getItem('krome_athlete_email');
+        const athleteName = localStorage.getItem('krome_athlete_name');
+        const athletePhone = localStorage.getItem('krome_athlete_phone') || '';
+        const authToken = localStorage.getItem('krome_auth_token');
+
+        function checkSessionAccess() {
+            if (!athleteEmail || !authToken) {
+                document.getElementById('no-session-alert').classList.remove('d-none');
+                document.getElementById('profile-grid-section').classList.add('opacity-25');
+                document.getElementById('profile-grid-section').style.pointerEvents = 'none';
+            } else {
+                document.getElementById('welcome-fullname-header').textContent = `ATHLETE PORTAL: ${athleteName.toUpperCase()}`;
+                document.getElementById('welcome-subtext').textContent = `Review baselines, adjust nutritional targets, log performance markers, and open training manuals.`;
+                loadAthleteBiometrics();
+                loadUnlockedProgramManuals();
+                loadPerformanceTrackerMetrics();
+                setTimeout(initOnboardingChecklist, 100);
+            }
+        }
+
+        // Tab Switching & Hash Routing
+        function switchPageTab(tabName) {
+            const tabs = ['dashboard', 'programs', 'nutrition', 'performance-logs'];
+            
+            // If tabName is empty or not in the list, default to dashboard
+            if (!tabs.includes(tabName)) {
+                tabName = 'dashboard';
+            }
+
+            // Hide all containers, remove active classes from buttons
+            tabs.forEach(tab => {
+                const container = document.getElementById(`page-container-${tab}`);
+                const btn = document.getElementById(`page-tab-${tab}`);
+                if (container) {
+                    container.classList.add('d-none');
+                }
+                if (btn) {
+                    btn.className = 'btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition text-secondary';
+                }
+            });
+
+            // Show selected container and apply style to button
+            const activeContainer = document.getElementById(`page-container-${tabName}`);
+            const activeBtn = document.getElementById(`page-tab-${tabName}`);
+            
+            if (activeContainer) {
+                activeContainer.classList.remove('d-none');
+            }
+            
+            if (activeBtn) {
+                let activeClass = 'bg-cyan text-dark';
+                if (tabName === 'programs') activeClass = 'bg-warning text-dark';
+                if (tabName === 'nutrition') activeClass = 'bg-success text-white';
+                if (tabName === 'performance-logs') activeClass = 'bg-info text-dark';
+                activeBtn.className = `btn px-4 py-2 rounded-pill fw-bold text-uppercase btn-sm transition ${activeClass}`;
+            }
+
+            window.location.hash = tabName;
+        }
+
+        function initHashRouting() {
+            const currentHash = window.location.hash.replace('#', '');
+            if (currentHash) {
+                switchPageTab(currentHash);
+            } else {
+                switchPageTab('dashboard');
+            }
+        }
+
+        // Show registration complete celebration banner if applicable
+        if (localStorage.getItem('krome_registration_just_completed') === 'true') {
+            const banner = document.getElementById('reg-complete-banner');
+            if (banner) {
+                banner.classList.remove('d-none');
+                const nameEl = document.getElementById('banner-athlete-name');
+                if (nameEl && athleteName) nameEl.textContent = athleteName;
+            }
+            localStorage.removeItem('krome_registration_just_completed');
+        }
+
+        function dismissBanner() {
+            const banner = document.getElementById('reg-complete-banner');
+            if (banner) banner.classList.add('d-none');
+        }
+
+        function loadAthleteBiometrics() {
+            const weight = localStorage.getItem('krome_athlete_current_weight') || '180';
+            const goalWeight = localStorage.getItem('krome_athlete_goal_weight') || '175';
+            const goal = localStorage.getItem('krome_athlete_goal') || 'Lean Athletic Mass';
+            const level = localStorage.getItem('krome_athlete_level') || 'Varsity / Advanced';
+            const activity = localStorage.getItem('krome_athlete_activity') || 'Moderately Active';
+            const age = localStorage.getItem('krome_athlete_age') || '28';
+            const sex = localStorage.getItem('krome_athlete_sex') || 'Male';
+            const heightFt = localStorage.getItem('krome_athlete_height_ft') || '5';
+            const heightIn = localStorage.getItem('krome_athlete_height_in') || '10';
+
+            // Get calculated macros
+            let macrosObj = { calories: 2600, protein: 180, carbs: 280, fat: 75 };
+            const cachedMacros = localStorage.getItem('krome_athlete_macros');
+            if (cachedMacros) {
+                try {
+                    macrosObj = JSON.parse(cachedMacros);
+                } catch (_) {}
+            }
+
+            // Fill Performance Dashboard Displays
+            document.getElementById('bio-weight-display').textContent = `${weight} lbs`;
+            document.getElementById('bio-goalweight-sub').textContent = `Goal: ${goalWeight} lbs`;
+            document.getElementById('bio-goal-display').textContent = goal;
+            document.getElementById('bio-level-sub').textContent = `Level: ${level}`;
+            document.getElementById('bio-calories-display').textContent = `${macrosObj.calories || 2600} kcal`;
+            document.getElementById('bio-activity-sub').textContent = activity.split('(')[0].trim();
+            document.getElementById('bio-protein-display').textContent = `${macrosObj.protein || 180} g`;
+
+            // Fills Fuel & Recovery Sub-card Protein, Carbs, Fats Target
+            document.getElementById('lbl-protein-gram').textContent = `${macrosObj.protein || 180}g`;
+            document.getElementById('lbl-carbs-gram').textContent = `${macrosObj.carbs || 280}g`;
+            document.getElementById('lbl-fat-gram').textContent = `${macrosObj.fat || 75}g`;
+
+            // Fill Onboarding Snapshots & Form Fields (Dashboard and Nutrition tabs)
+            const snapWeight = document.getElementById('snap-weight-display');
+            if (snapWeight) snapWeight.textContent = `${weight} lbs`;
+            const snapGoal = document.getElementById('snap-goal-weight-display');
+            if (snapGoal) snapGoal.textContent = `${goalWeight} lbs`;
+            const snapHeight = document.getElementById('snap-height-display');
+            if (snapHeight) snapHeight.textContent = `${heightFt}' ${heightIn}"`;
+            const snapAgeSex = document.getElementById('snap-age-sex-display');
+            if (snapAgeSex) snapAgeSex.innerHTML = `${age} yrs &middot; ${sex}`;
+
+            const snapCalories = document.getElementById('snap-calories-display');
+            if (snapCalories) snapCalories.textContent = `${macrosObj.calories || 2600} kcal`;
+            const snapProtein = document.getElementById('snap-protein-display');
+            if (snapProtein) snapProtein.textContent = `${macrosObj.protein || 180} g`;
+            const snapCarbs = document.getElementById('snap-carbs-display');
+            if (snapCarbs) snapCarbs.textContent = `${macrosObj.carbs || 280} g`;
+            const snapFats = document.getElementById('snap-fats-display');
+            if (snapFats) snapFats.textContent = `${macrosObj.fat || 75} g`;
+
+            const snapWeightNut = document.getElementById('snap-weight-display-nut');
+            if (snapWeightNut) snapWeightNut.textContent = `${weight} lbs`;
+            const snapGoalNut = document.getElementById('snap-goal-weight-display-nut');
+            if (snapGoalNut) snapGoalNut.textContent = `${goalWeight} lbs`;
+            const snapHeightNut = document.getElementById('snap-height-display-nut');
+            if (snapHeightNut) snapHeightNut.textContent = `${heightFt}' ${heightIn}"`;
+            const snapAgeSexNut = document.getElementById('snap-age-sex-display-nut');
+            if (snapAgeSexNut) snapAgeSexNut.innerHTML = `${age} yrs &middot; ${sex}`;
+
+            const snapCaloriesNut = document.getElementById('snap-calories-display-nut');
+            if (snapCaloriesNut) snapCaloriesNut.textContent = `${macrosObj.calories || 2600} kcal`;
+            const snapProteinNut = document.getElementById('snap-protein-display-nut');
+            if (snapProteinNut) snapProteinNut.textContent = `${macrosObj.protein || 180} g`;
+            const snapCarbsNut = document.getElementById('snap-carbs-display-nut');
+            if (snapCarbsNut) snapCarbsNut.textContent = `${macrosObj.carbs || 280} g`;
+            const snapFatsNut = document.getElementById('snap-fats-display-nut');
+            if (snapFatsNut) snapFatsNut.textContent = `${macrosObj.fat || 75} g`;
+
+            document.getElementById('calc-weight').value = weight;
+            document.getElementById('calc-goal-weight').value = goalWeight;
+            document.getElementById('calc-height-ft').value = heightFt;
+            document.getElementById('calc-height-in').value = heightIn;
+            document.getElementById('calc-age').value = age;
+            document.getElementById('calc-gender').value = sex.toLowerCase() === 'female' ? 'female' : 'male';
+
+            const actEl = document.getElementById('calc-activity');
+            if (actEl) {
+                const a = activity.toLowerCase();
+                if (a.includes('sedentary')) actEl.value = '1.2';
+                else if (a.includes('light')) actEl.value = '1.375';
+                else if (a.includes('moderately') || a.includes('moderate')) actEl.value = '1.55';
+                else if (a.includes('very')) actEl.value = '1.725';
+                else if (a.includes('extreme')) actEl.value = '1.9';
+            }
+
+            const goalEl = document.getElementById('calc-goal-phase');
+            if (goalEl) {
+                const g = goal.toLowerCase();
+                if (g.includes('fat') || g.includes('shred')) goalEl.value = 'fat_loss';
+                else if (g.includes('muscle') || g.includes('hypertrophy') || g.includes('gain') || g.includes('strength')) goalEl.value = 'lean_mass';
+                else goalEl.value = 'recomp';
+            }
+
+            // Render Macro Intake Boxes
+            document.getElementById('display-calories').textContent = `${macrosObj.calories || 2600} kcal`;
+            document.getElementById('display-protein').textContent = `${macrosObj.protein || 180}g`;
+            document.getElementById('display-carbs').textContent = `${macrosObj.carbs || 280}g`;
+            document.getElementById('display-fats').textContent = `${macrosObj.fat || 75}g`;
+        }
+
+        async function loadAthleteProfile() {
+            if (!athleteEmail) return;
+            try {
+                const res = await fetch(`/api/athlete/data?email=${encodeURIComponent(athleteEmail)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.athlete) {
+                        const ath = data.athlete;
+                        if (ath.fullName) localStorage.setItem('krome_athlete_name', ath.fullName);
+                        if (ath.phone) localStorage.setItem('krome_athlete_phone', ath.phone);
+                        if (ath.currentWeight) localStorage.setItem('krome_athlete_current_weight', ath.currentWeight);
+                        if (ath.goalWeight) localStorage.setItem('krome_athlete_goal_weight', ath.goalWeight);
+                        if (ath.heightFeet) localStorage.setItem('krome_athlete_height_ft', ath.heightFeet);
+                        if (ath.heightInches !== undefined) localStorage.setItem('krome_athlete_height_in', ath.heightInches);
+                        if (ath.age) localStorage.setItem('krome_athlete_age', ath.age);
+                        if (ath.biologicalSex) localStorage.setItem('krome_athlete_sex', ath.biologicalSex);
+                        loadAthleteBiometrics();
+                    }
+                }
+            } catch (err) {
+                console.warn('Sync warning:', err);
+            }
+        }
+        loadAthleteProfile();
+
+        // Calculate Macros using Mifflin-St Jeor
+        let calculatedMacrosString = '';
+        let currentCalculatedMacros = {};
+
+        function calculateBaselineMacros(event) {
+            if (event && event.preventDefault) event.preventDefault();
+
+            const weightLbs = parseFloat(document.getElementById('calc-weight').value) || 180;
+            const goalWeightLbs = parseFloat(document.getElementById('calc-goal-weight').value) || 170;
+            const heightFt = parseFloat(document.getElementById('calc-height-ft').value) || 5;
+            const heightIn = parseFloat(document.getElementById('calc-height-in').value) || 10;
+            const age = parseFloat(document.getElementById('calc-age').value) || 28;
+            const gender = document.getElementById('calc-gender').value;
+            const activityMult = parseFloat(document.getElementById('calc-activity').value) || 1.55;
+            const goalPhase = document.getElementById('calc-goal-phase').value;
+
+            const weightKg = weightLbs * 0.45359237;
+            const heightCm = ((heightFt * 12) + heightIn) * 2.54;
+
+            let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+            bmr = (gender === 'male') ? bmr + 5 : bmr - 161;
+
+            const tdee = Math.round(bmr * activityMult);
+            let targetCalories = tdee;
+
+            let phaseText = 'Maintenance';
+            if (goalPhase === 'fat_loss') {
+                targetCalories = Math.max(1400, tdee - 500);
+                phaseText = 'Fat Loss (-500 kcal)';
+            } else if (goalPhase === 'lean_mass') {
+                targetCalories = tdee + 350;
+                phaseText = 'Hypertrophy (+350 kcal)';
+            }
+
+            const proteinGrams = Math.round(weightLbs * 1.0);
+            const fatCalories = targetCalories * 0.25;
+            const fatGrams = Math.round(fatCalories / 9);
+            const carbCalories = Math.max(0, targetCalories - (proteinGrams * 4) - fatCalories);
+            const carbGrams = Math.round(carbCalories / 4);
+
+            calculatedMacrosString = `TDEE: ${targetCalories} kcal | P: ${proteinGrams}g | C: ${carbGrams}g | F: ${fatGrams}g (${phaseText})`;
+
+            currentCalculatedMacros = {
+                calories: targetCalories,
+                protein: proteinGrams,
+                carbs: carbGrams,
+                fat: fatGrams,
+                summary: calculatedMacrosString
+            };
+
+            // Retrieve selected text for activity and goal to sync with profile page
+            const actSelect = document.getElementById('calc-activity');
+            const selectedActivityText = actSelect ? actSelect.options[actSelect.selectedIndex].text : 'Moderately Active (3-5x/wk)';
+            const goalSelect = document.getElementById('calc-goal-phase');
+            const selectedGoalText = goalSelect ? goalSelect.options[goalSelect.selectedIndex].text : 'Body Recomposition';
+
+            // Sync with localStorage so the other page components load it immediately
+            localStorage.setItem('krome_athlete_macros', JSON.stringify(currentCalculatedMacros));
+            localStorage.setItem('krome_athlete_current_weight', weightLbs);
+            localStorage.setItem('krome_athlete_goal_weight', goalWeightLbs);
+            localStorage.setItem('krome_athlete_height_ft', heightFt);
+            localStorage.setItem('krome_athlete_height_in', heightIn);
+            localStorage.setItem('krome_athlete_age', age);
+            localStorage.setItem('krome_athlete_sex', gender === 'female' ? 'Female' : 'Male');
+            localStorage.setItem('krome_athlete_activity', selectedActivityText);
+            localStorage.setItem('krome_athlete_goal', selectedGoalText);
+
+            // Update UI on both screens immediately
+            loadAthleteBiometrics();
+            loadPerformanceTrackerMetrics();
+
+            const badge = document.getElementById('macro-phase-badge');
+            if (badge) badge.innerHTML = `<i class="fas fa-check-circle me-1"></i> ${phaseText}`;
+        }
+
+        async function saveMacrosToProfile() {
+            const btn = document.getElementById('btn-save-macros');
+            const alertBox = document.getElementById('save-macros-alert');
+            const currentWeight = document.getElementById('calc-weight').value;
+            const goalWeight = document.getElementById('calc-goal-weight').value;
+            const heightFt = document.getElementById('calc-height-ft').value;
+            const heightIn = document.getElementById('calc-height-in').value;
+            const age = document.getElementById('calc-age').value;
+            const gender = document.getElementById('calc-gender').value;
+
+            // Recalculate to verify we have the absolute latest state
+            calculateBaselineMacros(new Event('calc'));
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span> Syncing...`;
+
+            try {
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    await window.sendLeadToGoogle({
+                        email: athleteEmail || 'athlete@kromesp.com',
+                        fullName: athleteName || 'KROME Athlete',
+                        phone: athletePhone,
+                        program: 'Athlete Onboarding & Macro Recalc',
+                        goal: `Current Weight: ${currentWeight} lbs, Goal Weight: ${goalWeight} lbs`,
+                        message: `Macros Target: ${calculatedMacrosString}`,
+                        action: 'athlete_onboarding_update'
+                    });
+                }
+                
+                alertBox.className = 'alert alert-success small mt-3 text-center fw-bold py-2 px-3 rounded-3';
+                alertBox.innerHTML = '✓ Clinical targets synced successfully to your athlete profile.';
+                alertBox.classList.remove('d-none');
+            } catch (err) {
+                alertBox.className = 'alert alert-info small mt-3 text-center fw-bold py-2 px-3 rounded-3';
+                alertBox.innerHTML = '✓ Macros saved to local profile session.';
+                alertBox.classList.remove('d-none');
+            }
+
+            // Sync everything one more time to be absolutely bulletproof
+            loadAthleteBiometrics();
+            loadPerformanceTrackerMetrics();
+
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fas fa-check me-1"></i> Saved!`;
+        }
+
+        async function submitConsultRequest(event) {
+            event.preventDefault();
+            const prefContact = document.getElementById('consult-pref-contact').value;
+            const prefTime = document.getElementById('consult-time').value;
+            const message = document.getElementById('consult-message').value.trim();
+            const alertEl = document.getElementById('consult-alert');
+            const btn = document.getElementById('btn-submit-consult');
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Sending...`;
+
+            try {
+                if (typeof window.sendLeadToGoogle === 'function') {
+                    await window.sendLeadToGoogle({
+                        fullName: athleteName || 'KROME Athlete',
+                        email: athleteEmail || 'athlete@kromesp.com',
+                        phone: athletePhone,
+                        preferredContact: prefContact,
+                        program: 'Coaching strategy setup request',
+                        message: `Strategy call preferences: Contact via ${prefContact} at ${prefTime}. Note: ${message}`,
+                        action: 'consultation_request'
+                    });
+                }
+
+                alertEl.className = 'alert alert-success py-2 px-3 small rounded';
+                alertEl.innerHTML = `✓ Consultation request received! Coach Larry Brown will contact you.`;
+                alertEl.classList.remove('d-none');
+                btn.innerHTML = `✓ Request Sent!`;
+            } catch (err) {
+                alertEl.className = 'alert alert-info py-2 px-3 small rounded';
+                alertEl.innerHTML = `✓ Request logged. Coach Larry will be in touch shortly.`;
+                alertEl.classList.remove('d-none');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-calendar-check me-1"></i> Request Call`;
+            }
+        }
+
+        // Onboarding checklist flow
+        function initOnboardingChecklist() {
+            const isComplete = localStorage.getItem('krome_onboarding_completed') === 'true';
+            updateOnboardingUI(isComplete);
+        }
+
+        function completeOnboardingFlow() {
+            localStorage.setItem('krome_onboarding_completed', 'true');
+            const program = localStorage.getItem('krome_athlete_program') || 'Custom 1-on-1 Performance Coaching';
+            localStorage.setItem('krome_athlete_program', program);
+
+            if (typeof window.sendLeadToGoogle === 'function') {
+                window.sendLeadToGoogle({
+                    email: athleteEmail || 'athlete@kromesp.com',
+                    fullName: athleteName || 'KROME Athlete',
+                    phone: athletePhone,
+                    program: program,
+                    message: `Athlete onboarding checklist completed! Setup finalized.`,
+                    action: 'onboarding_complete'
+                }).catch(() => {});
+            }
+
+            updateOnboardingUI(true);
+        }
+
+        function updateOnboardingUI(isComplete) {
+            const icon = document.getElementById('onboarding-status-icon');
+            const title = document.getElementById('onboarding-status-title');
+            const badge = document.getElementById('onboarding-status-badge');
+            const desc = document.getElementById('onboarding-status-desc');
+            const btn = document.getElementById('btn-complete-onboarding');
+            const profileOnbBadge = document.getElementById('athlete-onboarding-badge');
+            const nagBanner = document.getElementById('onboarding-nag-banner');
+
+            if (isComplete) {
+                if (icon) {
+                    icon.className = 'bg-success text-white rounded-circle p-2.5 d-flex align-items-center justify-content-center shadow';
+                    icon.innerHTML = '<i class="fas fa-user-check"></i>';
+                }
+                if (title) title.textContent = 'Setup Complete!';
+                if (badge) {
+                    badge.textContent = 'Completed';
+                    badge.className = 'badge bg-success text-white fw-bold px-2 py-0.5';
+                }
+                if (desc) desc.innerHTML = 'KROME onboarding finalized. Adjust macros anytime or view manuals below.';
+                if (btn) {
+                    btn.className = 'btn btn-outline-success px-4 py-2 fw-bold text-white';
+                    btn.innerHTML = '<i class="fas fa-check-double me-1"></i> Setup Active';
+                    btn.disabled = true;
+                }
+                if (profileOnbBadge) {
+                    profileOnbBadge.textContent = 'Onboarding Complete';
+                    profileOnbBadge.className = 'badge bg-success text-white fw-bold px-2.5 py-1';
+                }
+                if (nagBanner) nagBanner.classList.add('d-none');
+            } else {
+                if (icon) {
+                    icon.className = 'bg-warning text-dark rounded-circle p-2.5 d-flex align-items-center justify-content-center shadow';
+                    icon.innerHTML = '<i class="fas fa-tasks"></i>';
+                }
+                if (title) title.textContent = 'Onboarding & Setup Checklist';
+                if (badge) {
+                    badge.textContent = 'In Progress';
+                    badge.className = 'badge bg-warning text-dark fw-bold px-2 py-0.5';
+                }
+                if (desc) desc.innerHTML = 'Check your baseline macros, schedule coaching call, and hit finalize to activate.';
+                if (btn) {
+                    btn.className = 'btn btn-gold px-4 py-2 fw-bold text-dark';
+                    btn.innerHTML = '<i class="fas fa-check-circle me-1"></i> Finalize Setup & Complete';
+                    btn.disabled = false;
+                }
+                if (profileOnbBadge) {
+                    profileOnbBadge.textContent = 'Onboarding In Progress';
+                    profileOnbBadge.className = 'badge bg-warning text-dark fw-bold px-2.5 py-1';
+                }
+                if (nagBanner) nagBanner.classList.remove('d-none');
+            }
+        }
+
+        // Unlocked guides logic
+        function loadUnlockedProgramManuals() {
+            const hasStrength = localStorage.getItem('krome_strength_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasSpeed = localStorage.getItem('krome_conditioning_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasFlex = localStorage.getItem('krome_flexmob_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasShred = localStorage.getItem('krome_shred_unlocked') === 'true' || localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasBlueprint = localStorage.getItem('krome_blueprint_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasJumpstart = localStorage.getItem('krome_jumpstart_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+            const hasProtocol = localStorage.getItem('krome_protocol_unlocked') === 'true' || localStorage.getItem('krome_bundle_unlocked') === 'true';
+
+            updateProgramBadge('program-status-strength', 'badge-strength', hasStrength, 'strength_manual.html');
+            updateProgramBadge('program-status-speed', 'badge-speed', hasSpeed, 'conditioning_manual.html');
+            updateProgramBadge('program-status-flex', 'badge-flex', hasFlex, 'flexmob_manual.html');
+            updateProgramBadge('program-status-shred', 'badge-shred', hasShred, 'shred30_manual.html');
+            updateProgramBadge('program-status-blueprint', 'badge-blueprint', hasBlueprint, 'nutrition_blueprint.html');
+            updateProgramBadge('program-status-jumpstart', 'badge-jumpstart', hasJumpstart, 'jumpstart21_manual.html');
+            updateProgramBadge('program-status-protocol', 'badge-protocol', hasProtocol, 'supplement_protocol.html');
+        }
+
+        function updateProgramBadge(containerId, badgeId, isUnlocked, manualUrl) {
+            const container = document.getElementById(containerId);
+            const badge = document.getElementById(badgeId);
+            if (!container) return;
+
+            if (isUnlocked) {
+                if (badge) {
+                    badge.textContent = 'Unlocked';
+                    badge.className = 'metric-badge bg-success bg-opacity-10 text-success border-success border-opacity-25';
+                }
+                container.style.cursor = 'pointer';
+                container.onclick = () => { window.location.href = manualUrl; };
+                container.classList.add('border-success', 'border-opacity-20');
+            } else {
+                if (badge) {
+                    badge.textContent = 'Locked';
+                    badge.className = 'metric-badge locked';
+                }
+                container.style.cursor = 'pointer';
+                container.onclick = () => { window.location.href = 'login.html'; };
+            }
+        }
+
+        // PR loggers and historical tables
+        function loadPerformanceTrackerMetrics() {
+            const wLbs = parseFloat(localStorage.getItem('krome_athlete_current_weight') || '180');
+
+            const squat = parseFloat(localStorage.getItem('krome_metric_squat_pr') || '225');
+            const bench = parseFloat(localStorage.getItem('krome_metric_bench_pr') || '135');
+            const deadlift = parseFloat(localStorage.getItem('krome_metric_deadlift_pr') || '315');
+            const clean = parseFloat(localStorage.getItem('krome_metric_clean_pr') || '185');
+
+            const sprint10 = parseFloat(localStorage.getItem('krome_metric_sprint_10') || '1.68');
+            const sprint40 = parseFloat(localStorage.getItem('krome_metric_sprint_40') || '4.85');
+            const agility = parseFloat(localStorage.getItem('krome_metric_agility_shuttle') || '4.45');
+            const jump = parseFloat(localStorage.getItem('krome_metric_vertical_jump') || '26.5');
+
+            const streak = parseInt(localStorage.getItem('krome_metric_stretch_streak') || '4');
+            const hydration = parseInt(localStorage.getItem('krome_metric_hydration_oz') || '96');
+            const sleep = parseFloat(localStorage.getItem('krome_metric_sleep_hours') || '7.5');
+
+            document.getElementById('val-squat').innerHTML = `${squat} <span class="fs-6 fw-normal text-secondary">lbs</span>`;
+            document.getElementById('val-bench').innerHTML = `${bench} <span class="fs-6 fw-normal text-secondary">lbs</span>`;
+            document.getElementById('val-deadlift').innerHTML = `${deadlift} <span class="fs-6 fw-normal text-secondary">lbs</span>`;
+            document.getElementById('val-clean').innerHTML = `${clean} <span class="fs-6 fw-normal text-secondary">lbs</span>`;
+
+            document.getElementById('ratio-squat').textContent = `Relative: ${(squat / wLbs).toFixed(2)}x bodyweight`;
+            document.getElementById('ratio-bench').textContent = `Relative: ${(bench / wLbs).toFixed(2)}x bodyweight`;
+            document.getElementById('ratio-deadlift').textContent = `Relative: ${(deadlift / wLbs).toFixed(2)}x bodyweight`;
+
+            const coreTotal = squat + bench + deadlift;
+            document.getElementById('val-strength-total').textContent = `${coreTotal} lbs`;
+            
+            const totalRatio = coreTotal / wLbs;
+            document.getElementById('val-strength-ratio').textContent = `${totalRatio.toFixed(2)}x`;
+
+            let rating = 'General Athletic';
+            if (totalRatio >= 4.5) rating = 'Elite Competitor';
+            else if (totalRatio >= 3.5) rating = 'Varsity Power Athlete';
+            else if (totalRatio >= 2.5) rating = 'Intermediate Lift Power';
+            document.getElementById('val-strength-class').textContent = `Classification: ${rating}`;
+
+            document.getElementById('val-sprint10').innerHTML = `${sprint10} <span class="fs-6 fw-normal text-secondary">sec</span>`;
+            document.getElementById('val-sprint40').innerHTML = `${sprint40} <span class="fs-6 fw-normal text-secondary">sec</span>`;
+            document.getElementById('val-agility').innerHTML = `${agility} <span class="fs-6 fw-normal text-secondary">sec</span>`;
+            document.getElementById('val-jump').innerHTML = `${jump} <span class="fs-6 fw-normal text-secondary">in</span>`;
+
+            document.getElementById('val-stretch-days').textContent = `Streak: ${streak} Days`;
+            document.getElementById('val-hydration').innerHTML = `${hydration} <span class="fs-6 fw-normal text-secondary">oz / day</span>`;
+            document.getElementById('val-sleep').innerHTML = `${sleep} <span class="fs-6 fw-normal text-secondary">hours / night</span>`;
+
+            renderHistoricalLogs();
+        }
+
+        function adjustLoggerPlaceholder() {
+            const selectEl = document.getElementById('log-metric-type');
+            const valueInput = document.getElementById('log-metric-value');
+            const labelEl = document.getElementById('log-value-label');
+            if (!selectEl || !valueInput) return;
+
+            const choice = selectEl.value;
+            if (choice.includes('sprint') || choice.includes('agility')) {
+                labelEl.textContent = 'Time in Seconds:';
+                valueInput.placeholder = 'e.g. 4.65';
+            } else if (choice.includes('jump')) {
+                labelEl.textContent = 'Inches:';
+                valueInput.placeholder = 'e.g. 28.5';
+            } else if (choice.includes('streak') || choice.includes('sleep') || choice.includes('hydration')) {
+                labelEl.textContent = 'Days / Hours / Ounces:';
+                valueInput.placeholder = 'e.g. 8';
+            } else {
+                labelEl.textContent = 'Weight in lbs:';
+                valueInput.placeholder = 'e.g. 235';
+            }
+        }
+
+        function saveCustomPerformanceMetric(event) {
+            event.preventDefault();
+            const selectEl = document.getElementById('log-metric-type');
+            const valueInput = document.getElementById('log-metric-value');
+            const successEl = document.getElementById('metric-success-alert');
+            if (!selectEl || !valueInput) return;
+
+            const metricType = selectEl.value;
+            const metricName = selectEl.options[selectEl.selectedIndex].text;
+            const metricVal = parseFloat(valueInput.value);
+            if (isNaN(metricVal)) return;
+
+            localStorage.setItem(`krome_metric_${metricType}`, metricVal);
+            if (metricType === 'current_weight') {
+                localStorage.setItem('krome_athlete_current_weight', metricVal);
+            }
+
+            let historyList = [];
+            const cachedHistory = localStorage.getItem('krome_metrics_history');
+            if (cachedHistory) {
+                try { historyList = JSON.parse(cachedHistory); } catch (_) {}
+            }
+
+            const cleanDateStr = new Date().toISOString().replace('T', ' ').slice(0, 16);
+            historyList.unshift({ date: cleanDateStr, type: metricName, value: metricVal });
+            if (historyList.length > 8) historyList = historyList.slice(0, 8);
+            localStorage.setItem('krome_metrics_history', JSON.stringify(historyList));
+
+            if (typeof window.sendLeadToGoogle === 'function') {
+                window.sendLeadToGoogle({
+                    email: athleteEmail,
+                    fullName: athleteName,
+                    program: localStorage.getItem('krome_athlete_program') || 'Athlete Progression Plan',
+                    message: `Logged: ${metricName} updated to ${metricVal}`,
+                    action: 'metric_log'
+                }).catch(() => {});
+            }
+
+            if (successEl) {
+                successEl.classList.remove('d-none');
+                setTimeout(() => { successEl.classList.add('d-none'); }, 2000);
+            }
+
+            valueInput.value = '';
+            loadAthleteBiometrics();
+            loadPerformanceTrackerMetrics();
+        }
+
+        function renderHistoricalLogs() {
+            const tableBody = document.getElementById('athlete-history-table-body');
+            if (!tableBody) return;
+
+            const cachedHistory = localStorage.getItem('krome_metrics_history');
+            let historyList = [];
+            if (cachedHistory) {
+                try { historyList = JSON.parse(cachedHistory); } catch (_) {}
+            }
+
+            if (historyList.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td class="text-secondary">Just Now</td>
+                        <td>Standard Baseline Profile Initialized</td>
+                        <td class="text-end text-cyan fw-bold">Active</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let htmlStr = '';
+            historyList.forEach(item => {
+                htmlStr += `
+                    <tr>
+                        <td class="text-secondary">${item.date}</td>
+                        <td><span class="text-white fw-bold">${item.type}</span> updated</td>
+                        <td class="text-end text-cyan fw-bold">${item.value}</td>
+                    </tr>
+                `;
+            });
+            tableBody.innerHTML = htmlStr;
+        }
+
+        function handleDashboardLogout() {
+            localStorage.removeItem('krome_athlete_email');
+            localStorage.removeItem('krome_athlete_name');
+            localStorage.removeItem('krome_athlete_phone');
+            localStorage.removeItem('krome_access_key');
+            localStorage.removeItem('krome_auth_token');
+            localStorage.removeItem('krome_bundle_unlocked');
+            localStorage.removeItem('krome_shred_unlocked');
+            localStorage.removeItem('krome_blueprint_unlocked');
+            localStorage.removeItem('krome_protocol_unlocked');
+            localStorage.removeItem('krome_strength_unlocked');
+            localStorage.removeItem('krome_conditioning_unlocked');
+            localStorage.removeItem('krome_flexmob_unlocked');
+            localStorage.removeItem('krome_portal_unlocked');
+            localStorage.removeItem('krome_onboarding_completed');
+            localStorage.removeItem('krome_athlete_program');
+            window.location.href = 'login.html';
+        }
+
+        checkSessionAccess();
+        initHashRouting();
+        window.addEventListener('hashchange', initHashRouting);
     </script>
 </body>
+
 </html>

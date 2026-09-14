@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbyNWAvk-fbCo-epdoTGu6FU4FcyI_eGJoWJ0yn1E60b2K_eTDIEX0DXXY-IFJRqcLtl/exec';
+const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzkpw1DH9rURvt48B51b7oAiA6md8mBmfY29N1Yf2QiUB-5WCtDV3GPHKNWR4nGiqOg/exec';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

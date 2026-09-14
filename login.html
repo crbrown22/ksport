@@ -195,7 +195,7 @@
 
             <div class="row g-3 mt-1">
                 <div class="col-md-3">
-                    <a href="athlete_onboarding.html" class="btn btn-outline-warning w-100 py-3 rounded-3 fw-bold text-warning d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-profile">
+                    <a href="athlete_profile.html" class="btn btn-outline-warning w-100 py-3 rounded-3 fw-bold text-warning d-flex flex-column align-items-center justify-content-center text-decoration-none shadow" id="btn-quick-profile">
                         <i class="fas fa-id-card fa-lg mb-1"></i>
                         <span>Athlete Profile</span>
                         <small class="fw-normal text-secondary" style="font-size: 0.75rem;">Biometrics & Macros</small>
@@ -524,6 +524,62 @@
                     activeEmail.textContent = athleteEmail;
                     sessionCard.classList.remove('d-none');
                 }
+
+                // Dynamically update the No Program Set Up card
+                const cardNew = document.getElementById('card-prog-new');
+                if (cardNew) {
+                    const onboardingCompleted = localStorage.getItem('krome_onboarding_completed') === 'true';
+                    let programName = localStorage.getItem('krome_athlete_program') || 'No Program Set Up Yet';
+                    if (programName.toLowerCase().includes('no program')) {
+                        programName = 'Custom 1-on-1 Coaching Session';
+                    }
+
+                    if (onboardingCompleted) {
+                        cardNew.onclick = function() { window.location.href = 'athlete_profile.html#onboarding'; };
+                        cardNew.style.background = 'rgba(16, 185, 129, 0.08)';
+                        cardNew.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                        cardNew.className = 'program-selector-card border border-success border-opacity-50';
+                        cardNew.innerHTML = `
+                            <div class="d-flex align-items-start justify-content-between gap-2 w-100">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="bg-success text-white p-2 rounded-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-check-circle fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <h6 class="text-white fw-bold mb-0">Set Up Complete</h6>
+                                            <span class="badge bg-success text-white fw-bold" style="font-size: 0.72rem;">Active</span>
+                                        </div>
+                                        <small class="text-secondary d-block mt-1">Enrolled: <strong class="text-warning">${programName}</strong></small>
+                                    </div>
+                                </div>
+                                <span class="badge bg-success text-white key-badge px-2 py-1" style="font-size: 0.72rem;">Edit Account</span>
+                            </div>
+                        `;
+                    } else {
+                        cardNew.onclick = function() { window.location.href = 'athlete_profile.html#onboarding'; };
+                        cardNew.style.background = 'rgba(245, 158, 11, 0.08)';
+                        cardNew.style.borderColor = 'rgba(245, 158, 11, 0.5)';
+                        cardNew.className = 'program-selector-card border border-warning border-opacity-50';
+                        cardNew.innerHTML = `
+                            <div class="d-flex align-items-start justify-content-between gap-2 w-100">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="bg-warning text-dark p-2 rounded-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-hourglass-half"></i>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <h6 class="text-white fw-bold mb-0">Finish Onboarding Setup</h6>
+                                            <span class="badge bg-warning text-dark fw-bold" style="font-size: 0.72rem;">Pending</span>
+                                        </div>
+                                        <small class="text-secondary d-block mt-1">Complete your biometric assessment & setup checklist</small>
+                                    </div>
+                                </div>
+                                <span class="badge bg-warning text-dark key-badge px-2 py-1" style="font-size: 0.72rem;">Complete Setup</span>
+                            </div>
+                        `;
+                    }
+                }
             }
         }
         checkExistingSession();
@@ -667,17 +723,17 @@
                     }).catch(() => {});
                 }
 
-                const destinationUrl = redirectParam || targetPage;
+                const destinationUrl = 'athlete_profile.html';
 
-                showAlert(`Access Granted! Unlocked: ${programName}. Redirecting...`, 'success');
+                showAlert(`Access Granted! Unlocked: ${programName}. Redirecting to your Athlete Profile...`, 'success');
 
                 setTimeout(() => {
                     window.location.href = destinationUrl;
                 }, 800);
             } catch (err) {
-                showAlert('Access granted. Redirecting...', 'success');
+                showAlert('Access granted. Redirecting to your Athlete Profile...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'shred30_manual.html';
+                    window.location.href = 'athlete_profile.html';
                 }, 800);
             }
         }
@@ -708,11 +764,16 @@
             localStorage.removeItem('krome_conditioning_unlocked');
             localStorage.removeItem('krome_flexmob_unlocked');
             localStorage.removeItem('krome_portal_unlocked');
+            localStorage.removeItem('krome_onboarding_completed');
+            localStorage.removeItem('krome_athlete_program');
 
             const sessionCard = document.getElementById('session-active-card');
             if (sessionCard) sessionCard.classList.add('d-none');
 
-            showAlert('You have successfully logged out of your session.', 'info');
+            showAlert('You have successfully logged out of your session. Reloading...', 'info');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
     </script>
 </body>

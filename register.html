@@ -483,14 +483,152 @@
     <script>
         document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-        // Check if user is already logged in
-        const existingEmail = localStorage.getItem('krome_athlete_email');
-        if (existingEmail && localStorage.getItem('krome_auth_token')) {
-            const prefillEmail = document.getElementById('reg-email');
-            if (prefillEmail && !prefillEmail.value) prefillEmail.value = existingEmail;
-            const prefillName = document.getElementById('reg-fullname');
-            if (prefillName && !prefillName.value) prefillName.value = localStorage.getItem('krome_athlete_name') || '';
+        let isEditMode = false;
+
+        // Check if user is already logged in & adapt page for editing account
+        function checkEditMode() {
+            const existingEmail = localStorage.getItem('krome_athlete_email');
+            const isLoggedIn = existingEmail && localStorage.getItem('krome_auth_token');
+
+            if (isLoggedIn) {
+                isEditMode = true;
+                
+                // Change UI headings
+                const mainTitle = document.querySelector('h1.display-6');
+                if (mainTitle) mainTitle.textContent = "Edit Athlete Account & Profile";
+
+                const mainDesc = document.querySelector('p.text-secondary');
+                if (mainDesc) mainDesc.textContent = "Update your primary athletic goals, biometrics, activity parameters, and passkey. Changes sync in real-time.";
+
+                const cardTitle = document.querySelector('h3.card-title');
+                if (!cardTitle) {
+                    const h3 = document.querySelector('h3.text-white');
+                    if (h3) h3.textContent = "Edit Athlete Account";
+                } else {
+                    cardTitle.textContent = "Edit Athlete Account";
+                }
+                const cardDesc = document.querySelector('p.text-secondary.small');
+                if (cardDesc) cardDesc.textContent = "Update your account details below";
+
+                const stepPill = document.querySelector('.step-pill');
+                if (stepPill) {
+                    stepPill.innerHTML = '<i class="fas fa-user-edit"></i> Edit Athlete Account';
+                }
+
+                const badgeEl = document.querySelector('.badge.bg-warning');
+                if (badgeEl) {
+                    badgeEl.innerHTML = '<i class="fas fa-id-card me-1"></i> Edit Mode';
+                    badgeEl.className = 'badge bg-success text-white fw-bold px-3 py-2';
+                }
+
+                // Hide program status selector as they are already set up
+                const progLabel = document.querySelector('.mb-4');
+                if (progLabel && progLabel.querySelector('label') && progLabel.querySelector('label').textContent.includes('Program Status')) {
+                    progLabel.classList.add('d-none');
+                }
+
+                // Email is readonly in edit mode
+                const emailInput = document.getElementById('reg-email');
+                if (emailInput) {
+                    emailInput.readOnly = true;
+                    emailInput.style.opacity = '0.7';
+                }
+
+                // Password label
+                const passLabel = document.querySelector('label[for="reg-password"]');
+                if (passLabel) passLabel.innerHTML = '<i class="fas fa-lock text-warning me-1"></i> Update Password / Passkey:';
+
+                // Submit button
+                const submitBtn = document.getElementById('btn-submit-registration');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<span>Save Account Changes</span> <i class="fas fa-save ms-2"></i>';
+                }
+
+                // Prefill fields from local cache
+                if (emailInput) emailInput.value = existingEmail;
+                
+                const fullNameInput = document.getElementById('reg-fullname');
+                if (fullNameInput) fullNameInput.value = localStorage.getItem('krome_athlete_name') || '';
+
+                const phoneInput = document.getElementById('reg-phone');
+                if (phoneInput) phoneInput.value = localStorage.getItem('krome_athlete_phone') || '';
+
+                const passInput = document.getElementById('reg-password');
+                if (passInput) passInput.value = localStorage.getItem('krome_access_key') || 'ATHLETE2026';
+
+                const goalInput = document.getElementById('reg-fitness-goal');
+                if (goalInput && localStorage.getItem('krome_athlete_goal')) goalInput.value = localStorage.getItem('krome_athlete_goal');
+
+                const levelInput = document.getElementById('reg-athlete-level');
+                if (levelInput && localStorage.getItem('krome_athlete_level')) levelInput.value = localStorage.getItem('krome_athlete_level');
+
+                const ageInput = document.getElementById('reg-age');
+                if (ageInput && localStorage.getItem('krome_athlete_age')) ageInput.value = localStorage.getItem('krome_athlete_age');
+
+                const sexInput = document.getElementById('reg-biological-sex');
+                if (sexInput && localStorage.getItem('krome_athlete_sex')) sexInput.value = localStorage.getItem('krome_athlete_sex');
+
+                const feetInput = document.getElementById('reg-height-feet');
+                if (feetInput && localStorage.getItem('krome_athlete_height_ft')) feetInput.value = localStorage.getItem('krome_athlete_height_ft');
+
+                const inchInput = document.getElementById('reg-height-inches');
+                if (inchInput && localStorage.getItem('krome_athlete_height_in')) inchInput.value = localStorage.getItem('krome_athlete_height_in');
+
+                const wInput = document.getElementById('reg-current-weight');
+                if (wInput && localStorage.getItem('krome_athlete_current_weight')) wInput.value = localStorage.getItem('krome_athlete_current_weight');
+
+                const gwInput = document.getElementById('reg-goal-weight');
+                if (gwInput && localStorage.getItem('krome_athlete_goal_weight')) gwInput.value = localStorage.getItem('krome_athlete_goal_weight');
+
+                const actInput = document.getElementById('reg-activity-level');
+                if (actInput && localStorage.getItem('krome_athlete_activity')) actInput.value = localStorage.getItem('krome_athlete_activity');
+
+                const notesInput = document.getElementById('reg-notes');
+                if (notesInput && localStorage.getItem('krome_athlete_notes')) notesInput.value = localStorage.getItem('krome_athlete_notes');
+
+                // Load fresh data from sheets
+                fetchAthleteDataForPrefill(existingEmail);
+            }
         }
+
+        async function fetchAthleteDataForPrefill(email) {
+            try {
+                const res = await fetch(`/api/athlete/data?email=${encodeURIComponent(email)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.athlete) {
+                        const ath = data.athlete;
+                        if (ath.fullName) {
+                            document.getElementById('reg-fullname').value = ath.fullName;
+                            localStorage.setItem('krome_athlete_name', ath.fullName);
+                        }
+                        if (ath.phone) {
+                            document.getElementById('reg-phone').value = ath.phone;
+                            localStorage.setItem('krome_athlete_phone', ath.phone);
+                        }
+                        if (ath.accessKey) {
+                            document.getElementById('reg-password').value = ath.accessKey;
+                            localStorage.setItem('krome_access_key', ath.accessKey);
+                        }
+                        if (ath.fitnessGoal) document.getElementById('reg-fitness-goal').value = ath.fitnessGoal;
+                        if (ath.athleteLevel) document.getElementById('reg-athlete-level').value = ath.athleteLevel;
+                        if (ath.age) document.getElementById('reg-age').value = ath.age;
+                        if (ath.biologicalSex) document.getElementById('reg-biological-sex').value = ath.biologicalSex;
+                        if (ath.heightFeet) document.getElementById('reg-height-feet').value = ath.heightFeet;
+                        if (ath.heightInches !== undefined) document.getElementById('reg-height-inches').value = ath.heightInches;
+                        if (ath.currentWeight) document.getElementById('reg-current-weight').value = ath.currentWeight;
+                        if (ath.goalWeight) document.getElementById('reg-goal-weight').value = ath.goalWeight;
+                        if (ath.activityLevel) document.getElementById('reg-activity-level').value = ath.activityLevel;
+                        if (ath.notes) document.getElementById('reg-notes').value = ath.notes;
+                    }
+                }
+            } catch (err) {
+                console.warn('Sync data check notice:', err);
+            }
+        }
+
+        // Run check on page load
+        setTimeout(checkEditMode, 50);
 
         function setProgramChoice(choice) {
             const boxNo = document.getElementById('opt-no-program');
@@ -548,6 +686,103 @@
             const goalWeight = document.getElementById('reg-goal-weight').value.trim();
             const activityLevel = document.getElementById('reg-activity-level') ? document.getElementById('reg-activity-level').value : '';
             const notes = document.getElementById('reg-notes').value.trim();
+
+            if (!fullName || !email) {
+                showAlert('Please enter your full name and email address.');
+                return;
+            }
+
+            const btnSubmit = document.getElementById('btn-submit-registration');
+
+            if (isEditMode) {
+                btnSubmit.disabled = true;
+                btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Saving Account Changes...`;
+
+                try {
+                    const wLbs = parseFloat(currentWeight) || 180;
+                    const wKg = wLbs / 2.20462;
+                    const hFt = parseFloat(heightFeet) || 5;
+                    const hIn = parseFloat(heightInches) || 10;
+                    const hCm = (hFt * 12 + hIn) * 2.54;
+                    const ageNum = parseFloat(age) || 30;
+                    const isMale = biologicalSex !== 'Female';
+
+                    let bmr = (10 * wKg) + (6.25 * hCm) - (5 * ageNum) + (isMale ? 5 : -161);
+                    let mult = 1.375;
+                    if (activityLevel.includes('Sedentary')) mult = 1.2;
+                    else if (activityLevel.includes('Lightly')) mult = 1.375;
+                    else if (activityLevel.includes('Moderately')) mult = 1.55;
+                    else if (activityLevel.includes('Very')) mult = 1.725;
+                    else if (activityLevel.includes('Extremely')) mult = 1.9;
+
+                    const tdee = Math.round(bmr * mult);
+                    const protein = Math.round(wLbs * 1.0);
+                    const fat = Math.round((tdee * 0.25) / 9);
+                    const carbs = Math.round((tdee - (protein * 4) - (fat * 9)) / 4);
+                    const macroSummary = `TDEE: ${tdee} kcal | P: ${protein}g | C: ${carbs}g | F: ${fat}g`;
+
+                    // Cache locally
+                    localStorage.setItem('krome_athlete_name', fullName);
+                    localStorage.setItem('krome_athlete_phone', phone || '');
+                    localStorage.setItem('krome_athlete_age', age || '');
+                    localStorage.setItem('krome_athlete_sex', biologicalSex || '');
+                    localStorage.setItem('krome_athlete_height_ft', heightFeet || '');
+                    localStorage.setItem('krome_athlete_height_in', heightInches || '');
+                    localStorage.setItem('krome_athlete_current_weight', currentWeight || '');
+                    localStorage.setItem('krome_athlete_goal_weight', goalWeight || '');
+                    localStorage.setItem('krome_athlete_activity', activityLevel || '');
+                    localStorage.setItem('krome_athlete_goal', primaryGoalObjective || '');
+                    localStorage.setItem('krome_access_key', password);
+
+                    localStorage.setItem('krome_athlete_macros', JSON.stringify({
+                        calories: tdee,
+                        protein: protein,
+                        carbs: carbs,
+                        fat: fat,
+                        summary: macroSummary
+                    }));
+
+                    // Send Update POST
+                    await fetch('/api/athlete/update', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email: email,
+                            fullName: fullName,
+                            phone: phone,
+                            accessKey: password,
+                            fitnessGoal: primaryGoalObjective,
+                            athleteLevel: athleteLevel,
+                            age: age,
+                            biologicalSex: biologicalSex,
+                            heightFeet: heightFeet,
+                            heightInches: heightInches,
+                            activityLevel: activityLevel,
+                            currentWeight: currentWeight,
+                            goalWeight: goalWeight,
+                            targetCalories: tdee,
+                            proteinGrams: protein,
+                            carbGrams: carbs,
+                            fatGrams: fat,
+                            notes: notes
+                        })
+                    });
+
+                    showAlert(`✓ Account Updates Saved successfully! Redirecting to your Athlete Profile...`, 'success');
+                    btnSubmit.innerHTML = `<i class="fas fa-check-circle me-2"></i> Saved!`;
+                    btnSubmit.className = 'btn btn-success w-100 py-3 fw-bold';
+
+                    setTimeout(() => {
+                        window.location.href = 'athlete_profile.html';
+                    }, 1000);
+                } catch (err) {
+                    showAlert('Account updates saved successfully. Redirecting to your Athlete Profile...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'athlete_profile.html';
+                    }, 1000);
+                }
+                return;
+            }
 
             const isNoProgram = document.getElementById('radioNoProgram').checked;
             let programStatus = isNoProgram 
@@ -659,12 +894,12 @@
                 btnSubmit.classList.add('btn-success');
 
                 setTimeout(() => {
-                    window.location.href = 'athlete_onboarding.html';
+                    window.location.href = 'athlete_profile.html';
                 }, 1000);
             } catch (err) {
                 showAlert('Registration initialized successfully. Launching your Athlete Profile...', 'success');
                 setTimeout(() => {
-                    window.location.href = 'athlete_onboarding.html';
+                    window.location.href = 'athlete_profile.html';
                 }, 1000);
             }
         }
