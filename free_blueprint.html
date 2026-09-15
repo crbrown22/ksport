@@ -43,7 +43,7 @@
         .manual-nav {
             background-color: #121212;
             border-bottom: 2px solid var(--krome-gold);
-            padding: 0.85rem 0;
+            padding: 0.65rem 0;
             position: sticky;
             top: 0;
             z-index: 1030;
@@ -64,13 +64,14 @@
             color: #000;
             font-weight: 700;
             border-radius: 50rem;
-            padding: 0.45rem 1.2rem;
+            padding: 0.3rem 0.85rem;
             border: none;
             transition: all 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.78rem;
+            line-height: 1.25;
         }
 
         .btn-action-gold:hover {
@@ -84,13 +85,14 @@
             color: var(--krome-cyan);
             font-weight: 600;
             border-radius: 50rem;
-            padding: 0.45rem 1.1rem;
+            padding: 0.3rem 0.85rem;
             background: transparent;
             transition: all 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            font-size: 0.88rem;
+            font-size: 0.78rem;
+            line-height: 1.25;
         }
 
         .btn-action-outline:hover {
@@ -236,6 +238,139 @@
         }
 
         /* ----------------------------------
+           NEXT PHASE & UPSELL COMPONENTS
+        ---------------------------------- */
+        .phase-stepper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .phase-step-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .phase-step-card.active {
+            border-color: var(--krome-gold);
+            background: linear-gradient(135deg, rgba(255, 212, 71, 0.08) 0%, rgba(13, 17, 23, 0.8) 100%);
+        }
+
+        .phase-step-card.current {
+            border-color: var(--krome-cyan);
+            background: linear-gradient(135deg, rgba(0, 255, 209, 0.08) 0%, rgba(13, 17, 23, 0.8) 100%);
+        }
+
+        .phase-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .bundle-hero {
+            background: radial-gradient(circle at top right, rgba(255, 212, 71, 0.15) 0%, rgba(13, 17, 23, 0.95) 70%);
+            border: 2px solid var(--krome-gold);
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(255, 212, 71, 0.15);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .upsell-card {
+            background: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.875rem;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+        }
+
+        .upsell-card:hover {
+            border-color: var(--krome-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+        }
+
+        .upsell-card.featured {
+            border-color: var(--krome-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.12);
+        }
+
+        .upsell-price {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .upsell-price span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--krome-gold);
+            vertical-align: middle;
+        }
+
+        .btn-upsell-buy {
+            background: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            border: none;
+            border-radius: 50rem;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .btn-upsell-buy:hover {
+            background: #e6be3e;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.4);
+        }
+
+        .btn-upsell-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50rem;
+            padding: 0.45rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s;
+        }
+
+        .btn-upsell-outline:hover {
+            border-color: var(--krome-cyan);
+            color: var(--krome-cyan);
+        }
+
+        .phase-transition-callout {
+            background: linear-gradient(135deg, rgba(255, 212, 71, 0.08) 0%, rgba(17, 24, 39, 0.9) 100%);
+            border: 1px solid rgba(255, 212, 71, 0.4);
+            border-radius: 0.875rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* ----------------------------------
            PRINTING LAYOUT & MEDIA QUERIES
         ---------------------------------- */
         @media print {
@@ -307,8 +442,8 @@
     <!-- STICKY HEADER -->
     <nav class="manual-nav no-print">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="landing.html" class="manual-brand">
-                <i class="fas fa-chevron-left me-2" style="font-size: 0.9rem;"></i> KROME <span class="text-white">PERFORMANCE</span>
+            <a href="index.html" class="manual-brand">
+                <i class="fas fa-chevron-left me-2" style="font-size: 0.9rem;"></i> KROME <span class="text-white">SPORTS PERFORMANCE</span>
             </a>
             <div class="d-flex gap-2">
                 <button onclick="window.print()" class="btn-action-gold">
@@ -355,6 +490,9 @@
             </button>
             <button class="tab-btn" onclick="switchBlueprintTab('training-rules')">
                 <i class="fas fa-book-open me-1"></i> Weekly Objective &amp; Rules
+            </button>
+            <button class="tab-btn" onclick="switchBlueprintTab('next-phase')">
+                <i class="fas fa-rocket text-warning me-1"></i> Move to Next Phase &amp; E-Books
             </button>
         </div>
 
@@ -523,6 +661,22 @@
                             <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Hamstring stretch</div>
                             <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Glute/piriformis mobility</div>
                             <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Hip flexor stretch</div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 Conditioning Transition Callout -->
+                    <div class="phase-transition-callout no-print">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div>
+                                <span class="badge bg-warning text-dark fw-bold mb-1"><i class="fas fa-level-up-alt me-1"></i> READY FOR PHASE 2 CONDITIONING?</span>
+                                <h5 class="fw-bold text-white mb-1">Graduating From 15-Minute Foundation Conditioners?</h5>
+                                <p class="text-secondary small mb-0">Step up to the <strong>21-Day Athlete Jumpstart ($9.99)</strong> or the 8-Week <strong>Speed &amp; Conditioning Protocol ($99)</strong> to take your endurance, sprint capacity, and recovery to peak form.</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button onclick="switchBlueprintTab('next-phase')" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-2 text-nowrap">
+                                    <i class="fas fa-rocket me-1"></i> Move to Phase 2
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -702,6 +856,22 @@
                                 <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
                                     <span class="fw-bold text-warning">Weekend Goal:</span> Quality sleep, nutrition, recovery.
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 Men's Strength Transition Callout -->
+                    <div class="phase-transition-callout no-print">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div>
+                                <span class="badge bg-warning text-dark fw-bold mb-1"><i class="fas fa-level-up-alt me-1"></i> READY FOR PHASE 2 STRENGTH?</span>
+                                <h5 class="fw-bold text-white mb-1">Mastered Your Foundational Mechanics?</h5>
+                                <p class="text-secondary small mb-0">Progress to progressive wave loading and metabolic definition with the <strong>30-Day Shred Challenge ($59.99)</strong> or unlock kinetic force development with the <strong>12-Week Strength &amp; Power Protocol ($99)</strong>.</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button onclick="switchBlueprintTab('next-phase')" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-2 text-nowrap">
+                                    <i class="fas fa-rocket me-1"></i> Move to Phase 2
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -885,6 +1055,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Phase 2 Women's Strength Transition Callout -->
+                    <div class="phase-transition-callout no-print">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div>
+                                <span class="badge bg-info text-dark fw-bold mb-1" style="background-color: var(--krome-cyan) !important;"><i class="fas fa-level-up-alt me-1"></i> READY FOR PHASE 2 METABOLIC TONING?</span>
+                                <h5 class="fw-bold text-white mb-1">Targeting Accelerating Fat Loss &amp; Lean Glute/Core Definition?</h5>
+                                <p class="text-secondary small mb-0">Pair progressive circuit conditioning with the <strong>21-Day Jumpstart ($9.99)</strong> and optimize your fueling with the <strong>Nutrition Blueprint E-Book ($29.99)</strong>.</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button onclick="switchBlueprintTab('next-phase')" class="btn btn-sm btn-outline-info text-light fw-bold rounded-pill px-3 py-2 text-nowrap" style="border-color: var(--krome-cyan);">
+                                    <i class="fas fa-rocket me-1"></i> Move to Phase 2
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -954,14 +1140,310 @@
                         </div>
                     </div>
 
-                    <!-- Final Action Callout -->
+                    <!-- Phase 1 Graduation & Next Phase Callout -->
                     <div class="p-4 rounded-4 text-center border" style="background: linear-gradient(135deg, #111 0%, #1e1502 50%, #111 100%); border-color: var(--krome-gold) !important;">
-                        <h4 class="fw-black text-white text-uppercase mb-2" style="font-size: 1.3rem;">Ready for the complete Transformation System?</h4>
-                        <p class="text-light small mx-auto mb-3" style="max-width: 600px;">
-                            Take the next step in your athletic evolution. Unlock full nutrition plans, complete video mechanics libraries, and direct 1-on-1 access to Coach Brown.
+                        <span class="badge bg-warning text-dark fw-bold mb-2 text-uppercase px-3 py-1.5"><i class="fas fa-graduation-cap me-1"></i> Phase 1 Graduation Protocol</span>
+                        <h4 class="fw-black text-white text-uppercase mb-2" style="font-size: 1.35rem;">What Happens After Day 7?</h4>
+                        <p class="text-light small mx-auto mb-3" style="max-width: 650px;">
+                            The 7-Day Blueprint primes your joint mechanics, neuromuscular firing, and daily workout consistency. To prevent plateaus, you must step into <strong>Phase 2 Progressive Overload &amp; Targeted Fueling</strong>.
                         </p>
-                        <a href="landing.html#offer-section" class="btn btn-warning fw-bold text-dark px-4 py-2 rounded-pill text-uppercase" style="font-size: 0.85rem;"><i class="fas fa-arrow-right me-1"></i> Apply for 1-on-1 Coaching Track</a>
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <button onclick="switchBlueprintTab('next-phase')" class="btn btn-warning fw-bold text-dark px-4 py-2 rounded-pill text-uppercase" style="font-size: 0.85rem;">
+                                <i class="fas fa-rocket me-1"></i> View Phase 2 Roadmap &amp; E-Book Suites
+                            </button>
+                            <a href="https://calendar.app.google/vae7E9TF9P5mX9sy9" target="_blank" class="btn btn-outline-light fw-bold px-4 py-2 rounded-pill text-uppercase" style="font-size: 0.85rem;">
+                                <i class="fas fa-calendar-alt text-warning me-1"></i> Book Strategy Call
+                            </a>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: NEXT PHASE PROGRESSION & E-BOOK UPSELL SUITE -->
+            <div class="tab-pane fade" id="pane-next-phase" role="tabpanel">
+                <div class="content-card print-card mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                        <div class="section-header mb-0">
+                            <h2 class="fw-bold mb-0 text-uppercase">Phase Progression &amp; Digital E-Book Suites</h2>
+                            <p class="text-secondary mb-0 small">From 7-Day Foundation &rarr; 30-Day Recomposition &rarr; 12-Week Athletic Mastery</p>
+                        </div>
+                        <div class="text-end no-print">
+                            <a href="shop.html" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1.5 fw-bold">
+                                <i class="fas fa-store me-1"></i> View Full Shop
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4-Stage Periodization Stepper -->
+                    <div class="phase-stepper mb-4">
+                        <div class="phase-step-card current">
+                            <span class="phase-num bg-cyan text-dark fw-black">Phase 1 &bull; Active Now</span>
+                            <h6 class="fw-bold text-white mb-1">7-Day Movement Primer</h6>
+                            <p class="text-secondary small mb-0">Foundation motor control, joint mobility, and introductory metabolic conditioning. <em>(100% Free Lifetime Blueprint)</em></p>
+                        </div>
+                        <div class="phase-step-card active">
+                            <span class="phase-num bg-warning text-dark fw-black">Phase 2 &bull; Next Step (Days 8-30)</span>
+                            <h6 class="fw-bold text-warning mb-1">Accelerated Conditioning</h6>
+                            <p class="text-secondary small mb-0">High-density metabolic circuits, daily habit tracking scorecards, and accelerated fat oxidation.</p>
+                        </div>
+                        <div class="phase-step-card">
+                            <span class="phase-num bg-dark text-info border border-info">Phase 3 &bull; Month 2</span>
+                            <h6 class="fw-bold text-white mb-1">Targeted Hypertrophy &amp; Power</h6>
+                            <p class="text-secondary small mb-0">Periodized compound wave loading, kinetic chain explosiveness, and body recomposition.</p>
+                        </div>
+                        <div class="phase-step-card">
+                            <span class="phase-num bg-dark text-light border border-secondary">Phase 4 &bull; Month 3+</span>
+                            <h6 class="fw-bold text-white mb-1">Peak Athletic Longevity</h6>
+                            <p class="text-secondary small mb-0">Sport-specific power development, clinical micronutrient timing, and customized 1-on-1 coaching.</p>
+                        </div>
+                    </div>
+
+                    <!-- FEATURED ALL-IN-ONE CROWN DEAL: ULTIMATE ATHLETE BUNDLE -->
+                    <div class="bundle-hero">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-8">
+                                <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+                                    <span class="badge bg-warning text-dark fw-black px-3 py-1.5" style="font-size: 0.75rem;">
+                                        <i class="fas fa-crown me-1"></i> BEST VALUE UPGRADE &bull; SAVE 40%+
+                                    </span>
+                                    <span class="badge bg-black text-cyan border border-cyan" style="font-size: 0.75rem;">
+                                        Complete 4-E-Book Package
+                                    </span>
+                                </div>
+                                <h3 class="fw-black text-white text-uppercase mb-2" style="font-size: 1.65rem;">
+                                    The Ultimate Athlete Transformation Bundle
+                                </h3>
+                                <p class="text-light small mb-3">
+                                    Why piece your training together one guide at a time? Get the entire foundational KROME digital ecosystem in one seamless package. Unlock all 4 core manuals, habit trackers, and fueling guides instantly.
+                                </p>
+                                <div class="row g-2 text-secondary small mb-3">
+                                    <div class="col-sm-6">
+                                        <div class="p-2 rounded-3 bg-black bg-opacity-50 border border-secondary border-opacity-25">
+                                            <i class="fas fa-check-circle text-warning me-1"></i> <strong class="text-white">21-Day Athlete Jumpstart</strong> <span class="text-secondary">($9.99 value)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-2 rounded-3 bg-black bg-opacity-50 border border-secondary border-opacity-25">
+                                            <i class="fas fa-check-circle text-warning me-1"></i> <strong class="text-white">30-Day Shred Challenge</strong> <span class="text-secondary">($59.99 value)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-2 rounded-3 bg-black bg-opacity-50 border border-secondary border-opacity-25">
+                                            <i class="fas fa-check-circle text-cyan me-1"></i> <strong class="text-white">Nutrition Blueprint E-Book</strong> <span class="text-secondary">($29.99 value)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-2 rounded-3 bg-black bg-opacity-50 border border-secondary border-opacity-25">
+                                            <i class="fas fa-check-circle text-cyan me-1"></i> <strong class="text-white">Athlete Supplement Protocol</strong> <span class="text-secondary">($19.99 value)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 text-center text-lg-end">
+                                <div class="p-3 rounded-4 bg-black bg-opacity-60 border border-warning d-inline-block text-center w-100" style="max-width: 320px;">
+                                    <span class="text-secondary small text-decoration-line-through d-block">$119.96 Total Value</span>
+                                    <div class="upsell-price text-warning mb-1">$89.99 <span class="text-light">One-Time</span></div>
+                                    <span class="badge bg-success bg-opacity-25 text-success border border-success mb-3 py-1 px-2.5">
+                                        Instant Digital Delivery via Square
+                                    </span>
+                                    <a href="https://square.link/u/M3pP8BsV" target="_blank" class="btn-upsell-buy py-2.5 mb-2">
+                                        <i class="fas fa-bolt me-1"></i> Get All 4 E-Books for $89.99
+                                    </a>
+                                    <div class="d-flex gap-2 justify-content-center mt-2">
+                                        <a href="login.html" class="btn btn-sm btn-outline-secondary text-light rounded-pill py-1 px-3 small">
+                                            <i class="fas fa-key me-1"></i> Portal Access
+                                        </a>
+                                        <a href="program_detail.html?id=athlete-bundle-89" class="btn btn-sm btn-outline-warning rounded-pill py-1 px-3 small">
+                                            <i class="fas fa-info-circle me-1"></i> Overview
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CORE PHASE 2 & INDIVIDUAL E-BOOK OPTIONS -->
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h4 class="fw-bold text-white text-uppercase mb-0" style="font-size: 1.15rem;">
+                            <i class="fas fa-book-open text-warning me-2"></i> Individual E-Book Manuals &amp; Protocols
+                        </h4>
+                        <span class="text-secondary small">Select individual guides tailored to your exact goal</span>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <!-- Option 1: 21-Day Athlete Jumpstart -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="upsell-card featured">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge bg-warning text-dark fw-bold" style="font-size: 0.7rem;">PHASE 2 &bull; NEXT STEP</span>
+                                    <span class="badge bg-dark text-cyan border border-cyan" style="font-size: 0.7rem;">On Demand</span>
+                                </div>
+                                <h5 class="fw-bold text-white mb-1">21-Day Athlete Jumpstart</h5>
+                                <p class="text-secondary small flex-grow-1 mb-3">
+                                    The immediate next step. 3-week metabolic conditioning calendar, daily habit scorecard, fast meal-prep system, and accountability tracking.
+                                </p>
+                                <div class="mb-3">
+                                    <div class="upsell-price">$9.99 <span class="text-secondary">Instant Access</span></div>
+                                </div>
+                                <div class="d-flex flex-column gap-2 mt-auto">
+                                    <a href="https://square.link/u/M3pP8BsV" target="_blank" class="btn-upsell-buy">
+                                        <i class="fas fa-shopping-cart me-1"></i> Enroll for $9.99
+                                    </a>
+                                    <a href="jumpstart21_manual.html" class="btn-upsell-outline">
+                                        <i class="fas fa-book-open me-1"></i> Open Athlete Manual
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Option 2: 30-Day Shred Challenge -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="upsell-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">METABOLIC RECOMP</span>
+                                    <span class="badge bg-dark text-light border border-secondary" style="font-size: 0.7rem;">Full E-Book</span>
+                                </div>
+                                <h5 class="fw-bold text-white mb-1">30-Day Shred Challenge</h5>
+                                <p class="text-secondary small flex-grow-1 mb-3">
+                                    High-density metabolic resistance circuits, 3-lane calorie prescription, strategic carb-cycling schedule, and core sculpting workouts.
+                                </p>
+                                <div class="mb-3">
+                                    <div class="upsell-price">$59.99 <span class="text-secondary">Full E-Book</span></div>
+                                </div>
+                                <div class="d-flex flex-column gap-2 mt-auto">
+                                    <a href="https://square.link/u/Nb7OabH1" target="_blank" class="btn-upsell-buy">
+                                        <i class="fas fa-shopping-cart me-1"></i> Buy for $59.99
+                                    </a>
+                                    <a href="shred30_manual.html" class="btn-upsell-outline">
+                                        <i class="fas fa-book-open me-1"></i> View Shred Manual
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Option 3: Nutrition E-Book Blueprint -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="upsell-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge bg-dark text-cyan border border-cyan" style="font-size: 0.7rem;">CLINICAL FUELING</span>
+                                    <span class="badge bg-dark text-warning border border-warning" style="font-size: 0.7rem;">All Goals</span>
+                                </div>
+                                <h5 class="fw-bold text-white mb-1">Nutrition Blueprint E-Book</h5>
+                                <p class="text-secondary small flex-grow-1 mb-3">
+                                    Calculated energy balance formulas, goal macro ratio charts, categorized clean grocery guide, and nutrient timing around training.
+                                </p>
+                                <div class="mb-3">
+                                    <div class="upsell-price">$29.99 <span class="text-secondary">E-Book</span></div>
+                                </div>
+                                <div class="d-flex flex-column gap-2 mt-auto">
+                                    <a href="https://square.link/u/UlDybyx4" target="_blank" class="btn-upsell-buy">
+                                        <i class="fas fa-shopping-cart me-1"></i> Buy for $29.99
+                                    </a>
+                                    <a href="nutrition_blueprint.html" class="btn-upsell-outline">
+                                        <i class="fas fa-book-open me-1"></i> View Nutrition Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Option 4: Athlete Supplement Protocol -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="upsell-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge bg-dark text-info border border-info" style="font-size: 0.7rem;">ERGOGENIC GUIDE</span>
+                                    <span class="badge bg-dark text-light border border-secondary" style="font-size: 0.7rem;">Clinical</span>
+                                </div>
+                                <h5 class="fw-bold text-white mb-1">Athlete Supplement Protocol</h5>
+                                <p class="text-secondary small flex-grow-1 mb-3">
+                                    Evidence-based guide to creatine monohydrate, protein requirements, caffeine dosing, nitrates, and recovery vitamin timing.
+                                </p>
+                                <div class="mb-3">
+                                    <div class="upsell-price">$19.99 <span class="text-secondary">E-Book</span></div>
+                                </div>
+                                <div class="d-flex flex-column gap-2 mt-auto">
+                                    <a href="https://square.link/u/ZKRxB8HQ" target="_blank" class="btn-upsell-buy">
+                                        <i class="fas fa-shopping-cart me-1"></i> Buy for $19.99
+                                    </a>
+                                    <a href="supplement_protocol.html" class="btn-upsell-outline">
+                                        <i class="fas fa-book-open me-1"></i> View Protocol Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12-WEEK SPECIALIZED SPORT PROTOCOLS -->
+                    <div class="p-4 rounded-4 mb-4" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                            <div>
+                                <h4 class="fw-bold text-white text-uppercase mb-1" style="font-size: 1.15rem;">
+                                    <i class="fas fa-medal text-cyan me-2"></i> Specialized 12-Week Athletic Protocols
+                                </h4>
+                                <p class="text-secondary small mb-0">Advanced periodized training manuals for power, sprint mechanics, and mobility.</p>
+                            </div>
+                            <span class="badge bg-black border border-secondary text-light px-3 py-1.5">Full 12-Week Manuals</span>
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Sports Strength & Power -->
+                            <div class="col-md-4">
+                                <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 h-100 d-flex flex-column">
+                                    <span class="badge bg-warning text-dark fw-bold mb-2 align-self-start" style="font-size: 0.7rem;">KINETIC FORCE</span>
+                                    <h6 class="fw-bold text-white mb-1">Strength &amp; Power Protocol</h6>
+                                    <p class="text-secondary small mb-3 flex-grow-1">12-week wave-loaded compound lifts, Olympic progressions, and plyometric force production.</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top border-secondary border-opacity-25">
+                                        <span class="fw-bold text-white fs-6">$99.00</span>
+                                        <a href="https://square.link/u/t8hr9W8T" target="_blank" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1 fw-bold">Buy $99</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Speed & Conditioning -->
+                            <div class="col-md-4">
+                                <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 h-100 d-flex flex-column">
+                                    <span class="badge bg-info text-dark fw-bold mb-2 align-self-start" style="font-size: 0.7rem; background-color: var(--krome-cyan) !important;">ENERGY SYSTEMS</span>
+                                    <h6 class="fw-bold text-white mb-1">Speed &amp; Conditioning</h6>
+                                    <p class="text-secondary small mb-3 flex-grow-1">8-week acceleration, change-of-direction mechanics, and anaerobic sprint threshold conditioning.</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top border-secondary border-opacity-25">
+                                        <span class="fw-bold text-white fs-6">$99.00</span>
+                                        <a href="https://square.link/u/KZonj3NA" target="_blank" class="btn btn-sm btn-outline-info rounded-pill px-3 py-1 fw-bold">Buy $99</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Flexibility & Mobility -->
+                            <div class="col-md-4">
+                                <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 h-100 d-flex flex-column">
+                                    <span class="badge bg-success bg-opacity-25 text-success border border-success mb-2 align-self-start" style="font-size: 0.7rem;">INJURY SHIELD</span>
+                                    <h6 class="fw-bold text-white mb-1">Flexibility &amp; Mobility</h6>
+                                    <p class="text-secondary small mb-3 flex-grow-1">Joint decompression, hip capsule mobility, thoracic spine unlocking, and soft tissue longevity.</p>
+                                    <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top border-secondary border-opacity-25">
+                                        <span class="fw-bold text-white fs-6">$99.00</span>
+                                        <a href="https://square.link/u/nLmtOHTx" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1 fw-bold">Buy $99</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1-ON-1 COACHING STRATEGY CALL -->
+                    <div class="p-4 rounded-4 text-center border" style="background: radial-gradient(circle at center, #1b2028 0%, #0d1117 100%); border-color: rgba(255, 212, 71, 0.3) !important;">
+                        <h4 class="fw-black text-white text-uppercase mb-2" style="font-size: 1.3rem;">
+                            Prefer Direct 1-on-1 Guidance With Coach Brown?
+                        </h4>
+                        <p class="text-light small mx-auto mb-3" style="max-width: 650px;">
+                            Book a complimentary 1-on-1 Strategy Session directly on Coach Brown's live calendar. We will audit your current training, review your nutritional baseline, and build your custom periodized roadmap.
+                        </p>
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="https://calendar.app.google/vae7E9TF9P5mX9sy9" target="_blank" class="btn btn-warning fw-bold text-dark px-4 py-2.5 rounded-pill text-uppercase" style="font-size: 0.85rem;">
+                                <i class="fas fa-calendar-check me-1"></i> Book Strategy Session on Google Calendar
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-light fw-bold px-4 py-2.5 rounded-pill text-uppercase" style="font-size: 0.85rem;">
+                                <i class="fas fa-envelope me-1"></i> Send Coach a Message
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -969,8 +1451,27 @@
 
     </main>
 
+    <!-- PERSISTENT NEXT PHASE CALLOUT BAR (NO-PRINT) -->
+    <aside class="no-print py-3 border-top border-secondary border-opacity-20" style="background-color: #0d1117;">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-warning text-dark fw-bold"><i class="fas fa-level-up-alt me-1"></i> NEXT LEVEL</span>
+                <span class="text-light small fw-bold">Ready to graduate from the 7-day foundation?</span>
+                <span class="text-secondary small d-none d-md-inline">&bull; 21-Day Jumpstart ($9.99) or Ultimate 4-in-1 Bundle ($89.99)</span>
+            </div>
+            <div class="d-flex gap-2">
+                <button onclick="switchBlueprintTab('next-phase')" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-1.5">
+                    <i class="fas fa-rocket me-1"></i> View Next Phase &amp; E-Books
+                </button>
+                <a href="shop.html" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1.5 small">
+                    <i class="fas fa-store me-1"></i> Shop All
+                </a>
+            </div>
+        </div>
+    </aside>
+
     <!-- FOOTER -->
-    <footer class="py-4 text-center border-top border-secondary border-opacity-10 mt-5 no-print">
+    <footer class="py-4 text-center border-top border-secondary border-opacity-10 mt-0 no-print">
         <p class="text-secondary small mb-0">&copy; 2026 KROME Sports Performance. All Rights Reserved.</p>
     </footer>
 
@@ -984,18 +1485,34 @@
             document.querySelectorAll('#blueprint-pills .tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.currentTarget.classList.add('active');
+            const targetBtn = Array.from(document.querySelectorAll('#blueprint-pills .tab-btn')).find(b => {
+                const oc = b.getAttribute('onclick') || '';
+                return oc.includes("'" + tabId + "'") || oc.includes('"' + tabId + '"');
+            });
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            } else if (window.event && window.event.currentTarget && window.event.currentTarget.classList.contains('tab-btn')) {
+                window.event.currentTarget.classList.add('active');
+            }
 
             // Toggle panes
-            const panes = ['conditioning', 'mens-strength', 'womens-strength', 'training-rules'];
+            const panes = ['conditioning', 'mens-strength', 'womens-strength', 'training-rules', 'next-phase'];
             panes.forEach(p => {
                 const paneEl = document.getElementById('pane-' + p);
-                if (p === tabId) {
-                    paneEl.classList.add('show', 'active');
-                } else {
-                    paneEl.classList.remove('show', 'active');
+                if (paneEl) {
+                    if (p === tabId) {
+                        paneEl.classList.add('show', 'active');
+                    } else {
+                        paneEl.classList.remove('show', 'active');
+                    }
                 }
             });
+
+            const pillsEl = document.getElementById('blueprint-pills');
+            if (pillsEl) {
+                const topPos = pillsEl.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: topPos, behavior: 'smooth' });
+            }
         }
     </script>
 </body>
