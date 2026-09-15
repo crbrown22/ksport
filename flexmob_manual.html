@@ -25,6 +25,10 @@
             --krome-text-muted: #cbd5e1;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--krome-dark);
             color: var(--krome-text-main);
@@ -76,15 +80,25 @@
             transform: translateY(-1px);
         }
 
+        .btn-action-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .btn-action-outline:hover {
+            border-color: var(--krome-gold);
+            color: var(--krome-gold);
+        }
+
         /* ----------------------------------
            DASHBOARD & INTERACTIVE COMPONENTS
         ---------------------------------- */
-        .dashboard-header {
-            background: linear-gradient(180deg, #181c24 0%, #0c0d10 100%);
-            border-bottom: 1px solid rgba(255, 212, 71, 0.15);
-            padding: 3rem 0;
-        }
-
         .dashboard-card {
             background: #12151c;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -129,23 +143,37 @@
             box-shadow: 0 0 35px rgba(255,94,94,0.5);
         }
 
-        .workout-week-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
+        .timer-display {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2.75rem;
+            font-weight: bold;
+            color: var(--krome-gold);
+            text-shadow: 0 0 10px rgba(255, 212, 71, 0.4);
+            letter-spacing: 2px;
+            background: #08090c;
             padding: 0.75rem 1rem;
-            transition: all 0.2s;
-            text-align: left;
-            width: 100%;
-            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            min-width: 160px;
         }
 
-        .workout-week-btn:hover, .workout-week-btn.active {
-            background-color: var(--krome-gold);
-            color: #000;
-            border-color: var(--krome-gold);
-            font-weight: 700;
+        .track-toggle-btn {
+            transition: all 0.2s ease;
+        }
+
+        .track-toggle-btn.active {
+            background-color: var(--krome-gold) !important;
+            color: #000000 !important;
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.4);
+        }
+
+        @media (max-width: 767.98px) {
+            .dashboard-card {
+                padding: 1.25rem !important;
+            }
+            h1 {
+                font-size: 1.85rem !important;
+            }
         }
 
         /* ----------------------------------
@@ -179,6 +207,22 @@
         .form-control-custom:focus {
             border-color: var(--krome-gold) !important;
             box-shadow: 0 0 10px rgba(255, 212, 71, 0.25) !important;
+        }
+
+        @media print {
+            .no-print, .manual-nav, #private-access-overlay, .track-toggle-btn {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .dashboard-card, .card {
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                background: white !important;
+                color: black !important;
+            }
         }
     </style>
 </head>
@@ -224,7 +268,7 @@
         </div>
     </div>
 
-    <!-- MAIN PORTAL WRAPPER (Visible after validation) -->
+    <!-- MAIN PORTAL WRAPPER -->
     <header class="manual-nav">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="index.html" class="manual-brand">
@@ -234,38 +278,86 @@
                 <span class="badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-2 d-none d-md-inline" id="auth-status-badge">
                     <i class="fas fa-user-check me-1"></i> Athlete Active
                 </span>
-                <a href="login.html" class="btn btn-action-gold">
+                <a href="athlete_profile.html" class="btn btn-action-gold" id="btn-flexmob-profile">
+                    <i class="fas fa-user-circle me-1"></i> My Profile
+                </a>
+                <a href="login.html" class="btn btn-action-outline">
                     <i class="fas fa-sign-out-alt me-1"></i> Portal Exit
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="container py-5">
+    <main class="container py-4">
+        <!-- HEADER TITLE & PROGRAM OVERVIEW -->
         <div class="row">
-            <div class="col-12 text-center mb-5">
+            <div class="col-12 text-center mb-4">
                 <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 0.5px;">
-                    Joint Decompression & ROM
+                    Joint Decompression & Neuromuscular Recovery
                 </span>
-                <h1 class="fw-black mt-2 mb-3" style="font-size: 2.5rem; font-weight: 900;">FLEXIBILITY & MOBILITY</h1>
-                <p class="text-secondary mx-auto" style="max-width: 700px;">
-                    Expand active range of motion, trigger parasympathetic down-regulation, and bulletproof soft structural tissues under heavy dynamic loading.
+                <h1 class="fw-black mt-2 mb-2" style="font-size: 2.5rem; font-weight: 900;">FLEXIBILITY & MOBILITY BLUEPRINT</h1>
+                <p class="text-secondary mx-auto mb-3" style="max-width: 740px;">
+                    Expand active joint range of motion, trigger parasympathetic down-regulation, and bulletproof soft structural tissues under heavy athletic loads.
                 </p>
+
+                <!-- DUAL TRACK SELECTOR -->
+                <div class="row mt-3 mb-2 no-print">
+                    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                        <div class="p-1.5 rounded-4 rounded-sm-pill bg-black border border-secondary border-opacity-25 d-flex flex-column flex-sm-row justify-content-center gap-1 shadow-sm">
+                            <button id="btn-track-athletic_prep" class="btn rounded-pill px-3 py-2 fw-bold text-uppercase small flex-fill track-toggle-btn active" onclick="switchTrack('athletic_prep')">
+                                <i class="fas fa-bolt me-1 text-warning"></i> Athletic Dynamic Prep Track
+                            </button>
+                            <button id="btn-track-deep_recovery" class="btn rounded-pill px-3 py-2 fw-bold text-uppercase small flex-fill track-toggle-btn" onclick="switchTrack('deep_recovery')">
+                                <i class="fas fa-heartbeat me-1 text-info"></i> Deep Recovery & Fascia Track
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUICK TOOLBAR & REST STOPWATCH -->
+                <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap my-3 no-print">
+                    <button class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="window.print()">
+                        <i class="fas fa-print me-1"></i> Print / Save PDF E-Book
+                    </button>
+                    <!-- Rest Stopwatch Quick Triggers -->
+                    <div class="d-inline-flex flex-wrap align-items-center justify-content-center gap-1 bg-dark p-1 rounded-4 rounded-sm-pill border border-secondary border-opacity-25 ms-md-2">
+                        <span class="small text-secondary px-2 fw-bold"><i class="fas fa-stopwatch me-1 text-warning"></i>Hold Timer:</span>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(30)">30s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(60)">60s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(90)">90s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(120)">2m</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(180)">3m</button>
+                    </div>
+                </div>
+
+                <!-- ACTIVE TIMER BOX DISPLAY -->
+                <div id="rest-timer-box" class="d-none text-center my-2">
+                    <div class="d-inline-flex align-items-center gap-3 bg-black border border-warning border-opacity-50 p-3 rounded-4 shadow-lg">
+                        <div>
+                            <div class="text-warning small fw-bold text-uppercase mb-1"><i class="fas fa-clock me-1"></i>Active Stretch Timer</div>
+                            <div id="rest-timer-seconds" class="timer-display py-1">00:00</div>
+                        </div>
+                        <button class="btn btn-outline-danger btn-sm rounded-circle p-2" onclick="stopRestTimer()" title="Cancel Timer">
+                            <i class="fas fa-times fa-lg"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <!-- Left Side: Parasympathetic Breath Pacer -->
+            <!-- Left Side: Parasympathetic Breath Pacer & ROM Assessments -->
             <div class="col-lg-4">
+                <!-- PARASYMPATHETIC PACER -->
                 <div class="dashboard-card text-center accent-border-gold">
-                    <h4 class="fw-bold text-warning mb-3">
+                    <h5 class="fw-bold text-warning mb-2">
                         <i class="fas fa-wind me-1"></i> Parasympathetic Pacer
-                    </h4>
-                    <p class="text-secondary small mb-4">
-                        Use this 4-4-8 respiratory loop to trigger neurological down-regulation, signaling soft tissue networks to completely relax during deeper stretch poses.
+                    </h5>
+                    <p class="text-secondary small mb-3">
+                        Use this 4-4-8 respiratory loop to trigger neurological down-regulation, signaling soft tissue networks to relax into deeper stretch poses.
                     </p>
 
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <div class="breath-pacer" id="pacer-circle">READY</div>
                         <div class="text-warning small fw-bold mt-2" id="pacer-phase">TAP START TO BEGIN LOOP</div>
                     </div>
@@ -280,198 +372,60 @@
                     </div>
                 </div>
 
-                <!-- Program Drill Phases -->
+                <!-- PROGRESS STATS -->
                 <div class="dashboard-card">
-                    <h5 class="fw-bold text-light mb-3">Training Phases</h5>
-                    <div class="d-flex flex-column gap-1">
-                        <button class="workout-week-btn active" id="btn-block1" onclick="showBlock(1)">
-                            <i class="fas fa-compress-arrows-alt me-2"></i> Phase 1 (Spinal & Hip)
-                        </button>
-                        <button class="workout-week-btn" id="btn-block2" onclick="showBlock(2)">
-                            <i class="fas fa-shield-alt me-2"></i> Phase 2 (End-Range Strength)
-                        </button>
+                    <h6 class="fw-bold text-light mb-3"><i class="fas fa-chart-line me-2 text-warning"></i>Blueprint Completion</h6>
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-secondary small">Completed Drills:</span>
+                        <span class="fw-bold text-warning" id="stat-completed-drills">0</span>
                     </div>
+                    <div class="progress bg-black border border-secondary border-opacity-25 rounded-pill mb-2" style="height: 10px;">
+                        <div class="progress-bar bg-warning" id="stat-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="text-end small text-secondary" id="stat-completion-percent">0%</div>
+                </div>
+
+                <!-- PHASE SELECTOR PILLS -->
+                <div class="dashboard-card">
+                    <h6 class="fw-bold text-light mb-3"><i class="fas fa-layer-group me-2 text-warning"></i>Training Phases</h6>
+                    <div class="d-flex flex-column gap-1" id="phase-pills-container">
+                        <!-- Phase buttons injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- MOBILITY ROM ASSESSMENTS -->
+                <div class="dashboard-card">
+                    <h6 class="fw-bold text-light mb-2"><i class="fas fa-ruler-combined me-2 text-warning"></i>ROM Self-Assessments</h6>
+                    <p class="text-secondary small mb-3">Log baseline and weekly mobility progress scores below:</p>
+                    <div id="assessment-list-container">
+                        <!-- Injected via flexmob_manual_app.js -->
+                    </div>
+                </div>
+
+                <!-- CLINICAL RECOVERY RULES -->
+                <div class="dashboard-card">
+                    <h6 class="fw-bold text-warning mb-2">
+                        <i class="fas fa-heartbeat me-1"></i> Soft Tissue Recovery Rules
+                    </h6>
+                    <ul class="text-secondary small ps-3 mb-0">
+                        <li class="mb-2"><strong>Never Stretch into Sharp Pain:</strong> Target a deep, intense dull pull (7/10 threshold). Back off if sharp pinching occurs.</li>
+                        <li class="mb-2"><strong>Release Jaw Clenching:</strong> Clenching teeth sends defensive signals to your CNS, contracting muscles. Keep lips parted slightly.</li>
+                        <li class="mb-2"><strong>Hydrate Prior to Sessions:</strong> Fascial tissue requires extreme hydration levels to slide and decompress efficiently.</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Right Side: Interactive Workout Logs & Phases -->
+            <!-- Right Side: Interactive Phase Workouts -->
             <div class="col-lg-8">
-                <!-- PHASE 1 -->
-                <div class="dashboard-card text-start block-content-section" id="block1-section">
-                    <h3 class="fw-bold text-warning mb-2">Phase 1: Spinal & Hip Decompression</h3>
-                    <p class="text-secondary small mb-4">
-                        Focus: Relieve localized tension in lower pelvis, lengthen over-tight quads/psoas, and restore multi-directional hip rotation.
-                    </p>
-
-                    <div class="table-responsive">
-                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
-                            <thead>
-                                <tr class="text-warning">
-                                    <th>Routine Pose</th>
-                                    <th>Hold Duration</th>
-                                    <th>Decompression Focus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="fw-bold text-light">90-90 Hip Rotations</span></td>
-                                    <td>2 mins per side</td>
-                                    <td>Keep spine completely tall, lean torso forward slowly over front knee.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Couch Quad Stretch</span></td>
-                                    <td>90 seconds per side</td>
-                                    <td>Place back knee flush against wall, squeeze glute to drive hip forward.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Spinal Decompression Hang</span></td>
-                                    <td>60 seconds</td>
-                                    <td>Relax tailbone down, breathe deeply into lower rib cage.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Thoracic Spine Openers</span></td>
-                                    <td>15 repetitions</td>
-                                    <td>On hands and knees, rotate elbow up toward the sky smoothly.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Pigeon Pose</span></td>
-                                    <td>3 minutes per side</td>
-                                    <td>Allow pelvis to sink into ground, keep front shin at 45-degree angle.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- PHASE 2 -->
-                <div class="dashboard-card text-start block-content-section d-none" id="block2-section">
-                    <h3 class="fw-bold text-warning mb-2">Phase 2: Active End-Range Joint Strengthening</h3>
-                    <p class="text-secondary small mb-4">
-                        Focus: Developing true neural control at maximal joint extension to prevent pulls and athletic tears.
-                    </p>
-
-                    <div class="table-responsive">
-                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
-                            <thead>
-                                <tr class="text-warning">
-                                    <th>Routine Pose</th>
-                                    <th>Sets x Reps</th>
-                                    <th>Tension Focus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Hip PAILs / RAILs</span></td>
-                                    <td>3 Cycles per side</td>
-                                    <td>Isometrically press knee down into floor, then attempt to lift foot.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Ankle Dorsiflexion Isometrics</span></td>
-                                    <td>3 sets x 30 seconds</td>
-                                    <td>Drive knee far forward over toes, keeping heel flat to ground.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Prone Shoulder Swimmers</span></td>
-                                    <td>3 Sets x 8 reps</td>
-                                    <td>Lying on stomach, rotate arms from lower back to overhead without touching floor.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Jefferson Curl Progressions</span></td>
-                                    <td>3 Sets x 10 reps</td>
-                                    <td>Slowly roll vertebra by vertebra holding light kettlebell or plate.</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Cossack Side Squats</span></td>
-                                    <td>3 Sets x 8 per side</td>
-                                    <td>Sink deep onto one leg, keeping opposite heel down with toe pointed up.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Tissue Decompression Guide -->
-                <div class="dashboard-card">
-                    <h4 class="fw-bold text-warning mb-3">
-                        <i class="fas fa-heartbeat me-1"></i> Soft Tissue Recovery Rules
-                    </h4>
-                    <p class="text-light small">
-                        Maximize tissue lengthening by strictly complying with these clinical guidelines:
-                    </p>
-                    <ul class="text-secondary small ps-3">
-                        <li class="mb-2"><strong>Never Stretch into Sharp Pain:</strong> Target a deep, intense dull pull (approx. 7/10 threshold). Back off immediately if any sharp pinching occurs.</li>
-                        <li class="mb-2"><strong>Release Jaw Clenching:</strong> Clenching your teeth sends defensive signals to your CNS, contracting muscles. Keep your lips parted slightly.</li>
-                        <li class="mb-2"><strong>Hydrate Prior to Sessions:</strong> Fascial tissue requires extreme hydration levels to slide and decompress efficiently.</li>
-                    </ul>
+                <div id="phase-content-area">
+                    <!-- Phase workouts dynamically injected here -->
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- JS Logic -->
+    <!-- INLINE ATHLETE AUTH ACCESS SCRIPT -->
     <script>
-        // Respiratory Pacer Logic
-        let pacerInterval = null;
-        let pacerSeconds = 4;
-        let pacerState = 'inhale'; // inhale, hold, exhale
-
-        function togglePacer() {
-            const btn = document.getElementById('btn-pacer-toggle');
-            if (pacerInterval) {
-                clearInterval(pacerInterval);
-                pacerInterval = null;
-                btn.innerHTML = `<i class="fas fa-play me-1"></i> Start Pacer`;
-                document.getElementById('pacer-circle').innerText = 'PAUSED';
-            } else {
-                btn.innerHTML = `<i class="fas fa-pause me-1"></i> Pause Pacer`;
-                runPacerLoop();
-            }
-        }
-
-        function runPacerLoop() {
-            pacerInterval = setInterval(() => {
-                if (pacerSeconds > 1) {
-                    pacerSeconds--;
-                    document.getElementById('pacer-circle').innerText = pacerSeconds;
-                } else {
-                    // State Transitions
-                    if (pacerState === 'inhale') {
-                        pacerState = 'hold';
-                        pacerSeconds = 4;
-                        document.getElementById('pacer-circle').innerText = '4';
-                        document.getElementById('pacer-circle').className = 'breath-pacer hold';
-                        document.getElementById('pacer-phase').innerText = 'HOLD BREATH IN';
-                    } else if (pacerState === 'hold') {
-                        pacerState = 'exhale';
-                        pacerSeconds = 8;
-                        document.getElementById('pacer-circle').innerText = '8';
-                        document.getElementById('pacer-circle').className = 'breath-pacer';
-                        document.getElementById('pacer-phase').innerText = 'SLOW PARASYMPATHETIC EXHALE';
-                    } else {
-                        pacerState = 'inhale';
-                        pacerSeconds = 4;
-                        document.getElementById('pacer-circle').innerText = '4';
-                        document.getElementById('pacer-circle').className = 'breath-pacer inhale';
-                        document.getElementById('pacer-phase').innerText = 'DEEP NASAL INHALE';
-                    }
-                }
-            }, 1000);
-        }
-
-        function resetPacer() {
-            if (pacerInterval) {
-                clearInterval(pacerInterval);
-                pacerInterval = null;
-            }
-            pacerState = 'inhale';
-            pacerSeconds = 4;
-            document.getElementById('btn-pacer-toggle').innerHTML = `<i class="fas fa-play me-1"></i> Start Pacer`;
-            document.getElementById('pacer-circle').innerText = 'READY';
-            document.getElementById('pacer-circle').className = 'breath-pacer';
-            document.getElementById('pacer-phase').innerText = 'TAP START TO BEGIN LOOP';
-        }
-
-        // Access Logic
         function checkAccess() {
             const urlParams = new URLSearchParams(window.location.search);
             const token = urlParams.get('token') || urlParams.get('key') || urlParams.get('access');
@@ -552,20 +506,15 @@
             if (email) localStorage.setItem('krome_athlete_email', email);
         }
 
-        function showBlock(blockNum) {
-            document.querySelectorAll('.block-content-section').forEach(sec => sec.classList.add('d-none'));
-            document.querySelectorAll('.workout-week-btn').forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(`block${blockNum}-section`).classList.remove('d-none');
-            
-            if (blockNum === 1) document.getElementById('btn-block1').classList.add('active');
-            if (blockNum === 2) document.getElementById('btn-block2').classList.add('active');
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             checkAccess();
         });
     </script>
 
+    <!-- CORE DATA & APP SCRIPTS -->
+    <script src="js/flexmob_blueprint_data.js"></script>
+    <script src="js/flexmob_manual_app.js"></script>
+    <script src="js/athlete_data_sync.js"></script>
+    <script src="js/profile_nav.js"></script>
 </body>
 </html>

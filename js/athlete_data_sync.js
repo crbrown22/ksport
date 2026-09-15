@@ -676,6 +676,302 @@
         if (path.includes('jumpstart') || path.includes('21_day')) {
             renderJumpstartProfile(athlete);
         }
+        if (path.includes('strength')) {
+            renderStrengthProfile(athlete);
+        }
+        if (path.includes('conditioning') || path.includes('speed')) {
+            renderSpeedProfile(athlete);
+        }
+        if (path.includes('athlete_profile')) {
+            if (athlete.squatPR) localStorage.setItem('krome_metric_squat_pr', athlete.squatPR);
+            if (athlete.benchPR) localStorage.setItem('krome_metric_bench_pr', athlete.benchPR);
+            if (athlete.deadliftPR) localStorage.setItem('krome_metric_deadlift_pr', athlete.deadliftPR);
+            if (athlete.cleanPR) localStorage.setItem('krome_metric_clean_pr', athlete.cleanPR);
+            if (athlete.sprint10) localStorage.setItem('krome_metric_sprint_10', athlete.sprint10);
+            if (athlete.sprint40) localStorage.setItem('krome_metric_sprint_40', athlete.sprint40);
+            if (athlete.agilityShuttle) localStorage.setItem('krome_metric_agility_shuttle', athlete.agilityShuttle);
+            if (athlete.verticalJump) localStorage.setItem('krome_metric_vertical_jump', athlete.verticalJump);
+            if (athlete.currentWeight) localStorage.setItem('krome_athlete_current_weight', athlete.currentWeight);
+            if (typeof window.loadPerformanceTrackerMetrics === 'function') {
+                window.loadPerformanceTrackerMetrics();
+            }
+        }
+    }
+
+    // =========================================================================
+    // RENDERER 5: STRENGTH & POWER BLUEPRINT (strength_manual.html / strength.html)
+    // =========================================================================
+    function renderStrengthProfile(athlete) {
+        // Sync remote 1RMs and active track into localStorage
+        if (athlete.squatPR) {
+            localStorage.setItem('krome_metric_squat_pr', athlete.squatPR);
+            const inputSquat = document.getElementById('rm-squat');
+            if (inputSquat) inputSquat.value = athlete.squatPR;
+        }
+        if (athlete.benchPR) {
+            localStorage.setItem('krome_metric_bench_pr', athlete.benchPR);
+            const inputBench = document.getElementById('rm-bench');
+            if (inputBench) inputBench.value = athlete.benchPR;
+        }
+        if (athlete.deadliftPR) {
+            localStorage.setItem('krome_metric_deadlift_pr', athlete.deadliftPR);
+            const inputDL = document.getElementById('rm-deadlift');
+            if (inputDL) inputDL.value = athlete.deadliftPR;
+        }
+        if (athlete.cleanPR) {
+            localStorage.setItem('krome_metric_clean_pr', athlete.cleanPR);
+        }
+        if (athlete.strengthTrack) {
+            localStorage.setItem('krome_strength_track_v3', athlete.strengthTrack);
+            if (typeof window.switchTrack === 'function') {
+                window.switchTrack(athlete.strengthTrack);
+            }
+        }
+        if (typeof window.on1RMChange === 'function') {
+            window.on1RMChange();
+        }
+
+        const container = document.getElementById('athlete-strength-profile-mount');
+        if (!container) return;
+
+        const squat = athlete.squatPR || localStorage.getItem('krome_metric_squat_pr') || '315';
+        const bench = athlete.benchPR || localStorage.getItem('krome_metric_bench_pr') || '225';
+        const deadlift = athlete.deadliftPR || localStorage.getItem('krome_metric_deadlift_pr') || '405';
+        const currentTrack = athlete.strengthTrack || localStorage.getItem('krome_strength_track_v3') || 'athletic';
+        const trackName = (currentTrack === 'ryan_brown_heavy_duty')
+            ? 'Ryan Brown Hypertrophy Protocol'
+            : 'Athletic Force Track';
+
+        container.classList.remove('d-none');
+        container.innerHTML = `
+            <div class="card bg-dark border border-warning shadow-lg text-light rounded-4 overflow-hidden mb-4 no-print" style="background: linear-gradient(135deg, #0f0d06 0%, #1e190b 100%);">
+                <div class="card-header bg-black bg-opacity-50 border-bottom border-warning border-opacity-25 py-3 px-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold" style="font-size: 0.82rem;">
+                            <i class="fas fa-dumbbell me-1"></i> ATHLETE STRENGTH HUB
+                        </span>
+                        <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
+                            <i class="fas fa-check-circle me-1"></i> Profile 1RMs & Track Synced
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary">Logged in: <strong class="text-light">${athlete.email}</strong></span>
+                        <button id="btn-strength-refresh" class="btn btn-sm btn-outline-warning rounded-pill px-2 py-1" style="font-size: 0.75rem;">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh 1RMs
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7 border-lg-end border-secondary border-opacity-25 pe-lg-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <h4 class="fw-bold text-white mb-0">${athlete.fullName || 'KROME Athlete'}</h4>
+                                    <span class="small text-warning"><i class="fas fa-shield-alt me-1"></i> Active Track: <strong>${trackName}</strong></span>
+                                </div>
+                                <a href="athlete_profile.html" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-user-circle me-1"></i> Athlete Profile
+                                </a>
+                            </div>
+
+                            <p class="small text-light opacity-75 mb-3">
+                                Your compound 1RM maxes are synchronized across your Athlete Performance Profile and automatically calculate your wave loading percentages in this blueprint.
+                            </p>
+
+                            <!-- 1RM Max Badges -->
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">SQUAT 1RM</small>
+                                    <span class="fw-bold text-warning fs-6">${squat} lbs</span>
+                                </div>
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">BENCH 1RM</small>
+                                    <span class="fw-bold text-warning fs-6">${bench} lbs</span>
+                                </div>
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">DEADLIFT 1RM</small>
+                                    <span class="fw-bold text-warning fs-6">${deadlift} lbs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Navigation to Sync & Wave Calculator -->
+                        <div class="col-lg-5">
+                            <div class="bg-black bg-opacity-40 p-3 rounded-3 border border-warning border-opacity-25">
+                                <span class="small text-warning text-uppercase fw-bold d-block mb-2">
+                                    <i class="fas fa-calculator me-1"></i> Dynamic Wave Loading Calculator
+                                </span>
+                                <p class="text-secondary small mb-3">
+                                    Adjust 1RM maxes in the calculator sidebar to recalculate working sets in real-time.
+                                </p>
+                                <button id="btn-jump-to-1rm-calc" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-2 w-100">
+                                    <i class="fas fa-sliders-h me-1"></i> Jump to 1RM Calculator Sidebar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const refreshBtn = document.getElementById('btn-strength-refresh');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', async () => {
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Syncing...';
+                refreshBtn.disabled = true;
+                const fresh = await fetchAthleteData(athlete.email);
+                if (fresh) renderStrengthProfile(fresh);
+            });
+        }
+
+        const jumpBtn = document.getElementById('btn-jump-to-1rm-calc');
+        if (jumpBtn) {
+            jumpBtn.addEventListener('click', () => {
+                const calcSec = document.getElementById('sec-1rm-calculator') || document.getElementById('rm-squat');
+                if (calcSec) {
+                    calcSec.scrollIntoView({ behavior: 'smooth' });
+                    const inputSquat = document.getElementById('rm-squat');
+                    if (inputSquat) inputSquat.focus();
+                }
+            });
+        }
+    }
+
+    // =========================================================================
+    // RENDERER 6: SPEED, AGILITY & CONDITIONING BLUEPRINT (conditioning_manual.html)
+    // =========================================================================
+    function renderSpeedProfile(athlete) {
+        if (athlete.sprint10) {
+            localStorage.setItem('krome_metric_sprint_10', athlete.sprint10);
+            const in10 = document.getElementById('calc-sprint10');
+            if (in10) in10.value = athlete.sprint10;
+        }
+        if (athlete.sprint40) {
+            localStorage.setItem('krome_metric_sprint_40', athlete.sprint40);
+            const in40 = document.getElementById('calc-sprint40');
+            if (in40) in40.value = athlete.sprint40;
+        }
+        if (athlete.verticalJump) {
+            localStorage.setItem('krome_metric_vertical_jump', athlete.verticalJump);
+            const inVert = document.getElementById('calc-vertical');
+            if (inVert) inVert.value = athlete.verticalJump;
+        }
+        if (athlete.currentWeight) {
+            localStorage.setItem('krome_athlete_current_weight', athlete.currentWeight);
+            const inWt = document.getElementById('calc-weight');
+            if (inWt) inWt.value = athlete.currentWeight;
+        }
+        if (typeof window.calculateSpeedPowerOutput === 'function') {
+            window.calculateSpeedPowerOutput();
+        }
+
+        const container = document.getElementById('athlete-speed-profile-mount');
+        if (!container) return;
+
+        const s10 = athlete.sprint10 || localStorage.getItem('krome_metric_sprint_10') || '1.68';
+        const s40 = athlete.sprint40 || localStorage.getItem('krome_metric_sprint_40') || '4.85';
+        const vert = athlete.verticalJump || localStorage.getItem('krome_metric_vertical_jump') || '26.5';
+        const wt = athlete.currentWeight || localStorage.getItem('krome_athlete_current_weight') || '185';
+
+        container.classList.remove('d-none');
+        container.innerHTML = `
+            <div class="card bg-dark border border-warning shadow-lg text-light rounded-4 overflow-hidden mb-4 no-print" style="background: linear-gradient(135deg, #0b1118 0%, #152230 100%);">
+                <div class="card-header bg-black bg-opacity-50 border-bottom border-warning border-opacity-25 py-3 px-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold" style="font-size: 0.82rem;">
+                            <i class="fas fa-bolt me-1"></i> ATHLETE SPEED & CONDITIONING HUB
+                        </span>
+                        <span class="badge bg-success text-white px-2 py-1 rounded-pill" style="font-size: 0.72rem;">
+                            <i class="fas fa-check-circle me-1"></i> Speed PRs & Profile Synced
+                        </span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary">Logged in: <strong class="text-light">${athlete.email}</strong></span>
+                        <button id="btn-speed-refresh" class="btn btn-sm btn-outline-warning rounded-pill px-2 py-1" style="font-size: 0.75rem;">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh PRs
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7 border-lg-end border-secondary border-opacity-25 pe-lg-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <h4 class="fw-bold text-white mb-0">${athlete.fullName || 'KROME Athlete'}</h4>
+                                    <span class="small text-warning"><i class="fas fa-running me-1"></i> Velocity & Power Profile</span>
+                                </div>
+                                <a href="athlete_profile.html" class="btn btn-sm btn-outline-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-user-circle me-1"></i> Athlete Profile
+                                </a>
+                            </div>
+
+                            <p class="small text-light opacity-75 mb-3">
+                                Your sprint times and vertical jump metrics are synchronized live across your Athlete Performance Profile to calculate power output and speed ratings.
+                            </p>
+
+                            <!-- Speed PR Badges -->
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">10-YD BURST</small>
+                                    <span class="fw-bold text-warning fs-6">${s10} s</span>
+                                </div>
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">40-YD DASH</small>
+                                    <span class="fw-bold text-warning fs-6">${s40} s</span>
+                                </div>
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">VERTICAL JUMP</small>
+                                    <span class="fw-bold text-warning fs-6">${vert} in</span>
+                                </div>
+                                <div class="bg-black bg-opacity-60 border border-warning border-opacity-30 px-3 py-2 rounded-3 text-center">
+                                    <small class="text-secondary d-block" style="font-size: 0.7rem;">BODY WEIGHT</small>
+                                    <span class="fw-bold text-info fs-6">${wt} lbs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Jump to Speed Calculator -->
+                        <div class="col-lg-5">
+                            <div class="bg-black bg-opacity-40 p-3 rounded-3 border border-warning border-opacity-25">
+                                <span class="small text-warning text-uppercase fw-bold d-block mb-2">
+                                    <i class="fas fa-calculator me-1"></i> Power Output & Velocity Estimator
+                                </span>
+                                <p class="text-secondary small mb-3">
+                                    Adjust your timing and jump specs in the interactive speed calculator to analyze power output in real-time.
+                                </p>
+                                <button id="btn-jump-to-speed-calc" class="btn btn-sm btn-warning text-dark fw-bold rounded-pill px-3 py-2 w-100">
+                                    <i class="fas fa-tachometer-alt me-1"></i> Open Speed Calculator & Estimator
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const refreshBtn = document.getElementById('btn-speed-refresh');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', async () => {
+                refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Syncing...';
+                refreshBtn.disabled = true;
+                const fresh = await fetchAthleteData(athlete.email);
+                if (fresh) renderSpeedProfile(fresh);
+            });
+        }
+
+        const jumpBtn = document.getElementById('btn-jump-to-speed-calc');
+        if (jumpBtn) {
+            jumpBtn.addEventListener('click', () => {
+                const calcSec = document.getElementById('sec-speed-calculator') || document.getElementById('calc-sprint10');
+                if (calcSec) {
+                    calcSec.scrollIntoView({ behavior: 'smooth' });
+                    const inputS10 = document.getElementById('calc-sprint10');
+                    if (inputS10) inputS10.focus();
+                }
+            });
+        }
     }
 
     // Athlete Logout with remote Log Out TIme Stamp recording

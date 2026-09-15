@@ -167,6 +167,16 @@
                 retractNavbar();
             }
         });
+
+        // Ensure Profile Navigation module is loaded and active
+        if (!window.__KROME_PROFILE_NAV_INITIALIZED__) {
+            const profileScript = document.createElement('script');
+            profileScript.src = 'js/profile_nav.js';
+            profileScript.async = true;
+            document.head.appendChild(profileScript);
+        } else if (typeof window.updateProfileNavigation === 'function') {
+            window.updateProfileNavigation();
+        }
     }
 
     if (document.readyState === 'loading') {

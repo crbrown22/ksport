@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KROME Strength & Power Athlete Portal | Interactive Manual</title>
-    <meta name="description" content="Official KROME Strength & Power 12-Week Interactive Training Manual. Master heavy compound wave loading, rate of force development, and CNS recovery logs.">
+    <title>KROME Strength & Power E-Book Blueprint | Interactive Athlete Manual</title>
+    <meta name="description" content="Official KROME Strength & Power E-Book Blueprint. Comprehensive 4-day athletic curriculum covering Olympic clean progressions, wave-loaded squats and bench presses, plyometrics, speed mechanics, ESD conditioning, and mobility.">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -131,6 +131,178 @@
             font-weight: 700;
         }
 
+        .day-nav-btn {
+            background: #151821;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50rem;
+            padding: 0.65rem 1.4rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .day-nav-btn:hover {
+            border-color: var(--krome-cyan);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .day-nav-btn.active {
+            background: var(--krome-gold);
+            color: #000;
+            border-color: var(--krome-gold);
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.35);
+        }
+
+        .curriculum-module-card {
+            background: #11141b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.85rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .module-header {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .day-header-card {
+            background: linear-gradient(135deg, rgba(255, 212, 71, 0.08) 0%, rgba(18, 21, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 212, 71, 0.25);
+        }
+
+        .custom-curriculum-table th {
+            background: #0d0f14;
+            font-weight: 700;
+            padding: 0.75rem 1rem;
+            border-color: rgba(255, 255, 255, 0.06);
+            letter-spacing: 0.5px;
+        }
+
+        .custom-curriculum-table td {
+            padding: 0.85rem 1rem;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .exercise-checkbox {
+            width: 1.25rem;
+            height: 1.25rem;
+            accent-color: var(--krome-gold);
+            cursor: pointer;
+        }
+
+        .table-row-completed {
+            background: rgba(0, 255, 209, 0.04) !important;
+            opacity: 0.65;
+        }
+
+        .table-row-completed label {
+            text-decoration: line-through;
+            color: #94a3b8 !important;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .btn-action-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e1;
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            border-color: var(--krome-cyan);
+            color: var(--krome-cyan);
+        }
+
+        .rest-timer-badge {
+            background: #090b0e;
+            border: 1px solid rgba(255, 212, 71, 0.3);
+            border-radius: 50rem;
+            padding: 0.5rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .track-toggle-btn {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .track-toggle-btn:hover {
+            color: #fff;
+        }
+
+        .track-toggle-btn.active {
+            background: #1e2330;
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        #btn-track-hit.active,
+        #btn-track-ryan-brown.active {
+            border-color: rgba(220, 53, 69, 0.6);
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.25) 0%, rgba(30, 35, 48, 0.95) 100%);
+            color: #ff8b94;
+        }
+
+        #btn-track-athletic.active {
+            border-color: rgba(255, 212, 71, 0.6);
+            background: linear-gradient(135deg, rgba(255, 212, 71, 0.25) 0%, rgba(30, 35, 48, 0.95) 100%);
+            color: #ffd447;
+        }
+
+        .table-row-optional {
+            background: rgba(255, 212, 71, 0.03) !important;
+            border-left: 3px dashed rgba(255, 212, 71, 0.45);
+        }
+
+        @media print {
+            .no-print, .manual-nav, #private-access-overlay, .day-nav-pills, .btn, .rest-timer-badge {
+                display: none !important;
+            }
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .curriculum-module-card, .day-header-card, .dashboard-card {
+                background: #fff !important;
+                border: 1px solid #ddd !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+            }
+            .custom-curriculum-table th {
+                background: #f1f1f1 !important;
+                color: #000 !important;
+            }
+            .custom-curriculum-table td {
+                color: #000 !important;
+                border-color: #eee !important;
+            }
+            .text-warning, .text-info, .text-light, .text-secondary {
+                color: #000 !important;
+            }
+        }
+
         /* ----------------------------------
            PRIVATE ACCESS OVERLAY
         ---------------------------------- */
@@ -148,6 +320,35 @@
             justify-content: center;
             padding: 1.5rem;
             overflow-y: auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-margin-top {
+            scroll-margin-top: 110px;
+        }
+
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (max-width: 767.98px) {
+            .dashboard-card {
+                padding: 1.25rem !important;
+            }
+            .day-header-card {
+                padding: 1.25rem !important;
+            }
+            h1 {
+                font-size: 1.85rem !important;
+            }
         }
 
         .form-control-custom {
@@ -217,7 +418,10 @@
                 <span class="badge bg-dark text-success border border-success px-3 py-2 rounded-pill me-2 d-none d-md-inline" id="auth-status-badge">
                     <i class="fas fa-user-check me-1"></i> Athlete Active
                 </span>
-                <a href="login.html" class="btn btn-action-gold">
+                <a href="athlete_profile.html" class="btn btn-action-gold" id="btn-strength-profile">
+                    <i class="fas fa-user-circle me-1"></i> My Profile
+                </a>
+                <a href="login.html" class="btn btn-action-outline">
                     <i class="fas fa-sign-out-alt me-1"></i> Portal Exit
                 </a>
             </div>
@@ -225,245 +429,346 @@
     </header>
 
     <main class="container py-5">
+        <!-- ATHLETE PROFILE SYNC MOUNT -->
+        <div id="athlete-strength-profile-mount" class="d-none mb-4"></div>
+
+        <!-- E-BOOK HERO SECTION -->
         <div class="row">
-            <div class="col-12 text-center mb-5">
-                <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 0.5px;">
-                    12-Week Elite Strength Curriculum
+            <div class="col-12 text-center mb-4">
+                <span id="track-active-badge" class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold text-uppercase small" style="letter-spacing: 0.5px;">
+                    <i class="fas fa-book-open me-1"></i> Athletic Force Track
                 </span>
-                <h1 class="fw-black mt-2 mb-3" style="font-size: 2.5rem; font-weight: 900;">STRENGTH & POWER MANUAL</h1>
-                <p class="text-secondary mx-auto" style="max-width: 700px;">
-                    Welcome to your private performance blueprint. Master compound mechanical efficiency, neurologically chain power, and systematically shatter your 1-Rep Max.
+                <h1 class="fw-black mt-2 mb-2 text-light" style="font-size: 2.6rem; font-weight: 900; letter-spacing: -0.5px;">
+                    STRENGTH & POWER <span class="text-warning">E-BOOK</span>
+                </h1>
+                <p class="text-secondary mx-auto" style="max-width: 840px; font-size: 1.05rem;">
+                    The definitive dual-track training blueprint. Choose between our explosive <strong>Athletic Force Track</strong> (Olympic lifts, speed mechanics, wave loading, box plyometrics) and the traditional <strong>Ryan Brown Hypertrophy Protocol</strong> (developed by Ryan Brown, Owner & Founder of KROME Sports Performance: pure mechanical tension, 2 working sets to absolute failure, pre-exhaustion supersets, 4-2-4 cadence, KSP strength pillars, dedicated recovery week, zero speed/plyo, Olympic lifts strictly optional).
                 </p>
+
+                <!-- DUAL TRACK SELECTOR -->
+                <div class="row mt-3 mb-2 no-print">
+                    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                        <div class="p-1.5 rounded-4 rounded-sm-pill bg-black border border-secondary border-opacity-25 d-flex flex-column flex-sm-row justify-content-center gap-1 shadow-sm">
+                            <button id="btn-track-athletic" class="btn rounded-pill px-3 py-2 fw-bold text-uppercase small flex-fill track-toggle-btn active" onclick="switchTrack('athletic')">
+                                <i class="fas fa-bolt me-1 text-warning"></i> Athletic Force Track
+                                <span class="d-none d-sm-inline text-secondary fw-normal"> (Speed & Plyo)</span>
+                            </button>
+                            <button id="btn-track-ryan-brown" class="btn rounded-pill px-3 py-2 fw-bold text-uppercase small flex-fill track-toggle-btn" onclick="switchTrack('ryan_brown_heavy_duty')">
+                                <i class="fas fa-shield-alt me-1 text-danger"></i> Ryan Brown Hypertrophy Track
+                                <span class="d-none d-sm-inline text-secondary fw-normal"> (KSP Bodybuilding & Strength)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Toolbar -->
+                <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mt-3 no-print">
+                    <button class="btn btn-outline-light rounded-pill btn-sm px-3 py-2 fw-bold" onclick="printCurriculum()">
+                        <i class="fas fa-print me-1 text-info"></i> Print / Save PDF E-Book
+                    </button>
+                    <button class="btn btn-outline-danger rounded-pill btn-sm px-3 py-2 fw-bold" onclick="toggleCadencePacerWidget()">
+                        <i class="fas fa-stopwatch me-1 text-danger"></i> 4-2-4 Cadence Metronome
+                    </button>
+                    <button class="btn btn-outline-warning rounded-pill btn-sm px-3 py-2 fw-bold" onclick="resetDayProgress()">
+                        <i class="fas fa-redo-alt me-1"></i> Reset Active Day
+                    </button>
+                    <!-- Rest Stopwatch Quick Triggers -->
+                    <div class="d-inline-flex flex-wrap align-items-center justify-content-center gap-1 bg-dark p-1 rounded-4 rounded-sm-pill border border-secondary border-opacity-25 ms-md-2">
+                        <span class="small text-secondary px-2 fw-bold"><i class="fas fa-stopwatch me-1 text-warning"></i>Rest:</span>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(30)">30s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(60)">60s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(90)">90s</button>
+                        <button class="btn btn-sm btn-dark text-warning rounded-pill px-2.5 py-1" onclick="startRestTimer(120)">120s</button>
+                    </div>
+                </div>
+
+                <!-- Floating/Inline Rest Timer Display -->
+                <div id="rest-timer-wrapper" class="mt-3 d-none no-print">
+                    <div class="rest-timer-badge shadow-lg">
+                        <span class="small text-secondary text-uppercase fw-bold"><i class="fas fa-hourglass-half me-1 text-warning"></i> Rest Clock:</span>
+                        <span id="rest-timer-display" class="fw-black fs-4 text-warning" style="font-family: monospace;">0:60</span>
+                        <div class="d-flex gap-1 ms-2">
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2" onclick="pauseRestTimer()" title="Pause"><i class="fas fa-pause"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2" onclick="resetRestTimer()" title="Reset"><i class="fas fa-undo"></i></button>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill py-0 px-2" onclick="document.getElementById('rest-timer-wrapper').classList.add('d-none'); pauseRestTimer();" title="Close"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RYAN BROWN 4-2-4 CADENCE PACER WIDGET -->
+                <div id="cadence-pacer-card" class="card bg-dark border-danger border-opacity-50 p-4 mt-4 rounded-4 text-light shadow-lg no-print d-none text-start">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3 border-bottom border-secondary border-opacity-25 pb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-danger bg-opacity-20 text-danger p-3 rounded-circle fs-3">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div>
+                                <span class="badge bg-danger text-light px-2.5 py-1 rounded-pill fw-bold text-uppercase small">Ryan Brown Hypertrophy Protocol</span>
+                                <h4 class="fw-black text-light mt-1 mb-0">Ryan Brown 4-2-4 Cadence Metronome</h4>
+                                <p class="text-secondary small mb-0">Zero momentum • 2s concentric lift, 2s peak static squeeze, 4s eccentric lowering • 2 working sets to failure.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill" onclick="toggleCadencePacerWidget()">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+
+                    <div class="row align-items-center g-3 text-center">
+                        <div class="col-12 col-md-5">
+                            <div id="cadence-phase-label" class="text-secondary fw-bold small text-uppercase mb-1">
+                                Ready • Press Start to begin 4-2-4 tempo
+                            </div>
+                            <div id="cadence-seconds-display" class="fw-black text-warning font-monospace mb-2" style="font-size: 3rem !important;">
+                                4-2-4
+                            </div>
+                            <div class="progress mb-2" style="height: 10px; background: rgba(255,255,255,0.1);">
+                                <div id="cadence-progress-bar" class="progress-bar bg-warning" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <div class="p-3 rounded-3 bg-black border border-secondary border-opacity-25">
+                                <div class="text-secondary small text-uppercase fw-bold mb-1">Reps Completed</div>
+                                <div id="cadence-rep-count" class="fs-1 fw-black text-danger font-monospace">0</div>
+                                <button class="btn btn-sm btn-link text-secondary text-decoration-none py-0 small" onclick="resetCadenceRepCount()">Reset Counter</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="d-flex flex-column gap-2">
+                                <button id="cadence-start-btn" class="btn btn-danger rounded-pill fw-bold py-2 shadow" onclick="startCadencePacer()">
+                                    <i class="fas fa-play me-1"></i> Start 4-2-4 Cadence
+                                </button>
+                                <button id="cadence-pause-btn" class="btn btn-warning text-dark rounded-pill fw-bold py-2 shadow d-none" onclick="pauseCadencePacer()">
+                                    <i class="fas fa-pause me-1"></i> Pause Pacer
+                                </button>
+                                <button class="btn btn-outline-secondary rounded-pill btn-sm" onclick="stopCadencePacer()">
+                                    <i class="fas fa-redo-alt me-1"></i> Reset Pacer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DYNAMIC DAY NAVIGATION PILLS -->
+        <div class="row mb-4 no-print">
+            <div class="col-12">
+                <div id="day-nav-pills-container" class="d-flex flex-wrap justify-content-center gap-2 day-nav-pills">
+                    <!-- Injected dynamically by strength_manual_app.js based on selected track -->
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <!-- Left Side: Interactive 1RM Calculator -->
-            <div class="col-lg-4">
-                <div class="dashboard-card accent-border-gold">
-                    <h4 class="fw-bold text-warning mb-3">
-                        <i class="fas fa-calculator me-1"></i> 1-Rep Max Calculator
-                    </h4>
-                    <p class="text-secondary small mb-4">
-                        Enter your baseline 1-Rep Maxes. The lifting percentage tables in the program blocks below will automatically update to your precise training weights!
-                    </p>
-
-                    <div class="mb-3">
-                        <label class="form-label text-light small fw-bold">Back Squat (lbs)</label>
-                        <input type="number" id="rm-squat" class="form-control calculator-input" value="315" oninput="calculateWeights()">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label text-light small fw-bold">Bench Press (lbs)</label>
-                        <input type="number" id="rm-bench" class="form-control calculator-input" value="225" oninput="calculateWeights()">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label text-light small fw-bold">Deadlift (lbs)</label>
-                        <input type="number" id="rm-deadlift" class="form-control calculator-input" value="405" oninput="calculateWeights()">
-                    </div>
-
-                    <button class="btn btn-outline-warning w-100 btn-sm rounded-pill py-2" onclick="resetCalculators()">
-                        <i class="fas fa-undo-alt me-1"></i> Reset Baseline Estimators
-                    </button>
-                </div>
-
-                <!-- Navigation Sidebar for Weeks -->
-                <div class="dashboard-card">
-                    <h5 class="fw-bold text-light mb-3">Training Wave Blocks</h5>
-                    <div class="d-flex flex-column gap-1">
-                        <button class="workout-week-btn active" id="btn-block1" onclick="showBlock(1)">
-                            <i class="fas fa-dumbbell me-2"></i> Block 1 (Weeks 1-4)
-                        </button>
-                        <button class="workout-week-btn" id="btn-block2" onclick="showBlock(2)">
-                            <i class="fas fa-fire me-2"></i> Block 2 (Weeks 5-8)
-                        </button>
-                        <button class="workout-week-btn" id="btn-block3" onclick="showBlock(3)">
-                            <i class="fas fa-star me-2"></i> Block 3 (Weeks 9-12)
-                        </button>
-                    </div>
+            <!-- MAIN CURRICULUM DISPLAY (LEFT 8 COLS ON DESKTOP) -->
+            <div class="col-lg-8">
+                <div id="curriculum-container">
+                    <!-- Dynamic modules rendered by strength_manual_app.js -->
                 </div>
             </div>
 
-            <!-- Right Side: Interactive Workout Logs & Phases -->
-            <div class="col-lg-8">
-                <!-- BLOCK 1 (Active) -->
-                <div class="dashboard-card text-start block-content-section" id="block1-section">
-                    <h3 class="fw-bold text-warning mb-2">Block 1: Submaximal Volume & Joint Balance</h3>
-                    <p class="text-secondary small mb-4">
-                        Focus: High mechanical consistency, neuromuscular stabilization, and tissue strengthening.
+            <!-- SIDEBAR: 1RM CALCULATOR & TECHNICAL EXECUTION MANUAL -->
+            <div class="col-lg-4">
+                <!-- Dynamic Track Principles Info -->
+                <div id="sidebar-track-principles"></div>
+
+                <!-- 1RM Wave Overload Calculator -->
+                <div class="dashboard-card accent-border-gold mb-4" id="sec-1rm-calculator">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h4 class="fw-bold text-warning mb-0">
+                            <i class="fas fa-calculator me-1"></i> 1RM Wave Calculator
+                        </h4>
+                        <span class="badge bg-dark text-info border border-info border-opacity-25 small">Auto-Sync</span>
+                    </div>
+                    <p class="text-secondary small mb-3">
+                        Enter your baseline 1-Rep Maxes. All wave percentages (65%, 70%, 75%) across the curriculum dynamically adjust to your exact working weights!
                     </p>
 
-                    <div class="table-responsive">
-                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
-                            <thead>
-                                <tr class="text-warning">
-                                    <th>Exercise</th>
-                                    <th>Target Sets x Reps</th>
-                                    <th>Intensity (%)</th>
-                                    <th>Your Weight (lbs)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Back Squat</span></td>
-                                    <td>4 Sets x 8 Reps</td>
-                                    <td>70% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="sq-b1-wt">220 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Bench Press</span></td>
-                                    <td>4 Sets x 8 Reps</td>
-                                    <td>70% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="bp-b1-wt">158 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Deadlift</span></td>
-                                    <td>3 Sets x 6 Reps</td>
-                                    <td>72% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="dl-b1-wt">292 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Bulgarian Split Squat</span></td>
-                                    <td>3 Sets x 10/side</td>
-                                    <td>RPE 8</td>
-                                    <td><span class="text-muted">Load Match</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Plyometric Box Jumps</span></td>
-                                    <td>4 Sets x 5 reps</td>
-                                    <td>Max Velocity</td>
-                                    <td><span class="text-muted">Bodyweight</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="mb-3">
+                        <label class="form-label text-light small fw-bold d-flex justify-content-between">
+                            <span>Back Squat (lbs)</span>
+                            <span class="text-warning small" id="sq-preview">65%: 205 | 75%: 236</span>
+                        </label>
+                        <input type="number" id="rm-squat" class="form-control calculator-input" value="315" oninput="on1RMChange()">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-light small fw-bold d-flex justify-content-between">
+                            <span>Bench Press (lbs)</span>
+                            <span class="text-warning small" id="bp-preview">65%: 146 | 75%: 169</span>
+                        </label>
+                        <input type="number" id="rm-bench" class="form-control calculator-input" value="225" oninput="on1RMChange()">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-light small fw-bold d-flex justify-content-between">
+                            <span>Deadlift / RDL (lbs)</span>
+                            <span class="text-warning small" id="dl-preview">65%: 263 | 75%: 304</span>
+                        </label>
+                        <input type="number" id="rm-deadlift" class="form-control calculator-input" value="405" oninput="on1RMChange()">
+                    </div>
+
+                    <button class="btn btn-outline-warning w-100 btn-sm rounded-pill py-2" onclick="resetCalculators(); on1RMChange();">
+                        <i class="fas fa-undo-alt me-1"></i> Reset Baselines (315/225/405)
+                    </button>
+                </div>
+
+                <!-- Technical Cues & Coaching Manual -->
+                <div class="dashboard-card mb-4">
+                    <h5 class="fw-bold text-warning mb-3">
+                        <i class="fas fa-graduation-cap me-1"></i> Coaching Key Principles
+                    </h5>
+
+                    <div class="accordion accordion-flush" id="coachingAccordion">
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueRyanBrownSets">
+                                    <i class="fas fa-shield-alt text-danger me-2"></i> Ryan Brown: 2 Working Sets to Failure
+                                </button>
+                            </h6>
+                            <div id="cueRyanBrownSets" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Developed by <strong>Ryan Brown</strong>, Owner & Founder of KROME Sports Performance. Perform 1-2 light feeder sets to groove the joint mechanics, followed by exactly <strong>TWO all-out working sets</strong> pushed to momentary positive concentric failure (rest 90–120s between sets). This provides optimal mechanical tension without inducing excessive neural fatigue.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueCadenceTempo">
+                                    <i class="fas fa-stopwatch text-danger me-2"></i> Strict 4-2-4 Cadence Tempo
+                                </button>
+                            </h6>
+                            <div id="cueCadenceTempo" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    4-second controlled eccentric descent, 2-second static contraction hold at peak squeeze, 2-second concentric lift. Zero bouncing, swinging, or momentum. Pure mechanical tension delivered directly into the targeted muscle fibers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cuePreExhaustion">
+                                    <i class="fas fa-random text-danger me-2"></i> Pre-Exhaustion Supersets (0s Rest)
+                                </button>
+                            </h6>
+                            <div id="cuePreExhaustion" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Perform an isolation movement (e.g., Pec Deck or Leg Extension) to failure, then immediately transition to a compound exercise (Incline Press or Back Squat) with <strong>0 seconds rest</strong>. This guarantees the primary target muscle is exhausted beyond normal failure thresholds.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueKSPStrengthPillars">
+                                    <i class="fas fa-dumbbell text-danger me-2"></i> KSP Strength Pillars Integrated
+                                </button>
+                            </h6>
+                            <div id="cueKSPStrengthPillars" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    The protocol integrates signature KROME Sports Performance strength movements: eccentric <strong>Nordic Hamstring Curls</strong>, contralateral DB lateral step-ups, heavy bent-over barbell rows, and Romanian Deadlifts (RDLs).
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueRecoveryWeek">
+                                    <i class="fas fa-heartbeat text-success me-2"></i> Mandatory Active Recovery Week
+                                </button>
+                            </h6>
+                            <div id="cueRecoveryWeek" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Every 4–6 weeks of high-intensity overload, cycle into Day 5: Active Recovery & Tissue Reset. Features 50% submaximal blood-flow flushes, thoracic and hamstring fascial flossing, and 8-10 minutes of parasympathetic box breathing for complete cellular supercompensation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueNoSpeed">
+                                    <i class="fas fa-ban text-danger me-2"></i> No Speed / Plyo & Olympic Optional
+                                </button>
+                            </h6>
+                            <div id="cueNoSpeed" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    In traditional bodybuilding, reactive plyometrics and sprint intervals are eliminated to direct 100% of recovery to muscular repair. Olympic cleans are strictly optional technique work and can be replaced with heavy barbell deadlifts and shrugs.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueUAP">
+                                    <i class="fas fa-shield-alt text-warning me-2"></i> Universal Athletic Position (UAP)
+                                </button>
+                            </h6>
+                            <div id="cueUAP" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Feet hip-width, hips hinged back, knees softly flexed over mid-foot, chest up, neutral spine. All plyometric snap-downs and accelerations initiate and finish in this posture.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueOlympic">
+                                    <i class="fas fa-sync text-warning me-2"></i> Olympic Clean 1st Pull & Hang
+                                </button>
+                            </h6>
+                            <div id="cueOlympic" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Hook grip locked, lats engaged. Push floor away without changing back angle until the bar clears knees. Sweep bar into thighs before violent triple extension and shrug.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-25">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cueESD">
+                                    <i class="fas fa-running text-warning me-2"></i> ESD & Rotational Power
+                                </button>
+                            </h6>
+                            <div id="cueESD" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    Energy System Development blocks are 30-second continuous output intervals. Drive rotation from back hip through the thoracic spine—never flex or twist through the lower lumbar.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item bg-transparent">
+                            <h6 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-light px-0 py-2 small fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cuePNF">
+                                    <i class="fas fa-user-friends text-warning me-2"></i> PNF Partner Stretching
+                                </button>
+                            </h6>
+                            <div id="cuePNF" class="accordion-collapse collapse" data-bs-parent="#coachingAccordion">
+                                <div class="accordion-body px-0 py-2 text-secondary small">
+                                    10-second mild stretch, followed by 5-second isometric contraction against partner's resistance, followed by a 15-second deeper relaxed exhale stretch. Accelerates neuromuscular recovery.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- BLOCK 2 -->
-                <div class="dashboard-card text-start block-content-section d-none" id="block2-section">
-                    <h3 class="fw-bold text-warning mb-2">Block 2: Progressive Wave Overload</h3>
-                    <p class="text-secondary small mb-4">
-                        Focus: Neurological drive amplification and maximal tension accumulation.
-                    </p>
-
-                    <div class="table-responsive">
-                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
-                            <thead>
-                                <tr class="text-warning">
-                                    <th>Exercise</th>
-                                    <th>Target Sets x Reps</th>
-                                    <th>Intensity (%)</th>
-                                    <th>Your Weight (lbs)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Back Squat</span></td>
-                                    <td>5 Sets x 5 Reps</td>
-                                    <td>82% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="sq-b2-wt">258 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Bench Press</span></td>
-                                    <td>5 Sets x 5 Reps</td>
-                                    <td>82% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="bp-b2-wt">185 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Deadlift</span></td>
-                                    <td>4 Sets x 4 Reps</td>
-                                    <td>84% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="dl-b2-wt">340 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Snatch-Grip High Pull</span></td>
-                                    <td>4 Sets x 5 Reps</td>
-                                    <td>RPE 9</td>
-                                    <td><span class="text-muted">Load Match</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Weighted Trap Bar Jumps</span></td>
-                                    <td>3 Sets x 5 reps</td>
-                                    <td>30% squat max</td>
-                                    <td><span class="text-muted">Dynamic Load</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- BLOCK 3 -->
-                <div class="dashboard-card text-start block-content-section d-none" id="block3-section">
-                    <h3 class="fw-bold text-warning mb-2">Block 3: Peak Force & CNS Intensification</h3>
-                    <p class="text-secondary small mb-4">
-                        Focus: Maximal velocity transfer, neural taper, and personal record (PR) benchmarking.
-                    </p>
-
-                    <div class="table-responsive">
-                        <table class="table table-dark table-striped align-middle border border-secondary border-opacity-25 rounded">
-                            <thead>
-                                <tr class="text-warning">
-                                    <th>Exercise</th>
-                                    <th>Target Sets x Reps</th>
-                                    <th>Intensity (%)</th>
-                                    <th>Your Weight (lbs)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Back Squat</span></td>
-                                    <td>3 Sets x 2 Reps</td>
-                                    <td>92% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="sq-b3-wt">290 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Bench Press</span></td>
-                                    <td>3 Sets x 2 Reps</td>
-                                    <td>92% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="bp-b3-wt">207 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="fw-bold text-light">Deadlift</span></td>
-                                    <td>2 Sets x 2 Reps</td>
-                                    <td>95% 1RM</td>
-                                    <td><span class="fw-bold text-info" id="dl-b3-wt">385 lbs</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Olympic Power Clean</span></td>
-                                    <td>3 Sets x 2 Reps</td>
-                                    <td>RPE 9.5</td>
-                                    <td><span class="text-muted">High Speed</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="text-secondary">Max Height Medicine Ball Throws</span></td>
-                                    <td>4 Sets x 4 Reps</td>
-                                    <td>Explosive Burst</td>
-                                    <td><span class="text-muted">Maximum Effort</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- CNS Recovery & Bulletproofing Guide -->
-                <div class="dashboard-card">
-                    <h4 class="fw-bold text-warning mb-3">
-                        <i class="fas fa-heartbeat me-1"></i> CNS Warmup & Recovery Guidelines
-                    </h4>
-                    <p class="text-light small">
-                        Perform these steps prior to initiating any heavy lifting wave to prime kinetic chains and prevent strain:
-                    </p>
-                    <ul class="text-secondary small ps-3">
-                        <li class="mb-2"><strong>90-90 Hip Decompression:</strong> Reset hip socket positioning and pelvic load transfer (2 minutes per side).</li>
-                        <li class="mb-2"><strong>Thoracic Spine Rotations:</strong> Optimize rotation for upper trunk overhead and rotation mechanics (15 repetitions per side).</li>
-                        <li class="mb-2"><strong>Ankle Mobilization:</strong> Prime dorsiflexion mobility for deep knee squats and power clean foot catch (20 reps).</li>
-                        <li class="mb-2"><strong>Kettlebell Hip Swings:</strong> Wake up posterior glutes and hamstrings to fire instantly on lifts (2 sets of 15 reps).</li>
-                    </ul>
+                <!-- Curriculum Summary Sheet Quick Download -->
+                <div class="dashboard-card p-3 border border-secondary border-opacity-25 text-center">
+                    <div class="small text-secondary mb-2">Need a paper clipboard card for the weight room?</div>
+                    <button class="btn btn-sm btn-outline-info rounded-pill w-100 fw-bold" onclick="window.print()">
+                        <i class="fas fa-file-download me-1"></i> Print Clipboard Session Card
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- JS Logic -->
+    <script src="js/leads.js"></script>
+    <script src="js/strength_blueprint_data.js"></script>
+    <script src="js/strength_manual_app.js"></script>
     <script>
         function checkAccess() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -543,53 +848,20 @@
             document.body.style.overflow = 'auto';
             localStorage.setItem('krome_strength_unlocked', 'true');
             if (email) localStorage.setItem('krome_athlete_email', email);
-            calculateWeights();
-        }
-
-        function calculateWeights() {
-            const squat = parseFloat(document.getElementById('rm-squat').value) || 0;
-            const bench = parseFloat(document.getElementById('rm-bench').value) || 0;
-            const deadlift = parseFloat(document.getElementById('rm-deadlift').value) || 0;
-
-            // Block 1 Calculation
-            document.getElementById('sq-b1-wt').innerText = `${Math.round(squat * 0.70)} lbs`;
-            document.getElementById('bp-b1-wt').innerText = `${Math.round(bench * 0.70)} lbs`;
-            document.getElementById('dl-b1-wt').innerText = `${Math.round(deadlift * 0.72)} lbs`;
-
-            // Block 2 Calculation
-            document.getElementById('sq-b2-wt').innerText = `${Math.round(squat * 0.82)} lbs`;
-            document.getElementById('bp-b2-wt').innerText = `${Math.round(bench * 0.82)} lbs`;
-            document.getElementById('dl-b2-wt').innerText = `${Math.round(deadlift * 0.84)} lbs`;
-
-            // Block 3 Calculation
-            document.getElementById('sq-b3-wt').innerText = `${Math.round(squat * 0.92)} lbs`;
-            document.getElementById('bp-b3-wt').innerText = `${Math.round(bench * 0.92)} lbs`;
-            document.getElementById('dl-b3-wt').innerText = `${Math.round(deadlift * 0.95)} lbs`;
+            if (typeof on1RMChange === 'function') on1RMChange();
         }
 
         function resetCalculators() {
             document.getElementById('rm-squat').value = 315;
             document.getElementById('rm-bench').value = 225;
             document.getElementById('rm-deadlift').value = 405;
-            calculateWeights();
-        }
-
-        function showBlock(blockNum) {
-            document.querySelectorAll('.block-content-section').forEach(sec => sec.classList.add('d-none'));
-            document.querySelectorAll('.workout-week-btn').forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(`block${blockNum}-section`).classList.remove('d-none');
-            
-            if (blockNum === 1) document.getElementById('btn-block1').classList.add('active');
-            if (blockNum === 2) document.getElementById('btn-block2').classList.add('active');
-            if (blockNum === 3) document.getElementById('btn-block3').classList.add('active');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             checkAccess();
-            calculateWeights();
         });
     </script>
-
+    <script src="js/athlete_data_sync.js"></script>
+    <script src="js/profile_nav.js"></script>
 </body>
 </html>

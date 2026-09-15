@@ -783,7 +783,10 @@ function findAthleteInSheet(userIdentifier) {
           logoutTimestamp: row[cols.LOGOUT_TIMESTAMP - 1] ? String(row[cols.LOGOUT_TIMESTAMP - 1]) : '',
           hasShredAccess: true,
           hasSupplementAccess: true,
-          hasNutritionAccess: true
+          hasNutritionAccess: true,
+          hasFlexmobAccess: true,
+          hasSpeedAccess: true,
+          hasStrengthAccess: true
         }
       };
     }
@@ -951,9 +954,30 @@ function updateAthleteInSheet(userIdentifier, payload) {
     sheet.getRange(targetRow, cols.NUTRITION_GOALS).setValue(nutr);
   }
 
-  if (payload.athleteMessage !== undefined || payload.notes !== undefined) {
-    var note = payload.athleteMessage !== undefined ? payload.athleteMessage : payload.notes;
-    sheet.getRange(targetRow, cols.MESSAGE_NOTES).setValue(note);
+  if (payload.athleteMessage !== undefined || payload.notes !== undefined || payload.flexmob_progress_count !== undefined || payload.spd_progress_count !== undefined || payload.strength_progress_count !== undefined) {
+    var existingNote = sheet.getRange(targetRow, cols.MESSAGE_NOTES).getValue() || '';
+    var baseNote = payload.athleteMessage !== undefined ? payload.athleteMessage : (payload.notes !== undefined ? payload.notes : existingNote);
+    
+    var ebookProgress = [];
+    if (payload.flexmob_progress_count !== undefined) {
+      ebookProgress.push('Mobility: ' + payload.flexmob_progress_count + ' drills completed');
+    }
+    if (payload.spd_progress_count !== undefined) {
+      ebookProgress.push('Speed/Cond: ' + payload.spd_progress_count + ' drills completed');
+    }
+    if (payload.strength_progress_count !== undefined) {
+      ebookProgress.push('Strength: ' + payload.strength_progress_count + ' modules completed');
+    }
+
+    var noteToSave = String(baseNote || '').trim();
+    if (ebookProgress.length > 0) {
+      var progressStr = '[' + ebookProgress.join(' | ') + ']';
+      if (noteToSave.indexOf(progressStr) === -1) {
+        noteToSave = (noteToSave ? noteToSave + ' - ' : '') + progressStr;
+      }
+    }
+
+    sheet.getRange(targetRow, cols.MESSAGE_NOTES).setValue(noteToSave);
   }
 
   if (payload.loginTimestamp) {

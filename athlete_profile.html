@@ -2138,6 +2138,26 @@
                 }).catch(() => {});
             }
 
+            // Sync metric update to remote backend / Google Sheets via updateAthleteData
+            if (typeof window.updateAthleteData === 'function') {
+                const metricKeyMap = {
+                    'squat_pr': 'squatPR',
+                    'bench_pr': 'benchPR',
+                    'deadlift_pr': 'deadliftPR',
+                    'clean_pr': 'cleanPR',
+                    'sprint_10': 'sprint10',
+                    'sprint_40': 'sprint40',
+                    'agility_shuttle': 'agilityShuttle',
+                    'vertical_jump': 'verticalJump',
+                    'current_weight': 'currentWeight',
+                    'sleep_hours': 'sleepHours',
+                    'hydration_oz': 'hydrationOz',
+                    'stretch_streak': 'stretchStreak'
+                };
+                const apiKey = metricKeyMap[metricType] || metricType;
+                window.updateAthleteData({ [apiKey]: metricVal });
+            }
+
             if (successEl) {
                 successEl.classList.remove('d-none');
                 setTimeout(() => { successEl.classList.add('d-none'); }, 2000);
@@ -2218,6 +2238,7 @@
         initHashRouting();
         window.addEventListener('hashchange', initHashRouting);
     </script>
+    <script src="js/athlete_data_sync.js"></script>
 </body>
 
 </html>
