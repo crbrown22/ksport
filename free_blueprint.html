@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROME 7-Day Shred & Strength Blueprint</title>
+    <meta name="description" content="Free KROME Sports Performance 7-Day Shred & Strength Blueprint. Simple but highly informative training templates designed for men and women. Includes conditioning protocols and foundational strength guides.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/2c43223b58.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --krome-gold: #ffd447;
+            --krome-gold-hover: #f59e0b;
+            --krome-cyan: #00ffd1;
+            --krome-dark: #0b0b0b;
+            --krome-card-bg: #141414;
+            --krome-card-border: rgba(255, 212, 71, 0.25);
+            --krome-text-main: #f8f9fa;
+            --krome-text-muted: #cbd5e1;
+            --intensity-high: #ef4444;
+            --intensity-interval: #eab308;
+            --intensity-low: #10b981;
+        }
+
+        body {
+            background-color: var(--krome-dark);
+            color: var(--krome-text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----------------------------------
+           NAVBAR / STICKY HEADER
+        ---------------------------------- */
+        .manual-nav {
+            background-color: #121212;
+            border-bottom: 2px solid var(--krome-gold);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .manual-brand {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--krome-gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .btn-action-gold {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 700;
+            border-radius: 50rem;
+            padding: 0.45rem 1.2rem;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .btn-action-gold:hover {
+            background-color: var(--krome-gold-hover);
+            color: #000;
+            transform: translateY(-1px);
+        }
+
+        .btn-action-outline {
+            border: 1px solid var(--krome-cyan);
+            color: var(--krome-cyan);
+            font-weight: 600;
+            border-radius: 50rem;
+            padding: 0.45rem 1.1rem;
+            background: transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.88rem;
+        }
+
+        .btn-action-outline:hover {
+            background-color: rgba(0, 255, 209, 0.15);
+            color: #fff;
+        }
+
+        /* ----------------------------------
+           HERO SECTION
+        ---------------------------------- */
+        .manual-hero {
+            background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(11,11,11,0.98));
+            border-bottom: 1px solid var(--krome-card-border);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--krome-text-muted);
+            max-width: 700px;
+            margin: 0.5rem auto 1.5rem auto;
+        }
+
+        .hero-price-badge {
+            background-color: var(--krome-gold);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        /* ----------------------------------
+           TAB SWITCHER
+        ---------------------------------- */
+        .program-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: #1a1a1a;
+            color: var(--krome-text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.65rem 1.5rem;
+            border-radius: 50rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            font-size: 0.95rem;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--krome-cyan);
+            color: var(--krome-cyan);
+        }
+
+        .tab-btn.active {
+            background-color: var(--krome-gold);
+            color: #000;
+            border-color: var(--krome-gold);
+            box-shadow: 0 0 15px rgba(255, 212, 71, 0.35);
+        }
+
+        /* ----------------------------------
+           CARDS & LAYOUTS
+        ---------------------------------- */
+        .content-card {
+            background-color: var(--krome-card-bg);
+            border: 1px solid var(--krome-card-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-header {
+            border-left: 4px solid var(--krome-gold);
+            padding-left: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .workout-day-card {
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .day-high {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(15, 15, 15, 0.6) 100%);
+            border-left: 4px solid var(--intensity-high);
+        }
+
+        .day-interval {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(15, 15, 15, 0.6) 100%);
+            border-left: 4px solid var(--intensity-interval);
+        }
+
+        .day-low {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 15, 15, 0.6) 100%);
+            border-left: 4px solid var(--intensity-low);
+        }
+
+        .exercise-row {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .exercise-row:last-child {
+            border-bottom: none;
+        }
+
+        .rule-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: rgba(255, 212, 71, 0.15);
+            color: var(--krome-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            border: 1px solid var(--krome-gold);
+        }
+
+        /* ----------------------------------
+           PRINTING LAYOUT & MEDIA QUERIES
+        ---------------------------------- */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12px;
+            }
+
+            .no-print, .manual-nav, .program-tabs, .btn, .navbar, footer {
+                display: none !important;
+            }
+
+            .tab-content > .tab-pane {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                page-break-after: always;
+            }
+
+            .content-card {
+                background-color: #ffffff !important;
+                border: 1px solid #cccccc !important;
+                color: #000000 !important;
+                box-shadow: none !important;
+                padding: 1.5rem !important;
+                margin-bottom: 2rem;
+                page-break-inside: avoid;
+            }
+
+            .workout-day-card {
+                background-color: #fafafa !important;
+                border: 1px solid #dddddd !important;
+                color: #000000 !important;
+                box-shadow: none !important;
+                margin-bottom: 1.5rem;
+                page-break-inside: avoid;
+            }
+
+            .text-warning, .text-cyan, .text-light, .text-danger, .text-success, .text-secondary {
+                color: #000000 !important;
+            }
+
+            .badge {
+                border: 1px solid #000000 !important;
+                color: #000000 !important;
+                background-color: transparent !important;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #000000 !important;
+            }
+
+            .exercise-row {
+                border-bottom: 1px solid #dddddd !important;
+            }
+
+            .rule-badge {
+                border: 1px solid #000000 !important;
+                color: #000000 !important;
+                background-color: transparent !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STICKY HEADER -->
+    <nav class="manual-nav no-print">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="landing.html" class="manual-brand">
+                <i class="fas fa-chevron-left me-2" style="font-size: 0.9rem;"></i> KROME <span class="text-white">PERFORMANCE</span>
+            </a>
+            <div class="d-flex gap-2">
+                <button onclick="window.print()" class="btn-action-gold">
+                    <i class="fas fa-print me-1"></i> Print / Save PDF
+                </button>
+                <a href="landing.html#offer-section" class="btn-action-outline d-none d-sm-inline-flex">
+                    <i class="fas fa-arrow-right me-1"></i> View Premium Coaching
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="manual-hero print-card">
+        <div class="container">
+            <span class="hero-price-badge mb-2"><i class="fas fa-gift me-1"></i> FREE PROMO GUIDE</span>
+            <h1 class="hero-title text-uppercase mb-2">7-Day Shred &amp; Strength <span class="text-warning">Blueprint</span></h1>
+            <p class="hero-subtitle">
+                Your fast-track athletic accelerator. Complete with our legendary 15-minute conditioning template and foundational strength guides custom-tailored for men and women. No fluff. Just results.
+            </p>
+            <div class="d-flex justify-content-center gap-3 no-print">
+                <span class="text-secondary small"><i class="fas fa-check text-cyan me-1"></i> Printable Format</span>
+                <span class="text-secondary small">&bull;</span>
+                <span class="text-secondary small"><i class="fas fa-check text-cyan me-1"></i> Men &amp; Women Guides</span>
+                <span class="text-secondary small">&bull;</span>
+                <span class="text-secondary small"><i class="fas fa-check text-cyan me-1"></i> 100% Free Lifetime Access</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN INTERACTIVE SECTION -->
+    <main class="container py-5">
+
+        <!-- Tab Pills to switch tracks cleanly -->
+        <div class="program-tabs no-print" id="blueprint-pills">
+            <button class="tab-btn active" onclick="switchBlueprintTab('conditioning')">
+                <i class="fas fa-running me-1"></i> 3-Day Conditioning Template
+            </button>
+            <button class="tab-btn" onclick="switchBlueprintTab('mens-strength')">
+                <i class="fas fa-mars me-1"></i> Men's Strength Foundations
+            </button>
+            <button class="tab-btn" onclick="switchBlueprintTab('womens-strength')">
+                <i class="fas fa-venus me-1"></i> Women's Shred &amp; Tone
+            </button>
+            <button class="tab-btn" onclick="switchBlueprintTab('training-rules')">
+                <i class="fas fa-book-open me-1"></i> Weekly Objective &amp; Rules
+            </button>
+        </div>
+
+        <!-- TAB CONTENT INTERACTIVE WRAPPER -->
+        <div class="tab-content" id="blueprint-tab-content">
+
+            <!-- TAB 1: CONDITIONING TEMPLATE (UNIVERSAL) -->
+            <div class="tab-pane fade show active" id="pane-conditioning" role="tabpanel">
+                <div class="content-card print-card mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                        <div class="section-header mb-0">
+                            <h2 class="fw-bold mb-0 text-uppercase">Universal Conditioning Template</h2>
+                            <p class="text-secondary mb-0 small">Build the Engine &bull; Beginner &rarr; Moderate Level</p>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-black border border-warning text-warning px-3 py-1.5 fw-bold">
+                                <i class="fas fa-fire me-1"></i> 15 MINS MAX
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Warmup Block -->
+                    <div class="p-3 rounded-4 mb-4" style="background-color: rgba(255,255,255,0.03); border: 1px dashed var(--krome-gold);">
+                        <h6 class="text-warning fw-bold mb-2"><i class="fas fa-hourglass-start me-2"></i> STEP 1: BEFORE EVERY WORKOUT (5-7 Minutes)</h6>
+                        <div class="row g-3 text-secondary small">
+                            <div class="col-md-4">
+                                <span class="text-white fw-bold d-block mb-1"><i class="fas fa-circle-check text-warning me-1"></i> Foam Rolling</span>
+                                Calves, quads, hamstrings, glutes, and hip flexors.
+                            </div>
+                            <div class="col-md-4">
+                                <span class="text-white fw-bold d-block mb-1"><i class="fas fa-circle-check text-warning me-1"></i> Dynamic Stretches</span>
+                                Leg swings, walking lunges, hip mobility drills.
+                            </div>
+                            <div class="col-md-4">
+                                <span class="text-white fw-bold d-block mb-1"><i class="fas fa-circle-check text-warning me-1"></i> Run Prep</span>
+                                Perform 2 easy progressive build-ups if your training involves running.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 1 -->
+                    <div class="workout-day-card day-high">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                            <h5 class="fw-black text-white text-uppercase mb-0"><i class="fas fa-dot-circle text-danger me-2"></i> Day 1 &bull; High Intensity</h5>
+                            <span class="badge bg-danger text-white px-2.5">Choose One Option Below</span>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option A &bull; Repetition Run</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">6 &times; 20 sec hard run</span> with 70 sec walk/jog recovery. <span class="text-warning fw-bold">RPE: 7-8/10</span>. Hard effort, but stay controlled.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option B &bull; Hill Repeats</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">6 &times; 20 sec uphill sprint</span>. Walk back slowly for recovery. <span class="text-warning fw-bold">RPE: 7-8/10</span>. Focus on powerful running mechanics.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option C &bull; Fartlek</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">30 sec fast, 90 sec easy</span>. Repeat for <span class="text-light">6 rounds</span>. <span class="text-warning fw-bold">RPE: 7-8/10</span> during the fast portions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="workout-day-card day-interval">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                            <h5 class="fw-black text-white text-uppercase mb-0"><i class="fas fa-dot-circle text-warning me-2"></i> Day 2 &bull; Interval Training</h5>
+                            <span class="badge bg-warning text-dark px-2.5">Choose One Option Below</span>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option A &bull; 2:2 Intervals</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">2 min easy run, 2 min walk</span>. Repeat for <span class="text-light">3 rounds</span>. <span class="text-info fw-bold">RPE: 5-6/10</span>. Stable, steady breathing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option B &bull; 1:1 Intervals</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">60 sec run, 60 sec walk</span>. Repeat for <span class="text-light">7 rounds</span>. <span class="text-info fw-bold">RPE: 5-6/10</span>. Excellent endurance build.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option C &bull; Treadmill Intervals</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">2 min easy jog, 2 min walk</span>. Repeat for <span class="text-light">3 rounds</span>. <span class="text-info fw-bold">RPE: 5-6/10</span>. Perfect for structured indoor environments.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="workout-day-card day-low">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                            <h5 class="fw-black text-white text-uppercase mb-0"><i class="fas fa-dot-circle text-success me-2"></i> Day 3 &bull; Low Intensity</h5>
+                            <span class="badge bg-success text-white px-2.5">Choose One Option Below</span>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option A &bull; Walk / Jog</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">15 min continuous</span>. Alternate jogging and walking as needed. <span class="text-success fw-bold">RPE: 3-4/10</span>.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option B &bull; Incline Walk</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">15 min continuous</span> comfortable but steady pace on a hill or treadmill incline. <span class="text-success fw-bold">RPE: 3-4/10</span>.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="exercise-row">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <strong class="text-white">Option C &bull; Stationary/Road Bike</strong>
+                                </div>
+                                <div class="col-md-8 small text-secondary">
+                                    <span class="text-light">15 min continuous</span> smooth, steady pedaling with moderate resistance. <span class="text-success fw-bold">RPE: 3-4/10</span>.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 p-2 bg-black bg-opacity-40 rounded-3 text-center small text-light border border-secondary border-opacity-25">
+                            <i class="fas fa-circle-info text-success me-1"></i> <strong>Pace Goal:</strong> You should be easily able to carry on a complete conversation throughout Day 3.
+                        </div>
+                    </div>
+
+                    <!-- Cooldown Block -->
+                    <div class="p-3 rounded-4" style="background-color: rgba(255,255,255,0.03); border: 1px dashed var(--krome-cyan);">
+                        <h6 class="text-cyan fw-bold mb-2"><i class="fas fa-hourglass-end me-2"></i> AFTER EVERY WORKOUT (5 Minutes)</h6>
+                        <div class="row g-2 text-secondary small">
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Easy walk/cooldown</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Quad stretch</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Calf stretch</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Light foam rolling</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Hamstring stretch</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Glute/piriformis mobility</div>
+                            <div class="col-md-3"><i class="fas fa-check text-cyan me-1"></i> Hip flexor stretch</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: MEN'S STRENGTH FOUNDATIONS -->
+            <div class="tab-pane fade" id="pane-mens-strength" role="tabpanel">
+                <div class="content-card print-card mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                        <div class="section-header mb-0">
+                            <h2 class="fw-bold mb-0 text-uppercase">Beginner Men's Hypertrophy</h2>
+                            <p class="text-secondary mb-0 small">Week 1 &bull; Foundation Phase</p>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-black border border-warning text-warning px-3 py-1.5 fw-bold">
+                                <i class="fas fa-calendar-alt me-1"></i> 3 DAYS / WEEK
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Program Meta Grid -->
+                    <div class="row g-3 mb-4 text-center">
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Session Length</small>
+                                <span class="fw-bold text-white">45-60 Mins</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Intensity</small>
+                                <span class="fw-bold text-white">Leave 2-3 RIR</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Rest Intervals</small>
+                                <span class="fw-bold text-white">60-120 Secs</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Weekly Objective</small>
+                                <span class="fw-bold text-warning">Consistency &amp; Form</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Strength Days Grid -->
+                    <div class="row g-4">
+                        <!-- Full Body A -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 1: FULL BODY A</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Light cardio, squats, arm circles, etc.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. Goblet Squat</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. Dumbbell Bench Press</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Lat Pulldown</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Dumbbell Romanian Deadlift</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Seated DB Shoulder Press</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. Dumbbell Curl</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Rope Triceps Pushdown</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Finisher:</span> Optional walk 5-10 mins.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full Body B -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 3: FULL BODY B</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Light cardio, squats, active mobility.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. Leg Press</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. Machine Chest Press</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Seated Cable Row</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Dumbbell Split Squat</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 8-10 reps/leg</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Dumbbell Lateral Raise</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. Hammer Curl</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Overhead Cable Extension</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Rest Day Rule:</span> Complete rest, active recovery walk.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full Body C -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 5: FULL BODY C</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Light cardio, dynamic lunges, arm circles.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. DB/Machine Chest Press</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. Leg Press or Hack Squat</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Assisted Pull-up / Pulldown</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Dumbbell Romanian Deadlift</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Cable or Machine Row</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. EZ-Bar or Dumbbell Curl</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Cable Triceps Pushdown</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-15 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Weekend Goal:</span> Quality sleep, nutrition, recovery.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: WOMEN'S STRENGTH & TONE -->
+            <div class="tab-pane fade" id="pane-womens-strength" role="tabpanel">
+                <div class="content-card print-card mb-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+                        <div class="section-header mb-0">
+                            <h2 class="fw-bold mb-0 text-uppercase">Beginner Women's Shred &amp; Tone</h2>
+                            <p class="text-secondary mb-0 small">Week 1 &bull; Foundation Phase</p>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-black border border-warning text-warning px-3 py-1.5 fw-bold">
+                                <i class="fas fa-calendar-alt me-1"></i> 3 DAYS / WEEK
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Program Meta Grid -->
+                    <div class="row g-3 mb-4 text-center">
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Session Length</small>
+                                <span class="fw-bold text-white">45-60 Mins</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Intensity</small>
+                                <span class="fw-bold text-white">Leave 2-3 RIR</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Rest Intervals</small>
+                                <span class="fw-bold text-white">60-90 Secs</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                <small class="text-secondary d-block">Primary Focus</small>
+                                <span class="fw-bold text-warning">Glutes, Core, Stability</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Strength Days Grid -->
+                    <div class="row g-4">
+                        <!-- Full Body A -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 1: POSTERIOR CHAIN bias</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Glute activation bridges, dynamic squats, active stretching.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. Goblet Squat</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. DB Chest Press (or push-ups)</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Seated Cable Row or Lat Pulldown</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Dumbbell Glute Bridges</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Standing DB Lateral Raise</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. Incline Dumbbell Bicep Curl</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Overhead DB Tricep Extension</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Finisher:</span> Core Flow (Plank 30s + Bird Dog) x 2 rounds.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full Body B -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 3: LEG &amp; CORE STABILITY</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Dynamic lateral lunges, bodyweight squats, arm circles.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. Dumbbell Romanian Deadlift (RDL)</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. Dumbbell Shoulder Press (neutral)</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Assisted Pull-up or Banded Pulldown</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Goblet Reverse Lunges</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10 reps/leg</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Cable Face Pulls</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. Dumbbell Hammer Curl</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Dumbbell Kickbacks</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Posture Focus:</span> Keep shoulder blades squeezed back on back rows.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Full Body C -->
+                        <div class="col-lg-4">
+                            <div class="p-3 rounded-4 h-100" style="background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                                <h5 class="fw-bold text-warning border-bottom border-warning border-opacity-25 pb-2 mb-3"><i class="fas fa-dumbbell me-2"></i> DAY 5: GLUTE bias &amp; POSTERIOR</h5>
+                                <div class="mb-3 small text-secondary">
+                                    <span class="text-light fw-bold d-block"><i class="fas fa-hourglass-start me-1 text-warning"></i> Warm-up (5-7 mins):</span>
+                                    Glute kickbacks, arm circles, squats, active flexibility.
+                                </div>
+                                <div class="d-flex flex-column gap-2.5">
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">1. Leg Press (High &amp; Wide stance)</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">2. Incline Dumbbell Bench Press</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 8-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">3. Cable Lat Pulldown</div>
+                                        <div class="text-secondary small font-monospace">3 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">4. Dumbbell Romanian Deadlift (RDL)</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">5. Seated Cable Row</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">6. Standing DB Lateral Raise</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 12-15 reps</div>
+                                    </div>
+                                    <div class="exercise-row">
+                                        <div class="fw-bold text-white small">7. Cable Triceps Pushdown (rope)</div>
+                                        <div class="text-secondary small font-monospace">2 sets &times; 10-12 reps</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 p-2 bg-black rounded-3 text-center small text-light">
+                                    <span class="fw-bold text-warning">Finisher:</span> Planks or Hanging Knee Raises 2 x 15 reps.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: OBJ & WEEKLY TRAINING RULES -->
+            <div class="tab-pane fade" id="pane-training-rules" role="tabpanel">
+                <div class="content-card print-card mb-4">
+                    <div class="section-header">
+                        <h2 class="fw-bold text-uppercase mb-1">Weekly Training Rules &amp; Objective</h2>
+                        <p class="text-secondary small mb-0">Learn movements &bull; Establish weights &bull; Build consistency &bull; Prepare for progressive overload</p>
+                    </div>
+
+                    <!-- Rules List -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge">1</span>
+                                <div>
+                                    <h6 class="fw-bold text-white text-uppercase mb-1">Do Not Train to Failure</h6>
+                                    <p class="small text-secondary mb-0">Priority is learning proper mechanics and building a foundation. Leave 2-3 reps in reserve (RIR) on every strength set.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge">2</span>
+                                <div>
+                                    <h6 class="fw-bold text-white text-uppercase mb-1">Control the Repetition</h6>
+                                    <p class="small text-secondary mb-0">Tempo control is vital: 2 seconds lowering (eccentric phase), 1-2 seconds lifting with power. Never bounce the weights.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge">3</span>
+                                <div>
+                                    <h6 class="fw-bold text-white text-uppercase mb-1">Choose the Right Weight</h6>
+                                    <p class="small text-secondary mb-0">Select resistance that allows you to complete the listed rep ranges with pristine form. If your form breaks, lower the weight.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge">4</span>
+                                <div>
+                                    <h6 class="fw-bold text-white text-uppercase mb-1">Track &amp; Progress</h6>
+                                    <p class="small text-secondary mb-0">Record your weights, reps, and sets. Consistency in technique establishes your baseline metrics for future challenges.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge">5</span>
+                                <div>
+                                    <h6 class="fw-bold text-white text-uppercase mb-1">Active Recovery &amp; Fuel</h6>
+                                    <p class="small text-secondary mb-0">Eat high quality protein (1g per lb of target body weight), hydrate with clean water, secure 8 hours of sleep, and rest on light activity days.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-3 align-items-start">
+                                <span class="rule-badge"><i class="fas fa-check"></i></span>
+                                <div>
+                                    <h6 class="fw-bold text-warning text-uppercase mb-1">Conditioning Maximum Rule</h6>
+                                    <p class="small text-secondary mb-0">For conditioning templates: strictly maintain the 15-minute maximum. Don't chase absolute physical exhaustion — chase consistency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Action Callout -->
+                    <div class="p-4 rounded-4 text-center border" style="background: linear-gradient(135deg, #111 0%, #1e1502 50%, #111 100%); border-color: var(--krome-gold) !important;">
+                        <h4 class="fw-black text-white text-uppercase mb-2" style="font-size: 1.3rem;">Ready for the complete Transformation System?</h4>
+                        <p class="text-light small mx-auto mb-3" style="max-width: 600px;">
+                            Take the next step in your athletic evolution. Unlock full nutrition plans, complete video mechanics libraries, and direct 1-on-1 access to Coach Brown.
+                        </p>
+                        <a href="landing.html#offer-section" class="btn btn-warning fw-bold text-dark px-4 py-2 rounded-pill text-uppercase" style="font-size: 0.85rem;"><i class="fas fa-arrow-right me-1"></i> Apply for 1-on-1 Coaching Track</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-4 text-center border-top border-secondary border-opacity-10 mt-5 no-print">
+        <p class="text-secondary small mb-0">&copy; 2026 KROME Sports Performance. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Interactive script to toggle tabs -->
+    <script>
+        function switchBlueprintTab(tabId) {
+            // Update Tab Pill styles
+            document.querySelectorAll('#blueprint-pills .tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Toggle panes
+            const panes = ['conditioning', 'mens-strength', 'womens-strength', 'training-rules'];
+            panes.forEach(p => {
+                const paneEl = document.getElementById('pane-' + p);
+                if (p === tabId) {
+                    paneEl.classList.add('show', 'active');
+                } else {
+                    paneEl.classList.remove('show', 'active');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

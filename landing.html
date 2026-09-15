@@ -644,10 +644,14 @@
                                 <i class="fas fa-download me-2"></i> Download Free Blueprint Now
                             </button>
                             <div id="lead-success-msg" class="alert alert-success mt-3 d-none text-center small mb-0" role="alert">
-                                <div class="fw-bold mb-1"><i class="fas fa-check-circle me-1"></i> Success! Your free blueprint has been dispatched to your email.</div>
+                                <div class="fw-bold mb-1 text-uppercase text-warning"><i class="fas fa-check-circle me-1"></i> Success! Blueprint Sent</div>
+                                <p class="text-light mb-2">The blueprint and printable PDF link have been dispatched to your email address.</p>
+                                <a href="free_blueprint.html" class="btn btn-warning btn-sm rounded-pill fw-black text-dark w-100 mb-2 py-2">
+                                    <i class="fas fa-eye me-1"></i> Open 7-Day Blueprint Instantly
+                                </a>
                                 <div class="mt-2 pt-2 border-top border-success-subtle">
-                                    <span class="d-block mb-1 text-light">Want 1-on-1 coaching advice now?</span>
-                                    <a href="https://calendar.app.google/ikECphRQVZif3yUZ8" target="_blank" rel="noopener noreferrer" class="btn btn-warning btn-sm rounded-pill fw-bold text-dark w-100 mt-1">
+                                    <span class="d-block mb-1 text-secondary">Want 1-on-1 coaching advice now?</span>
+                                    <a href="https://calendar.app.google/ikECphRQVZif3yUZ8" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm rounded-pill fw-bold text-white w-100 mt-1">
                                         <i class="fas fa-calendar-check me-1"></i> Book Consultation on Calendar
                                     </a>
                                 </div>
@@ -1850,6 +1854,7 @@
                     name: name,
                     email: email,
                     program: goalText,
+                    appUrl: window.location.origin,
                     source: 'Landing Page (Free Blueprint Form)'
                 });
             } catch (err) {

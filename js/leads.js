@@ -3,7 +3,7 @@
  * Lead Tracker & Google Sheets / Gmail Webhook Integration
  */
 
-const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNWAvk-fbCo-epdoTGu6FU4FcyI_eGJoWJ0yn1E60b2K_eTDIEX0DXXY-IFJRqcLtl/exec';
+const KROME_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzvGWh-RBPPSCSsyuxOkepJvfZLf7JmcxYzRPZZ0UcdsL6hLQB9-G3R57BvoehBTr_l/exec';
 const KROME_CALENDAR_BOOKING_URL = 'https://calendar.app.google/ikECphRQVZif3yUZ8';
 
 /**
@@ -26,6 +26,7 @@ async function sendLeadToGoogle(leadData) {
         experience: leadData.experience || leadData.athleteLevel || leadData.level || '',
         athleteLevel: leadData.experience || leadData.athleteLevel || leadData.level || '',
         message: leadData.message || leadData.goals || '',
+        appUrl: leadData.appUrl || '',
         source: leadData.source || window.location.pathname || 'KROME Website',
         timestamp: timestamp
     };

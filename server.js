@@ -4,11 +4,11 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzkpw1DH9rURvt48B51b7oAiA6md8mBmfY29N1Yf2QiUB-5WCtDV3GPHKNWR4nGiqOg/exec';
+const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzvGWh-RBPPSCSsyuxOkepJvfZLf7JmcxYzRPZZ0UcdsL6hLQB9-G3R57BvoehBTr_l/exec';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), { extensions: ['html'] }));
 
 // API: Athlete Data (GET)
 app.get('/api/athlete/data', async (req, res) => {
@@ -78,6 +78,27 @@ app.post('/api/auth/athlete-logout', async (req, res) => {
     return res.json({ success: true, message: 'Logout logged' });
   } catch (err) {
     console.error('Error logging out athlete:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// API: Leads Capture & Forwarding (POST)
+app.post('/api/leads', async (req, res) => {
+  try {
+    const payload = req.body;
+    const remoteRes = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+
+    if (remoteRes.ok) {
+      const data = await remoteRes.json();
+      return res.json(data);
+    }
+    return res.json({ success: true, message: 'Lead captured successfully' });
+  } catch (err) {
+    console.error('Error proxying lead capture:', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });

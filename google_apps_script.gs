@@ -1451,9 +1451,17 @@ function appendLead(payload) {
   // 4. Send Automatic Introduction Email to Athlete
   if (email && email.indexOf('@') !== -1) {
     try {
-      var athleteSubject = "Welcome to KROME Sports Performance, " + name + "!";
+      var appUrl = (payload.appUrl || "https://kromesp.com").trim();
+      if (appUrl.slice(-1) === "/") {
+        appUrl = appUrl.slice(0, -1);
+      }
+      var blueprintUrl = appUrl + "/free_blueprint.html";
+
+      var athleteSubject = "Your 7-Day Shred & Strength Blueprint is Ready, " + name + "!";
       var athleteBody = "Hi " + name + ",\n\n" +
-        "Thank you for reaching out regarding our " + program + "!\n\n" +
+        "Thank you for reaching out to KROME Sports Performance!\n\n" +
+        "Your free 7-Day Shred & Strength Blueprint is ready. You can access and print your copy of the program here:\n" +
+        blueprintUrl + "\n\n" +
         "Coach Brown is reviewing your goals. To lock in your 1-on-1 strategy call with automatic buffer scheduling, pick your time slot here:\n" +
         bookingUrl + "\n\n" +
         "Coach Brown & The KROME Performance Team\n(405) 535-4702\n";
@@ -1465,13 +1473,21 @@ function appendLead(payload) {
             "<p style='color: #00ffd1; margin: 5px 0 0 0; font-size: 13px; text-transform: uppercase;'>Elite Training &amp; Athletic Longevity</p>" +
           "</div>" +
           "<div style='padding: 30px; background-color: #ffffff; border: 1px solid #eee; border-top: none; border-radius: 0 0 8px 8px;'>" +
-            "<h2 style='color: #111; margin-top: 0;'>Welcome, " + name + "!</h2>" +
-            "<p>Thank you for taking the first step toward reaching your peak athletic performance. We’ve received your inquiry regarding the <strong>" + program + "</strong>.</p>" +
+            "<h2 style='color: #111; margin-top: 0;'>Your Free Blueprint is Ready, " + name + "!</h2>" +
+            "<p>Thank you for taking the first step toward reaching your peak athletic performance. We’ve dispatched your free <strong>7-Day Shred &amp; Strength Blueprint</strong>.</p>" +
+            
+            "<div style='background-color: #f4f6f8; border-left: 4px solid #00ffd1; border-radius: 4px; padding: 15px; margin: 20px 0;'>" +
+              "<h4 style='margin: 0 0 5px 0; color: #111;'>📥 Download &amp; View Your Program</h4>" +
+              "<p style='margin: 0 0 10px 0; font-size: 14px; color: #555;'>Click below to access your 3-day conditioning template, foundational strength templates (men &amp; women), and save/print your layout instantly:</p>" +
+              "<a href='" + blueprintUrl + "' style='background-color: #0b0f19; color: #00ffd1; border: 1px solid #00ffd1; font-weight: bold; text-decoration: none; padding: 10px 20px; border-radius: 6px; display: inline-block; font-size: 14px;'>💪 Open 7-Day Blueprint &amp; PDF</a>" +
+            "</div>" +
+
             "<div style='background-color: #fff9e6; border: 2px solid #ffd447; border-radius: 8px; padding: 20px; text-align: center; margin: 25px 0;'>" +
               "<h3 style='margin: 0 0 8px 0; color: #111;'>Schedule Your 1-on-1 Strategy Call</h3>" +
               "<p style='font-size: 14px; color: #555; margin: 0 0 16px 0;'>Select an open slot on Coach Brown's live Google Calendar (all appointments include a 15-minute buffer to ensure undivided attention):</p>" +
               "<a href='" + bookingUrl + "' style='background-color: #ffd447; color: #111; font-weight: bold; text-decoration: none; padding: 12px 24px; border-radius: 50px; display: inline-block; font-size: 15px;'>📅 Pick Your Time on Google Calendar</a>" +
             "</div>" +
+            
             "<p style='color: #666; font-size: 14px;'>Questions? Call or text Coach Brown at <strong>(405) 535-4702</strong>.</p>" +
             "<p style='margin-bottom: 0;'>Let's get to work,<br><strong>Coach Brown</strong><br><span style='color: #777; font-size: 13px;'>KROME Sports Performance</span></p>" +
           "</div>" +
